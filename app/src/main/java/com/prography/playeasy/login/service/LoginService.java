@@ -18,7 +18,7 @@ public class LoginService {
             public void onResponse(Call<LoginResponseVO> call, Response<LoginResponseVO> response) {
                 System.out.println("==== [onResponse()] ====");
                 System.out.println("Code, Messsage: " + response.code() + " " + response.message());
-                System.out.println("Body" + response.body().toString());
+                System.out.println("Body: " + response.body().toString());
             }
 
             @Override
