@@ -5,13 +5,13 @@ import com.prography.playeasy.lib.auth.RetrofitLoginApi;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitClient {
+public class RetrofitClientGenerator {
     private static RetrofitLoginApi service = null;
     private static final String BASE_URL="http://api.theplayeasy.com";
 
-    private RetrofitClient() { }
+    private RetrofitClientGenerator() { }
 
-    public static RetrofitLoginApi getService() {
+    public static RetrofitLoginApi getClient() {
         if (service == null) {
             service = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

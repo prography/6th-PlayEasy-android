@@ -11,8 +11,4 @@ public interface RetrofitLoginApi {
     @POST("/api/auth/login")
     Call<LoginResponseVO> register(
             @Body LoginRequestVO requestVO);
-
-//    @POST("/api/auth/login")
-//    Call<LoginResponseVO> register(
-//            @Body Map<String, String> request);
 }

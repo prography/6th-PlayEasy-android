@@ -19,16 +19,7 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
-import com.prography.playeasy.login.domain.LoginRequestVO;
-import com.prography.playeasy.login.domain.LoginResponseVO;
-import com.prography.playeasy.lib.RetrofitClient;
-import com.prography.playeasy.lib.auth.RetrofitLoginApi;
 import com.prography.playeasy.login.service.LoginService;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity{
 
