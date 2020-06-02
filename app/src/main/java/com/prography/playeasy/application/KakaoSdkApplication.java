@@ -1,4 +1,4 @@
-package com.prography.playeasy.login;
+package com.prography.playeasy.application;
 
 import android.app.Application;
 import android.content.Context;
@@ -7,7 +7,7 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
 
-public class MyApplication extends Application {
+public class KakaoSdkApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
@@ -20,7 +20,7 @@ public class MyApplication extends Application {
                 return new IApplicationConfig() {
                     @Override
                     public Context getApplicationContext() {
-                        return MyApplication.this;
+                        return KakaoSdkApplication.this;
                     }
                 };
             }

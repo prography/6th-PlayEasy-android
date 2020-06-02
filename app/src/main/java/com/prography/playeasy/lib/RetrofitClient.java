@@ -1,21 +1,22 @@
-package com.prography.playeasy.retrofit;
+package com.prography.playeasy.lib;
+
+import com.prography.playeasy.lib.auth.RetrofitLoginApi;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static RetrofitService service = null;
+    private static RetrofitLoginApi service = null;
+    private static final String BASE_URL="http://api.theplayeasy.com";
 
     private RetrofitClient() { }
 
-    public static final String BASE_URL="http://api.theplayeasy.com";
-
-    public static RetrofitService getService() {
+    public static RetrofitLoginApi getService() {
         if (service == null) {
             service = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .build().create(RetrofitService.class);
+                    .build().create(RetrofitLoginApi.class);
         }
 
         return service;

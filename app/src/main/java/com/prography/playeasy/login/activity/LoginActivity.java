@@ -1,4 +1,4 @@
-package com.prography.playeasy.login;
+package com.prography.playeasy.login.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,10 +19,24 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
+import com.prography.playeasy.login.domain.LoginRequestVO;
+import com.prography.playeasy.login.domain.LoginResponseVO;
+import com.prography.playeasy.lib.RetrofitClient;
+import com.prography.playeasy.lib.auth.RetrofitLoginApi;
+import com.prography.playeasy.login.service.LoginService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity{
 
+    private static final String TAG = "";
     private Button button;
+    private String accessToken;
+    private LoginService loginService;
+
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
         @Override
@@ -44,6 +58,9 @@ public class LoginActivity extends AppCompatActivity{
                         public void onSuccess(AccessTokenInfoResponse result) {
                             Log.i("KAKAO_API", "사용자 아이디: " + result.getUserId());
                             Log.i("KAKAO_API", "남은 시간 (ms): " + result.getExpiresInMillis());
+                            accessToken = Session.getCurrentSession().getAccessToken();
+                            System.out.println("====> 토큰 값 : " + accessToken);
+                            loginService.userLogin(accessToken);
                         }
                     });
         }

@@ -1,8 +1,10 @@
-package com.prography.playeasy;
+package com.prography.playeasy.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.prography.playeasy.R;
 
 public class MainActivity extends AppCompatActivity {
 

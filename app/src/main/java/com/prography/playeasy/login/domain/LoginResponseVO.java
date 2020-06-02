@@ -1,11 +1,11 @@
-package com.prography.playeasy.retrofit;
+package com.prography.playeasy.login.domain;
 
-public class AccessTokenResult {
+public class LoginResponseVO {
     private boolean success;
     private boolean isNewMember;
     private String token;
 
-    public AccessTokenResult(boolean success, boolean isNewMember, String token) {
+    public LoginResponseVO(boolean success, boolean isNewMember, String token) {
         this.success = success;
         this.isNewMember = isNewMember;
         this.token = token;
@@ -33,5 +33,14 @@ public class AccessTokenResult {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginResponseVO{" +
+                "success=" + success +
+                ", isNewMember=" + isNewMember +
+                ", token='" + token + '\'' +
+                '}';
     }
 }
