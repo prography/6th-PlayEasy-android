@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity{
     private static final String TAG = "";
     private Button button;
     private String accessToken;
-    private LoginService loginService;
+    private LoginService loginService = new LoginService();
 
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
