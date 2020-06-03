@@ -1,4 +1,4 @@
-package com.prography.playeasy.lib.auth;
+package com.prography.playeasy.login.api;
 
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;

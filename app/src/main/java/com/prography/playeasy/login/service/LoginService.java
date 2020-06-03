@@ -1,7 +1,7 @@
 package com.prography.playeasy.login.service;
 
 import com.prography.playeasy.lib.RetrofitClientGenerator;
-import com.prography.playeasy.lib.auth.RetrofitLoginApi;
+import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
 
@@ -11,7 +11,7 @@ import retrofit2.Response;
 
 public class LoginService {
     public void userLogin(String accessToken) {
-        RetrofitLoginApi client = RetrofitClientGenerator.getClient();
+        RetrofitLoginApi client = RetrofitClientGenerator.getClient(RetrofitLoginApi.class);
         Call<LoginResponseVO> call = client.register(new LoginRequestVO(accessToken));
         call.enqueue(new Callback<LoginResponseVO>() {
             @Override
