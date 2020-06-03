@@ -13,14 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".main.MainActivity"/>
-        <activity android:name=".login.activity.LoginActivity"/>
-        <activity android:name=".match.activity.MatchCreateActivity">
+        <activity android:name=".login.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".match.activity.MatchCreateActivity"/>
+        <activity android:name=".match.activity.MatchListActivity"/>
+
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

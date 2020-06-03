@@ -121,4 +121,23 @@ public class Match {
     public void setAwayTeamId(int awayTeamId) {
         this.awayTeamId = awayTeamId;
     }
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", location='" + location + '\'' +
+                ", fee=" + fee +
+                ", startAt=" + startAt +
+                ", endAt=" + endAt +
+                ", homeQuota=" + homeQuota +
+                ", writerId=" + writerId +
+                ", homeTeamId=" + homeTeamId +
+                ", awayQuota=" + awayQuota +
+                ", awayTeamId=" + awayTeamId +
+                '}';
+    }
 }

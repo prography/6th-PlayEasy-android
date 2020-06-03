@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
-import com.prography.playeasy.match.domain.MatchResponseVO;
+import com.prography.playeasy.match.domain.Match;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdapter.MyViewHolder>{
-    private List<MatchResponseVO> matchResponse = new ArrayList<>();
+    private List<Match> matchList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -27,17 +27,22 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.onBind(matchResponse.get(position));
+        holder.onBind(matchList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return matchResponse.size();
+        return matchList.size();
+    }
+
+    public void addItems(Match match) {
+        matchList.add(match);
+        notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView Title;
-        private TextView Type;
+        private TextView title;
+        private TextView type;
         private TextView description;
         private TextView location;
         private TextView fee;
@@ -48,8 +53,8 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            Title = itemView.findViewById(R.id.matchTitle);
-            Type = itemView.findViewById(R.id.matchType);
+            title = itemView.findViewById(R.id.matchTitle);
+            type = itemView.findViewById(R.id.matchType);
             description = itemView.findViewById(R.id.matchDescription);
             location = itemView.findViewById(R.id.matchLocation);
             fee = itemView.findViewById(R.id.matchFee);
@@ -58,8 +63,15 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
             homeQuota = itemView.findViewById(R.id.matchHomeQuota);
         }
 
-        public void onBind(MatchResponseVO matchResponseVO) {
-
+        public void onBind(Match match) {
+            title.setText(match.getTitle());
+            type.setText(match.getType());
+            description.setText(match.getDescription());
+            location.setText(match.getLocation());
+            fee.setText(String.valueOf(match.getFee()));
+            startAt.setText(match.getStartAt().toString());
+            endAt.setText(match.getEndAt().toString());
+            homeQuota.setText(String.valueOf(match.getHomeQuota()));
         }
     }
 }

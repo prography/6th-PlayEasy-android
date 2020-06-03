@@ -19,7 +19,10 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
+import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.login.service.LoginService;
+import com.prography.playeasy.match.activity.MatchCreateActivity;
+import com.prography.playeasy.match.activity.MatchListActivity;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -47,11 +50,12 @@ public class LoginActivity extends AppCompatActivity{
 
                         @Override
                         public void onSuccess(AccessTokenInfoResponse result) {
-                            Log.i("KAKAO_API", "사용자 아이디: " + result.getUserId());
-                            Log.i("KAKAO_API", "남은 시간 (ms): " + result.getExpiresInMillis());
+                            Log.d("KAKAO_API", "사용자 아이디: " + result.getUserId());
+                            Log.d("KAKAO_API", "남은 시간 (ms): " + result.getExpiresInMillis());
                             accessToken = Session.getCurrentSession().getAccessToken();
-                            System.out.println("====> 토큰 값 : " + accessToken);
-                            loginService.userLogin(accessToken);
+                            Log.d("KAKAO_ACCESS_TOKEN", accessToken);
+
+                            loginService.userLogin(accessToken, getApplicationContext());
                         }
                     });
         }

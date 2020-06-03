@@ -7,12 +7,12 @@ public class MatchRequestVO {
     private String type;
     private String description;
     private String location;
-    private int fee;
+    private Integer fee;
     private Date startAt;
     private Date endAt;
-    private int homeQuota;
+    private Integer homeQuota;
 
-    public MatchRequestVO(String title, String type, String description, String location, int fee, Date startAt, Date endAt, int homeQuota) {
+    public MatchRequestVO(String title, String type, String description, String location, Integer fee, Date startAt, Date endAt, Integer homeQuota) {
         this.title = title;
         this.type = type;
         this.description = description;
@@ -55,11 +55,11 @@ public class MatchRequestVO {
         this.location = location;
     }
 
-    public int getFee() {
+    public Integer getFee() {
         return fee;
     }
 
-    public void setFee(int fee) {
+    public void setFee(Integer fee) {
         this.fee = fee;
     }
 
@@ -79,11 +79,11 @@ public class MatchRequestVO {
         this.endAt = endAt;
     }
 
-    public int getHomeQuota() {
+    public Integer getHomeQuota() {
         return homeQuota;
     }
 
-    public void setHomeQuota(int homeQuota) {
+    public void setHomeQuota(Integer homeQuota) {
         this.homeQuota = homeQuota;
     }
 

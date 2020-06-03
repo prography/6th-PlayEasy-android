@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClientGenerator {
-    private static Object service = null;
+    private static Retrofit service = null;
     private static final String BASE_URL="http://api.theplayeasy.com";
 
     private RetrofitClientGenerator() { }
@@ -14,9 +14,9 @@ public class RetrofitClientGenerator {
             service = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .build().create(apiInterfaceClass);
+                    .build();
         }
 
-        return apiInterfaceClass.cast(service);
+        return apiInterfaceClass.cast(service.create(apiInterfaceClass));
     }
 }

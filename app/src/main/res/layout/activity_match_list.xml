@@ -29,32 +29,32 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/matchViewPager"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toTopOf="@+id/matchRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         tools:list="@itemView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/matchRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:id="@+id/matchListRecyclerView"
+        android:layout_width="388dp"
+        android:layout_height="170dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="@+id/matchViewPager"
-        app:layout_constraintStart_toStartOf="@+id/matchViewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchViewPager"
         tools:listitem="@layout/match_activity_cardview" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -69,9 +69,9 @@
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/matchRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/matchListRecyclerView"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/matchRecyclerView"/>
+        app:layout_constraintStart_toStartOf="@+id/matchListRecyclerView"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
