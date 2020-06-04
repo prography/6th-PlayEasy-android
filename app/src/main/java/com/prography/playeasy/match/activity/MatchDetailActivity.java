@@ -9,15 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.Match;
-import com.prography.playeasy.match.domain.MatchRequestVO;
-import com.prography.playeasy.match.domain.MatchResponseVO;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyServiceFactory;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
+import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
 
 public class MatchDetailActivity extends AppCompatActivity {
 
@@ -44,7 +38,7 @@ public class MatchDetailActivity extends AppCompatActivity {
             }
         };
 
-        MatchService service = PlayeasyServiceFactory.getService(MatchService.class);
+        MatchService service = PlayeasyServiceManager.getInstance(MatchService.class);
         service.detailMatch(matchId, callback);
     }
 

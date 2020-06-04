@@ -2,12 +2,9 @@ package com.prography.playeasy.match.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,7 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.MatchRequestVO;
 import com.prography.playeasy.match.service.MatchService;
-import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyServiceFactory;
+import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
 
 import java.util.Date;
 
@@ -47,7 +44,7 @@ public class MatchCreateActivity extends AppCompatActivity {
                     Integer.valueOf(((EditText)findViewById(R.id.matchCreateHomeQuota)).getText().toString())
             );
 
-            MatchService service = PlayeasyServiceFactory.getService(MatchService.class);
+            MatchService service = PlayeasyServiceManager.getInstance(MatchService.class);
             service.createMatch(requestVO, this.getApplicationContext());
         });
     }

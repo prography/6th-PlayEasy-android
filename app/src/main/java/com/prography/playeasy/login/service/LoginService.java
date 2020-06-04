@@ -11,13 +11,12 @@ import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
 import com.prography.playeasy.match.activity.MatchCreateActivity;
-import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginService extends PlayeasyService {
+public class LoginService {
     private RetrofitLoginApi loginClient;
 
     public LoginService() {
@@ -38,9 +37,16 @@ public class LoginService extends PlayeasyService {
                 }
 
                 Log.d("USER_TOKEN", response.body().getToken());
-
                 TokenManager.set(context, response.body().getToken());
-                Intent intent = new Intent(context, MatchCreateActivity.class);
+
+                Intent intent = new Intent();
+                if (response.body().isNewMember()) {
+                    // TODO: 처음 사용자일때 화면 전환, 구현필요
+                    // intent.setClass(context, UserInformActivity.class);
+                } else {
+                    intent.setClass(context, MatchCreateActivity.class);
+                }
+
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
@@ -50,5 +56,9 @@ public class LoginService extends PlayeasyService {
                 Log.e("LOGIN_API_FAIL", t.getMessage());
             }
         });
+    }
+
+    public void userLogout(Context context) {
+        TokenManager.remove(context);
     }
 }

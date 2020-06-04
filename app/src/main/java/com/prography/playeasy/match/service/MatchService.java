@@ -10,13 +10,12 @@ import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.MatchRequestVO;
 import com.prography.playeasy.match.domain.MatchResponseVO;
 import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MatchService extends PlayeasyService {
+public class MatchService {
     private RetrofitMatchApi matchClient;
 
     public MatchService() {

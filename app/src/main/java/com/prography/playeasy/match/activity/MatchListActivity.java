@@ -1,7 +1,6 @@
 package com.prography.playeasy.match.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,15 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
-import com.prography.playeasy.lib.RetrofitClientGenerator;
 import com.prography.playeasy.match.domain.Match;
-import com.prography.playeasy.match.domain.MatchResponseVO;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyServiceFactory;
+import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -46,12 +42,12 @@ public class MatchListActivity extends AppCompatActivity {
         };
 
         // 서비스 객체 받음
-        MatchService service = PlayeasyServiceFactory.getService(MatchService.class);
+        MatchService service = PlayeasyServiceManager.getInstance(MatchService.class);
         // 서비스 호출
         service.retrieveMatch(callback);
 
         // 변수 안만들고 바로 사용하는 버전
-        // PlayeasyServiceFactory.getService(MatchService.class).retrieveMatch(callback);
+        // PlayeasyServiceManager.getInstance(MatchService.class).retrieveMatch(callback);
     }
 
     private void adaptRecyclerView(List<Match> matchList) {

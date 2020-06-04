@@ -20,13 +20,14 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
 import com.prography.playeasy.login.service.LoginService;
-import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyServiceFactory;
+import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
 
 public class LoginActivity extends AppCompatActivity{
 
     private static final String TAG = "";
     private Button button;
     private String accessToken;
+    private LoginService loginService;
 
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
@@ -52,8 +53,7 @@ public class LoginActivity extends AppCompatActivity{
                             accessToken = Session.getCurrentSession().getAccessToken();
                             Log.d("KAKAO_ACCESS_TOKEN", accessToken);
 
-                            LoginService service = PlayeasyServiceFactory.getService(LoginService.class);
-                            service.userLogin(accessToken, getApplicationContext());
+                            loginService.userLogin(accessToken, getApplicationContext());
                         }
                     });
         }
@@ -69,6 +69,8 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        loginService = PlayeasyServiceManager.getInstance(LoginService.class);
+
         // 세션 콜백 등록
         Session.getCurrentSession().addCallback(sessionCallback);
         button = findViewById(R.id.button);
@@ -82,6 +84,8 @@ public class LoginActivity extends AppCompatActivity{
                                 Log.i("KAKAO_API", "로그아웃 완료");
                             }
                         });
+
+                loginService.userLogout(v.getContext());
             }
         });
     }
