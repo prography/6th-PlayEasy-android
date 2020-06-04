@@ -19,53 +19,23 @@ import androidx.appcompat.widget.Toolbar;
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.MatchRequestVO;
 import com.prography.playeasy.match.service.MatchService;
+import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyServiceFactory;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class MatchCreateActivity extends AppCompatActivity {
-    private MatchService matchService;
-
-
-    private EditText matchCreateTitle;
-    private EditText matchCreateType;
-    private EditText matchCreateDescription;
-    private EditText matchCreateLocation;
-    private EditText matchCreateFee;
-    private EditText matchCreateStartAt;
-    private EditText matchCreateEndAt;
-    private EditText matchCreateHomeQuota;
-    private Button matchCreateconfirm;
-    private Button getMatchCreateCancel;
     private MenuInflater menuInflater;
     private Toolbar matchCreateToolBar;
-
-    private ArrayList<MatchRequestVO> v;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_create);
 
-        // f
-        initialized();
         toolBarInitialize();
 
 
-        matchCreateconfirm.setOnClickListener((v) -> {
-            // UI 데이터 가져왔다 치고
-
-            // String title, String type, String description, String location, int fee, Date startAt, Date endAt, int homeQuota
-            /*MatchRequestVO requestVO = new MatchRequestVO(
-                "sampleTitle",
-                    "sampleType",
-                    "sampleDesc",
-                    "sampleLocation",
-                    0,
-                    new Date(),
-                    new Date(),
-                    0
-            );*/
+        findViewById(R.id.matchCreateConfirm).setOnClickListener((v) -> {
             MatchRequestVO requestVO = new MatchRequestVO(
                     ((EditText)findViewById(R.id.matchCreateTitle)).getText().toString(),
                     ((EditText)findViewById(R.id.matchCreateType)).getText().toString(),
@@ -77,21 +47,9 @@ public class MatchCreateActivity extends AppCompatActivity {
                     Integer.valueOf(((EditText)findViewById(R.id.matchCreateHomeQuota)).getText().toString())
             );
 
-            this.matchService.createMatch(requestVO, this.getApplicationContext());
+            MatchService service = PlayeasyServiceFactory.getService(MatchService.class);
+            service.createMatch(requestVO, this.getApplicationContext());
         });
-    }
-
-    private void initialized() {
-        matchCreateTitle = findViewById(R.id.matchCreateTitle);
-        matchCreateType = findViewById(R.id.matchCreateType);
-        matchCreateDescription = findViewById(R.id.matchCreateDescription);
-        matchCreateLocation = findViewById(R.id.matchCreateLocation);
-        matchCreateFee = findViewById(R.id.matchCreateFee);
-        matchCreateHomeQuota = findViewById(R.id.matchCreateHomeQuota);
-        matchCreateconfirm = findViewById(R.id.matchCreateConfirm);
-        getMatchCreateCancel = findViewById(R.id.matchCreateCancel);
-
-        this.matchService = new MatchService();
     }
 
     private void toolBarInitialize() {

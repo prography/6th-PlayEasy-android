@@ -5,6 +5,6 @@ import com.prography.playeasy.match.domain.Match;
 import java.util.List;
 
 public interface MatchResponseCallback {
-    void onSuccess(List<Match> matchList);
+    void onSuccess(Object responseData);
     void onError();
 }

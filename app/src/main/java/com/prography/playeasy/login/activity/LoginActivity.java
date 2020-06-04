@@ -19,17 +19,14 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
-import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.login.service.LoginService;
-import com.prography.playeasy.match.activity.MatchCreateActivity;
-import com.prography.playeasy.match.activity.MatchListActivity;
+import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyServiceFactory;
 
 public class LoginActivity extends AppCompatActivity{
 
     private static final String TAG = "";
     private Button button;
     private String accessToken;
-    private LoginService loginService = new LoginService();
 
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
@@ -55,7 +52,8 @@ public class LoginActivity extends AppCompatActivity{
                             accessToken = Session.getCurrentSession().getAccessToken();
                             Log.d("KAKAO_ACCESS_TOKEN", accessToken);
 
-                            loginService.userLogin(accessToken, getApplicationContext());
+                            LoginService service = PlayeasyServiceFactory.getService(LoginService.class);
+                            service.userLogin(accessToken, getApplicationContext());
                         }
                     });
         }

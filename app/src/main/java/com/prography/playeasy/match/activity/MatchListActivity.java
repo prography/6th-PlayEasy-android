@@ -15,40 +15,46 @@ import com.prography.playeasy.match.domain.MatchResponseVO;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
+import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyServiceFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MatchListActivity extends AppCompatActivity {
-    private MatchService matchService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_list);
 
-        // 해야되는게 불러와서 리사이클러뷰에 넣어줘야지
-        //retrofit 실행
-        matchService = new MatchService();
-        this.matchService.retrieveMatch(new MatchResponseCallback(){
+        // API 응답이 성공으로 온 다음 렌더링을 실행할 콜백 인터페이스
+        MatchResponseCallback callback = new MatchResponseCallback(){
+            // API 실행이 성공일 때 실행
             @Override
-            public void onSuccess(List<Match> matchList) {
-                adapteRecyclerView(matchList);
+            public void onSuccess(Object responseData) {
+                // 응답 데이터 변환
+                List<Match> matchList = (List<Match>)responseData;
+                // 리사이클러뷰 렌더링
+                adaptRecyclerView(matchList);
             }
 
             @Override
             public void onError() {
 
             }
-        });
+        };
 
+        // 서비스 객체 받음
+        MatchService service = PlayeasyServiceFactory.getService(MatchService.class);
+        // 서비스 호출
+        service.retrieveMatch(callback);
 
-
-
+        // 변수 안만들고 바로 사용하는 버전
+        // PlayeasyServiceFactory.getService(MatchService.class).retrieveMatch(callback);
     }
 
-    private void adapteRecyclerView(List<Match> matchList) {
+    private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.matchListRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);

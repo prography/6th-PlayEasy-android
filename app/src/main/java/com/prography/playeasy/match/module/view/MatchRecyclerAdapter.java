@@ -1,15 +1,20 @@
 package com.prography.playeasy.match.module.view;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
+import com.prography.playeasy.match.activity.MatchDetailActivity;
 import com.prography.playeasy.match.domain.Match;
+import com.prography.playeasy.match.domain.MatchResponseVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +54,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
         private TextView startAt;
         private TextView endAt;
         private TextView homeQuota;
+        private TextView matchId;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +67,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
             startAt = itemView.findViewById(R.id.matchStartAt);
             endAt = itemView.findViewById(R.id.matchEndAt);
             homeQuota = itemView.findViewById(R.id.matchHomeQuota);
+            matchId = itemView.findViewById(R.id.matchId);
         }
 
         public void onBind(Match match) {
@@ -72,6 +79,20 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
             startAt.setText(match.getStartAt().toString());
             endAt.setText(match.getEndAt().toString());
             homeQuota.setText(String.valueOf(match.getHomeQuota()));
+            matchId.setText(String.valueOf(match.getId()));
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TextView tvMatchId = v.findViewById(R.id.matchId);
+                    int matchId = Integer.parseInt(tvMatchId.getText().toString());
+
+                    Intent intent = new Intent(v.getContext(), MatchDetailActivity.class);
+                    intent.putExtra("match_id", matchId);
+                    v.getContext().startActivity(intent);
+                }
+            });
+
         }
     }
 }

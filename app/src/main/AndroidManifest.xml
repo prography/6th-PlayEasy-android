@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".match.activity.MatchCreateActivity"/>
         <activity android:name=".match.activity.MatchListActivity"/>
+        <activity android:name=".match.activity.MatchDetailActivity"/>
 
 
         <meta-data

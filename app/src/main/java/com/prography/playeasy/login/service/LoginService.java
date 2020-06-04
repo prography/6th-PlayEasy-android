@@ -11,15 +11,21 @@ import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
 import com.prography.playeasy.match.activity.MatchCreateActivity;
+import com.prography.playeasy.util.playeasyServiceFactory.PlayeasyService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginService {
+public class LoginService extends PlayeasyService {
+    private RetrofitLoginApi loginClient;
+
+    public LoginService() {
+        this.loginClient = RetrofitClientGenerator.getClient(RetrofitLoginApi.class);
+    }
+
     public void userLogin(String accessToken, Context context) {
-        RetrofitLoginApi client = RetrofitClientGenerator.getClient(RetrofitLoginApi.class);
-        Call<LoginResponseVO> call = client.register(new LoginRequestVO(accessToken));
+        Call<LoginResponseVO> call = loginClient.register(new LoginRequestVO(accessToken));
         call.enqueue(new Callback<LoginResponseVO>() {
             @Override
             public void onResponse(Call<LoginResponseVO> call, Response<LoginResponseVO> response) {

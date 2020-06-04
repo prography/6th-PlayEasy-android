@@ -12,6 +12,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface RetrofitMatchApi {
 
@@ -20,6 +21,15 @@ public interface RetrofitMatchApi {
                                         @Body MatchRequestVO requestVO);
 
     @GET("/api/match/list")
-    //전부다 조회
-    Call<MatchResponseVO> getMatch();
+    Call<MatchResponseVO> getMatchList();
+
+
+    /**
+     * 매치 상세 조회
+     * @param matchId 클릭한 매치의 ID
+     * @example /api/match?id={matchId}
+     * @return MatchResponseVO
+     */
+    @GET("/api/match")
+    Call<MatchResponseVO> getMatch(@Query("id")int matchId);
 }
