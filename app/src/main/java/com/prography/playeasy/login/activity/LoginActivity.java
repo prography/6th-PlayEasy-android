@@ -1,6 +1,8 @@
 package com.prography.playeasy.login.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +29,7 @@ public class LoginActivity extends AppCompatActivity{
     private Button button;
     private String accessToken;
     private LoginService loginService = new LoginService();
-
+    private Context context;
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
         @Override
@@ -82,6 +84,11 @@ public class LoginActivity extends AppCompatActivity{
                         });
             }
         });
+
+    //    context=this.getActivity();
+
+
+
     }
 
     @Override

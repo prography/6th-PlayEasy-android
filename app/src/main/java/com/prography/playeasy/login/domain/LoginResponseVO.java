@@ -34,7 +34,7 @@ public class LoginResponseVO {
     public void setToken(String token) {
         this.token = token;
     }
-
+//for debug
     @Override
     public String toString() {
         return "LoginResponseVO{" +
