@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.activity.MatchListActivity;
+import com.prography.playeasy.util.UIHelper;
 
 public class UserInformationActivity extends AppCompatActivity {
 
