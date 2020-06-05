@@ -11,6 +11,7 @@ import com.prography.playeasy.match.domain.Match;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
 import com.prography.playeasy.util.PlayeasyServiceManager;
+import com.prography.playeasy.util.UIHelper;
 
 public class MatchDetailActivity extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class MatchDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_detail);
 
-        ToolbarInitializer.ToolBarInitialize(this, findViewById(R.id.matchDetailToolBar));
+        UIHelper.toolBarInitialize(this, findViewById(R.id.matchDetailToolBar));
         Intent intent = getIntent();
         int matchId = intent.getIntExtra("match_id",-1);
 

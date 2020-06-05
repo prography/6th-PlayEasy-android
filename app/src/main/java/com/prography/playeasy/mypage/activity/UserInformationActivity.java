@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.activity.MatchListActivity;
+import com.prography.playeasy.util.UIHelper;
 
 public class UserInformationActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class UserInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage_myinfo);
-        ToolbarInitializer.ToolBarInitialize(this, findViewById(R.id.myPageUserInfoToolBar));
+        UIHelper.toolBarInitialize(this, findViewById(R.id.myPageUserInfoToolBar));
 
 
 //질문 1
