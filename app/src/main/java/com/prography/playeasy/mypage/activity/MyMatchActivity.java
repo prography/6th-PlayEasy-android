@@ -1,4 +1,4 @@
-package com.prography.playeasy.mypage;
+package com.prography.playeasy.mypage.activity;
 
 import android.os.Bundle;
 import android.widget.TabHost;
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
 
-public class MyPageMyMatchActivity extends AppCompatActivity {
+public class MyMatchActivity extends AppCompatActivity {
 
     private TabHost tabHost1;
 

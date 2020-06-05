@@ -13,23 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".main.MainActivity"/>
-        <activity android:name=".login.activity.LoginActivity">
-
-        </activity>
-        <activity android:name=".mypage.MyPageMainActivity">
-         <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".login.activity.LoginActivity"/>
+        <activity android:name=".mypage.activity.MainActivity">
+              <intent-filter>
+                   <action android:name="android.intent.action.MAIN" />
+                   <category android:name="android.intent.category.LAUNCHER" />
+              </intent-filter>
         </activity>
         <activity android:name=".match.activity.MatchCreateActivity"/>
         <activity android:name=".match.activity.MatchListActivity"/>
         <activity android:name=".match.activity.MatchDetailActivity"/>
 
+        <activity android:name=".mypage.activity.MyMatchActivity"/>
+        <activity android:name=".mypage.activity.PushActivity"/>
+        <activity android:name=".mypage.activity.UserInformationActivity"/>`
 
-        <activity android:name=".mypage.MyPageMyInformationActivity">
 
-        </activity>
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="322a7ef3316cd2d2ec606531fb793c1d"/>

@@ -1,4 +1,4 @@
-package com.prography.playeasy.mypage;
+package com.prography.playeasy.mypage.activity;
 
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
 
-public class MyPageMainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     TextView profileName;
 
     ImageButton imageView;

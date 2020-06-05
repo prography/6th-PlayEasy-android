@@ -1,4 +1,4 @@
-package com.prography.playeasy.mypage;
+package com.prography.playeasy.mypage.activity;
 
         import android.os.Bundle;
 
@@ -7,7 +7,7 @@ package com.prography.playeasy.mypage;
         import com.prography.playeasy.R;
 
 
-public class MyPagePushActivity extends AppCompatActivity {
+public class PushActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,4 +1,4 @@
-package com.prography.playeasy.mypage;
+package com.prography.playeasy.mypage.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,6 @@ import android.widget.ImageButton;
 
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +21,7 @@ import com.prography.playeasy.R;
 
 import org.w3c.dom.Text;
 
-public class MyPageMyInformationActivity extends AppCompatActivity {
+public class UserInformationActivity extends AppCompatActivity {
 
     MaterialToolbar toolbar;
 
@@ -70,7 +68,7 @@ public class MyPageMyInformationActivity extends AppCompatActivity {
 //getSupportActionBar의 반환형 ActionBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //review todo
-//        Glide.with(MyPageMyInformationActivity.this)
+//        Glide.with(UserInformationActivity.this)
 //                .load(R.drawable.shinja)
 //                .placeholder(R.drawable.shinja)
 //                .centerCrop()
@@ -115,8 +113,4 @@ public class MyPageMyInformationActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     };
-
-
-   // 출처: https://ziscuffine.tistory.com/94 [잡다한 정보창고]
-
 }
