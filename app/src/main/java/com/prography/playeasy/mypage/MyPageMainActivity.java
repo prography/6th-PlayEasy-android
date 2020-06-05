@@ -2,6 +2,7 @@ package com.prography.playeasy.mypage;
 
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,17 +13,22 @@ import com.prography.playeasy.R;
 public class MyPageMainActivity extends AppCompatActivity {
     TextView profileName;
 
-    ImageView imageView;
+    ImageButton imageView;
 
     GradientDrawable drawable=(GradientDrawable) this.getDrawable(R.drawable.background_rounding);
-
+    TextView myInformation;
+    TextView alarmSetting;
+    TextView matchInformation;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage_main);
 
         profileName=(TextView)findViewById(R.id.profileName);
-        imageView=(ImageView)findViewById(R.id.account_setting);
+        imageView=(ImageButton)findViewById(R.id.account_setting);
+       myInformation=(TextView)findViewById(R.id.materialButton1);
+        alarmSetting=(TextView)findViewById(R.id.materialButton2);
+        matchInformation=(TextView)findViewById(R.id.materialButton3);
         imageView.setBackground(drawable);
         imageView.setClipToOutline(true);
 
