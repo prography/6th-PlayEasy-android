@@ -35,7 +35,10 @@ public class TokenManager {
     public static String get(Context context) {
         SharedPreferences prefs = getPreferences(context);
         return prefs.getString(ACCESS_TOKEN, DEFAULT_TOKEN);
+<<<<<<< HEAD
     //sharedpref fd3eewsdws는 key,value
+=======
+>>>>>>> ee53814470ec2d038deec17116fcfd84bf1f9867
     }
 
     /**
@@ -49,4 +52,8 @@ public class TokenManager {
         editor.remove(ACCESS_TOKEN);
         editor.apply();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ee53814470ec2d038deec17116fcfd84bf1f9867

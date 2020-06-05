@@ -10,11 +10,11 @@ public class LoginRequestVO {
         this.accessToken = accessToken;
     }
 
-    public String getaccessToken() {
+    public String getAccessToken() {
         return accessToken;
     }
 
-    public void setaccessToken(String accessToken) {
+    public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
 }

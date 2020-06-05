@@ -22,14 +22,20 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
 import com.prography.playeasy.login.service.LoginService;
+import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
 
 public class LoginActivity extends AppCompatActivity{
 
     private static final String TAG = "";
     private Button button;
     private String accessToken;
+<<<<<<< HEAD
     private LoginService loginService = new LoginService();
     private Context context;
+=======
+    private LoginService loginService;
+
+>>>>>>> ee53814470ec2d038deec17116fcfd84bf1f9867
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
         @Override
@@ -49,11 +55,12 @@ public class LoginActivity extends AppCompatActivity{
 
                         @Override
                         public void onSuccess(AccessTokenInfoResponse result) {
-                            Log.i("KAKAO_API", "사용자 아이디: " + result.getUserId());
-                            Log.i("KAKAO_API", "남은 시간 (ms): " + result.getExpiresInMillis());
+                            Log.d("KAKAO_API", "사용자 아이디: " + result.getUserId());
+                            Log.d("KAKAO_API", "남은 시간 (ms): " + result.getExpiresInMillis());
                             accessToken = Session.getCurrentSession().getAccessToken();
-                            System.out.println("====> 토큰 값 : " + accessToken);
-                            loginService.userLogin(accessToken);
+                            Log.d("KAKAO_ACCESS_TOKEN", accessToken);
+
+                            loginService.userLogin(accessToken, getApplicationContext());
                         }
                     });
         }
@@ -69,6 +76,8 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        loginService = PlayeasyServiceManager.getInstance(LoginService.class);
+
         // 세션 콜백 등록
         Session.getCurrentSession().addCallback(sessionCallback);
         button = findViewById(R.id.button);
@@ -82,6 +91,8 @@ public class LoginActivity extends AppCompatActivity{
                                 Log.i("KAKAO_API", "로그아웃 완료");
                             }
                         });
+
+                loginService.userLogout(v.getContext());
             }
         });
 

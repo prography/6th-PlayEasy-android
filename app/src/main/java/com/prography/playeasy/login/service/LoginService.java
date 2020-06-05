@@ -1,31 +1,64 @@
 package com.prography.playeasy.login.service;
 
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.prography.playeasy.lib.RetrofitClientGenerator;
-import com.prography.playeasy.lib.auth.RetrofitLoginApi;
+import com.prography.playeasy.lib.TokenManager;
+import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
+import com.prography.playeasy.match.activity.MatchCreateActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginService {
-    public void userLogin(String accessToken) {
-        RetrofitLoginApi client = RetrofitClientGenerator.getClient();
-        Call<LoginResponseVO> call = client.register(new LoginRequestVO(accessToken));
+    private RetrofitLoginApi loginClient;
+
+    public LoginService() {
+        this.loginClient = RetrofitClientGenerator.getClient(RetrofitLoginApi.class);
+    }
+
+    public void userLogin(String accessToken, Context context) {
+        Call<LoginResponseVO> call = loginClient.register(new LoginRequestVO(accessToken));
         call.enqueue(new Callback<LoginResponseVO>() {
             @Override
             public void onResponse(Call<LoginResponseVO> call, Response<LoginResponseVO> response) {
-                System.out.println("==== [onResponse()] ====");
-                System.out.println("Code, Messsage: " + response.code() + " " + response.message());
-                System.out.println("Body: " + response.body().toString());
+                Log.d("LOGIN RESPONSE", response.code() + " " + response.message());
+
+                if (response.isSuccessful() == false || response.body().isSuccess() == false) {
+                    Toast result = Toast.makeText(context, "Failed to login", Toast.LENGTH_SHORT);
+                    result.show();
+                    return;
+                }
+
+                Log.d("USER_TOKEN", response.body().getToken());
+                TokenManager.set(context, response.body().getToken());
+
+                Intent intent = new Intent();
+                if (response.body().isNewMember()) {
+                    // TODO: 처음 사용자일때 화면 전환, 구현필요
+                    // intent.setClass(context, UserInformActivity.class);
+                } else {
+                    intent.setClass(context, MatchCreateActivity.class);
+                }
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
 
             @Override
             public void onFailure(Call<LoginResponseVO> call, Throwable t) {
-                System.out.println("Failed to call API");
-                System.out.println(t);
+                Log.e("LOGIN_API_FAIL", t.getMessage());
             }
         });
+    }
+
+    public void userLogout(Context context) {
+        TokenManager.remove(context);
     }
 }

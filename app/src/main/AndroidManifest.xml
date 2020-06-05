@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".main.MainActivity"/>
-
         <activity android:name=".login.activity.LoginActivity">
 
         </activity>
@@ -23,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".match.activity.MatchCreateActivity"/>
+        <activity android:name=".match.activity.MatchListActivity"/>
+        <activity android:name=".match.activity.MatchDetailActivity"/>
+
 
         <activity android:name=".mypage.MyPageMyInformationActivity">
 
