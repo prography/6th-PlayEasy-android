@@ -1,8 +1,6 @@
 package com.prography.playeasy.login.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,23 +17,19 @@ import com.kakao.auth.network.response.AccessTokenInfoResponse;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
 import com.prography.playeasy.login.service.LoginService;
-import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
+import com.prography.playeasy.util.PlayeasyServiceManager;
 
 public class LoginActivity extends AppCompatActivity{
 
-    private static final String TAG = "";
-    private Button button;
+    private Button logout;
+    private Button sessionCutt;
     private String accessToken;
-<<<<<<< HEAD
     private LoginService loginService = new LoginService();
-    private Context context;
-=======
-    private LoginService loginService;
 
->>>>>>> ee53814470ec2d038deec17116fcfd84bf1f9867
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
         @Override
@@ -80,8 +74,9 @@ public class LoginActivity extends AppCompatActivity{
 
         // 세션 콜백 등록
         Session.getCurrentSession().addCallback(sessionCallback);
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        logout = findViewById(R.id.button);
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UserManagement.getInstance()
@@ -89,6 +84,7 @@ public class LoginActivity extends AppCompatActivity{
                             @Override
                             public void onCompleteLogout() {
                                 Log.i("KAKAO_API", "로그아웃 완료");
+
                             }
                         });
 
@@ -96,7 +92,30 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
-    //    context=this.getActivity();
+        sessionCutt = findViewById(R.id.button2);
+        sessionCutt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserManagement.getInstance()
+                        .requestUnlink(new UnLinkResponseCallback() {
+                            @Override
+                            public void onSessionClosed(ErrorResult errorResult) {
+                                Log.e("KAKAO_API", "세션이 닫혀 있음: " + errorResult);
+                            }
+
+                            @Override
+                            public void onFailure(ErrorResult errorResult) {
+                                Log.e("KAKAO_API", "연결 끊기 실패: " + errorResult);
+
+                            }
+                            @Override
+                            public void onSuccess(Long result) {
+                                Log.i("KAKAO_API", "연결 끊기 성공. id: " + result);
+                            }
+                        });
+
+            }
+        });
 
 
 

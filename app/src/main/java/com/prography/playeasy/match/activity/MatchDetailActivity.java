@@ -2,16 +2,15 @@ package com.prography.playeasy.match.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.Match;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
+import com.prography.playeasy.util.PlayeasyServiceManager;
 
 public class MatchDetailActivity extends AppCompatActivity {
 
@@ -20,6 +19,7 @@ public class MatchDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_detail);
 
+        ToolbarInitializer.ToolBarInitialize(this, findViewById(R.id.matchDetailToolBar));
         Intent intent = getIntent();
         int matchId = intent.getIntExtra("match_id",-1);
 
@@ -62,4 +62,21 @@ public class MatchDetailActivity extends AppCompatActivity {
         tvStartAt.setText(match.getStartAt().toString());
         tvEndAt.setText(match.getEndAt().toString());
     }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+
+            case android.R.id.home:
+                Intent detailBack = new Intent(this, MatchListActivity.class);
+                startActivity(detailBack);
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

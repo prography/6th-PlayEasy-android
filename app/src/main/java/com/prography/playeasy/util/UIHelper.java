@@ -1,4 +1,4 @@
-package com.prography.playeasy.util.uiHelper;
+package com.prography.playeasy.util;
 
 import android.content.Context;
 import android.content.Intent;

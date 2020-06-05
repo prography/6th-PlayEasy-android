@@ -1,4 +1,4 @@
-package com.prography.playeasy.util.playeasyServiceManager;
+package com.prography.playeasy.util;
 
 public class PlayeasyServiceManager {
     private static Object service = null;

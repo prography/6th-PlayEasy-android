@@ -19,19 +19,24 @@ public class MainActivity extends AppCompatActivity {
     TextView myInformation;
     TextView alarmSetting;
     TextView matchInformation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage_main);
 
-        profileName=(TextView)findViewById(R.id.profileName);
-        imageView=(ImageButton)findViewById(R.id.account_setting);
-       myInformation=(TextView)findViewById(R.id.materialButton1);
-        alarmSetting=(TextView)findViewById(R.id.materialButton2);
-        matchInformation=(TextView)findViewById(R.id.materialButton3);
+        initialized();
+
+    }
+
+    private void initialized() {
+        profileName = findViewById(R.id.profileName);
+        imageView = findViewById(R.id.account_setting);
+        myInformation = findViewById(R.id.materialButton1);
+        alarmSetting = findViewById(R.id.materialButton2);
+        matchInformation = findViewById(R.id.materialButton3);
         imageView.setBackground(drawable);
         imageView.setClipToOutline(true);
-
 
     }
 }

@@ -1,6 +1,10 @@
 package com.prography.playeasy.match.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +16,8 @@ import com.prography.playeasy.match.domain.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.playeasyServiceManager.PlayeasyServiceManager;
+import com.prography.playeasy.util.PlayeasyServiceManager;
+import com.prography.playeasy.util.UIHelper;
 
 import java.util.List;
 
@@ -23,6 +28,12 @@ public class MatchListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_list);
+
+
+        UIHelper.toolBarInitialize(this, findViewById(R.id.matchToolBar));
+        UIHelper.bottomNavigationInitialize(this, findViewById(R.id.bottomNavigation));
+
+
 
         // API 응답이 성공으로 온 다음 렌더링을 실행할 콜백 인터페이스
         MatchResponseCallback callback = new MatchResponseCallback(){
@@ -62,4 +73,27 @@ public class MatchListActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.match_list,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+
+            case R.id.matchRegister:
+                Intent toolBarRegisterMove = new Intent(this, MatchCreateActivity.class);
+                startActivity(toolBarRegisterMove);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
