@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,11 +40,13 @@ public class LoginActivity extends AppCompatActivity{
                     .requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
                         @Override
                         public void onSessionClosed(ErrorResult errorResult) {
+                            Toast.makeText(getApplicationContext(),"세션 닫힘",Toast.LENGTH_LONG).show();
                             Log.e("KAKAO_API", "세션이 닫혀 있음: " + errorResult);
                         }
 
                         @Override
                         public void onFailure(ErrorResult errorResult) {
+                            Toast.makeText(getApplicationContext(),"토큰 정보 요청 실패",Toast.LENGTH_LONG).show();
                             Log.e("KAKAO_API", "토큰 정보 요청 실패: " + errorResult);
                         }
 
@@ -54,6 +57,7 @@ public class LoginActivity extends AppCompatActivity{
                             accessToken = Session.getCurrentSession().getAccessToken();
                             Log.d("KAKAO_ACCESS_TOKEN", accessToken);
 
+                            Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             loginService.userLogin(accessToken, getApplicationContext());
                         }
                     });
@@ -61,6 +65,7 @@ public class LoginActivity extends AppCompatActivity{
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
+            Toast.makeText(getApplicationContext(),"로그인 실패",Toast.LENGTH_LONG).show();
             Log.e("KAKAO_SESSION", "로그인 실패", exception);
         }
     };
@@ -69,6 +74,8 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         loginService = PlayeasyServiceManager.getInstance(LoginService.class);
 

@@ -53,7 +53,7 @@ public class UIHelper {
             }
 
             Intent intent = new Intent(context, clazz);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.startActivity(intent);
 
             return true;

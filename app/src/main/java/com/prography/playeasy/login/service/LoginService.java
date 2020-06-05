@@ -25,10 +25,13 @@ public class LoginService {
     }
 
     public void userLogin(String accessToken, Context context) {
+        Toast.makeText(context, "userLogin() executed", Toast.LENGTH_SHORT).show();
+
         Call<LoginResponseVO> call = loginClient.register(new LoginRequestVO(accessToken));
         call.enqueue(new Callback<LoginResponseVO>() {
             @Override
             public void onResponse(Call<LoginResponseVO> call, Response<LoginResponseVO> response) {
+                Toast.makeText(context, "onResponse() executed", Toast.LENGTH_SHORT).show();
                 Log.d("LOGIN RESPONSE", response.code() + " " + response.message());
 
                 if (response.isSuccessful() == false || response.body().isSuccess() == false) {
@@ -37,6 +40,7 @@ public class LoginService {
                     return;
                 }
 
+                Toast.makeText(context, "Response OK", Toast.LENGTH_SHORT).show();
                 Log.d("USER_TOKEN", response.body().getToken());
                 TokenManager.set(context, response.body().getToken());
 
@@ -46,8 +50,10 @@ public class LoginService {
                 } else {
                     intent.setClass(context, MatchListActivity.class);
                 }
-
+                Toast.makeText(context, "set Intent", Toast.LENGTH_SHORT).show();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                Toast.makeText(context, "before start activity", Toast.LENGTH_SHORT).show();
                 context.startActivity(intent);
             }
 
