@@ -10,6 +10,7 @@ import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
+import com.prography.playeasy.match.activity.MatchCreateActivity;
 import com.prography.playeasy.match.activity.MatchListActivity;
 import com.prography.playeasy.mypage.activity.UserInformationActivity;
 
@@ -41,7 +42,8 @@ public class LoginService {
                 TokenManager.set(context, response.body().getToken());
 
                 Intent intent = new Intent();
-                if (response.body().isNewMember()) {
+                if (!response.body().isNewMember()) {
+                    // TODO: 처음 사용자일때 화면 전환, 구현필요
                     intent.setClass(context, UserInformationActivity.class);
                 } else {
                     intent.setClass(context, MatchListActivity.class);

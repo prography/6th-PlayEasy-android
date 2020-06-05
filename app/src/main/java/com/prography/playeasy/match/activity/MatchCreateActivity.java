@@ -12,7 +12,6 @@ import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.MatchRequestVO;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.util.PlayeasyServiceManager;
-import com.prography.playeasy.util.UIHelper;
 
 import java.util.Date;
 
@@ -23,7 +22,7 @@ public class MatchCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_create);
 
-        UIHelper.toolBarInitialize(this, findViewById(R.id.matchCreateToolBar));
+        ToolbarInitializer.ToolBarInitialize(this, findViewById(R.id.matchCreateToolBar));
 
         findViewById(R.id.matchCreateConfirm).setOnClickListener((v) -> {
             MatchRequestVO requestVO = new MatchRequestVO(
