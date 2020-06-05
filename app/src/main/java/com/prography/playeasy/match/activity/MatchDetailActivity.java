@@ -19,7 +19,7 @@ public class MatchDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_detail);
 
-        ToolbarInitializer.ToolBarInitialize(this, findViewById(R.id.matchDetailToolBar));
+        UIHelper.toolBarInitialize(this, findViewById(R.id.matchDetailToolBar));
         Intent intent = getIntent();
         int matchId = intent.getIntExtra("match_id",-1);
 

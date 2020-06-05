@@ -22,7 +22,7 @@ public class MatchCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_create);
 
-        ToolbarInitializer.ToolBarInitialize(this, findViewById(R.id.matchCreateToolBar));
+        UIHelper.toolBarInitialize(this, findViewById(R.id.matchCreateToolBar));
 
         findViewById(R.id.matchCreateConfirm).setOnClickListener((v) -> {
             MatchRequestVO requestVO = new MatchRequestVO(

@@ -42,8 +42,7 @@ public class LoginService {
                 TokenManager.set(context, response.body().getToken());
 
                 Intent intent = new Intent();
-                if (!response.body().isNewMember()) {
-                    // TODO: 처음 사용자일때 화면 전환, 구현필요
+                if (response.body().isNewMember()) {
                     intent.setClass(context, UserInformationActivity.class);
                 } else {
                     intent.setClass(context, MatchListActivity.class);
