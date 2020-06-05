@@ -10,7 +10,6 @@ import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
-import com.prography.playeasy.match.activity.MatchCreateActivity;
 import com.prography.playeasy.match.activity.MatchListActivity;
 import com.prography.playeasy.mypage.activity.UserInformationActivity;
 

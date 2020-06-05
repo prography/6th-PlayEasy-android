@@ -11,6 +11,7 @@ import com.prography.playeasy.match.domain.Match;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
 import com.prography.playeasy.util.PlayeasyServiceManager;
+import com.prography.playeasy.util.UIHelper;
 
 public class MatchDetailActivity extends AppCompatActivity {
 
@@ -68,12 +69,10 @@ public class MatchDetailActivity extends AppCompatActivity {
     {
         switch(item.getItemId())
         {
-
             case android.R.id.home:
                 Intent detailBack = new Intent(this, MatchListActivity.class);
                 startActivity(detailBack);
                 return true;
-
         }
 
         return super.onOptionsItemSelected(item);

@@ -12,6 +12,7 @@ import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.MatchRequestVO;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.util.PlayeasyServiceManager;
+import com.prography.playeasy.util.UIHelper;
 
 import java.util.Date;
 
@@ -46,7 +47,6 @@ public class MatchCreateActivity extends AppCompatActivity {
     {
         switch(item.getItemId())
         {
-
             case android.R.id.home:
                 Intent writeBack = new Intent(this, MatchListActivity.class);
                 startActivity(writeBack);

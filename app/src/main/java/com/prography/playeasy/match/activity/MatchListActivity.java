@@ -29,11 +29,8 @@ public class MatchListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_list);
 
-
         UIHelper.toolBarInitialize(this, findViewById(R.id.matchToolBar));
         UIHelper.bottomNavigationInitialize(this, findViewById(R.id.bottomNavigation));
-
-
 
         // API 응답이 성공으로 온 다음 렌더링을 실행할 콜백 인터페이스
         MatchResponseCallback callback = new MatchResponseCallback(){
@@ -56,9 +53,6 @@ public class MatchListActivity extends AppCompatActivity {
         MatchService service = PlayeasyServiceManager.getInstance(MatchService.class);
         // 서비스 호출
         service.retrieveMatch(callback);
-
-        // 변수 안만들고 바로 사용하는 버전
-        // PlayeasyServiceManager.getInstance(MatchService.class).retrieveMatch(callback);
     }
 
     private void adaptRecyclerView(List<Match> matchList) {
@@ -71,7 +65,6 @@ public class MatchListActivity extends AppCompatActivity {
         for (Match m: matchList) {
             adapter.addItems(m);
         }
-
     }
 
     @Override
@@ -85,7 +78,6 @@ public class MatchListActivity extends AppCompatActivity {
     {
         switch(item.getItemId())
         {
-
             case R.id.matchRegister:
                 Intent toolBarRegisterMove = new Intent(this, MatchCreateActivity.class);
                 startActivity(toolBarRegisterMove);
