@@ -21,42 +21,33 @@
 
 
     <Switch
-        android:id="@+id/alramPermission"
-        android:layout_width="310dp"
+        android:id="@+id/matchAlarm"
+        android:name="matchAlarmSwitch"
+        android:layout_width="309dp"
         android:layout_height="55dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="69dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="51dp"
         android:switchMinWidth="100dp"
         android:switchPadding="20dp"
-        android:text="알림 권한"
+        android:text="매치 알림 받기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
 
     <Switch
-        android:id="@+id/matchAlram"
-        android:layout_width="309dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
-        android:switchMinWidth="100dp"
-        android:switchPadding="20dp"
-        android:text="매치 알림 받기"
-        app:layout_constraintEnd_toEndOf="@+id/alramPermission"
-        app:layout_constraintStart_toStartOf="@+id/alramPermission"
-        app:layout_constraintTop_toBottomOf="@+id/alramPermission" />
-
-    <Switch
-        android:id="@+id/scoutAlram"
+        android:id="@+id/scoutAlarm"
+        android:name="scoutAlarmSwitch"
         android:layout_width="310dp"
         android:layout_height="56dp"
         android:layout_marginTop="8dp"
         android:switchMinWidth="100dp"
         android:switchPadding="20dp"
         android:text="스카우트 알림 받기"
-        app:layout_constraintEnd_toEndOf="@+id/matchAlram"
-        app:layout_constraintStart_toStartOf="@+id/matchAlram"
-        app:layout_constraintTop_toBottomOf="@+id/matchAlram" />
+        app:layout_constraintEnd_toEndOf="@+id/matchAlarm"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/matchAlarm"
+        app:layout_constraintTop_toBottomOf="@+id/matchAlarm" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

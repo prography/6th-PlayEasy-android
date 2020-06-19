@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.prography.playeasy.mypage.module.view.Fragment.MyMatchApply;
-import com.prography.playeasy.mypage.module.view.Fragment.MyMatchRegister;
+import com.prography.playeasy.mypage.module.view.fragment.MyMatchApply;
+import com.prography.playeasy.mypage.module.view.fragment.MyMatchRegister;
 
 import java.util.ArrayList;
 

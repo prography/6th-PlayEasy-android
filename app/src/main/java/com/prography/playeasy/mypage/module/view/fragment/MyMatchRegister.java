@@ -1,4 +1,4 @@
-package com.prography.playeasy.mypage.module.view.Fragment;
+package com.prography.playeasy.mypage.module.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
