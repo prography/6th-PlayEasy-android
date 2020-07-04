@@ -7,4 +7,5 @@
 
     <string name="channel_id">MATCH_ALARM</string>
     <string name="channel_name">AppliedResult</string>
+    <string name="activity_mypage_myinfo">내 정보 </string>
 </resources>
