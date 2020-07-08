@@ -1,4 +1,4 @@
-package com.prography.playeasy.application;
+package com.prography.playeasy.lib;
 
 public class FirebaseApplication {
 }

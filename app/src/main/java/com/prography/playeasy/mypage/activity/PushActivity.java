@@ -25,8 +25,6 @@ public class PushActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mypage_push);
 
         initialized();
-//        matchAlarm.setOnCheckedChangeListener(new SwitchListener());
-//        scoutAlarm.setOnCheckedChangeListener(new SwitchListener());
 
         setSavedSetting();
     }
