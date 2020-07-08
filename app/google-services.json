@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "51118063247",
+    "firebase_url": "https://warm-cairn-206202.firebaseio.com",
+    "project_id": "warm-cairn-206202",
+    "storage_bucket": "warm-cairn-206202.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51118063247:android:9bc89d188d3f819a6fbafa",
+        "android_client_info": {
+          "package_name": "com.prography.playeasy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51118063247-brppjh85humb5ftd4k5la80iac0nja8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4uUZgcfLxYf4Fu6F-zuw43gaEQ3ATO2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51118063247-brppjh85humb5ftd4k5la80iac0nja8s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
