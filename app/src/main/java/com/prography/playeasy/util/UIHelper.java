@@ -3,6 +3,8 @@ package com.prography.playeasy.util;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -59,4 +61,11 @@ public class UIHelper {
             return true;
         });
     }
+
+    public static void hideWindow(AppCompatActivity activity){
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+
 }

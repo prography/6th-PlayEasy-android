@@ -18,15 +18,15 @@
         <activity android:name=".match.activity.MatchCreateActivity"/>
         <activity android:name=".match.activity.MatchListActivity"/>
         <activity android:name=".match.activity.MatchDetailActivity"/>
-        <activity android:name=".mypage.activity.PushActivity">
+        <activity android:name=".mypage.activity.PushActivity"/>
+        <activity android:name=".mypage.activity.UserInformationActivity"/>
+        <activity android:name=".mypage.activity.MyMatchActivity"/>
+        <activity android:name=".push.activity.MyMatchInformation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mypage.activity.UserInformationActivity"/>
-        <activity android:name=".mypage.activity.MyMatchActivity"/>
-
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/KAKAO_SDK_KEY"/>

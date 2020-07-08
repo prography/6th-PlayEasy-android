@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">playeasy</string>
+    <string name="activity_push_mymatchinfo">나의 매치 정보</string>
 </resources>
