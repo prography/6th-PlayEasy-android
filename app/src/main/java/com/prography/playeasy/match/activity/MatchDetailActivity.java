@@ -10,7 +10,7 @@ import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.Match;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.PlayeasyServiceManager;
+import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
 public class MatchDetailActivity extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class MatchDetailActivity extends AppCompatActivity {
             }
         };
 
-        MatchService service = PlayeasyServiceManager.getInstance(MatchService.class);
+        MatchService service = PlayeasyServiceFactory.getInstance(MatchService.class);
         service.detailMatch(matchId, callback);
     }
 

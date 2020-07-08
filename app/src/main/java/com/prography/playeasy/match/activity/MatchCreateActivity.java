@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.domain.MatchRequestVO;
 import com.prography.playeasy.match.service.MatchService;
-import com.prography.playeasy.util.PlayeasyServiceManager;
+import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
 import java.util.Date;
@@ -37,7 +37,7 @@ public class MatchCreateActivity extends AppCompatActivity {
                     Integer.valueOf(((EditText)findViewById(R.id.matchCreateHomeQuota)).getText().toString())
             );
 
-            MatchService service = PlayeasyServiceManager.getInstance(MatchService.class);
+            MatchService service = PlayeasyServiceFactory.getInstance(MatchService.class);
             service.createMatch(requestVO, this.getApplicationContext());
         });
     }

@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.prography.playeasy.lib.RetrofitClientGenerator;
+import com.prography.playeasy.application.PlayeasyApplication;
+import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
@@ -21,11 +22,13 @@ public class LoginService {
     private RetrofitLoginApi loginClient;
 
     public LoginService() {
-        this.loginClient = RetrofitClientGenerator.getClient(RetrofitLoginApi.class);
+        this.loginClient = RetrofitClientFactory.getClient(RetrofitLoginApi.class);
     }
 
     public void userLogin(String accessToken, Context context) {
         Toast.makeText(context, "userLogin() executed", Toast.LENGTH_SHORT).show();
+        // Get firebase token
+        Log.d("FIREBASE", "FB TOKEN: " + PlayeasyApplication.TOKEN);
 
         Call<LoginResponseVO> call = loginClient.register(new LoginRequestVO(accessToken));
         call.enqueue(new Callback<LoginResponseVO>() {

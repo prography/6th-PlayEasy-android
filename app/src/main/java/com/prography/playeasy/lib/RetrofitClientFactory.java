@@ -3,11 +3,11 @@ package com.prography.playeasy.lib;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitClientGenerator {
+public class RetrofitClientFactory {
     private static Retrofit service = null;
     private static final String BASE_URL="http://api.theplayeasy.com";
 
-    private RetrofitClientGenerator() { }
+    private RetrofitClientFactory() { }
 
     public static <T> T getClient(Class<T> apiInterfaceClass) {
         if (service == null) {

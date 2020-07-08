@@ -1,4 +1,4 @@
-package com.prography.playeasy.util;
+package com.prography.playeasy.lib.firebase;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

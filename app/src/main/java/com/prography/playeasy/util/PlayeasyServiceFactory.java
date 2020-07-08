@@ -1,9 +1,9 @@
 package com.prography.playeasy.util;
 
-public class PlayeasyServiceManager {
+public class PlayeasyServiceFactory {
     private static Object service = null;
 
-    private PlayeasyServiceManager() {}
+    private PlayeasyServiceFactory() {}
 
     // 객체 요청 실행되면
     public static <T> T getInstance(Class<T> serviceClazz) {

@@ -61,7 +61,7 @@ public class MyMatchActivity extends AppCompatActivity {
         myMatchViewPagerAdapter = new MyMatchViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         myMatchViewPager.setAdapter(myMatchViewPagerAdapter);
 
-        // VIEWPAGER랑 탭 레이아웃 묶어주기
+              // VIEWPAGER랑 탭 레이아웃 묶어주기
         myMatchViewPagerAdapter = new MyMatchViewPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         myMatchViewPager.setAdapter(myMatchViewPagerAdapter);
 

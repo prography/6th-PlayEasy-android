@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">playeasy</string>
     <string name="activity_push_mymatchinfo">나의 매치 정보</string>
+    <string name="channel_id">MATCH_ALARM</string>
+    <string name="channel_name">AppliedResult</string>
 </resources>

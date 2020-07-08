@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.prography.playeasy.lib.RetrofitClientGenerator;
+import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.MatchRequestVO;
@@ -19,7 +19,7 @@ public class MatchService {
     private RetrofitMatchApi matchClient;
 
     public MatchService() {
-        this.matchClient = RetrofitClientGenerator.getClient(RetrofitMatchApi.class);
+        this.matchClient = RetrofitClientFactory.getClient(RetrofitMatchApi.class);
     }
 
     public void createMatch(MatchRequestVO request, Context context) {

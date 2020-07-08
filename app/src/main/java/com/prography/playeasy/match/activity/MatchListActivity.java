@@ -16,7 +16,7 @@ import com.prography.playeasy.match.domain.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.PlayeasyServiceManager;
+import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class MatchListActivity extends AppCompatActivity {
         };
 
         // 서비스 객체 받음
-        MatchService service = PlayeasyServiceManager.getInstance(MatchService.class);
+        MatchService service = PlayeasyServiceFactory.getInstance(MatchService.class);
         // 서비스 호출
         service.retrieveMatch(callback);
     }

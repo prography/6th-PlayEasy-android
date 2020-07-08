@@ -1,17 +1,29 @@
 package com.prography.playeasy.application;
 
 import android.app.Application;
-import android.content.Context;
 
-import com.kakao.auth.IApplicationConfig;
-import com.kakao.auth.KakaoAdapter;
-import com.kakao.auth.KakaoSDK;
+import com.prography.playeasy.lib.firebase.FirebaseManager;
+import com.prography.playeasy.lib.KakaoSdkManager;
+import com.prography.playeasy.lib.firebase.FirebaseTokenCallback;
 
-public class KakaoSdkApplication extends Application {
+public class PlayeasyApplication extends Application {
+    public static String TOKEN;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
+        KakaoSdkManager.initialize(this);
+        FirebaseManager.initialize(this.getApplicationContext(), new FirebaseTokenCallback(){
+            @Override
+            public void onSuccess(String callbackData) {
+                TOKEN = callbackData;
+            }
 
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 }

@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
-        android:name=".application.KakaoSdkApplication"
+        android:name=".application.PlayeasyApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:usesCleartextTraffic="true"
@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".main.MainActivity"/>
-        <activity android:name=".login.activity.LoginActivity"/>
+        <activity android:name=".login.activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".mypage.activity.MainActivity"/>
         <activity android:name=".match.activity.MatchCreateActivity"/>
         <activity android:name=".match.activity.MatchListActivity"/>
@@ -21,12 +26,17 @@
         <activity android:name=".mypage.activity.PushActivity"/>
         <activity android:name=".mypage.activity.UserInformationActivity"/>
         <activity android:name=".mypage.activity.MyMatchActivity"/>
-        <activity android:name=".push.activity.MyMatchInformation">
+        <activity android:name=".push.activity.MyMatchInformation"/>
+        <service
+            android:name=".lib.firebase.FirebaseMessageService"
+            android:exported="true"
+            android:enabled="true"
+            android:directBootAware="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </activity>
+        </service>
+
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/KAKAO_SDK_KEY"/>
