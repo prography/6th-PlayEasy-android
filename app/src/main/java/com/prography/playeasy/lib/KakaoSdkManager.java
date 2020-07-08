@@ -1,4 +1,4 @@
 package com.prography.playeasy.lib;
 
-public class FirebaseApplication {
+public class KakaoSdkManager {
 }
