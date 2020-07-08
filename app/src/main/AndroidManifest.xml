@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity"/>
+        <activity android:name=".main.activity.BeforeLoginMain"/>
+        <activity android:name=".main.activity.Main"/>
         <activity android:name=".login.activity.LoginActivity"/>
         <activity android:name=".mypage.activity.MainActivity"/>
         <activity android:name=".match.activity.MatchCreateActivity"/>

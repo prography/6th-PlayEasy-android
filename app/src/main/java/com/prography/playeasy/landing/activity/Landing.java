@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
-import com.prography.playeasy.login.activity.LoginActivity;
+import com.prography.playeasy.main.activity.BeforeLoginMain;
 import com.prography.playeasy.util.UIHelper;
 
 public class Landing extends AppCompatActivity {
@@ -18,7 +18,7 @@ public class Landing extends AppCompatActivity {
     Runnable run = new Runnable() {
         @Override
         public void run() {
-            Intent intent  = new Intent(getApplicationContext(), LoginActivity.class);
+            Intent intent  = new Intent(getApplicationContext(), BeforeLoginMain.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             finish();

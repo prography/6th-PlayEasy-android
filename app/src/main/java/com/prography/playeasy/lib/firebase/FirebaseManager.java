@@ -60,7 +60,7 @@ public class FirebaseManager {
                         // Log and toast
 //                        String msg = token;
 //                        Log.d(TAG, msg);
-//                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(Main.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

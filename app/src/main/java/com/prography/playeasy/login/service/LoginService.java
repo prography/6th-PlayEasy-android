@@ -11,7 +11,7 @@ import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
-import com.prography.playeasy.match.activity.MatchListActivity;
+import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.mypage.activity.UserInformationActivity;
 
 import retrofit2.Call;
@@ -51,7 +51,7 @@ public class LoginService {
                 if (response.body().isNewMember()) {
                     intent.setClass(context, UserInformationActivity.class);
                 } else {
-                    intent.setClass(context, MatchListActivity.class);
+                    intent.setClass(context, Main.class);
                 }
                 Toast.makeText(context, "set Intent", Toast.LENGTH_SHORT).show();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

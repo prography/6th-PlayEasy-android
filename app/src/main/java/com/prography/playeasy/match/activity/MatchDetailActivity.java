@@ -21,6 +21,8 @@ public class MatchDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_match_detail);
 
         UIHelper.toolBarInitialize(this, findViewById(R.id.matchDetailToolBar));
+        UIHelper.hideWindow(this);
+
         Intent intent = getIntent();
         int matchId = intent.getIntExtra("match_id",-1);
 
