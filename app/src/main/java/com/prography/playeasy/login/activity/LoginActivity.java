@@ -24,6 +24,7 @@ import com.prography.playeasy.R;
 import com.prography.playeasy.application.PlayeasyApplication;
 import com.prography.playeasy.login.service.LoginService;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
+import com.prography.playeasy.util.UIHelper;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        UIHelper.hideWindow(this);
 
         loginService = PlayeasyServiceFactory.getInstance(LoginService.class);
 
