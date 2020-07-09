@@ -22,7 +22,7 @@
         <activity android:name=".main.activity.Main"/>
         <activity android:name=".login.activity.LoginActivity"/>
         <activity android:name=".mypage.activity.Mypage"/>
-        <activity android:name=".match.activity.MatchCreateActivity"/>
+        <activity android:name=".match.activity.MatchCreate"/>
         <activity android:name=".match.activity.MatchListActivity"/>
         <activity android:name=".match.activity.MatchDetailActivity"/>
         <activity android:name=".mypage.activity.PushActivity"/>
