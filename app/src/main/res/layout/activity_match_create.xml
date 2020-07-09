@@ -34,33 +34,30 @@
     </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchCreateToolBar"
-        app:layout_constraintVertical_bias="0.909">
+        app:layout_constraintTop_toBottomOf="@+id/matchCreateToolBar">
 
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
-
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +72,7 @@
                     android:layout_marginEnd="314dp"
                     android:text="주소"
                     android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -115,6 +113,7 @@
                     android:layout_marginEnd="301dp"
                     android:text="날짜"
                     android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -144,6 +143,7 @@
                     android:layout_marginEnd="337dp"
                     android:text="시작 시간"
                     android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -172,6 +172,7 @@
                     android:layout_marginEnd="32dp"
                     android:text="종료 시간"
                     android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -201,6 +202,7 @@
                     android:layout_marginEnd="16dp"
                     android:text="진행 방법"
                     android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -208,18 +210,168 @@
 
                 <Spinner
                     android:id="@+id/matchTypeSpinner"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="644dp"
+                    android:entries="@array/진행방식"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/matchType" />
+
+                <TextView
+                    android:id="@+id/matchFeeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="642dp"
+                    android:text="참가비"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchTypeSpinner" />
+
+                <EditText
+                    android:id="@+id/matchFee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="93dp"
+                    android:ems="10"
+                    android:hint="5000 숫자만 입력해주세요"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchFeeTitle" />
+
+                <TextView
+                    android:id="@+id/feePerPeople"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="원 / 1인당"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.044"
+                    app:layout_constraintStart_toEndOf="@+id/matchFee"
+                    app:layout_constraintTop_toBottomOf="@+id/matchFeeTitle" />
+
+                <TextView
+                    android:id="@+id/matchNeedPeopleTitle"
+                    android:layout_width="106dp"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="555dp"
+                    android:text="구하는 인원"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchFee" />
+
+                <EditText
+                    android:id="@+id/needPeople"
+                    android:layout_width="306dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="93dp"
+                    android:ems="10"
+                    android:hint="5 필요한 인원 수만 숫자로 적어주세요"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchNeedPeopleTitle" />
+
+                <TextView
+                    android:id="@+id/needPerPeople"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="명"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.031"
+                    app:layout_constraintStart_toEndOf="@+id/needPeople"
+                    app:layout_constraintTop_toBottomOf="@+id/matchNeedPeopleTitle" />
+
+
+                <TextView
+                    android:id="@+id/matchPhone"
+                    android:layout_width="115dp"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="555dp"
+                    android:text="전화번호"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/needPeople" />
+
+                <EditText
+                    android:id="@+id/matchPhoneNumber"
+                    android:layout_width="306dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="93dp"
+                    android:ems="10"
+                    android:hint="' - ' 빼고 번호를 입력해주세요"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchPhone" />
+
+                <TextView
+                    android:id="@+id/matchEtcTitle"
+                    android:layout_width="115dp"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="555dp"
+                    android:text="기타사항"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPoint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchPhoneNumber" />
+
+                <EditText
+                    android:id="@+id/matchEtc"
+                    android:layout_width="0dp"
+                    android:layout_height="98dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="샤워장, 주차장과 같은 기타 사항을 입력해주세요"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchEtcTitle" />
 
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
