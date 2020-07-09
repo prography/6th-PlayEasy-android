@@ -2,11 +2,15 @@ package com.prography.playeasy.main.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.prography.playeasy.R;
+import com.prography.playeasy.match.activity.MatchCreateActivity;
+import com.prography.playeasy.mypage.activity.Mypage;
 import com.prography.playeasy.util.UIHelper;
 
 import java.text.DateFormat;
@@ -48,5 +52,19 @@ public class Main extends AppCompatActivity {
                 //do something
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.myPageNavigatation:
+                Intent movedMypage = new Intent(this, Mypage.class);
+                startActivity(movedMypage);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

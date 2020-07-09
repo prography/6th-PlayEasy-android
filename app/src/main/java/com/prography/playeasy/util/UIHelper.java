@@ -13,8 +13,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.prography.playeasy.R;
+import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.activity.MatchCreateActivity;
 import com.prography.playeasy.match.activity.MatchListActivity;
+import com.prography.playeasy.mypage.activity.Mypage;
 import com.prography.playeasy.mypage.activity.UserInformationActivity;
 
 public class UIHelper {
@@ -34,16 +36,15 @@ public class UIHelper {
             Class clazz = null;
 
             switch (item.getItemId()) {
-                case R.id.match:
-                    clazz = MatchListActivity.class;
+                case R.id.homeNavigatation:
+                    clazz = Main.class;
                     break;
-                case R.id.register:
-                    clazz = MatchCreateActivity.class;
+                case R.id.registerNavigatation:
                     break;
-                case R.id.hired:
+                case R.id.myMatchNavigatation:
                     break;
-                case R.id.myPage:
-                    clazz = UserInformationActivity.class;
+                case R.id.myPageNavigatation:
+                    clazz = Mypage.class;
                     break;
             }
 

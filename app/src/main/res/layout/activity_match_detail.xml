@@ -57,7 +57,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="참가비"
-        android:Hint="5000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/matchDetailWhere" />
