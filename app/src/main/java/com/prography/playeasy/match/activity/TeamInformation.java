@@ -17,7 +17,7 @@ import com.prography.playeasy.R;
 
 import com.prography.playeasy.util.UIHelper;
 
-public class TeamInformationActivity extends AppCompatActivity {
+public class TeamInformation extends AppCompatActivity {
 
 
     ImageButton myProfileImage;

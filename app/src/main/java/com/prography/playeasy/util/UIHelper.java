@@ -3,7 +3,6 @@ package com.prography.playeasy.util;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -14,10 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.prography.playeasy.R;
 import com.prography.playeasy.main.activity.Main;
-import com.prography.playeasy.match.activity.MatchCreateActivity;
-import com.prography.playeasy.match.activity.MatchListActivity;
+import com.prography.playeasy.match.activity.MatchCreate;
 import com.prography.playeasy.mypage.activity.Mypage;
-import com.prography.playeasy.mypage.activity.UserInformationActivity;
 
 public class UIHelper {
     public static void toolBarInitialize(AppCompatActivity activity, View view) {
@@ -40,8 +37,10 @@ public class UIHelper {
                     clazz = Main.class;
                     break;
                 case R.id.registerNavigatation:
+                    clazz = MatchCreate.class;
                     break;
                 case R.id.myMatchNavigatation:
+
                     break;
                 case R.id.myPageNavigatation:
                     clazz = Mypage.class;

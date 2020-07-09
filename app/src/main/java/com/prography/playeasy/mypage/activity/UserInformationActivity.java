@@ -113,9 +113,6 @@ public class UserInformationActivity extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD
-=======
-
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -125,6 +122,5 @@ public class UserInformationActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    };
->>>>>>> develop
+    }
 }

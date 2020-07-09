@@ -5,15 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.prography.playeasy.R;
-import com.prography.playeasy.match.activity.MatchCreateActivity;
 import com.prography.playeasy.mypage.activity.Mypage;
 import com.prography.playeasy.util.UIHelper;
 
-import java.text.DateFormat;
 import java.util.Calendar;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
