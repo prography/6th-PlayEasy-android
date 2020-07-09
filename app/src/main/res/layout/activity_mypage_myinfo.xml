@@ -1,208 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/myPageUserInfoToolBar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorToolbar"
-        android:elevation="4dp"
-        android:text="내정보"
-        android:textSize="20sp"
-        android:textColor="@color/colorWhite"
-
-
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        />
+        app:layout_constraintTop_toTopOf="parent">
 
-
-
-
-    <LinearLayout
-
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingVertical="?attr/actionBarSize"
-
-        android:layout_marginBottom="10dp"
-        >
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-
-            android:background="@drawable/radius"
-            android:scaleType="fitCenter"
-            android:src="@drawable/shinja"
-            />
-        <LinearLayout
-            android:layout_marginTop="50dp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:id="@+id/TextViewId"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="25dp"
-                    android:padding="10dp"
-                    android:layout_marginLeft="30dp"
-                    android:text="ID" />
-
-                <EditText
-                    android:id="@+id/editTextId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:textSize="25dp"
-                    android:padding="10dp"
-                    android:hint="ID"
-                    />
-            </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mypagemyinfoToolBar"
             android:layout_width="match_parent"
-            android:layout_marginTop="50dp"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:id="@+id/TextViewName"
-                    android:text="이름"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:textSize="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                />
-                <EditText
-                    android:id="@+id/editTextName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:hint="이름"
-                />
-                <TextView
-                    android:id="@+id/TextViewAge"
-                    android:text="나이"
-                    android:textSize="25dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    />
-                <EditText
-
-                    android:id="@+id/editTextAge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="25dp"
-                    android:hint="나이"
-                    android:layout_marginRight="18dp"
-                    />
-
-    </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <TextView
-                android:id="@+id/TextViewPosition"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="25dp"
-                android:padding="10dp"
-                android:layout_marginLeft="30dp"
-                android:text=" 선호포지션 " />
+                android:layout_gravity="center"
+                android:text="@string/activity_mypage_myinfo"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextPosition"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="25dp"
-                android:padding="10dp"
-                android:hint="입력"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
-            android:layout_gravity="center">
+    <ImageButton
+        android:id="@+id/ib_my_profile"
+        android:layout_width="105dp"
+        android:layout_height="80dp"
 
-                <TextView
-                    android:id="@+id/TextViewPhoneNum1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="25dp"
-                    android:padding="10dp"
-                    android:layout_marginLeft="30dp"
-                    android:text=" 휴대폰 인증 " />
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:layout_height="wrap_content">
-                        <EditText
-                            android:id="@+id/editTextPhoneNum1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="18dp"
-                            android:textSize="28sp"
-                            android:inputType="phone"
-
-                            android:textColorHint="@color/black"
-                            android:padding="10dp"
-                            android:hint="연락처를 입력해주세요."
-
-                            android:textColor="@color/black"
-
-                            android:maxLength="13"
-                            />
-
-                    </LinearLayout>
-    </LinearLayout>
-
-        <Button
-            android:id="@+id/editButton"
-            android:layout_width="113dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-
-            android:text="재인증" />
-
-    </LinearLayout>
+        android:background="@drawable/background_rounding"
+        android:scaleType="fitCenter"
+        android:src="@drawable/shinja"
+        app:layout_constraintBottom_toTopOf="@+id/TextViewEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
 
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="210dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="148dp"
 
+        android:ems="10"
+        android:hint="홍길동"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+        app:layout_constraintBottom_toTopOf="@+id/EditTextAge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/TextViewName" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="212dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/editTextName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_my_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/TextViewTeam"
+
+        android:layout_width="122dp"
+        android:layout_height="57dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:padding="10dp"
+        android:text="소속 팀 "
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewAge" />
+
+
+    <TextView
+        android:id="@+id/TextViewEmail"
+        android:layout_width="122dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="159dp"
+        android:padding="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#707070"
+        android:textSize="30sp"
+
+        app:layout_constraintEnd_toStartOf="@+id/editTextEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appBarLayout"
+        tools:text="이메일" />
+
+    <TextView
+        android:id="@+id/TextViewName"
+        android:layout_width="122dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="24dp"
+
+        android:layout_marginTop="8dp"
+        android:padding="10dp"
+
+        android:text="이름"
+        android:textColor="#707070"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/TextViewAge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/TextViewAge"
+        android:layout_width="122dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:padding="10dp"
+        android:text="나이"
+        android:textColor="#707070"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/EditTextAge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewName" />
+
+    <EditText
+        android:id="@+id/EditTextTeam"
+
+        android:layout_width="198dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+
+        android:layout_weight="1"
+        android:hint="어쩌다 FC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/TextViewTeam"
+        app:layout_constraintTop_toBottomOf="@+id/EditTextAge" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="194dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewLevel"
+        app:layout_constraintTop_toBottomOf="@+id/EditTextTeam" />
+
+    <EditText
+        android:id="@+id/EditTextAge"
+        android:layout_width="200dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="만 나이 입력"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/TextViewAge"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+    <TextView
+        android:id="@+id/textViewLevel"
+        android:layout_width="122dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:text="실력"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPhoneNum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewTeam"
+        app:layout_constraintVertical_bias="0.251" />
+
+    <TextView
+        android:id="@+id/textViewPhoneNum"
+        android:layout_width="169dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="휴대폰 번호"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLevel" />
+
+    <EditText
+        android:id="@+id/editTextPhoneNum"
+        android:layout_width="166dp"
+        android:layout_height="47dp"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="64dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewIntroduceMyself"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewPhoneNum"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewIntroduceMyself"
+        android:layout_width="128dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="자기소개"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNum" />
+
+    <EditText
+        android:id="@+id/editTextIntroduceMyself"
+        android:layout_width="346dp"
+        android:layout_height="84dp"
+
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIntroduceMyself"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <Button
+        android:id="@+id/buttonEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="2sp"
+        android:textColor="#ae0c37"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextIntroduceMyself"
+        tools:text="수정" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

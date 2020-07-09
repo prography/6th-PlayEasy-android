@@ -1,11 +1,7 @@
 package com.prography.playeasy.match.api;
 
-import com.prography.playeasy.match.domain.Match;
 import com.prography.playeasy.match.domain.MatchRequestVO;
 import com.prography.playeasy.match.domain.MatchResponseVO;
-
-import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

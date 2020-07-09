@@ -1,6 +1,7 @@
 package com.prography.playeasy.match.domain;
 
-import java.util.Date;
+import com.prography.playeasy.match.domain.MatchDetail.Match;
+
 import java.util.List;
 
 public class MatchResponseVO {
