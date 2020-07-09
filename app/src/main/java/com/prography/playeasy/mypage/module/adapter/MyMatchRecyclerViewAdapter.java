@@ -3,6 +3,7 @@ package com.prography.playeasy.mypage.module.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,20 +40,26 @@ public class MyMatchRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchRecy
         myMatchRegisterArrayList = Data;
         notifyDataSetChanged();
     }
-
+///2단계 --> itemView 안의 요소 선
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView myMatchNameTv;
         private TextView myMatchLocationTv;
+        //to do
         private TextView myMatchMemberTv;
+        private TextView gameStatus;
 
+
+
+        private Button checkApplyStatus;
+        private Button buttonForEnd;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            myMatchNameTv = itemView.findViewById(R.id.myMatchMemberTv);
+            myMatchNameTv = itemView.findViewById(R.id.myMatchNameTv);
             myMatchLocationTv = itemView.findViewById(R.id.myMatchLocationTv);
             myMatchMemberTv = itemView.findViewById(R.id.myMatchMemberTv);
-
+            gameStatus=itemView.findViewById(R.id.gameStatus);
         }
 
         public void onBind(MyMatchVO myMatchVO, int position) {
@@ -60,6 +67,8 @@ public class MyMatchRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchRecy
             myMatchNameTv.setText(myMatchRegisterArrayList.get(position).getMyMatchName());
             myMatchLocationTv.setText(myMatchRegisterArrayList.get(position).getMyMatchLocation());
             myMatchMemberTv.setText(""+myMatchRegisterArrayList.get(position).getMyMatchPeople());
+            //버튼은 딱히 binding할 필요 없다고 판단
+
         }
     }
 }

@@ -5,12 +5,18 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.login.activity.LoginActivity;
+import com.prography.playeasy.match.domain.MatchDetail.Match;
+import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
+import com.prography.playeasy.match.util.MatchResponseCallback;
 import com.prography.playeasy.util.UIHelper;
 
 import java.util.Calendar;
+import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
@@ -22,6 +28,22 @@ public class BeforeLoginMain extends AppCompatActivity {
 
     Handler handler = new Handler();
 
+    // API 응답이 성공으로 온 다음 렌더링을 실행할 콜백 인터페이스
+    MatchResponseCallback callback = new MatchResponseCallback(){
+        // API 실행이 성공일 때 실행
+        @Override
+        public void onSuccess(Object responseData) {
+            // 응답 데이터 변환
+            List<Match> matchList = (List<Match>)responseData;
+            // 리사이클러뷰 렌더링
+            adaptRecyclerView(matchList);
+        }
+
+        @Override
+        public void onError() {
+
+        }
+    };
     Runnable run = new Runnable() {
         @Override
         public void run() {
@@ -72,4 +94,16 @@ public class BeforeLoginMain extends AppCompatActivity {
         super.onPause();
         handler.removeCallbacks(run);
     }
+    private void adaptRecyclerView(List<Match> matchList) {
+        RecyclerView recyclerView = findViewById(R.id.matchListRecyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+
+        for (Match m : matchList) {
+            adapter.addItems(m);
+        }
+    }
+
 }

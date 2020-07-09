@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.prography.playeasy.R;
-import com.prography.playeasy.match.domain.Match;
+import com.prography.playeasy.match.domain.MatchDetail.Match;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
@@ -57,13 +57,14 @@ public class MatchDetailActivity extends AppCompatActivity {
         TextView tvEndAt =findViewById(R.id.matchDetailEndTime);
 
         // 값 저장
-        tvTitle.setText(match.getTitle());
-        tvType.setText(match.getType());
-        tvDescription.setText(match.getDescription());
-        tvLocation.setText(match.getLocation());
-        tvFee.setText(String.valueOf(match.getFee()));
-        tvStartAt.setText(match.getStartAt().toString());
-        tvEndAt.setText(match.getEndAt().toString());
+//        tvTitle.setText(match.getTitle());
+//        tvType.setText(match.getType());
+//        tvDescription.setText(match.getDescription());
+//        tvLocation.setText(match.getLocationId());
+//        tvFee.setText(String.valueOf(match.getFee()));
+//        tvStartAt.setText(match.getStartAt().toString());
+
+      // Endat 변수가 사라짐  tvEdAt.setText(match.getEndAt().toString());
     }
 
     @Override

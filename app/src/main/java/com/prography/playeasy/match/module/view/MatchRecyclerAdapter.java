@@ -4,17 +4,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.activity.MatchDetailActivity;
-import com.prography.playeasy.match.domain.Match;
-import com.prography.playeasy.match.domain.MatchResponseVO;
+import com.prography.playeasy.match.domain.MatchDetail.Match;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,16 +66,16 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
             homeQuota = itemView.findViewById(R.id.matchHomeQuota);
             matchId = itemView.findViewById(R.id.matchId);
         }
-
+//주석 처리
         public void onBind(Match match) {
-            title.setText(match.getTitle());
-            type.setText(match.getType());
+//            title.setText(match.getTitle());
+//            type.setText(match.getType());
             description.setText(match.getDescription());
-            location.setText(match.getLocation());
+//            location.setText(match.getLocation());
             fee.setText(String.valueOf(match.getFee()));
             startAt.setText(match.getStartAt().toString());
-            endAt.setText(match.getEndAt().toString());
-            homeQuota.setText(String.valueOf(match.getHomeQuota()));
+//            endAt.setText(match.getEndAt().toString());
+      //      homeQuota.setText(String.valueOf(match.getHomeQuota()));
             matchId.setText(String.valueOf(match.getId()));
 
             itemView.setOnClickListener(new View.OnClickListener() {
