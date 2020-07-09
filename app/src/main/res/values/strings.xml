@@ -6,7 +6,7 @@
     <string name="activity_match_create"> 매치 생성</string>
     <string name="spinner_match_create">진행 방식</string>
     <string name="activity_mypage_mypage">마이 페이지</string>
-
+    <string name="activity_teaminfo">소속 팀 정보</string>
 
     <string name="channel_id">MATCH_ALARM</string>
     <string name="channel_name">AppliedResult</string>

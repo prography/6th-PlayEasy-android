@@ -1,27 +1,24 @@
-package com.prography.playeasy.mypage.activity;
+package com.prography.playeasy.match.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.prography.playeasy.R;
-import com.prography.playeasy.match.activity.MatchListActivity;
+
 import com.prography.playeasy.util.UIHelper;
 
-public class UserInformationActivity extends AppCompatActivity {
+public class TeamInformationActivity extends AppCompatActivity {
+
 
     ImageButton myProfileImage;
     //id
@@ -31,26 +28,24 @@ public class UserInformationActivity extends AppCompatActivity {
     TextView textViewName;
     EditText editTextName;
     //소속
-    TextView textViewTeam;
-    EditText editTextTeam;
+//    TextView textViewTeam;
+//    EditText editTextTeam;
     //나이
     TextView textViewAge;
     EditText editTextAge;
-    //실력
-    TextView textViewLevel;
-    Spinner levelSpinner;
     //phonenum verification
     TextView textViewPhoneNum;
     EditText editTextPhoneNum;
 
-    Button editButton;
+    Spinner teamLevelSpinner;
+    TextView textViewLevel;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mypage_myinfo);
+        setContentView(R.layout.activity_teaminfo);
 
 
-        UIHelper.toolBarInitialize(this, findViewById(R.id.mypagemyinfoToolBar));
+        UIHelper.toolBarInitialize(this, findViewById(R.id.teaminfoToolBar));
 
 
 //질문 1
@@ -59,12 +54,12 @@ public class UserInformationActivity extends AppCompatActivity {
 
 //getSupportActionBar의 반환형 ActionBar
 
-////review todo
-//        Glide.with(UserInformationActivity.this)
-//                .load(R.drawable.shinja)
-//                .placeholder(R.drawable.shinja)
-//                .centerCrop()
-//                .into(myProfileImage);
+//review
+        Glide.with(this)
+                .load(R.drawable.shinja)
+                .placeholder(R.drawable.shinja)
+                .centerCrop()
+                .into(myProfileImage);
         myProfileImage=(ImageButton)findViewById(R.id.ib_my_profile);
 //이메
         textViewEmail = (TextView) findViewById(R.id.TextViewEmail);
@@ -80,14 +75,13 @@ public class UserInformationActivity extends AppCompatActivity {
         editTextAge = (EditText) findViewById(R.id.EditTextAge);
 
 //소속
-        textViewTeam = (TextView) findViewById(R.id.TextViewTeam);
-        editTextTeam = (EditText) findViewById(R.id.EditTextTeam);
+//        textViewTeam = (TextView) findViewById(R.id.TextViewTeam);
+//        editTextTeam = (EditText) findViewById(R.id.EditTextTeam);
 
 
 //실력
-        levelSpinner=(Spinner)findViewById(R.id.spinnerLevel);
-        textViewLevel = (TextView)findViewById(R.id.textViewLevel);
-
+        textViewLevel=(TextView)findViewById(R.id.team_textViewLevel);
+    teamLevelSpinner=(Spinner)findViewById(R.id.spinner_teamLevel);
 
 //휴대폰 인증
         textViewPhoneNum= (TextView) findViewById(R.id.textViewPhoneNum);
@@ -98,31 +92,17 @@ public class UserInformationActivity extends AppCompatActivity {
 //         editTextPhoneNum3 = (EditText) findViewById(R.id.editTextPhoneNum3);
 
         editTextPhoneNum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.실력,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        levelSpinner.setAdapter(adapter);
-        levelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        teamLevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //이 오버라이드 메소드에서 getItemAtPosition( position)으로 해당 값 받아온다
-                parent.getItemAtPosition(position);
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(getApplicationContext(),"실력을 선택해주세요", Toast.LENGTH_SHORT);
+
             }
         });
     }
 
-    public boolean onOptionsItemSelected(android.view.MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // NavUtils.navigateUpFromSameTask(this);
-                Intent userInfoBack = new Intent(this, Mypage.class);
-                startActivity(userInfoBack);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    };
 }

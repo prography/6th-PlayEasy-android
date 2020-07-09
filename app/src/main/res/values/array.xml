@@ -7,5 +7,11 @@
         <item> 6 vs 6</item>
         <item> 11 vs 11</item>
     </string-array>
-    
+    <string-array name="실력">
+
+        <item> 실력 </item>
+        <item> 상 </item>
+        <item> 중 </item>
+        <item> 하 </item>
+    </string-array>
 </resources>

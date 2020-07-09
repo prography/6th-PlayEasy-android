@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.prography.playeasy.R;
+import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.domain.MatchDetail.Match;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
@@ -73,7 +74,7 @@ public class MatchDetailActivity extends AppCompatActivity {
         switch(item.getItemId())
         {
             case android.R.id.home:
-                Intent detailBack = new Intent(this, MatchListActivity.class);
+                Intent detailBack = new Intent(this, Main.class);
                 startActivity(detailBack);
                 return true;
         }
