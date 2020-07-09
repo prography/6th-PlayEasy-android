@@ -67,25 +67,25 @@ public class MatchListActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-       // menuInflater.inflate(R.menu.match_list,menu);
-        return true;
-    }
-    /*@Override
-    public boolean onOptionsItemSelected (MenuItem item)
-    {
-        switch(item.getItemId())
-        {
-            case R.id.matchRegister:
-                Intent toolBarRegisterMove = new Intent(this, MatchCreate.class);
-                startActivity(toolBarRegisterMove);
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu){
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.match_list,menu);
+//        return true;
+//    }
+//    @Override
+//    public boolean onOptionsItemSelected (MenuItem item)
+//    {
+//        switch(item.getItemId())
+//        {
+//            case R.id.matchRegister:
+//                Intent toolBarRegisterMove = new Intent(this, MatchCreateActivity.class);
+//                startActivity(toolBarRegisterMove);
+//                break;
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 }
