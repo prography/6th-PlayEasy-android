@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
-import com.prography.playeasy.match.activity.MatchDetailActivity;
+import com.prography.playeasy.match.activity.MatchDetail;
 import com.prography.playeasy.match.domain.MatchDetail.Match;
 
 import java.util.ArrayList;
@@ -84,7 +84,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
                     TextView tvMatchId = v.findViewById(R.id.matchId);
                     int matchId = Integer.parseInt(tvMatchId.getText().toString());
 
-                    Intent intent = new Intent(v.getContext(), MatchDetailActivity.class);
+                    Intent intent = new Intent(v.getContext(), MatchDetail.class);
                     intent.putExtra("match_id", matchId);
                     v.getContext().startActivity(intent);
                 }

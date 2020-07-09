@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.prography.playeasy.R;
-import com.prography.playeasy.match.activity.MatchListActivity;
 import com.prography.playeasy.util.UIHelper;
 
 public class UserInformationActivity extends AppCompatActivity {
@@ -90,15 +89,4 @@ public class UserInformationActivity extends AppCompatActivity {
 
         editTextPhoneNum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
-
-    public boolean onOptionsItemSelected(android.view.MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // NavUtils.navigateUpFromSameTask(this);
-                Intent userInfoBack = new Intent(this, MatchListActivity.class);
-                startActivity(userInfoBack);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    };
 }
