@@ -1,4 +1,4 @@
-package com.prography.playeasy.push.activity;
+package com.prography.playeasy.mypage.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

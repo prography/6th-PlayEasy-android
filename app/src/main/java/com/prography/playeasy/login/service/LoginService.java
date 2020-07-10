@@ -37,7 +37,7 @@ public class LoginService {
                 Toast.makeText(context, "onResponse() executed", Toast.LENGTH_SHORT).show();
                 Log.d("LOGIN RESPONSE", response.code() + " " + response.message());
 
-                if (response.isSuccessful() == false || response.body().isSuccess() == false) {
+                if (response.isSuccessful() == false ) {
                     Toast result = Toast.makeText(context, "Failed to login", Toast.LENGTH_SHORT);
                     result.show();
                     return;

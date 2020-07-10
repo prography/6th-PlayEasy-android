@@ -2,11 +2,14 @@ package com.prography.playeasy.main.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.prography.playeasy.R;
+import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.util.UIHelper;
 
@@ -18,7 +21,9 @@ import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 public class Main extends AppCompatActivity {
 
+    private static final String TAG = "JWT_TOKEN";
     private HorizontalCalendar horizontalCalendar;
+
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,8 @@ public class Main extends AppCompatActivity {
                 //do something
             }
         });
+
+        Log.d(TAG, TokenManager.get(getApplicationContext()));
 
 
     }

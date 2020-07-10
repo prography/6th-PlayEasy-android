@@ -57,6 +57,7 @@ public class MatchCreate extends AppCompatActivity {
         sTimePicker = findViewById(R.id.timePickerStart);
         eTimePicker = findViewById(R.id.timePickerEnd);
 
+<<<<<<< HEAD
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.진행방식, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         matchtype.setAdapter(adapter);
@@ -77,6 +78,9 @@ public class MatchCreate extends AppCompatActivity {
 
         );
     }
+=======
+}
+>>>>>>> develop
 //        findViewById(R.id.matchCreateConfirm).setOnClickListener((v) -> {
 //            MatchRequestDto requestDto = new MatchRequestDto(
 //                    ((EditText)findViewById(R.id.matchCreateTitle)).getText().toString(),
