@@ -15,7 +15,7 @@ import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.prography.playeasy.R;
-import com.prography.playeasy.push.activity.MyMatchInformation;
+import com.prography.playeasy.mypage.activity.MyMatchInformation;
 
 import java.util.Map;
 

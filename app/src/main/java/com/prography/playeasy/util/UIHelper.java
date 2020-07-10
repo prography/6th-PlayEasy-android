@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.prography.playeasy.R;
 import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.activity.MatchCreate;
-import com.prography.playeasy.mypage.activity.MyMatch;
+import com.prography.playeasy.mypage.activity.MyMatchInformation;
 import com.prography.playeasy.mypage.activity.MyPage;
 
 public class UIHelper {
@@ -41,7 +41,7 @@ public class UIHelper {
                     clazz = MatchCreate.class;
                     break;
                 case R.id.myMatchNavigatation:
-                    clazz = MyMatch.class;
+                    clazz = MyMatchInformation.class;
                     break;
                 case R.id.myPageNavigatation:
                     clazz = MyPage.class;
