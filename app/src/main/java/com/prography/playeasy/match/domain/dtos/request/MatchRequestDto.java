@@ -1,8 +1,8 @@
-package com.prography.playeasy.match.domain;
+package com.prography.playeasy.match.domain.dtos.request;
 
 import java.util.Date;
 
-public class MatchRequestVO {
+public class MatchRequestDto {
     private String title;
     private String type;
     private String description;
@@ -12,7 +12,7 @@ public class MatchRequestVO {
     private Date endAt;
     private Integer homeQuota;
 
-    public MatchRequestVO(String title, String type, String description, String location, Integer fee, Date startAt, Date endAt, Integer homeQuota) {
+    public MatchRequestDto(String title, String type, String description, String location, Integer fee, Date startAt, Date endAt, Integer homeQuota) {
         this.title = title;
         this.type = type;
         this.description = description;
@@ -89,7 +89,7 @@ public class MatchRequestVO {
 
     @Override
     public String toString() {
-        return "MatchRequestVO{" +
+        return "{" +
                 "title='" + title + '\'' +
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +

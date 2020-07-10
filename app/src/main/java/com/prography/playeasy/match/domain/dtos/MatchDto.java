@@ -1,4 +1,4 @@
-package com.prography.playeasy.match.domain.MatchPost;
+package com.prography.playeasy.match.domain.dtos;
 
 import java.util.Date;
 

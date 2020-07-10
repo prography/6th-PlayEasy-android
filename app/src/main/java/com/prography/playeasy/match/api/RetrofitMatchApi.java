@@ -1,10 +1,10 @@
 package com.prography.playeasy.match.api;
 
-import com.prography.playeasy.match.domain.MatchDetail.MatchDetailDAO;
-import com.prography.playeasy.match.domain.MatchEnd.MatchEndResponseDAO;
-import com.prography.playeasy.match.domain.MatchList.MatchListDAO;
-import com.prography.playeasy.match.domain.MatchPost.MatchPostRequestDAO;
-import com.prography.playeasy.match.domain.MatchRevise.MatchReviseRequestDAO;
+import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchEndResponseDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.request.MatchReviseRequestDto;
 
 import java.util.HashMap;
 
@@ -20,25 +20,25 @@ public interface RetrofitMatchApi {
 
 
     @POST("/api/match")
-    Call<MatchDetailDAO> postMatch(@Header("authorization") String token,
-                                   @Body MatchPostRequestDAO requestVO);
+    Call<MatchDetailDto> postMatch(@Header("authorization") String token,
+                                   @Body MatchPostRequestDto requestVO);
 
     @GET("/api/match/list")
-    Call<MatchListDAO> getMatchList();
+    Call<MatchListDto> getMatchList();
 
 
     /**
      * 매치 상세 조회
      * @param matchId 클릭한 매치의 ID
      * @example /api/match?id={matchId}
-     * @return MatchResponseVO-->Match로 수정
+     * @return MatchResponseDto-->Match로 수정
      */
     @GET("/api/match")
-    Call<MatchDetailDAO> getMatch(@Query("id")int matchId);
+    Call<MatchDetailDto> getMatch(@Query("id")int matchId);
    //매치 수정
     @PUT("/api/match")
-    Call <MatchDetailDAO> reviseMatch(@Header("authorization") String token,
-                                      @Body MatchReviseRequestDAO requestVO);
+    Call <MatchDetailDto> reviseMatch(@Header("authorization") String token,
+                                      @Body MatchReviseRequestDto requestVO);
 
 
 
@@ -46,7 +46,7 @@ public interface RetrofitMatchApi {
 
     //매치 마감
     @PUT("/api/match/status")
-    Call <MatchEndResponseDAO> endMatch(@Body HashMap<String,Object> body);
+    Call <MatchEndResponseDto> endMatch(@Body HashMap<String,Object> body);
 //    int matchId = 0;
 //    enum status{WAITING,CONFIRMED,CANCEL} status;
 //    String nestedJson="{"+matchId+":"+matchId+","+"statusType" +":"+ status+"}";
