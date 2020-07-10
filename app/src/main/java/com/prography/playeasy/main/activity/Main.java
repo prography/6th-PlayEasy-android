@@ -63,7 +63,7 @@ public class Main extends AppCompatActivity {
                 Intent movedMypage = new Intent(this, MyPage.class);
                 startActivity(movedMypage);
                 break;
-
+            case R.id.
         }
         return super.onOptionsItemSelected(item);
     }

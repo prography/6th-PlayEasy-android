@@ -23,6 +23,7 @@ public class Match {
    //private int homeQuota;
 
     private int writerId;
+
     private int homeTeamId;
     private int locationId;
    //사라진 필드 private int awayTeamId와 homeQuota;
@@ -57,7 +58,8 @@ public class Match {
   }
 
   public void setDuration(int duration) {
-   this.duration = duration;
+
+      this.duration = duration;
   }
 
   public int getFee() {

@@ -52,7 +52,6 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
         private TextView endAt;
         private TextView homeQuota;
         private TextView matchId;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
