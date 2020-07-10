@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/teamInfoToolBar"
+        android:id="@+id/teamCreateToolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginStart="8dp"
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/activity_team_teaminfo"
+            android:text="@string/activity_team_makeTeam"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -46,10 +46,10 @@
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamInfoToolBar" />
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateToolBar" />
 
     <TextView
-        android:id="@+id/teamTitle"
+        android:id="@+id/teamCreateTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -63,8 +63,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
 
-    <TextView
-        android:id="@+id/teamName"
+    <EditText
+        android:id="@+id/teamCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -75,116 +75,116 @@
         app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
 
     <TextView
-        android:id="@+id/teamCaptinTitle"
+        android:id="@+id/teamCreateCapTinTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="주장"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/teamTitle"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/teamTitle"
-        app:layout_constraintTop_toBottomOf="@+id/teamTitle" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreateTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateTitle" />
 
-    <TextView
-        android:id="@+id/teamCaptinName"
+    <EditText
+        android:id="@+id/teamCreateCapTinName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@null"
         android:hint="임규산"
-        app:layout_constraintEnd_toEndOf="@+id/teamName"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreate"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/teamName"
-        app:layout_constraintTop_toBottomOf="@+id/teamName" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreate"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreate" />
 
     <TextView
-        android:id="@+id/captinAgeTitle"
+        android:id="@+id/teamCreateCapTinAgeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="나이"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/teamCaptinTitle"
-        app:layout_constraintStart_toStartOf="@+id/teamCaptinTitle"
-        app:layout_constraintTop_toBottomOf="@+id/teamCaptinTitle" />
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateCapTinTitle"
+        app:layout_constraintStart_toStartOf="@+id/teamCreateCapTinTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateCapTinTitle" />
 
-    <TextView
-        android:id="@+id/captinAgeName"
+    <EditText
+        android:id="@+id/teamCreateCapTinAge"
         android:layout_width="43dp"
         android:layout_height="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="@null"
         android:hint="30"
-        app:layout_constraintEnd_toEndOf="@+id/teamCaptinName"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateCapTinName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/teamCaptinName"
-        app:layout_constraintTop_toBottomOf="@+id/teamCaptinName" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreateCapTinName"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateCapTinName" />
 
     <TextView
-        android:id="@+id/abilityTitle"
+        android:id="@+id/teamCreateAbilityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="실력"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/captinAgeTitle"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateCapTinAgeTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/captinAgeTitle"
-        app:layout_constraintTop_toBottomOf="@+id/captinAgeTitle" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreateCapTinAgeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateCapTinAgeTitle" />
 
     <Spinner
-        android:id="@+id/abilitySpinner"
+        android:id="@+id/teamCreateAbilitySpinner"
         android:layout_width="95dp"
         android:layout_height="28dp"
         android:layout_marginTop="16dp"
         android:entries="@array/실력"
-        app:layout_constraintEnd_toEndOf="@+id/captinAgeName"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateCapTinAge"
         app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="@+id/captinAgeName"
-        app:layout_constraintTop_toBottomOf="@+id/captinAgeName" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreateCapTinAge"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateCapTinAge" />
 
     <TextView
-        android:id="@+id/captinPhoneTitle"
+        android:id="@+id/teamCreateCapTinPhoneTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="번호"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/abilityTitle"
-        app:layout_constraintStart_toStartOf="@+id/abilityTitle"
-        app:layout_constraintTop_toBottomOf="@+id/abilityTitle" />
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateAbilityTitle"
+        app:layout_constraintStart_toStartOf="@+id/teamCreateAbilityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateAbilityTitle" />
 
-    <TextView
-        android:id="@+id/captinPhoneName"
+    <EditText
+        android:id="@+id/teamCreateCapTinPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@null"
         android:hint="01089740000"
-        app:layout_constraintEnd_toEndOf="@+id/abilitySpinner"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateAbilitySpinner"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/abilitySpinner"
-        app:layout_constraintTop_toBottomOf="@+id/abilitySpinner" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreateAbilitySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateAbilitySpinner" />
 
     <TextView
-        android:id="@+id/teamInformationTitle"
+        android:id="@+id/teamCreateInformationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="팀 소개"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/captinPhoneTitle"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateCapTinPhoneTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/captinPhoneTitle"
-        app:layout_constraintTop_toBottomOf="@+id/captinPhoneTitle" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreateCapTinPhoneTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateCapTinPhoneTitle" />
 
-    <TextView
+    <EditText
         android:id="@+id/teamInformation"
         android:layout_width="325dp"
         android:layout_height="67dp"
@@ -195,25 +195,47 @@
         android:inputType="textPersonName"
         android:lines="2"
         android:maxLines="4"
-        app:layout_constraintEnd_toEndOf="@+id/teamInformationTitle"
+        app:layout_constraintEnd_toEndOf="@+id/teamCreateInformationTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/teamInformationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/teamInformationTitle" />
+        app:layout_constraintStart_toStartOf="@+id/teamCreateInformationTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamCreateInformationTitle" />
+
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/teamPlayerShowButton"
+        android:id="@+id/teamCreateButton"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:elevation="10dp"
-        android:text="팀원 보러 가기"
-        android:textColor="@color/colorWhite"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:elevation="4dp"
+        android:text="생성"
+        android:textColor="@color/colorToolbar"
         android:textSize="20dp"
-        app:backgroundTint="@color/colorPoint"
-        app:layout_constraintEnd_toEndOf="@+id/teamInformation"
-        app:layout_constraintStart_toStartOf="@+id/teamInformation"
-        app:layout_constraintTop_toBottomOf="@+id/teamInformation" />
+        app:backgroundTint="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teamInformation"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/teamCreateCancelButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:elevation="4dp"
+        android:text="취소"
+        android:textColor="@color/colorToolbar"
+        android:textSize="20dp"
+        app:backgroundTint="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teamCreateButton"
+        app:layout_constraintTop_toBottomOf="@+id/teamInformation"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -138,13 +138,13 @@
         app:layout_constraintStart_toStartOf="@+id/myPageMyAgeTitle"
         app:layout_constraintTop_toBottomOf="@+id/myPageMyAgeTitle" />
 
-    <EditText
+    <TextView
         android:id="@+id/myPageMyTeam"
         android:layout_width="174dp"
         android:layout_height="29dp"
         android:layout_marginTop="12dp"
         android:background="@null"
-        android:hint="검색 해주세요"
+        android:hint="클릭 후 검색 해주세요"
         app:layout_constraintEnd_toEndOf="@+id/myPageMyAge"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/myPageMyAge"

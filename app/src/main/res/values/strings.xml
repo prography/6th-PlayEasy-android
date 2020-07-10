@@ -13,6 +13,9 @@
 
     <string name="activity_team_teaminfo">소속 팀 정보</string>
     <string name="activity_team_teamMember">소속 팀원 보기</string>
+    <string name="activity_team_teamselect">팀 선택</string>
+    <string name="activity_team_makeTeam">팀 만들기</string>
+
 
     <string name="channel_id">MATCH_ALARM</string>
     <string name="channel_name">AppliedResult</string>

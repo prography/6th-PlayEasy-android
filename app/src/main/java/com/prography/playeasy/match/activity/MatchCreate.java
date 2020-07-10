@@ -81,7 +81,7 @@ public class MatchCreate extends AppCompatActivity {
     {
         switch(item.getItemId())
         {
-            case R.id.toolbar_next_button:
+            case R.id.createMatch:
                 Intent writeBack = new Intent(this, Main.class);
                 startActivity(writeBack);
                 return true;

@@ -56,7 +56,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/effect"
+        android:background="@drawable/mypageeffect"
         android:gravity="left"
         android:text="Home Team 자세히 보기"
         android:textColor="#000000"

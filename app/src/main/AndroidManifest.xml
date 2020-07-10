@@ -24,6 +24,7 @@
 
         <activity android:name=".main.activity.BeforeLoginMain"/>
         <activity android:name=".main.activity.Main"/>
+
         <activity android:name=".login.activity.LoginActivity"/>
 
         <activity android:name=".mypage.activity.MyPage"/>
@@ -33,10 +34,13 @@
 
         <activity android:name=".team.activity.TeamInformation"/>
         <activity android:name=".team.activity.TeamMember"/>
+        <activity android:name=".team.activity.TeamSelect"/>
+        <activity android:name=".team.activity.TeamCreate"/>
 
         <activity android:name=".match.activity.MatchDetail">
         </activity>
         <activity android:name=".match.activity.MatchCreate"/>
+
         <activity android:name=".push.activity.MyMatchInformation"/>
 
         <service
