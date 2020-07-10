@@ -7,13 +7,9 @@ import android.widget.Toast;
 import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.api.RetrofitMatchApi;
-import com.prography.playeasy.match.domain.MatchDetail.Match;
-import com.prography.playeasy.match.domain.MatchDetail.MatchDetailDAO;
-import com.prography.playeasy.match.domain.MatchList.MatchListDAO;
-import com.prography.playeasy.match.domain.MatchPost.MatchDto;
-import com.prography.playeasy.match.domain.MatchPost.MatchPostRequestDAO;
-import com.prography.playeasy.match.domain.MatchRequestVO;
-import com.prography.playeasy.match.domain.MatchResponseVO;
+import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.util.MatchResponseCallback;
 
 import retrofit2.Call;
@@ -29,13 +25,13 @@ public class MatchService {
         this.matchClient = RetrofitClientFactory.getClient(RetrofitMatchApi.class);
     }
 
-    public void createMatch(MatchPostRequestDAO request, Context context) {
+    public void createMatch(MatchPostRequestDto request, Context context) {
         // Async
-        Call<MatchDetailDAO> call = matchClient.postMatch(TokenManager.get(context), request);
-        call.enqueue(new Callback<MatchDetailDAO>() {
+        Call<MatchDetailDto> call = matchClient.postMatch(TokenManager.get(context), request);
+        call.enqueue(new Callback<MatchDetailDto>() {
             @Override
-            public void onResponse(Call<MatchDetailDAO> call, Response<MatchDetailDAO> response) {
-                MatchDetailDAO body = response.body();
+            public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
+                MatchDetailDto body = response.body();
 
                 if (response.isSuccessful() == false || body.isSuccess() == false) {
                     Toast result = Toast.makeText(context, "Failed to register", Toast.LENGTH_SHORT);
@@ -50,19 +46,19 @@ public class MatchService {
             }
 
             @Override
-            public void onFailure(Call<MatchDetailDAO> call, Throwable t) {
+            public void onFailure(Call<MatchDetailDto> call, Throwable t) {
                 Log.e("CREATE_FAIL", t.getMessage());
             }
         });
     }
 
     public void retrieveMatch(MatchResponseCallback callback) {
-        Call<MatchListDAO> call = matchClient.getMatchList();
-        call.enqueue(new Callback<MatchListDAO>() {
+        Call<MatchListDto> call = matchClient.getMatchList();
+        call.enqueue(new Callback<MatchListDto>() {
             // API 호출 성공시 실행
             @Override
-            public void onResponse(Call<MatchListDAO> call, Response<MatchListDAO> response) {
-                MatchListDAO body = response.body();
+            public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
+                MatchListDto body = response.body();
                 if (!response.isSuccessful() || !body.isSuccess()) {
                     Log.d("RESPONSE", "Unsuccessful response");
                     return;
@@ -73,7 +69,7 @@ public class MatchService {
                 callback.onSuccess(body.getMatchList());
             }
             @Override
-            public void onFailure(Call<MatchListDAO> call, Throwable t) {
+            public void onFailure(Call<MatchListDto> call, Throwable t) {
 
             }
         });
@@ -81,17 +77,17 @@ public class MatchService {
     }
 
     public void detailMatch(int matchId, MatchResponseCallback callback) {
-        Call<MatchDetailDAO> call = matchClient.getMatch(matchId);
-        call.enqueue(new Callback<MatchDetailDAO>() {
+        Call<MatchDetailDto> call = matchClient.getMatch(matchId);
+        call.enqueue(new Callback<MatchDetailDto>() {
             @Override
-            public void onResponse(Call<MatchDetailDAO> call, Response<MatchDetailDAO> response) {
-                MatchDetailDAO body = response.body();
+            public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
+                MatchDetailDto body = response.body();
 
                 callback.onSuccess(body.getMatch());
             }
 
             @Override
-            public void onFailure(Call<MatchDetailDAO> call, Throwable t) {
+            public void onFailure(Call<MatchDetailDto> call, Throwable t) {
                 Log.e("RETRIEVE_ONE_FAIL", t.getMessage());
             }
         });

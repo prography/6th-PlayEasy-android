@@ -1,4 +1,4 @@
-package com.prography.playeasy.match.domain.MatchRevise;
+package com.prography.playeasy.match.domain.dtos;
 //for request Put
 public class LocationUpdateDto {
 

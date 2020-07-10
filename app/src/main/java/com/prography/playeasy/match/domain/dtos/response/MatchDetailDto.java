@@ -1,6 +1,8 @@
-package com.prography.playeasy.match.domain.MatchDetail;
+package com.prography.playeasy.match.domain.dtos.response;
 
-public class MatchDetailDAO {
+import com.prography.playeasy.match.domain.models.Match;
+
+public class MatchDetailDto {
 
     boolean success;
 

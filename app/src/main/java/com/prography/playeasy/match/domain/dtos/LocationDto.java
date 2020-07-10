@@ -1,4 +1,4 @@
-package com.prography.playeasy.match.domain.MatchPost;
+package com.prography.playeasy.match.domain.dtos;
 
 public class LocationDto {
 

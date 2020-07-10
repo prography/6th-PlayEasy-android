@@ -1,10 +1,10 @@
-package com.prography.playeasy.match.domain;
+package com.prography.playeasy.match.domain.dtos.response;
 
-import com.prography.playeasy.match.domain.MatchDetail.Match;
+import com.prography.playeasy.match.domain.models.Match;
 
 import java.util.List;
 
-public class MatchResponseVO {
+public class MatchResponseDto {
     private boolean success;
     private Match match;
     private List<Match> matchList;
