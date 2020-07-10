@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
-import com.prography.playeasy.mypage.module.adapter.MyMatchRecyclerViewAdapter;
 import com.prography.playeasy.push.module.view.adapter.PushRecyclerViewAdapter;
 
 import java.util.ArrayList;

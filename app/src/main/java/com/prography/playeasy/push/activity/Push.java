@@ -1,4 +1,4 @@
-package com.prography.playeasy.mypage.activity;
+package com.prography.playeasy.push.activity;
 
 import android.os.Bundle;
 import android.widget.Switch;
@@ -42,11 +42,6 @@ public class Push extends AppCompatActivity {
             s.setChecked(SettingManager.get(getApplicationContext(),
                     getResources().getResourceName(s.getId())));
         }
-
-//        matchAlarm.setChecked(SettingManager.get(getApplicationContext(),
-//                getResources().getResourceName(R.id.matchAlarm)));
-//        scoutAlarm.setChecked(SettingManager.get(getApplicationContext(),
-//                getResources().getResourceName(R.id.scoutAlarm)));
     }
 
     private void initialized() {

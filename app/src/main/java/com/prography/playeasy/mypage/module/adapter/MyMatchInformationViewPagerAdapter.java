@@ -10,10 +10,10 @@ import com.prography.playeasy.mypage.module.view.fragment.MyMatchRegister;
 
 import java.util.ArrayList;
 
-public class MyMatchViewPagerAdapter extends FragmentPagerAdapter {
+public class MyMatchInformationViewPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> list = new ArrayList<>();
-    public MyMatchViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+    public MyMatchInformationViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
 
         list.add(new MyMatchRegister());

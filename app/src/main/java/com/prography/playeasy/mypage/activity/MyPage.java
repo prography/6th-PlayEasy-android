@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
-import com.prography.playeasy.team.activity.TeamInformation;
+import com.prography.playeasy.push.activity.Push;
 import com.prography.playeasy.util.UIHelper;
 
 public class MyPage extends AppCompatActivity {
