@@ -62,17 +62,17 @@ public class TeamInformationActivity extends AppCompatActivity {
                 .into(myProfileImage);
         myProfileImage=(ImageButton)findViewById(R.id.ib_my_profile);
 //이메
-        textViewEmail = (TextView) findViewById(R.id.TextViewEmail);
+        textViewEmail = (TextView) findViewById(R.id.team_TextViewEmail);
 
-        editTextEmail= (EditText) findViewById(R.id.editTextEmail);
+        editTextEmail= (EditText) findViewById(R.id.team_editTextEmail);
 //이
-        textViewName=(TextView)findViewById(R.id.TextViewName);
-        editTextName=(EditText) findViewById(R.id.editTextName);
+        textViewName=(TextView)findViewById(R.id.team_TextViewName);
+        editTextName=(EditText) findViewById(R.id.team_editTextName);
 //나이
-        textViewAge = (TextView) findViewById(R.id.TextViewAge);
+        textViewAge = (TextView) findViewById(R.id.team_TextViewAge);
 
 
-        editTextAge = (EditText) findViewById(R.id.EditTextAge);
+        editTextAge = (EditText) findViewById(R.id.team_EditTextAge);
 
 //소속
 //        textViewTeam = (TextView) findViewById(R.id.TextViewTeam);
@@ -84,8 +84,8 @@ public class TeamInformationActivity extends AppCompatActivity {
     teamLevelSpinner=(Spinner)findViewById(R.id.spinner_teamLevel);
 
 //휴대폰 인증
-        textViewPhoneNum= (TextView) findViewById(R.id.textViewPhoneNum);
-        editTextPhoneNum=(EditText)findViewById(R.id.editTextPhoneNum);
+        textViewPhoneNum= (TextView) findViewById(R.id.team_textViewPhoneNum);
+        editTextPhoneNum=(EditText)findViewById(R.id.team_editTextPhoneNum);
 
 //         editTextPhoneNum2 = (EditText) findViewById(R.id.editTextPhoneNum2);
 //

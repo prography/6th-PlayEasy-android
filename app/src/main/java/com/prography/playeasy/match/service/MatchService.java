@@ -81,17 +81,17 @@ public class MatchService {
     }
 
     public void detailMatch(int matchId, MatchResponseCallback callback) {
-        Call<MatchResponseVO> call = matchClient.getMatch(matchId);
-        call.enqueue(new Callback<MatchResponseVO>() {
+        Call<MatchDetailDAO> call = matchClient.getMatch(matchId);
+        call.enqueue(new Callback<MatchDetailDAO>() {
             @Override
-            public void onResponse(Call<MatchResponseVO> call, Response<MatchResponseVO> response) {
-                MatchResponseVO body = response.body();
+            public void onResponse(Call<MatchDetailDAO> call, Response<MatchDetailDAO> response) {
+                MatchDetailDAO body = response.body();
 
                 callback.onSuccess(body.getMatch());
             }
 
             @Override
-            public void onFailure(Call<MatchResponseVO> call, Throwable t) {
+            public void onFailure(Call<MatchDetailDAO> call, Throwable t) {
                 Log.e("RETRIEVE_ONE_FAIL", t.getMessage());
             }
         });
