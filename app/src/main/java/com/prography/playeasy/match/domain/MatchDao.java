@@ -1,10 +1,8 @@
 package com.prography.playeasy.match.domain;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.prography.playeasy.lib.RetrofitClientFactory;
-import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
@@ -25,15 +23,15 @@ import retrofit2.Response;
 public class MatchDao {
 
     private RetrofitMatchApi matchClient;
-    private Context context;
+    private String token;
 
-    public MatchDao(Context context) {
+    public MatchDao(String token) {
         this.matchClient = RetrofitClientFactory.getClient(RetrofitMatchApi.class);
-        this.context = context;
+        this.token = token;
     }
 
     public Match create(MatchPostRequestDto requestDto) throws IOException {
-        Call<MatchDetailDto> call = matchClient.postMatch(TokenManager.get(this.context), requestDto);
+        Call<MatchDetailDto> call = matchClient.postMatch(token, requestDto);
         try {
             Response<MatchDetailDto> response = call.execute();
             MatchDetailDto matchDetailDto = response.body();
