@@ -1,18 +1,16 @@
 package com.prography.playeasy.mypage.activity;
 
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
+import com.prography.playeasy.team.activity.TeamInformation;
 import com.prography.playeasy.util.UIHelper;
 
-public class Mypage extends AppCompatActivity {
+public class MyPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -29,7 +27,8 @@ public class Mypage extends AppCompatActivity {
         findViewById(R.id.firstButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), MyInformation.class);
+                startActivity(intent);
             }
         });
 
@@ -43,7 +42,7 @@ public class Mypage extends AppCompatActivity {
         findViewById(R.id.thirdButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PushActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Push.class);
                 startActivity(intent);
             }
         });
@@ -51,7 +50,8 @@ public class Mypage extends AppCompatActivity {
         findViewById(R.id.forthButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), TeamInformation.class);
+                startActivity(intent);
             }
         });
 

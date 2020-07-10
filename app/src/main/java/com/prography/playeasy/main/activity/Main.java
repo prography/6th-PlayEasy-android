@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.prography.playeasy.R;
-import com.prography.playeasy.mypage.activity.Mypage;
+import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.util.UIHelper;
 
 import java.util.Calendar;
@@ -60,7 +60,7 @@ public class Main extends AppCompatActivity {
         switch(item.getItemId())
         {
             case R.id.myPageNavigatation:
-                Intent movedMypage = new Intent(this, Mypage.class);
+                Intent movedMypage = new Intent(this, MyPage.class);
                 startActivity(movedMypage);
                 break;
 

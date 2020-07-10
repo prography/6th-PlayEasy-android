@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.prography.playeasy.R;
 import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.activity.MatchCreate;
-import com.prography.playeasy.mypage.activity.Mypage;
+import com.prography.playeasy.mypage.activity.MyPage;
 
 public class UIHelper {
     public static void toolBarInitialize(AppCompatActivity activity, View view) {
@@ -43,7 +43,7 @@ public class UIHelper {
 
                     break;
                 case R.id.myPageNavigatation:
-                    clazz = Mypage.class;
+                    clazz = MyPage.class;
                     break;
             }
 

@@ -2,21 +2,16 @@ package com.prography.playeasy.match.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.prography.playeasy.R;
 import com.prography.playeasy.main.activity.Main;
-import com.prography.playeasy.match.domain.MatchDetail.Match;
-import com.prography.playeasy.match.service.MatchService;
-import com.prography.playeasy.match.util.MatchResponseCallback;
-import com.prography.playeasy.util.PlayeasyServiceFactory;
+import com.prography.playeasy.team.activity.TeamInformation;
 import com.prography.playeasy.util.UIHelper;
 
 import net.daum.mf.map.api.MapView;

@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/activity_teaminfo"
+            android:text="@string/activity_team_teaminfo"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -53,13 +53,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="32dp"
         android:text="팀 이름"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/teamName"
-        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
 
@@ -67,8 +67,8 @@
         android:id="@+id/teamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="152dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="148dp"
         android:background="@null"
         android:hint="프로그라피 6팀"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
         android:id="@+id/teamCaptinTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="주장"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
@@ -91,7 +91,7 @@
         android:id="@+id/teamCaptinName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:background="@null"
         android:hint="임규산"
         app:layout_constraintEnd_toEndOf="@+id/teamName"
@@ -103,7 +103,7 @@
         android:id="@+id/captinAgeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="나이"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
@@ -140,7 +140,7 @@
         android:id="@+id/abilitySpinner"
         android:layout_width="95dp"
         android:layout_height="28dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:entries="@array/실력"
         app:layout_constraintEnd_toEndOf="@+id/captinAgeName"
         app:layout_constraintHorizontal_bias="0.134"
@@ -148,10 +148,10 @@
         app:layout_constraintTop_toBottomOf="@+id/captinAgeName" />
 
     <TextView
-        android:id="@+id/captinPhoneitle"
+        android:id="@+id/captinPhoneTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="번호"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
@@ -163,7 +163,7 @@
         android:id="@+id/captinPhoneName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="@null"
         android:hint="01089740000"
         app:layout_constraintEnd_toEndOf="@+id/abilitySpinner"
@@ -172,20 +172,20 @@
         app:layout_constraintTop_toBottomOf="@+id/abilitySpinner" />
 
     <TextView
-        android:id="@+id/teamInformation"
+        android:id="@+id/teamInformationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="팀 소개"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/captinPhoneitle"
+        app:layout_constraintEnd_toEndOf="@+id/captinPhoneTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/captinPhoneitle"
-        app:layout_constraintTop_toBottomOf="@+id/captinPhoneitle" />
+        app:layout_constraintStart_toStartOf="@+id/captinPhoneTitle"
+        app:layout_constraintTop_toBottomOf="@+id/captinPhoneTitle" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/teamInformation"
         android:layout_width="325dp"
         android:layout_height="67dp"
         android:layout_marginTop="16dp"
@@ -195,10 +195,10 @@
         android:inputType="textPersonName"
         android:lines="2"
         android:maxLines="4"
-        app:layout_constraintEnd_toEndOf="@+id/teamInformation"
+        app:layout_constraintEnd_toEndOf="@+id/teamInformationTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/teamInformation"
-        app:layout_constraintTop_toBottomOf="@+id/teamInformation" />
+        app:layout_constraintStart_toStartOf="@+id/teamInformationTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamInformationTitle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/teamPlayerShowButton"
@@ -211,9 +211,9 @@
         android:textColor="@color/colorWhite"
         android:textSize="20dp"
         app:backgroundTint="@color/colorPoint"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintEnd_toEndOf="@+id/teamInformation"
+        app:layout_constraintStart_toStartOf="@+id/teamInformation"
+        app:layout_constraintTop_toBottomOf="@+id/teamInformation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

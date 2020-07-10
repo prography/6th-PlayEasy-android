@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/modifyConfirm"
+        android:title = "@string/activity_mypage_myInformation_modify"
+        android:iconTint="#980122"
+        app:showAsAction="ifRoom"/>
 </menu>

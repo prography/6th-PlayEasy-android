@@ -9,11 +9,12 @@ import com.prography.playeasy.R;
 import com.prography.playeasy.lib.SettingManager;
 
 import com.prography.playeasy.mypage.module.view.listener.SwitchListener;
+import com.prography.playeasy.util.UIHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PushActivity extends AppCompatActivity {
+public class Push extends AppCompatActivity {
 
     private Switch matchAlarm;
     private Switch scoutAlarm;
@@ -23,6 +24,8 @@ public class PushActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage_push);
+        UIHelper.toolBarInitialize(this,findViewById(R.id.pushToolbar));
+        UIHelper.hideWindow(this);
 
         initialized();
 

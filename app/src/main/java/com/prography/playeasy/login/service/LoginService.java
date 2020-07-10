@@ -12,7 +12,7 @@ import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
 import com.prography.playeasy.main.activity.Main;
-import com.prography.playeasy.mypage.activity.UserInformationActivity;
+import com.prography.playeasy.mypage.activity.MyInformation;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,7 +49,7 @@ public class LoginService {
 
                 Intent intent = new Intent();
                 if (response.body().isNewMember()) {
-                    intent.setClass(context, UserInformationActivity.class);
+                    intent.setClass(context, MyInformation.class);
                 } else {
                     intent.setClass(context, Main.class);
                 }

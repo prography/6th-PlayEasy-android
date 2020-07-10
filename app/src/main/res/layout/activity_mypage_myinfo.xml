@@ -6,271 +6,225 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/myPageMyInfoToolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/mypagemyinfoToolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorWhite"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/activity_mypage_myinfo"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </com.google.android.material.appbar.MaterialToolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <ImageButton
-        android:id="@+id/ib_my_profile"
-        android:layout_width="105dp"
-        android:layout_height="80dp"
-
-        android:background="@drawable/background_rounding"
-        android:scaleType="fitCenter"
-        android:src="@drawable/shinja"
-        app:layout_constraintBottom_toTopOf="@+id/TextViewEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="204dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
-
-        android:ems="10"
-        android:hint="홍길동"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/EditTextAge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/TextViewName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="212dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editTextName"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ib_my_profile"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/TextViewTeam"
-
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:padding="10dp"
-        android:text="소속 팀 "
-        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewAge" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/activity_mypage_myInformation"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
 
-    <TextView
-        android:id="@+id/TextViewEmail"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="140dp"
-        android:padding="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#707070"
-        android:textSize="25sp"
-
-        app:layout_constraintEnd_toStartOf="@+id/editTextEmail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBarLayout"
-        tools:text="이메일" />
-
-    <TextView
-        android:id="@+id/TextViewName"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="24dp"
-
-        android:layout_marginTop="8dp"
-        android:padding="10dp"
-
-        android:text="이름"
-        android:textColor="#707070"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/TextViewAge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewEmail"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/TextViewAge"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:padding="10dp"
-        android:text="나이"
-        android:textColor="#707070"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/EditTextAge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewName" />
-
-    <EditText
-        android:id="@+id/EditTextTeam"
-
-        android:layout_width="198dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-
-        android:layout_weight="1"
-        android:hint="어쩌다 FC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/TextViewTeam"
-        app:layout_constraintTop_toBottomOf="@+id/EditTextAge" />
-
-    <Spinner
-        android:id="@+id/spinnerLevel"
-        android:layout_width="192dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textViewLevel"
-        app:layout_constraintTop_toBottomOf="@+id/EditTextTeam" />
-
-    <EditText
-        android:id="@+id/EditTextAge"
-        android:layout_width="200dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="32dp"
-        android:hint="만 나이 입력"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/TextViewAge"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
-
-    <TextView
-        android:id="@+id/textViewLevel"
-        android:layout_width="116dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="8dp"
-        android:padding="10dp"
-        android:text="실력"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPhoneNum"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewTeam"
-        app:layout_constraintVertical_bias="0.251" />
-
-    <TextView
-        android:id="@+id/textViewPhoneNum"
-        android:layout_width="169dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:padding="10dp"
-        android:text="휴대폰 번호"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLevel" />
-
-    <EditText
-        android:id="@+id/editTextPhoneNum"
-        android:layout_width="166dp"
-        android:layout_height="47dp"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="52dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewIntroduceMyself"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toEndOf="@+id/textViewPhoneNum"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-    <TextView
-        android:id="@+id/textViewIntroduceMyself"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
         android:layout_width="128dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:text="자기소개"
-        android:textSize="25sp"
+        android:layout_height="126dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="176dp"
+        android:src="@drawable/shinja"
+        app:civ_border_color="@color/colorPoint"
+        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNum" />
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyInfoToolBar" />
 
-    <EditText
-        android:id="@+id/editTextIntroduceMyself"
-        android:layout_width="334dp"
-        android:layout_height="35dp"
-
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewIntroduceMyself"
-        app:layout_constraintVertical_bias="0.188" />
-
-    <Button
-        android:id="@+id/buttonEdit"
+    <TextView
+        android:id="@+id/myPageEmailTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:lineSpacingExtra="2sp"
-        android:textColor="#ae0c37"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        android:text="이메일"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/teamName"
+        app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIntroduceMyself"
-        tools:text="수정" />
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <TextView
+        android:id="@+id/myPageEmail"
+        android:layout_width="177dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="120dp"
+        android:text="mynamewoon@gmail.com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/myPageEmailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <TextView
+        android:id="@+id/myPageMyNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="이름"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageEmailTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageEmailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageEmailTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:hint="임규산"
+        app:layout_constraintEnd_toEndOf="@+id/myPageEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageEmail"
+        app:layout_constraintTop_toBottomOf="@+id/myPageEmail" />
+
+    <TextView
+        android:id="@+id/myPageMyAgeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="나이"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyNameTitle"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyNameTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyAge"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:hint="30"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyName"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyName" />
+
+    <TextView
+        android:id="@+id/myPageMyTeamTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="소속 팀"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyAgeTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyAgeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyAgeTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyTeam"
+        android:layout_width="174dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="12dp"
+        android:background="@null"
+        android:hint="검색 해주세요"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyAge"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyAge"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyAge" />
+
+    <TextView
+        android:id="@+id/myPageAbilityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="실력"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamTitle" />
+
+    <Spinner
+        android:id="@+id/myMyPageAbilitySpinner"
+        android:layout_width="95dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/실력"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeam"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeam"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeam" />
+
+    <TextView
+        android:id="@+id/myPageMyPhoneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="번호"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageAbilityTitle"
+        app:layout_constraintStart_toStartOf="@+id/myPageAbilityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageAbilityTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@null"
+        android:hint="01089740000"
+        app:layout_constraintEnd_toEndOf="@+id/myMyPageAbilitySpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMyPageAbilitySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/myMyPageAbilitySpinner" />
+
+    <TextView
+        android:id="@+id/myPageMyInformationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="자기 소개"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyPhoneTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyPhoneTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyPhoneTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyInformation"
+        android:layout_width="325dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="자기 소개 글을 써주세요"
+        android:inputType="textPersonName"
+        android:lines="2"
+        android:maxLines="4"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyInformationTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyInformationTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyInformationTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
