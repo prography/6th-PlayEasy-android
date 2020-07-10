@@ -14,7 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.prography.playeasy.R;
 import com.prography.playeasy.mypage.module.adapter.MyMatchViewPagerAdapter;
 
-public class MyMatchActivity extends AppCompatActivity {
+public class MyMatch extends AppCompatActivity {
 
     private ViewPager myMatchViewPager;
     private MyMatchViewPagerAdapter myMatchViewPagerAdapter;

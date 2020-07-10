@@ -1,245 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/teamInfoToolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/teaminfoToolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorWhite"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/activity_teaminfo"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </com.google.android.material.appbar.MaterialToolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <ImageButton
-        android:id="@+id/ib_team_profile"
-        android:layout_width="105dp"
-        android:layout_height="70dp"
-
-        android:background="@drawable/background_rounding"
-        android:scaleType="fitCenter"
-        android:src="@drawable/shinja"
-        app:layout_constraintBottom_toTopOf="@+id/team_TextViewEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/team_editTextName"
-        android:layout_width="203dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="홍길동"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/TextViewName"
-        app:layout_constraintTop_toBottomOf="@+id/team_editTextEmail" />
-
-    <EditText
-        android:id="@+id/team_editTextEmail"
-        android:layout_width="212dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/team_editTextName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ib_team_profile"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/team_TextViewEmail"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="140dp"
-        android:padding="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#707070"
-        android:textSize="30sp"
-
-        app:layout_constraintEnd_toStartOf="@+id/team_editTextEmail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBarLayout"
-        tools:text="이메일" />
-
-    <TextView
-        android:id="@+id/team_TextViewName"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="24dp"
-
-        android:layout_marginTop="8dp"
-        android:padding="10dp"
-
-        android:text="주장"
-        android:textColor="#707070"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/TextViewAge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_TextViewEmail"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/team_TextViewAge"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:padding="10dp"
-        android:text="나이"
-        android:textColor="#707070"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/team_EditTextAge"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_TextViewName" />
-
-
-    <Spinner
-        android:id="@+id/spinner_teamLevel"
-        android:layout_width="197dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_EditTextAge" />
-
-    <EditText
-        android:id="@+id/team_EditTextAge"
-        android:layout_width="199dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:hint="22세"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_teamLevel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/team_TextViewAge"
-        app:layout_constraintTop_toBottomOf="@+id/team_editTextName"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <TextView
-        android:id="@+id/team_textViewLevel"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"
-        android:text="실력"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/team_textViewPhoneNum"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_TextViewAge"
-        app:layout_constraintVertical_bias="0.251" />
-
-    <TextView
-        android:id="@+id/team_textViewPhoneNum"
-        android:layout_width="170dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="8dp"
-        android:padding="10dp"
-        android:text="휴대폰 번호"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_textViewLevel" />
-
-    <EditText
-        android:id="@+id/team_editTextPhoneNum"
-        android:layout_width="202dp"
-        android:layout_height="52dp"
-
+        android:layout_height="?attr/actionBarSize"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="52dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="@+id/team_textViewIntroduceMyself"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/team_textViewPhoneNum" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-    <TextView
-        android:id="@+id/team_textViewIntroduceMyself"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/activity_teaminfo"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
         android:layout_width="128dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="팀 소개"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_textViewPhoneNum" />
-
-    <EditText
-        android:id="@+id/team_editTextIntroduceMyself"
-        android:layout_width="365dp"
-        android:layout_height="57dp"
-
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+        android:layout_height="126dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="176dp"
+        android:src="@drawable/shinja"
+        app:civ_border_color="@color/colorPoint"
+        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_textViewIntroduceMyself" />
+        app:layout_constraintTop_toBottomOf="@+id/teamInfoToolBar" />
 
     <TextView
+        android:id="@+id/teamTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="250dp"
-        android:layout_marginBottom="44dp"
-        android:text="소속 팀원 보기"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="32dp"
+        android:text="팀 이름"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/teamName"
+        app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_editTextIntroduceMyself"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <EditText
+        android:id="@+id/teamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="152dp"
+        android:background="@null"
+        android:hint="프로그라피 6팀"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <TextView
+        android:id="@+id/teamCaptinTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="주장"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/teamTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/teamTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamTitle" />
+
+    <EditText
+        android:id="@+id/teamCaptinName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@null"
+        android:hint="임규산"
+        app:layout_constraintEnd_toEndOf="@+id/teamName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/teamName"
+        app:layout_constraintTop_toBottomOf="@+id/teamName" />
+
+    <TextView
+        android:id="@+id/captinAgeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="나이"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/teamCaptinTitle"
+        app:layout_constraintStart_toStartOf="@+id/teamCaptinTitle"
+        app:layout_constraintTop_toBottomOf="@+id/teamCaptinTitle" />
+
+    <EditText
+        android:id="@+id/captinAgeName"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:hint="30"
+        app:layout_constraintEnd_toEndOf="@+id/teamCaptinName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/teamCaptinName"
+        app:layout_constraintTop_toBottomOf="@+id/teamCaptinName" />
+
+    <TextView
+        android:id="@+id/abilityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="실력"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/captinAgeTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/captinAgeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/captinAgeTitle" />
+
+    <Spinner
+        android:id="@+id/abilitySpinner"
+        android:layout_width="95dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/실력"
+        app:layout_constraintEnd_toEndOf="@+id/captinAgeName"
+        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintStart_toStartOf="@+id/captinAgeName"
+        app:layout_constraintTop_toBottomOf="@+id/captinAgeName" />
+
+    <TextView
+        android:id="@+id/captinPhoneitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="번호"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/abilityTitle"
+        app:layout_constraintStart_toStartOf="@+id/abilityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/abilityTitle" />
+
+    <EditText
+        android:id="@+id/captinPhoneName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:hint="01089740000"
+        app:layout_constraintEnd_toEndOf="@+id/abilitySpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/abilitySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/abilitySpinner" />
+
+    <TextView
+        android:id="@+id/teamInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="팀 소개"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/captinPhoneitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/captinPhoneitle"
+        app:layout_constraintTop_toBottomOf="@+id/captinPhoneitle" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="325dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="팀 소개 글을 써주세요"
+        android:inputType="textPersonName"
+        android:lines="2"
+        android:maxLines="4"
+        app:layout_constraintEnd_toEndOf="@+id/teamInformation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/teamInformation"
+        app:layout_constraintTop_toBottomOf="@+id/teamInformation" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/teamPlayerShowButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        android:text="팀원 보러 가기"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        app:backgroundTint="@color/colorPoint"
+        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.prography.playeasy.match.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.prography.playeasy.R;
+import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.domain.MatchDetail.Match;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.match.util.MatchResponseCallback;
@@ -21,7 +23,8 @@ import net.daum.mf.map.api.MapView;
 
 public class MatchDetail extends AppCompatActivity {
 
-    private MaterialButton materialButton;
+    private MaterialButton detailHomeTeam;
+    private MaterialButton detailAppliedMatch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,10 +40,29 @@ public class MatchDetail extends AppCompatActivity {
 
         initialized();
 
+
     }
 
     private void initialized() {
-        materialButton = findViewById(R.id.detailMatchApplyButton);
+
+        detailHomeTeam = findViewById(R.id.detailHomeTeam);
+        detailAppliedMatch = findViewById(R.id.detailMatchApplyButton);
+
+        detailHomeTeam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TeamInformation.class);
+                startActivity(intent);
+            }
+        });
+
+        detailAppliedMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Main.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

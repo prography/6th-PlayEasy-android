@@ -16,10 +16,7 @@
         android:theme="@style/mAppTheme">
 
         <activity android:name=".landing.activity.Landing">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".main.activity.BeforeLoginMain"/>
         <activity android:name=".login.activity.LoginActivity"/>
@@ -28,11 +25,16 @@
         <activity android:name=".mypage.activity.Mypage"/>
 
         <activity android:name=".mypage.activity.UserInformationActivity"/>
+        <activity android:name=".match.activity.TeamInformation"/>
 
         <activity android:name=".match.activity.MatchDetail">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".mypage.activity.PushActivity"/>
-        <activity android:name=".mypage.activity.MyMatchActivity"/>
+        <activity android:name=".mypage.activity.MyMatch"/>
         <activity android:name=".push.activity.MyMatchInformation"/>
         <service
             android:name=".lib.firebase.FirebaseMessageService"
