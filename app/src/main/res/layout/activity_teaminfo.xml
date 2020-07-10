@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/activity_teaminfo"
+                android:text="@string/activity_team_teaminfo"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -66,7 +66,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/TextViewName"
+        app:layout_constraintStart_toEndOf="@+id/team_TextViewName"
         app:layout_constraintTop_toBottomOf="@+id/team_editTextEmail" />
 
     <EditText
@@ -112,7 +112,7 @@
         android:text="주장"
         android:textColor="#707070"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/TextViewAge"
+        app:layout_constraintBottom_toTopOf="@+id/team_TextViewAge"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/team_TextViewEmail"

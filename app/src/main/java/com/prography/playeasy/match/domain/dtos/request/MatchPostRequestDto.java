@@ -6,5 +6,10 @@ import com.prography.playeasy.match.domain.dtos.MatchDto;
 public class MatchPostRequestDto {
     LocationDto locationDto;
 
-    MatchDto matchDto;
+    MatchRequestDto matchDto;
+
+    public MatchPostRequestDto( MatchRequestDto matchDto,LocationDto locationDto) {
+        this.locationDto = locationDto;
+        this.matchDto = matchDto;
+    }
 }

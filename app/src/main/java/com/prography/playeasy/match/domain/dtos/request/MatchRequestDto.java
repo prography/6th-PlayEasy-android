@@ -3,33 +3,27 @@ package com.prography.playeasy.match.domain.dtos.request;
 import java.util.Date;
 
 public class MatchRequestDto {
-    private String title;
+
     private String type;
     private String description;
-    private String location;
-    private Integer fee;
+    private int fee;
     private Date startAt;
-    private Date endAt;
-    private Integer homeQuota;
+    private int duration;
+    String phone;
+    private int totalQuota;
 
-    public MatchRequestDto(String title, String type, String description, String location, Integer fee, Date startAt, Date endAt, Integer homeQuota) {
-        this.title = title;
+    public MatchRequestDto( String type, String description,  Date startAt, int duration,int fee, String phone,int totalQuota) {
+
         this.type = type;
         this.description = description;
-        this.location = location;
         this.fee = fee;
         this.startAt = startAt;
-        this.endAt = endAt;
-        this.homeQuota = homeQuota;
+        this.duration = duration;
+        this.phone=phone;
+        this.totalQuota = totalQuota;
     }
 
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getType() {
         return type;
@@ -47,19 +41,13 @@ public class MatchRequestDto {
         this.description = description;
     }
 
-    public String getLocation() {
-        return location;
-    }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
-    public Integer getFee() {
+    public int getFee() {
         return fee;
     }
 
-    public void setFee(Integer fee) {
+    public void setFee(int fee) {
         this.fee = fee;
     }
 
@@ -71,33 +59,26 @@ public class MatchRequestDto {
         this.startAt = startAt;
     }
 
-    public Date getEndAt() {
-        return endAt;
+
+
+
+    public int getHomeQuota() {
+        return totalQuota;
     }
 
-    public void setEndAt(Date endAt) {
-        this.endAt = endAt;
-    }
-
-    public Integer getHomeQuota() {
-        return homeQuota;
-    }
-
-    public void setHomeQuota(Integer homeQuota) {
-        this.homeQuota = homeQuota;
+    public void setHomeQuota(int homeQuota) {
+        this.totalQuota = homeQuota;
     }
 
     @Override
     public String toString() {
         return "{" +
-                "title='" + title + '\'' +
-                ", type='" + type + '\'' +
+                "type='" + type + '\'' +
                 ", description='" + description + '\'' +
-                ", location='" + location + '\'' +
-                ", fee=" + fee +
                 ", startAt=" + startAt +
-                ", endAt=" + endAt +
-                ", homeQuota=" + homeQuota +
+                ", durationi=" +duration+
+                ", fee=" + fee +
+                ", totalQuota=" + totalQuota +
                 '}';
     }
 }
