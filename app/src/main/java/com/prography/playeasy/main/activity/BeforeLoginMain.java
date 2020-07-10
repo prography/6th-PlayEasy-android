@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.login.activity.LoginActivity;
-import com.prography.playeasy.match.domain.MatchDetail.Match;
+import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.util.MatchResponseCallback;
 import com.prography.playeasy.util.UIHelper;

@@ -1,4 +1,4 @@
-package com.prography.playeasy.match.domain.MatchList;
+package com.prography.playeasy.match.domain.models;
 
 import java.util.Date;
 

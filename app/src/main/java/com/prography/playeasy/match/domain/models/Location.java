@@ -1,4 +1,4 @@
-package com.prography.playeasy.match.domain.MatchDetail;
+package com.prography.playeasy.match.domain.models;
 
 public class Location {
     int id;
