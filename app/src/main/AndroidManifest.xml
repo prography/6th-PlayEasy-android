@@ -16,7 +16,10 @@
         android:theme="@style/mAppTheme">
 
         <activity android:name=".landing.activity.Landing">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".main.activity.BeforeLoginMain"/>
@@ -37,10 +40,6 @@
         <activity android:name=".team.activity.TeamCreate"/>
 
         <activity android:name=".match.activity.MatchDetail">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".match.activity.MatchCreate"/>
 
