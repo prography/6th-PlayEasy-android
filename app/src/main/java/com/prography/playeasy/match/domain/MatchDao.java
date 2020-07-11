@@ -4,12 +4,16 @@ import android.util.Log;
 
 import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.match.api.RetrofitMatchApi;
+import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,19 +46,19 @@ public class MatchDao {
             throw e;
         }
     }
-
-    public List<Match> retrieve() throws IOException {
-        Call<MatchListDto> call = matchClient.getMatchList();
-        try {
-            Response<MatchListDto> response = call.execute();
-            MatchListDto matchListDto = response.body();
-            assert matchListDto != null;
-            return matchListDto.getMatchList();
-        } catch (Throwable e) {
-            Log.e("RETRIEIVE_FAIL", Objects.requireNonNull(e.getMessage()));
-            throw e;
-        }
-    }
+//규산
+//    public List<Match> retrieve() throws IOException {
+//        Call<List<MatchDto>> call = matchClient.getMatchList();
+//        try {
+//            Response<List<MatchDto>> response = call.execute();
+//            List<MatchDto> matchListDto = response.body();
+//            assert matchListDto != null;
+//            return matchListDto;
+//        } catch (Throwable e) {
+//            Log.e("RETRIEIVE_FAIL", Objects.requireNonNull(e.getMessage()));
+//            throw e;
+//        }
+ //   }
 
     public Match findById(int matchId) throws IOException {
         Call<MatchDetailDto> call = matchClient.getMatch(matchId);
@@ -68,4 +72,15 @@ public class MatchDao {
             throw e;
         }
     }
+
+    public static void createSampleMatch() throws ParseException {
+
+        List<MatchDto> matchArr = new ArrayList<>() ;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        matchArr.add(new MatchDto(MatchDto.Type.SOCCER , "축구뜨자", sdf.parse("2020-07-04"), 180, 3000, "010-9165-6918", 11));
+        matchArr.add(new MatchDto(MatchDto.Type.FOOTSAL5 , "풋살 즐기", sdf.parse("2020-07-04"), 180, 5000, "010-9165-6918", 5));
+
+    }
+
 }

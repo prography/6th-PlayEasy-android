@@ -23,7 +23,6 @@ public class Main extends AppCompatActivity {
 
     private static final String TAG = "JWT_TOKEN";
     private HorizontalCalendar horizontalCalendar;
-
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
     @Override
     protected void onCreate(Bundle savedInstanceState) {

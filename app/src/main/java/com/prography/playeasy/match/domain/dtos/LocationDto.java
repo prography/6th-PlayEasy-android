@@ -1,8 +1,11 @@
 package com.prography.playeasy.match.domain.dtos;
 
-public class LocationDto {
+import com.google.gson.annotations.SerializedName;
 
+public class LocationDto {
+    @SerializedName("latitude")
     float latitude;
+
     float longitude;
     String name;
     String address;

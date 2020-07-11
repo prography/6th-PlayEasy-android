@@ -8,7 +8,7 @@ public class RetrofitClientFactory {
     private static final String BASE_URL="http://api.theplayeasy.com";
 
     private RetrofitClientFactory() { }
-
+//RestClient에서 기본 URL설정, okhhttp 및 데이터를 파싱하는 GsonCOnverter를 지정한다
     public static <T> T getClient(Class<T> apiInterfaceClass) {
         if (service == null) {
             service = new Retrofit.Builder()

@@ -24,9 +24,9 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
     public void createMatchTest() {
         try {
             Date date=new Date();
-            MatchRequestDto matchData=new MatchRequestDto("FUTSAL6" ,"축구뜨자",date,180,3000,"010-9165-6918",11);
-            LocationDto locationDto=new LocationDto(3.14f,7.77f,"마루 180","강남구","마루 경기장");
-            MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData,locationDto);
+            MatchRequestDto matchData=new MatchRequestDto("FOOTSAL6" ,"축구뜨자",date,120,3000,"010-9165-6918",6);
+            LocationDto locationData=new LocationDto(3.14f,7.77f,"마루 180","강남구","마루 경기장");
+            MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData,locationData);
 
 //                        "type": "FUTSAL6",
 //                        "description": "[수정] 6대6 풋살 하실 팀 구합니다!!",
@@ -50,17 +50,17 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
             Log.d("Error", e.getMessage());
         }
     }
-
-    @Test
-    public void retrieveTest() {
-        try {
-            List<Match> matchList = new MatchDao(FAKE_TOKEN).retrieve();
-            List<Match> compareList = new ArrayList<Match>(5);
-            assertArrayEquals(matchList.toArray(), compareList.toArray());
-        } catch (IOException e) {
-            Log.d("Error", e.getMessage());
-        }
-    }
+//
+//    @Test
+//    public void retrieveTest() {
+//        try {
+//            List<Match> matchList = new MatchDao(FAKE_TOKEN).retrieve();
+//            List<Match> compareList = new ArrayList<Match>(5);
+//            assertArrayEquals(matchList.toArray(), compareList.toArray());
+//        } catch (IOException e) {
+//            Log.d("Error", e.getMessage());
+//        }
+//    }
 
     @Test
     public void getMatchTest() {
