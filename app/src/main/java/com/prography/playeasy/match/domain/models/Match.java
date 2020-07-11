@@ -6,7 +6,8 @@ public class Match {
 
     private int id;
    // private String title;
-    private enum type{SOCCER,FOOTSAL5,FOOTSAL6};
+    static enum Type{SOCCER,FOOTSAL5,FOOTSAL6};
+    private Type type;
     private String description;
     private Date startAt;
     //location 변수 대신 duration 넣음
@@ -17,124 +18,116 @@ public class Match {
     private int phone;
 
     private int totalQuota;
-    private enum status{WAITING,CONFIRMED,CANCEL};
-    private Date createdAt;
-    private Date updatedAt;
+    static enum Status{WAITING,CONFIRMED,CANCEL};
+    private Status matchStatus;
+//   //제거
+//    private Date createdAt;
+//    private Date updatedAt;
    //private int homeQuota;
 
     private int writerId;
-
-    private int homeTeamId;
-    private int locationId;
+//
+//    private int homeTeamId;
+//    private int locationId;
    //사라진 필드 private int awayTeamId와 homeQuota;
     private HomeTeam homeTeam;
     private Location location;
-  public int getId() {
-   return id;
-  }
 
-  public void setId(int id) {
-   this.id = id;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public String getDescription() {
-   return description;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public void setDescription(String description) {
-   this.description = description;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public Date getStartAt() {
-   return startAt;
-  }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-  public void setStartAt(Date startAt) {
-   this.startAt = startAt;
-  }
+    public Date getStartAt() {
+        return startAt;
+    }
 
-  public int getDuration() {
-   return duration;
-  }
+    public void setStartAt(Date startAt) {
+        this.startAt = startAt;
+    }
 
-  public void setDuration(int duration) {
+    public int getDuration() {
+        return duration;
+    }
 
-      this.duration = duration;
-  }
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
-  public int getFee() {
-   return fee;
-  }
+    public int getFee() {
+        return fee;
+    }
 
-  public void setFee(int fee) {
-   this.fee = fee;
-  }
+    public void setFee(int fee) {
+        this.fee = fee;
+    }
 
-  public int getPhone() {
-   return phone;
-  }
+    public int getPhone() {
+        return phone;
+    }
 
-  public void setPhone(int phone) {
-   this.phone = phone;
-  }
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
 
-  public int getTotalQuota() {
-   return totalQuota;
-  }
+    public int getTotalQuota() {
+        return totalQuota;
+    }
 
-  public void setTotalQuota(int totalQuota) {
-   this.totalQuota = totalQuota;
-  }
+    public void setTotalQuota(int totalQuota) {
+        this.totalQuota = totalQuota;
+    }
 
-  public Date getCreatedAt() {
-   return createdAt;
-  }
+    public int getWriterId() {
+        return writerId;
+    }
 
-  public void setCreatedAt(Date createdAt) {
-   this.createdAt = createdAt;
-  }
+    public void setWriterId(int writerId) {
+        this.writerId = writerId;
+    }
 
-  public Date getUpdatedAt() {
-   return updatedAt;
-  }
+    public HomeTeam getHomeTeam() {
+        return homeTeam;
+    }
 
-  public void setUpdatedAt(Date updatedAt) {
-   this.updatedAt = updatedAt;
-  }
+    public void setHomeTeam(HomeTeam homeTeam) {
+        this.homeTeam = homeTeam;
+    }
 
-  public int getWriterId() {
-   return writerId;
-  }
+    public Location getLocation() {
+        return location;
+    }
 
-  public void setWriterId(int writerId) {
-   this.writerId = writerId;
-  }
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
-  public int getHomeTeamId() {
-   return homeTeamId;
-  }
-
-  public void setHomeTeamId(int homeTeamId) {
-   this.homeTeamId = homeTeamId;
-  }
-
-  public int getLocationId() {
-   return locationId;
-  }
-
-  public void setLocationId(int locationId) {
-   this.locationId = locationId;
-  }
-
-  public HomeTeam getHomeTeam() {
-   return homeTeam;
-  }
-
-  public void setHomeTeam(HomeTeam homeTeam) {
-   this.homeTeam = homeTeam;
-  }
-
- //    @Override
+    public Match(int id, Type type, String description, Date startAt, int duration, int fee, int phone, int totalQuota, Status matchStatus, int writerId, HomeTeam homeTeam, Location location) {
+        this.id = id;
+        this.type = type;
+        this.description = description;
+        this.startAt = startAt;
+        this.duration = duration;
+        this.fee = fee;
+        this.phone = phone;
+        this.totalQuota = totalQuota;
+        this.matchStatus = matchStatus;
+        this.writerId = writerId;
+        this.homeTeam = homeTeam;
+        this.location = location;
+    }
+//    @Override
 //    public String toString() {
 //        return "Match{" +
 //                "id=" + id +

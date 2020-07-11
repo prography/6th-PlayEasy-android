@@ -1,12 +1,15 @@
 package com.prography.playeasy.match.api;
 
+import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
-import com.prography.playeasy.match.domain.dtos.response.MatchEndResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchReviseRequestDto;
+import com.prography.playeasy.match.domain.models.Match;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -22,9 +25,9 @@ public interface RetrofitMatchApi {
     @POST("/api/match")
     Call<MatchDetailDto> postMatch(@Header("authorization") String token,
                                    @Body MatchPostRequestDto requestVO);
-
+enum Status{ALL,AVAILABLE};
     @GET("/api/match/list")
-    Call<MatchListDto> getMatchList();
+    Call<List<MatchDto>> getMatchList(@Query("date") Date date,@Query("status") Status status);
 
 
     /**
@@ -46,7 +49,7 @@ public interface RetrofitMatchApi {
 
     //매치 마감
     @PUT("/api/match/status")
-    Call <MatchEndResponseDto> endMatch(@Body HashMap<String,Object> body);
+    Call <Match> endMatch(@Body HashMap<String,Object> body);
 //    int matchId = 0;
 //    enum status{WAITING,CONFIRMED,CANCEL} status;
 //    String nestedJson="{"+matchId+":"+matchId+","+"statusType" +":"+ status+"}";

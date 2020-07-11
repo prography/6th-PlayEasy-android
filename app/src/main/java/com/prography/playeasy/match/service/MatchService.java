@@ -7,10 +7,13 @@ import android.widget.Toast;
 import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.api.RetrofitMatchApi;
+import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.util.MatchResponseCallback;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +36,7 @@ public class MatchService {
             public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
                 MatchDetailDto body = response.body();
 
-                if (response.isSuccessful() == false || body.isSuccess() == false) {
+                if (response.isSuccessful() == false ) {
                     Toast result = Toast.makeText(context, "Failed to register", Toast.LENGTH_SHORT);
                     result.show();
                     return;
@@ -51,30 +54,31 @@ public class MatchService {
             }
         });
     }
-
-    public void retrieveMatch(MatchResponseCallback callback) {
-        Call<MatchListDto> call = matchClient.getMatchList();
-        call.enqueue(new Callback<MatchListDto>() {
-            // API 호출 성공시 실행
-            @Override
-            public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
-                MatchListDto body = response.body();
-                if (!response.isSuccessful() || !body.isSuccess()) {
-                    Log.d("RESPONSE", "Unsuccessful response");
-                    return;
-                }
-                // API 실행이 성공적으로 응답했을 경우
-                Log.d("retrieveMATCH", body.getMatchList().toString());
-                // 전달받은 콜백 인터페이스 실행
-                callback.onSuccess(body.getMatchList());
-            }
-            @Override
-            public void onFailure(Call<MatchListDto> call, Throwable t) {
-
-            }
-        });
-
-    }
+    //0711 잘 모르겠음
+//
+//    public void retrieveMatch(MatchResponseCallback callback) {
+//        Call<List<MatchDto>> call = matchClient.getMatchList();
+//        call.enqueue(new Callback<List<MatchDto>>() {
+//            // API 호출 성공시 실행
+//            @Override
+//            public void onResponse(Call<List<MatchDto>> call, Response <List<MatchDto>> response) {
+//                List<MatchDto> body = response.body();
+//                if (!response.isSuccessful() ) {
+//                    Log.d("RESPONSE", "Unsuccessful response");
+//                    return;
+//                }
+//                // API 실행이 성공적으로 응답했을 경우
+//                Log.d("retrieveMATCH", body.toString());
+//                // 전달받은 콜백 인터페이스 실행
+//                callback.onSuccess(body);
+//            }
+//            @Override
+//            public void onFailure(Call<List<MatchDto>> call, Throwable t) {
+//                Log.e("RETRIEVE_List_FAIL", t.getMessage());
+//            }
+//        });
+//
+//    }
 
     public void detailMatch(int matchId, MatchResponseCallback callback) {
         Call<MatchDetailDto> call = matchClient.getMatch(matchId);
@@ -82,10 +86,8 @@ public class MatchService {
             @Override
             public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
                 MatchDetailDto body = response.body();
-
                 callback.onSuccess(body.getMatch());
             }
-
             @Override
             public void onFailure(Call<MatchDetailDto> call, Throwable t) {
                 Log.e("RETRIEVE_ONE_FAIL", t.getMessage());
