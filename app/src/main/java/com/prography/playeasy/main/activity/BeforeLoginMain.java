@@ -10,11 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.login.activity.LoginActivity;
+import com.prography.playeasy.match.domain.MatchDao;
+import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.util.MatchResponseCallback;
 import com.prography.playeasy.util.UIHelper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -34,7 +39,7 @@ public class BeforeLoginMain extends AppCompatActivity {
         @Override
         public void onSuccess(Object responseData) {
             // 응답 데이터 변환
-            List<Match> matchList = (List<Match>)responseData;
+            List<MatchDto> matchList = (List<MatchDto>)responseData;
             // 리사이클러뷰 렌더링
             adaptRecyclerView(matchList);
         }
@@ -58,7 +63,14 @@ public class BeforeLoginMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_beforelogin);
+        List<MatchDto> matchDummyList = null;
+        try {
+         matchDummyList=createSampleMatch();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        adaptRecyclerView(matchDummyList);
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.MainToolbar));
 
@@ -94,14 +106,26 @@ public class BeforeLoginMain extends AppCompatActivity {
         super.onPause();
         handler.removeCallbacks(run);
     }
-    private void adaptRecyclerView(List<Match> matchList) {
-        RecyclerView recyclerView = findViewById(R.id.matchListRecyclerView);
+    public static List<MatchDto> createSampleMatch() throws ParseException {
+
+        List<MatchDto> matchArr = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        matchArr.add(new MatchDto("SOCCER", "축구뜨자", sdf.parse("2020-07-04"), 180, 3000, "010-9165-6918", 11));
+        matchArr.add(new MatchDto("FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-04"), 180, 5000, "010-9165-6918", 5));
+        return matchArr;
+    }
+//카드뷰와 activity_main_custom에 Binding 의 대상이 있어야 함?
+//chohee 에서 initReecyclerVIew() method의 역할을 한
+    private void adaptRecyclerView(List<MatchDto> matchList) {
+        RecyclerView recyclerView = findViewById(R.id.MainRecycler);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        for (Match m : matchList) {
+        for (MatchDto m : matchList) {
             adapter.addItems(m);
         }
     }

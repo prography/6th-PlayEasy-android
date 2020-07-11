@@ -7,7 +7,7 @@ import com.prography.playeasy.match.domain.dtos.MatchDto;
 public class MatchPostRequestDto {
     @SerializedName("locationData")
     LocationDto locationData;
-@SerializedName("matchData")
+    @SerializedName("matchData")
     MatchRequestDto matchData;
 
     public MatchPostRequestDto( MatchRequestDto matchDto,LocationDto locationDto) {

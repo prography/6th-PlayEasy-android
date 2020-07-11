@@ -1,6 +1,8 @@
 package com.prography.playeasy.main.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,13 +12,19 @@ import android.view.MenuItem;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
+import com.prography.playeasy.match.domain.dtos.MatchDto;
+import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.util.UIHelper;
 
+import java.text.ParseException;
 import java.util.Calendar;
+import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
+
+import static com.prography.playeasy.main.activity.BeforeLoginMain.createSampleMatch;
 
 
 public class Main extends AppCompatActivity {
@@ -28,7 +36,14 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
+        List<MatchDto> matchDummyList = null;
+        try {
+            matchDummyList=createSampleMatch();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        adaptRecyclerView(matchDummyList);
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.MainToolbar));
         UIHelper.bottomNavigationInitialize(this, findViewById(R.id.bottomNavigation));
@@ -56,6 +71,18 @@ public class Main extends AppCompatActivity {
         Log.d(TAG, TokenManager.get(getApplicationContext()));
 
 
+    }
+    private void adaptRecyclerView(List<MatchDto> matchList) {
+        RecyclerView recyclerView = findViewById(R.id.MainRecycler);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+
+        for (MatchDto m : matchList) {
+            adapter.addItems(m);
+        }
     }
 
 

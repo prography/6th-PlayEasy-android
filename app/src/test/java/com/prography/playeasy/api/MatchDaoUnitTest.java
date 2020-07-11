@@ -51,16 +51,17 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
         }
     }
 //
-//    @Test
-//    public void retrieveTest() {
-//        try {
-//            List<Match> matchList = new MatchDao(FAKE_TOKEN).retrieve();
-//            List<Match> compareList = new ArrayList<Match>(5);
-//            assertArrayEquals(matchList.toArray(), compareList.toArray());
-//        } catch (IOException e) {
-//            Log.d("Error", e.getMessage());
-//        }
-//    }
+    @Test
+    public void retrieveTest() {
+        try {
+            List<MatchDto> matchList = new MatchDao(FAKE_TOKEN).retrieve(new Date());
+
+            List<MatchDto> compareList = new ArrayList<MatchDto>(5);
+            assertArrayEquals(matchList.toArray(), compareList.toArray());
+        } catch (IOException e) {
+            Log.d("Error", e.getMessage());
+        }
+    }
 
     @Test
     public void getMatchTest() {

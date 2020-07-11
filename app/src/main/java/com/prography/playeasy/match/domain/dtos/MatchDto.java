@@ -8,9 +8,10 @@ public class MatchDto {
 
 
 
-    public enum Type{SOCCER,FOOTSAL5,FOOTSAL6};
+
+
     @SerializedName("type")
-    Type type;
+    String type;
     @SerializedName("description")
     private String description;
 
@@ -26,7 +27,7 @@ public class MatchDto {
     @SerializedName("totalQuota")
     int totalQuota;
 
-    public MatchDto(Type typ, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
+    public MatchDto(String typ, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
         this.type=typ;
         this.description = description;
         this.startAt = startAt;
@@ -37,6 +38,59 @@ public class MatchDto {
 
     }
 
+    public String getType() {
+        return type;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getStartAt() {
+        return startAt;
+    }
+
+    public void setStartAt(Date startAt) {
+        this.startAt = startAt;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public int getFee() {
+        return fee;
+    }
+
+    public void setFee(int fee) {
+        this.fee = fee;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getTotalQuota() {
+        return totalQuota;
+    }
+
+    public void setTotalQuota(int totalQuota) {
+        this.totalQuota = totalQuota;
+    }
 }

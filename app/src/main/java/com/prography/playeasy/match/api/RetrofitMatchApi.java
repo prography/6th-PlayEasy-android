@@ -25,9 +25,13 @@ public interface RetrofitMatchApi {
     @POST("/api/match")
     Call<MatchDetailDto> postMatch(@Header("authorization") String token,
                                    @Body MatchPostRequestDto requestVO);
-enum Status{ALL,AVAILABLE};
+
+
     @GET("/api/match/list")
-    Call<List<MatchDto>> getMatchList(@Query("date") Date date,@Query("status") Status status);
+    Call<List<MatchDto>> getMatchList(@Query("date") String date);
+
+    @GET("/api/match/list")
+    Call<List<MatchDto>> getMatchList(@Query("date") String date,@Query("status") String status);
 
 
     /**

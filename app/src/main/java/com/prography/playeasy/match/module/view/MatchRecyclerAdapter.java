@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.activity.MatchDetail;
+import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
 
 
 public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdapter.MyViewHolder>{
-    private List<Match> matchList = new ArrayList<>();
+    private List<MatchDto> matchList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -37,36 +38,37 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
         return matchList.size();
     }
 
-    public void addItems(Match match) {
+    public void addItems(MatchDto match) {
         matchList.add(match);
         notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView title;
+//        private TextView title;
         private TextView type;
         private TextView description;
-        private TextView location;
-        private TextView fee;
         private TextView startAt;
-        private TextView endAt;
-        private TextView homeQuota;
-        private TextView matchId;
+
+        private TextView duration;
+        private TextView fee;
+        private TextView phone;
+
+
+        private TextView totalQuota;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.matchTitle);
             type = itemView.findViewById(R.id.matchType);
             description = itemView.findViewById(R.id.matchDescription);
-            location = itemView.findViewById(R.id.matchLocation);
-            fee = itemView.findViewById(R.id.matchFee);
+
             startAt = itemView.findViewById(R.id.matchStartAt);
-            endAt = itemView.findViewById(R.id.matchEndAt);
-            homeQuota = itemView.findViewById(R.id.matchHomeQuota);
-            matchId = itemView.findViewById(R.id.matchId);
+            duration = itemView.findViewById(R.id.matchEndAt);
+            fee = itemView.findViewById(R.id.matchFee);
+           totalQuota = itemView.findViewById(R.id.matchHomeQuota);
         }
 //주석 처리
-        public void onBind(Match match) {
+        public void onBind(MatchDto match) {
 //            title.setText(match.getTitle());
 //            type.setText(match.getType());
             description.setText(match.getDescription());
@@ -75,7 +77,6 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
             startAt.setText(match.getStartAt().toString());
 //            endAt.setText(match.getEndAt().toString());
       //      homeQuota.setText(String.valueOf(match.getHomeQuota()));
-            matchId.setText(String.valueOf(match.getId()));
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

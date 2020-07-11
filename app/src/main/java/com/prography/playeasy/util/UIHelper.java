@@ -2,6 +2,7 @@ package com.prography.playeasy.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class UIHelper {
                     break;
                 case R.id.registerNavigatation:
                     clazz = MatchCreate.class;
+                    Log.e("매치 작성 페이지로 들어옴","error");
                     break;
                 case R.id.myMatchNavigatation:
                     clazz = MyMatchInformation.class;

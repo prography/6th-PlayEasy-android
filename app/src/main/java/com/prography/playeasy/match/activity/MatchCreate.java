@@ -32,7 +32,7 @@ public class MatchCreate extends AppCompatActivity {
 
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
-    Spinner matchtype;
+
 
     LocationDto locationDto;
 
@@ -58,25 +58,8 @@ public class MatchCreate extends AppCompatActivity {
         eTimePicker = findViewById(R.id.timePickerEnd);
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.진행방식, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        matchtype.setAdapter(adapter);
-        //경기 진행 방식 스피너 아직 미구
-        matchtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                                                @Override
-                                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                                                }
-
-                                                @Override
-                                                public void onNothingSelected(AdapterView<?> parent) {
-
-                                                }
-                                            }
 
 
-        );
     }
 //        findViewById(R.id.matchCreateConfirm).setOnClickListener((v) -> {
 //            MatchRequestDto requestDto = new MatchRequestDto(
