@@ -24,7 +24,7 @@ public class MyMatchInformation extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_push_mymatchinformation);
+        setContentView(R.layout.activity_mypage_mymatchinformation);
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.pushMyMatchInf));
 

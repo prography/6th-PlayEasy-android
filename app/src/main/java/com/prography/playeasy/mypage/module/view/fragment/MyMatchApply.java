@@ -15,7 +15,7 @@ public class MyMatchApply extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage_mymatch_apply, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage_mymatchinformation_apply, container, false);
 
         return rootView;
     }

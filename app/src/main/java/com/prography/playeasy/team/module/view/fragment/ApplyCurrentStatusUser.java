@@ -1,4 +1,4 @@
-package com.prography.playeasy.mypage.module.view.fragment;
+package com.prography.playeasy.team.module.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
-import com.prography.playeasy.mypage.module.adapter.MyMatchInformationRecyclerViewAdapter;
+import com.prography.playeasy.push.module.view.adapter.PushRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
-public class MyMatchRegister extends Fragment {
+public class ApplyCurrentStatusUser extends Fragment {
     private ArrayList<MyMatchVO> test;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage_mymatchinformation_register, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_team_applycurrentstauts_user, container, false);
 
         return rootView;
     }
@@ -37,10 +37,10 @@ public class MyMatchRegister extends Fragment {
     }
 
     private void initialize(View view) {
-        RecyclerView recyclerView = view.findViewById(R.id.myMatchRegisterRecyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.pushRegisterRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        final MyMatchInformationRecyclerViewAdapter adapter = new MyMatchInformationRecyclerViewAdapter();
+        final PushRecyclerViewAdapter adapter = new PushRecyclerViewAdapter();
 
         test = new ArrayList<>();
         test.add(new MyMatchVO("프로","안양",11));

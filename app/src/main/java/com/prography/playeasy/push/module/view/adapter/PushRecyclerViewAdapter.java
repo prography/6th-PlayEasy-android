@@ -21,7 +21,7 @@ public class PushRecyclerViewAdapter extends RecyclerView.Adapter<PushRecyclerVi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_mymatch_item,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_mymatchinformation_item,parent,false);
             return new MyViewHolder(view);
             }
 
@@ -49,17 +49,13 @@ public class PushRecyclerViewAdapter extends RecyclerView.Adapter<PushRecyclerVi
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            myMatchNameTv = itemView.findViewById(R.id.myMatchMemberTv);
-            myMatchLocationTv = itemView.findViewById(R.id.myMatchLocationTv);
-            myMatchMemberTv = itemView.findViewById(R.id.myMatchMemberTv);
+
 
         }
 
         public void onBind(MyMatchVO myMatchVO, int position) {
 
-            myMatchNameTv.setText(myMatchRegisterArrayList.get(position).getMyMatchName());
-            myMatchLocationTv.setText(myMatchRegisterArrayList.get(position).getMyMatchLocation());
-            myMatchMemberTv.setText("" + myMatchRegisterArrayList.get(position).getMyMatchPeople());
+
         }
     }
 }
