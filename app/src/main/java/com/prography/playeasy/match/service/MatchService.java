@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-//생성 수정 ㅣogic
+//생성 수정 logic
 public class MatchService {
 
     private MatchDao matchDao;
@@ -40,38 +40,23 @@ public class MatchService {
         this.matchDao.create(request);
     }
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-
     //매치 상세보기 아닌 날짜에 따른 리스트 가져오기 위함
-
     public List<MatchDto> retrieveMatch(Date date) throws IOException {
         Date currentTime = new Date();
-
         return this.matchDao.retrieve(date);
     }
 
-//        try {
-//            Response<List<MatchDto>> response = call.execute();
-//            List<MatchDto> matchListDto = response.body();
-//            assert matchListDto != null;
-//            return matchListDto;
-//        } catch (Throwable e) {
-//            Log.e("RETRIEIVE_FAIL", Objects.requireNonNull(e.getMessage()));
-//            throw e;
-//        }
 
 
 
-public void detailMatch(int MatchId) throws IOException {
+    public void detailMatch(int MatchId) throws IOException {
 
-        this.matchDao.findById(MatchId);
-}
-
-
+            this.matchDao.findById(MatchId);
+    }
 
 
 
-    //선택한 날짜의 매치 정보 가져오
+    //horizontal recyclerview에서 선택한 날짜의 매치 정보 가져오기
 //동기에서 Asnc 른 비동기를 호출하니 굳이 비동기식 코드를 짤 필요가 없다 callback을 쓰면 괜히 코드만 어려워
 //    public Match retrieveMatch(MatchResponseCallback callback) {
 //
@@ -79,25 +64,10 @@ public void detailMatch(int MatchId) throws IOException {
 //
 //    }
 
-//    public void detailMatch(int matchId, MatchResponseCallback callback) {
-//
-//
-//        Call<MatchDetailDto> call = matchClient.getMatch(matchId);
-//
-//    call.enqueue(new Callback<MatchDetailDto>() {
-//            @Override
-//            public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
-//                MatchDetailDto body = response.body();
-//                callback.onSuccess(body.getMatch());
-//            }
-//            @Override
-//            public void onFailure(Call<MatchDetailDto> call, Throwable t) {
-//                Log.e("RETRIEVE_ONE_FAIL", t.getMessage());
-//            }
-//        });
-//
-//    }
 
 
-//    public void reviseMatch()
+
+
+
+//    public void reviseMatch() 도 구현해야 함 규산's 컨펌 받
 }

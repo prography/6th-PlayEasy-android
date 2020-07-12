@@ -50,7 +50,7 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
             Log.d("Error", e.getMessage());
         }
     }
-//
+
     @Test
     public void retrieveTest() {
         try {

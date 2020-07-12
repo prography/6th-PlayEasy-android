@@ -84,7 +84,7 @@ public class MatchCreate extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.write_confirm, menu);
        // MatchPostRequestDto requestVO = new MatchPostRequestDto();
-        MatchService service = PlayeasyServiceFactory.getInstance(MatchService.class);
+
        // service.createMatch(requestVO, this.getApplicationContext());
 
         return true;
