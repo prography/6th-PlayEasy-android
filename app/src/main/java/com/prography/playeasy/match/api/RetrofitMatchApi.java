@@ -6,6 +6,8 @@ import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.models.Match;
 
+
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +25,7 @@ public interface RetrofitMatchApi {
 
 //todo String 으로수정?
     @GET("/api/match/list")
-    Call<List<MatchDto>> getMatchList(@Query("date") SimpleDateFormat date);
+    Call<List<MatchDto>> getMatchList(@Query("date") String date);
 //
 //    @GET("/api/match/list")
 //    Call<List<MatchDto>> getMatchList(@Query("date") String date,@Query("status") String status);

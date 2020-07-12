@@ -3,23 +3,15 @@ package com.prography.playeasy.match.domain;
 import android.util.Log;
 
 import com.prography.playeasy.lib.RetrofitClientFactory;
-import com.prography.playeasy.lib.TokenManager;
 
 import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
-import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +49,7 @@ public class MatchDao {
         }
     }
 
-    public List<MatchDto> retrieve(SimpleDateFormat date) throws IOException {
+    public List<MatchDto> retrieve(String date) throws IOException {
 //        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 //        Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(date));
         Call<List<MatchDto>> call = matchClient.getMatchList(date);
@@ -86,16 +78,7 @@ public class MatchDao {
         }
     }
 
-    public static void createSampleMatch() throws ParseException {
 
-        List<MatchDto> matchArr = new ArrayList<>();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-
-        matchArr.add(new MatchDto("SOCCER", "축구뜨자", sdf.parse("2020-07-04"), 180, 3000, "010-9165-6918", 11));
-        matchArr.add(new MatchDto("FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-04"), 180, 5000, "010-9165-6918", 5));
-
-    }
 //규산 반환형을 Match로 해야 할지
     public Match reviseMatch(MatchUpdateRequestDto matchReviseDto) throws IOException {
         MatchDetailDto matchobj = null;

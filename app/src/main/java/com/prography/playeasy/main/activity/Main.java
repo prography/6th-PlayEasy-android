@@ -23,13 +23,14 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
-import static com.prography.playeasy.main.activity.BeforeLoginMain.createSampleMatch;
+
 
 
 public class Main extends AppCompatActivity {
@@ -45,14 +46,14 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
 
-        List<MatchDto> matchDummyList = null;
-        try {
-            matchList=createSampleMatch();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
-        adaptRecyclerView(matchDummyList);
+//step 1
+        BeforeLoginMain.getCurrentDayMatch();
+
+
+
+
+
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.MainToolbar));
         UIHelper.bottomNavigationInitialize(this, findViewById(R.id.bottomNavigation));
@@ -70,7 +71,7 @@ public class Main extends AppCompatActivity {
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
                 .build();
-
+//step 2
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
@@ -85,14 +86,27 @@ public class Main extends AppCompatActivity {
                 } else {
                     tempDateSend = year + "-" + month + "-" + day;
                 }
+
+                    Log.d("temp",tempDateSend);
+
+
+//                    SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+//
+//                    Date to = transFormat.parse(tempDateSend);
+
+
                 try {
-                 matchList=   matchDao.retrieve(new SimpleDateFormat(tempDateSend));
+                    matchList=  matchDao.retrieve(tempDateSend);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                adaptRecyclerView(matchList);
+
 
             }
         }     );
+
+
 
 
 
