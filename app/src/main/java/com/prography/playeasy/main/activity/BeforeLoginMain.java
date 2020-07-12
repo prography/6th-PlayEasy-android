@@ -132,5 +132,14 @@ public class BeforeLoginMain extends AppCompatActivity {
         Log.d("현재 날짜 ", date);
 
     }
+    public static List<MatchDto> createSampleMatch() throws ParseException {
+
+        List<MatchDto> matchArr = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        matchArr.add(new MatchDto("SOCCER", "축구뜨자", sdf.parse("2020-07-11"), 180, 3000, "010-9165-6918", 11));
+        matchArr.add(new MatchDto("FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-12"), 180, 5000, "010-9165-6918", 5));
+        return matchArr;
+    }
 
 }

@@ -12,6 +12,7 @@ import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +50,7 @@ public class MatchDao {
         }
     }
 
-    public List<MatchDto> retrieve(String date) throws IOException {
+    public List<MatchDto> retrieve(SimpleDateFormat date) throws IOException {
 //        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 //        Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(date));
         Call<List<MatchDto>> call = matchClient.getMatchList(date);

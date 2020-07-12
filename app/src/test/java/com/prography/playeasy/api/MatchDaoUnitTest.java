@@ -54,6 +54,10 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
     @Test
     public void retrieveTest() {
         try {
+
+
+//        Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(currentdate));
+
           //  List<MatchDto> matchList = new MatchDao(FAKE_TOKEN).retrieve(new Date());
             List<MatchDto> matchList=new MatchDao(FAKE_TOKEN).retrieve(new SimpleDateFormat());
             List<MatchDto> compareList = new ArrayList<MatchDto>(5);

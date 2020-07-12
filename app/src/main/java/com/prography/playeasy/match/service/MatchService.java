@@ -28,7 +28,7 @@ public class MatchService {
     }
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     //매치 상세보기 아닌 날짜에 따른 리스트 가져오기 위함
-    public List<MatchDto> retrieveMatch(String date) throws IOException {
+    public List<MatchDto> retrieveMatch(SimpleDateFormat date) throws IOException {
 
 
         return this.matchDao.retrieve(date);
@@ -48,7 +48,6 @@ public class MatchService {
     public int closeMatch(int matchId){
 
         return this.matchDao.closeMatch(matchId);
-
     }
 
     //horizontal recyclerview에서 선택한 날짜의 매치 정보 가져오기

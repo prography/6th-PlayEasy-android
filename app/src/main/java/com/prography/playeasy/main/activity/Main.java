@@ -51,7 +51,11 @@ public class Main extends AppCompatActivity {
         BeforeLoginMain.getCurrentDayMatch();
 
 
-
+        try {
+            matchList = BeforeLoginMain.createSampleMatch();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
         UIHelper.hideWindow(this);
@@ -86,25 +90,20 @@ public class Main extends AppCompatActivity {
                 } else {
                     tempDateSend = year + "-" + month + "-" + day;
                 }
-
-                    Log.d("temp",tempDateSend);
-
-
-//                    SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-//
-//                    Date to = transFormat.parse(tempDateSend);
+                try {                 Log.d("temp",tempDateSend);
 
 
-                try {
-                    matchList=  matchDao.retrieve(tempDateSend);
-                } catch (IOException e) {
+
+
+
+
+                 matchList=  matchDao.retrieve(new SimpleDateFormat(tempDateSend));
+                    adaptRecyclerView(matchList);
+
+
+        } catch (IOException e) {
                     e.printStackTrace();
-                }
-                adaptRecyclerView(matchList);
-
-
-            }
-        }     );
+                }    }});
 
 
 
