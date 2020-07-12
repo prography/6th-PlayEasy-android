@@ -10,6 +10,7 @@ import com.prography.playeasy.match.domain.models.Match;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,15 +55,22 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
     @Test
     public void retrieveTest() {
         try {
+            List<MatchDto> matchArr = new ArrayList<>();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+            matchArr.add(new MatchDto("SOCCER", "축구뜨자", sdf.parse("2020-07-11"), 180, 3000, "010-9165-6918", 11));
+            matchArr.add(new MatchDto("FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-12"), 180, 5000, "010-9165-6918", 5));
 
+            //
+            Date date=new Date();
 //        Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(currentdate));
-
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+           Date datetemp= formatter.parse("2020-07-12");
           //  List<MatchDto> matchList = new MatchDao(FAKE_TOKEN).retrieve(new Date());
-            List<MatchDto> matchList=new MatchDao(FAKE_TOKEN).retrieve(new SimpleDateFormat());
+            List<MatchDto> matchList=new MatchDao(FAKE_TOKEN).retrieve(datetemp);
             List<MatchDto> compareList = new ArrayList<MatchDto>(5);
             assertArrayEquals(matchList.toArray(), compareList.toArray());
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             Log.d("Error", e.getMessage());
         }
     }

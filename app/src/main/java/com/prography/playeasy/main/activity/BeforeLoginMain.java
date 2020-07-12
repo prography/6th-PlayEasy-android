@@ -127,9 +127,10 @@ public class BeforeLoginMain extends AppCompatActivity {
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
-        String date = simpleDateFormat.format(new Date());
+        String date = simpleDateFormat.format(currentDate);
 
         Log.d("현재 날짜 ", date);
+
 
     }
     public static List<MatchDto> createSampleMatch() throws ParseException {

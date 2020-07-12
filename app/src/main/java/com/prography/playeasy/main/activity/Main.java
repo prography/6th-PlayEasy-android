@@ -14,7 +14,9 @@ import android.widget.CalendarView;
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.domain.MatchDao;
+import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
+import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.util.UIHelper;
@@ -76,6 +78,9 @@ public class Main extends AppCompatActivity {
                 .datesNumberOnScreen(5)
                 .build();
 //step 2
+
+
+
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
@@ -90,20 +95,25 @@ public class Main extends AppCompatActivity {
                 } else {
                     tempDateSend = year + "-" + month + "-" + day;
                 }
-                try {                 Log.d("temp",tempDateSend);
+                         Log.d("temp",tempDateSend);
 
 
 
+                    String pattern = "yyyy-MM-dd";
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
 
+                    try {
+                        matchList=  matchDao.retrieve(simpleDateFormat.parse(tempDateSend));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                      adaptRecyclerView(matchList);
 
-                 matchList=  matchDao.retrieve(new SimpleDateFormat(tempDateSend));
-                    adaptRecyclerView(matchList);
 
-
-        } catch (IOException e) {
-                    e.printStackTrace();
-                }    }});
+        }});
 
 
 
