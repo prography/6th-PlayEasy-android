@@ -5,10 +5,13 @@ import com.google.gson.annotations.SerializedName;
 public class LocationDto {
     @SerializedName("latitude")
     float latitude;
-
+    @SerializedName("longitude")
     float longitude;
+    @SerializedName("name")
     String name;
+    @SerializedName("address")
     String address;
+    @SerializedName("detail")
     String detail;
 
     public LocationDto(float latitude, float longitude, String name, String address, String detail) {

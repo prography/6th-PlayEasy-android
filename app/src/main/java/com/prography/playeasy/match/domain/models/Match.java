@@ -1,36 +1,53 @@
 package com.prography.playeasy.match.domain.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
-
+//Match를 바로 DTO로 쓰기에는 "match "직렬화 하기 어려움
 public class Match {
-
+    @SerializedName("id")
     private int id;
    // private String title;
-    static enum Type{SOCCER,FOOTSAL5,FOOTSAL6};
-    private Type type;
+  //  static enum Type{SOCCER,FOOTSAL5,FOOTSAL6};
+    @SerializedName("type")
+    private String type;
+
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("startAt")
     private Date startAt;
     //location 변수 대신 duration 넣음
+
+    @SerializedName("duration")
     private int duration;
 
+    @SerializedName("fee")
     private int fee;
 
+    @SerializedName("phone")
     private int phone;
 
+    @SerializedName("totalQuota")
     private int totalQuota;
-    static enum Status{WAITING,CONFIRMED,CANCEL};
-    private Status matchStatus;
+    //static enum Status{WAITING,CONFIRMED,CANCEL};
+
+    @SerializedName("matchStatus")
+    private String matchStatus;
 //   //제거
 //    private Date createdAt;
 //    private Date updatedAt;
    //private int homeQuota;
 
+    @SerializedName("writerId")
     private int writerId;
 //
 //    private int homeTeamId;
 //    private int locationId;
    //사라진 필드 private int awayTeamId와 homeQuota;
+    @SerializedName("homeTeam")
     private HomeTeam homeTeam;
+    @SerializedName("location")
     private Location location;
 
     public int getId() {
@@ -113,7 +130,7 @@ public class Match {
         this.location = location;
     }
 
-    public Match(int id, Type type, String description, Date startAt, int duration, int fee, int phone, int totalQuota, Status matchStatus, int writerId, HomeTeam homeTeam, Location location) {
+    public Match(int id, String type, String description, Date startAt, int duration, int fee, int phone, int totalQuota, String matchStatus, int writerId, HomeTeam homeTeam, Location location) {
         this.id = id;
         this.type = type;
         this.description = description;

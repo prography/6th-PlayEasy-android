@@ -1,11 +1,21 @@
 package com.prography.playeasy.match.domain.models;
 
+import androidx.annotation.StringRes;
+
+import com.google.gson.annotations.SerializedName;
+
 public class Location{
+    @SerializedName("id")
     int id;
+    @SerializedName("latitude")
     float latitude;
+    @SerializedName("longitude")
     float longitude;
+    @SerializedName("name")
     String name;
+    @SerializedName("address")
     String address;
+    @SerializedName("detail")
     String detail;
 //사라진 필
 //    String createdAt;

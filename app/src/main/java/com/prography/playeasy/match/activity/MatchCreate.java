@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -32,7 +33,7 @@ public class MatchCreate extends AppCompatActivity {
 
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
-
+    private HorizontalCalendarManager calendarCreate;
 
     LocationDto locationDto;
 
@@ -46,12 +47,14 @@ public class MatchCreate extends AppCompatActivity {
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.matchCreateToolBar));
 
-        HorizontalCalendarManager.initialize(this, new HorizontalCalendarListener() {
+        calendarCreate.initialize(this, new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
 
             }
+
         });
+
 
         /*TimePicker*/
         sTimePicker = findViewById(R.id.timePickerStart);
@@ -61,6 +64,7 @@ public class MatchCreate extends AppCompatActivity {
 
 
     }
+
 //        findViewById(R.id.matchCreateConfirm).setOnClickListener((v) -> {
 //            MatchRequestDto requestDto = new MatchRequestDto(
 //                    ((EditText)findViewById(R.id.matchCreateTitle)).getText().toString(),

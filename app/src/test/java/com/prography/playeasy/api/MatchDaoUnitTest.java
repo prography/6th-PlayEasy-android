@@ -5,12 +5,12 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
-import com.prography.playeasy.match.domain.dtos.request.MatchRequestDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 import org.junit.Test;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +24,7 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
     public void createMatchTest() {
         try {
             Date date=new Date();
-            MatchRequestDto matchData=new MatchRequestDto("FOOTSAL6" ,"축구뜨자",date,120,3000,"010-9165-6918",6);
+            MatchDto matchData=new MatchDto("FOOTSAL6" ,"축구뜨자",date,120,3000,"010-9165-6918",6);
             LocationDto locationData=new LocationDto(3.14f,7.77f,"마루 180","강남구","마루 경기장");
             MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData,locationData);
 
@@ -54,8 +54,8 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
     @Test
     public void retrieveTest() {
         try {
-            List<MatchDto> matchList = new MatchDao(FAKE_TOKEN).retrieve(new Date());
-
+          //  List<MatchDto> matchList = new MatchDao(FAKE_TOKEN).retrieve(new Date());
+            List<MatchDto> matchList=new MatchDao(FAKE_TOKEN).retrieve(new SimpleDateFormat());
             List<MatchDto> compareList = new ArrayList<MatchDto>(5);
             assertArrayEquals(matchList.toArray(), compareList.toArray());
         } catch (IOException e) {
