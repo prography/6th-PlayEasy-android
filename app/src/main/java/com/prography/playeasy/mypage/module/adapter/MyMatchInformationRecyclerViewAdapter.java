@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.prography.playeasy.R;
 import com.prography.playeasy.main.activity.Main;
+import com.prography.playeasy.match.activity.MatchModify;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
 import com.prography.playeasy.team.activity.TeamApplyCurrentStatus;
 
@@ -72,9 +73,20 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
         }
 
         public void onBind(MyMatchVO myMatchVO, int position) {
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), MatchModify.class);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
+
             registerDetailApply.setOnClickListener((v) -> {
                 v.getContext().startActivity(new Intent(v.getContext(), TeamApplyCurrentStatus.class));
             });
+
+
         }
     }
 }

@@ -5,6 +5,7 @@
     <string name="activity_match_detail"> 매치 상세 보기 </string>
     <string name="activity_match_create"> 매치 생성</string>
     <string name="spinner_match_create">진행 방식</string>
+    <string name="activity_match_modify"> 매치 수정 </string>
 
     <string name="activity_mypage_mypage">마이 페이지</string>
     <string name="activity_mypage_myInformation">내 정보</string>

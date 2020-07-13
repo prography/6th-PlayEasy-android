@@ -43,9 +43,9 @@
         <activity android:name=".match.activity.MapPopUp"
             android:theme="@style/Theme.MaterialComponents.Dialog.Alert"
             />
-        <activity android:name=".match.activity.MatchDetail">
-        </activity>
+        <activity android:name=".match.activity.MatchDetail"/>
         <activity android:name=".match.activity.MatchCreate"/>
+        <activity android:name=".match.activity.MatchModify"/>
 
 
         <activity android:name=".push.activity.Push"/>
