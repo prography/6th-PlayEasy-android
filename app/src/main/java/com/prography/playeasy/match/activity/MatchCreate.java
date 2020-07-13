@@ -73,7 +73,15 @@ public class MatchCreate extends AppCompatActivity {
         eTimePicker = findViewById(R.id.timePickerEnd);
 
 
+        findViewById(R.id.matchMap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(getApplicationContext(), MapPopUp.class);
+                startActivity(intent);
+
+            }
+        });
 
     }
 

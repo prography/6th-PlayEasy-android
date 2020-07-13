@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/pushMyMatchInf"
+        android:id="@+id/MyMatchInf"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginStart="8dp"
@@ -21,7 +21,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <TextView
-            android:id="@+id/pushMyMatchInfoTitle"
+            android:id="@+id/MyMatchInfoTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
 
     <com.google.android.material.tabs.TabLayout
 
-        android:id="@+id/pushTabLayout"
+        android:id="@+id/myMatchTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -41,7 +41,7 @@
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pushMyMatchInf"
+        app:layout_constraintTop_toBottomOf="@+id/MyMatchInf"
         app:tabGravity="center"
         app:tabIndicatorColor="@android:color/white"
         app:tabMode="fixed">
@@ -50,7 +50,7 @@
 
     <androidx.viewpager.widget.ViewPager
 
-        android:id="@+id/pushViewPager"
+        android:id="@+id/myMatchViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -60,7 +60,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pushTabLayout">
+        app:layout_constraintTop_toBottomOf="@+id/myMatchTabLayout">
 
     </androidx.viewpager.widget.ViewPager>
 

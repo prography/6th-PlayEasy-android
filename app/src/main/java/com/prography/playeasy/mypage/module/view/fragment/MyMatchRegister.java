@@ -18,7 +18,6 @@ import com.prography.playeasy.mypage.module.adapter.MyMatchInformationRecyclerVi
 import java.util.ArrayList;
 
 public class MyMatchRegister extends Fragment {
-    private ArrayList<MyMatchVO> test;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class MyMatchRegister extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         final MyMatchInformationRecyclerViewAdapter adapter = new MyMatchInformationRecyclerViewAdapter();
 
-        test = new ArrayList<>();
+        ArrayList<MyMatchVO> test = new ArrayList<>();
         test.add(new MyMatchVO("프로","안양",11));
         test.add(new MyMatchVO("그라","강남",6));
         test.add(new MyMatchVO("피","사당",5));

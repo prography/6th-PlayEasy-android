@@ -1,5 +1,7 @@
 package com.prography.playeasy.mypage.module.adapter;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.prography.playeasy.R;
+import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
+import com.prography.playeasy.team.activity.TeamApplyCurrentStatus;
 
 import java.util.ArrayList;
 
@@ -43,33 +47,34 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView RegisterMatchTitle;
-        private TextView RegisterMatchDay;
-        private TextView RegisterMatchTime;
-        private TextView RegisterWhere;
-        private TextView RegisterPresentPeople;
-        private TextView RegisterStatus;
-        private MaterialButton RegisterDetailApply;
-        private MaterialButton RegisterFinish;
+        private TextView registerMatchTitle;
+        private TextView registerMatchDay;
+        private TextView registerMatchTime;
+        private TextView registerWhere;
+        private TextView registerPresentPeople;
+        private TextView registerStatus;
+        private MaterialButton registerDetailApply;
+        private MaterialButton registerFinish;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            RegisterMatchTitle = itemView.findViewById(R.id.RegisterMatchTitle);
-            RegisterMatchDay = itemView.findViewById(R.id.RegisterMatchDay);
-            RegisterMatchTime = itemView.findViewById(R.id.RegisterMatchTime);
-            RegisterWhere = itemView.findViewById(R.id.RegisterWhere);
-            RegisterPresentPeople = itemView.findViewById(R.id.RegisterMatchTime);
-            RegisterStatus = itemView.findViewById(R.id.RegisterWhere);
+            registerMatchTitle = itemView.findViewById(R.id.registerMatchTitle);
+            registerMatchDay = itemView.findViewById(R.id.registerMatchDay);
+            registerMatchTime = itemView.findViewById(R.id.registerMatchTime);
+            registerWhere = itemView.findViewById(R.id.registerWhere);
+            registerPresentPeople = itemView.findViewById(R.id.registerPresentPeople);
+            registerStatus = itemView.findViewById(R.id.registerStatus);
 
-            RegisterDetailApply = itemView.findViewById(R.id.RegisterDetailApply);
-            RegisterFinish = itemView.findViewById(R.id.RegisterFinish);
+            registerDetailApply = itemView.findViewById(R.id.registerDetailApply);
+            registerFinish = itemView.findViewById(R.id.registerFinish);
 
         }
 
         public void onBind(MyMatchVO myMatchVO, int position) {
-
-
+            registerDetailApply.setOnClickListener((v) -> {
+                v.getContext().startActivity(new Intent(v.getContext(), TeamApplyCurrentStatus.class));
+            });
         }
     }
 }

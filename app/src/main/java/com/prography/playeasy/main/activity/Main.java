@@ -33,8 +33,6 @@ import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 
-
-
 public class Main extends AppCompatActivity {
 
     private static final String TAG = "JWT_TOKEN";
@@ -42,6 +40,7 @@ public class Main extends AppCompatActivity {
 
     List<MatchDto> matchList;
     MatchDao matchDao;
+
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +67,7 @@ public class Main extends AppCompatActivity {
         Calendar startDate = Calendar.getInstance();
         //set current day month year
         startDate.add(Calendar.MONTH, -1);
-        HorizontalCalendarView calendarView=(HorizontalCalendarView)findViewById(R.id.calendarView);
+        HorizontalCalendarView calendarView = (HorizontalCalendarView) findViewById(R.id.calendarView);
         /* ends after 1 month from now */
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
@@ -78,7 +77,6 @@ public class Main extends AppCompatActivity {
                 .datesNumberOnScreen(5)
                 .build();
 //step 2
-
 
 
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
@@ -95,36 +93,29 @@ public class Main extends AppCompatActivity {
                 } else {
                     tempDateSend = year + "-" + month + "-" + day;
                 }
-                         Log.d("temp",tempDateSend);
+                Log.d("temp", tempDateSend);
 
 
-
-                    String pattern = "yyyy-MM-dd";
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-
-
-                    try {
-                        matchList=  matchDao.retrieve(simpleDateFormat.parse(tempDateSend));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                      adaptRecyclerView(matchList);
+                String pattern = "yyyy-MM-dd";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
 
-        }});
+                try {
+                    matchList = matchDao.retrieve(simpleDateFormat.parse(tempDateSend));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                adaptRecyclerView(matchList);
 
 
-
-
-
-
-
-
+            }
+        });
 
 
     }
+
     private void adaptRecyclerView(List<MatchDto> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
 
@@ -139,12 +130,9 @@ public class Main extends AppCompatActivity {
     }
 
 
-
     @Override
-    public boolean onOptionsItemSelected (MenuItem item)
-    {
-        switch(item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.myPageNavigatation:
                 Intent movedMypage = new Intent(this, MyPage.class);
                 startActivity(movedMypage);
@@ -153,7 +141,6 @@ public class Main extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
