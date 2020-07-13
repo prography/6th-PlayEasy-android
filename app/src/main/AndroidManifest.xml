@@ -30,7 +30,6 @@
         <activity android:name=".mypage.activity.MyPage"/>
         <activity android:name=".mypage.activity.MyInformation"/>
         <activity android:name=".mypage.activity.MyMatchInformation"/>
-        <activity android:name=".push.activity.Push"/>
         <activity android:name=".mypage.activity.MyTeamManger"/>
         <activity android:name=".mypage.activity.MyTeamMemberManger"/>
 
@@ -40,10 +39,15 @@
         <activity android:name=".team.activity.TeamCreate"/>
         <activity android:name=".team.activity.TeamApplyCurrentStatus"/>
 
+        <activity android:name=".match.activity.MapPopUp"
+            android:theme="@style/Theme.MaterialComponents.Dialog.Alert"
+            />
         <activity android:name=".match.activity.MatchDetail">
         </activity>
         <activity android:name=".match.activity.MatchCreate"/>
 
+
+        <activity android:name=".push.activity.Push"/>
         <service
             android:name=".lib.firebase.FirebaseMessageService"
             android:exported="true"

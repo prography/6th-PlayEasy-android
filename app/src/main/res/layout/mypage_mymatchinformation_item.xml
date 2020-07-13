@@ -25,7 +25,7 @@
 
 
             <TextView
-                android:id="@+id/RegisterMatchTitle"
+                android:id="@+id/registerMatchTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -37,27 +37,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/RegisterMatchDay"
+                android:id="@+id/registerMatchDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:hint="2020.06.20"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/RegisterMatchTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/registerMatchTitle" />
 
             <TextView
-                android:id="@+id/RegisterMatchTime"
+                android:id="@+id/registerMatchTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:hint="11 : 00 ~ 13 : 00"
-                app:layout_constraintStart_toEndOf="@+id/RegisterMatchDay"
-                app:layout_constraintTop_toBottomOf="@+id/RegisterMatchTitle" />
+                app:layout_constraintStart_toEndOf="@+id/registerMatchDay"
+                app:layout_constraintTop_toBottomOf="@+id/registerMatchTitle" />
 
             <TextView
-                android:id="@+id/RegisterWhere"
+                android:id="@+id/registerWhere"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -65,41 +65,41 @@
                 android:hint="서울 용산 아이파크몰"
                 android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/RegisterMatchDay" />
+                app:layout_constraintTop_toBottomOf="@+id/registerMatchDay" />
 
             <TextView
-                android:id="@+id/RegisterPresentPeopleTitle"
+                android:id="@+id/registerPresentPeopleTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="8dp"
                 android:text="신청 현황"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/RegisterWhere" />
+                app:layout_constraintTop_toBottomOf="@+id/registerWhere" />
 
             <TextView
-                android:id="@+id/RegisterPresentPeople"
+                android:id="@+id/registerPresentPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="10 /12"
-                app:layout_constraintStart_toEndOf="@+id/RegisterPresentPeopleTitle"
-                app:layout_constraintTop_toBottomOf="@+id/RegisterWhere" />
+                app:layout_constraintStart_toEndOf="@+id/registerPresentPeopleTitle"
+                app:layout_constraintTop_toBottomOf="@+id/registerWhere" />
 
             <TextView
-                android:id="@+id/RegisterStatus"
+                android:id="@+id/registerStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:hint="진행 중"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/RegisterPresentPeopleTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/registerPresentPeopleTitle" />
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/RegisterDetailApply"
+                android:id="@+id/registerDetailApply"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,12 +110,12 @@
                 android:textSize="10dp"
                 app:backgroundTint="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/RegisterStatus"
+                app:layout_constraintStart_toEndOf="@+id/registerStatus"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.973" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/RegisterFinish"
+                android:id="@+id/registerFinish"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                 android:textSize="10dp"
                 app:backgroundTint="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/RegisterDetailApply"
+                app:layout_constraintStart_toEndOf="@+id/registerDetailApply"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.972" />
 
