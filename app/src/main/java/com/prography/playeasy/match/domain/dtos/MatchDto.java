@@ -5,11 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 //매치 작성 resquest
 public class MatchDto {
-
-
-
-
-
     @SerializedName("type")
     String type;
     @SerializedName("description")

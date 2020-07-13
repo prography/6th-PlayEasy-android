@@ -9,50 +9,65 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.CalendarView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
+import com.prography.playeasy.match.domain.MatchDao;
+import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
+import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.util.UIHelper;
 
+import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
+import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
-
-import static com.prography.playeasy.main.activity.BeforeLoginMain.createSampleMatch;
 
 
 public class Main extends AppCompatActivity {
 
     private static final String TAG = "JWT_TOKEN";
     private HorizontalCalendar horizontalCalendar;
+
+    List<MatchDto> matchList;
+    MatchDao matchDao;
+
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
 
-        List<MatchDto> matchDummyList = null;
+
+//step 1
+        BeforeLoginMain.getCurrentDayMatch();
+
+
         try {
-            matchDummyList=createSampleMatch();
+            matchList = BeforeLoginMain.createSampleMatch();
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        adaptRecyclerView(matchDummyList);
+
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.MainToolbar));
         UIHelper.bottomNavigationInitialize(this, findViewById(R.id.bottomNavigation));
 
         /* starts before 1 month from now */
         Calendar startDate = Calendar.getInstance();
+        //set current day month year
         startDate.add(Calendar.MONTH, -1);
-
+        HorizontalCalendarView calendarView = (HorizontalCalendarView) findViewById(R.id.calendarView);
         /* ends after 1 month from now */
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
@@ -61,18 +76,46 @@ public class Main extends AppCompatActivity {
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
                 .build();
+//step 2
+
 
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
-                //do something
+                String tempDateSend;
+                int day = date.get(Calendar.DAY_OF_MONTH);
+                int month = date.get(Calendar.MONTH) + 1;
+                int year = date.get(Calendar.YEAR);
+                Log.d("day, month, year", String.valueOf(day) + String.valueOf(month) + String.valueOf(year));
+                if (month <= 9) {
+                    tempDateSend = year + "-0" + month + "-" + day;
+
+                } else {
+                    tempDateSend = year + "-" + month + "-" + day;
+                }
+                Log.d("temp", tempDateSend);
+
+
+                String pattern = "yyyy-MM-dd";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+
+                try {
+                    matchList = matchDao.retrieve(simpleDateFormat.parse(tempDateSend));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                adaptRecyclerView(matchList);
+
+
             }
         });
 
-        Log.d(TAG, TokenManager.get(getApplicationContext()));
-
 
     }
+
     private void adaptRecyclerView(List<MatchDto> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
 
@@ -87,12 +130,9 @@ public class Main extends AppCompatActivity {
     }
 
 
-
     @Override
-    public boolean onOptionsItemSelected (MenuItem item)
-    {
-        switch(item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.myPageNavigatation:
                 Intent movedMypage = new Intent(this, MyPage.class);
                 startActivity(movedMypage);
@@ -101,7 +141,6 @@ public class Main extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }

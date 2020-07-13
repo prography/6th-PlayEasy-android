@@ -10,6 +10,7 @@ public class MatchDetailDto {
     Match match;
 
     public Match getMatch() {
+
         return match;
     }
 

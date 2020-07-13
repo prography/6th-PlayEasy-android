@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.HorizontalCalendarManager;
 import com.prography.playeasy.main.activity.Main;
+import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
@@ -24,7 +26,9 @@ import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
@@ -32,11 +36,12 @@ public class MatchCreate extends AppCompatActivity {
 
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
-
+    private HorizontalCalendarManager calendarCreate;
 
     LocationDto locationDto;
 
     MatchDto matchDto;
+    MatchDao match;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,12 +51,22 @@ public class MatchCreate extends AppCompatActivity {
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.matchCreateToolBar));
 
-        HorizontalCalendarManager.initialize(this, new HorizontalCalendarListener() {
+        calendarCreate.initialize(this, new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
 
             }
+
         });
+        MatchDto matchData= new MatchDto("SOCCER", "축구뜨자", new Date("2020-07-12T20:00:00.000Z"), 180, 3000, "000-0000-0000", 11);
+        LocationDto locationData=new LocationDto(3.14f,7.77f,"마루180","서울특별시 강남구 ~~","마루180 1경기장");
+
+        MatchPostRequestDto matchSample=new MatchPostRequestDto(matchData,locationData);
+        try {
+            match.create(matchSample);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         /*TimePicker*/
         sTimePicker = findViewById(R.id.timePickerStart);
@@ -69,6 +84,7 @@ public class MatchCreate extends AppCompatActivity {
         });
 
     }
+
 //        findViewById(R.id.matchCreateConfirm).setOnClickListener((v) -> {
 //            MatchRequestDto requestDto = new MatchRequestDto(
 //                    ((EditText)findViewById(R.id.matchCreateTitle)).getText().toString(),

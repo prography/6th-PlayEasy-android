@@ -3,6 +3,7 @@ package com.prography.playeasy.main.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
@@ -63,14 +65,12 @@ public class BeforeLoginMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_beforelogin);
-        List<MatchDto> matchDummyList = null;
-        try {
-         matchDummyList=createSampleMatch();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        List<MatchDto> targetdateList = null;
+        //현재 날짜 리스트 뿌리기
 
-        adaptRecyclerView(matchDummyList);
+        //선택한 날짜 리스트 뿌리기
+
+//       adaptRecyclerView(targetdateList);
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.MainToolbar));
 
@@ -106,15 +106,7 @@ public class BeforeLoginMain extends AppCompatActivity {
         super.onPause();
         handler.removeCallbacks(run);
     }
-    public static List<MatchDto> createSampleMatch() throws ParseException {
 
-        List<MatchDto> matchArr = new ArrayList<>();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        matchArr.add(new MatchDto("SOCCER", "축구뜨자", sdf.parse("2020-07-04"), 180, 3000, "010-9165-6918", 11));
-        matchArr.add(new MatchDto("FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-04"), 180, 5000, "010-9165-6918", 5));
-        return matchArr;
-    }
 //카드뷰와 activity_main_custom에 Binding 의 대상이 있어야 함?
 //chohee 에서 initReecyclerVIew() method의 역할을 한
     private void adaptRecyclerView(List<MatchDto> matchList) {
@@ -128,6 +120,27 @@ public class BeforeLoginMain extends AppCompatActivity {
         for (MatchDto m : matchList) {
             adapter.addItems(m);
         }
+    }
+
+    public static void getCurrentDayMatch(){
+        Date currentDate=new Date();
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        String date = simpleDateFormat.format(currentDate);
+
+        Log.d("현재 날짜 ", date);
+
+
+    }
+    public static List<MatchDto> createSampleMatch() throws ParseException {
+
+        List<MatchDto> matchArr = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        matchArr.add(new MatchDto("SOCCER", "축구뜨자", sdf.parse("2020-07-11"), 180, 3000, "010-9165-6918", 11));
+        matchArr.add(new MatchDto("FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-12"), 180, 5000, "010-9165-6918", 5));
+        return matchArr;
     }
 
 }
