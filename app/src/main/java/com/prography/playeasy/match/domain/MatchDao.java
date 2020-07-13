@@ -53,7 +53,6 @@ public class MatchDao {
     public List<MatchDto> retrieve(Date date) throws IOException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(date));
-        Call<List<MatchDto>> call = matchClient.getMatchList(date);
         List<MatchDto> matchListDto;
         try {
             Response<List<MatchDto>> response = call.execute();

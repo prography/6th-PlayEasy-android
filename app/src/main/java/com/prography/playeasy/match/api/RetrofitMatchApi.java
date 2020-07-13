@@ -25,7 +25,7 @@ public interface RetrofitMatchApi {
 
 //todo String 으로수정?
     @GET("/api/match/list")
-    Call<List<MatchDto>> getMatchList(@Query("date") Date date);
+    Call<List<MatchDto>> getMatchList(@Query("date") String date);
 //
 //    @GET("/api/match/list")
 //    Call<List<MatchDto>> getMatchList(@Query("date") String date,@Query("status") String status);
