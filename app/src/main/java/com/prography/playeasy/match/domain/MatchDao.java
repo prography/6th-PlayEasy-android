@@ -1,5 +1,6 @@
 package com.prography.playeasy.match.domain;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.prography.playeasy.lib.RetrofitClientFactory;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
@@ -37,93 +39,45 @@ public class MatchDao {
         this.token = token;
     }
 
-    public Match create(MatchPostRequestDto requestDto) throws IOException {
+    public void create(MatchPostRequestDto requestDto, Callback<MatchDetailDto> callback) {
         Call<MatchDetailDto> call = matchClient.postMatch(token, requestDto);
-        try {
-            Response<MatchDetailDto> response = call.execute();
-            MatchDetailDto matchDetailDto = response.body();
-            assert matchDetailDto != null;
-            return matchDetailDto.getMatch();
-        } catch (Throwable e) {
-            Log.e("CREATE_FAIL", Objects.requireNonNull(e.getMessage()));
-            throw e;
-        }
+        call.enqueue(callback);
     }
 
-    public List<MatchDto> retrieve(Date date) throws IOException {
+    public void retrieve(Date date, Callback<List<MatchDto>> callback) {
+        @SuppressLint("SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(date));
-        List<MatchDto> matchListDto;
-        try {
-            Response<List<MatchDto>> response = call.execute();
-            matchListDto = response.body();
-            assert matchListDto != null;
-            return matchListDto;
-        } catch (Throwable e) {
-            Log.e("RETRIEIVE_FAIL", Objects.requireNonNull(e.getMessage()));
-            throw e;
-        }
+        call.enqueue(callback);
     }
 
-    public Match findById(int matchId) throws IOException {
+    public void findById(int matchId, Callback<MatchDetailDto> callback) {
         Call<MatchDetailDto> call = matchClient.getMatch(matchId);
-        try {
-            Response<MatchDetailDto> response = call.execute();
-            MatchDetailDto matchDetailDto = response.body();
-            assert matchDetailDto != null;
-            return matchDetailDto.getMatch();
-        } catch (Throwable e) {
-            Log.e("FIND_FAIL", Objects.requireNonNull(e.getMessage()));
-            throw e;
-        }
+        call.enqueue(callback);
     }
 
-
-//규산 반환형을 Match로 해야 할지
-    public Match reviseMatch(MatchUpdateRequestDto matchReviseDto) throws IOException {
-        MatchDetailDto matchobj = null;
-
+    public void reviseMatch(MatchUpdateRequestDto matchReviseDto, Callback<MatchDetailDto> callback) {
         Call <MatchDetailDto> call=matchClient.reviseMatch(token,matchReviseDto);
-        try{
-
-            Response<MatchDetailDto> response=call.execute();
-            MatchDetailDto matchDetailDto =response.body();
-
-            assert matchDetailDto!=null;
-            return matchDetailDto.getMatch();
-
-        }catch(Throwable e){
-            Log.e("revise fail",Objects.requireNonNull(e.getMessage()));
-            throw e;
-        }
-
-
+        call.enqueue(callback);
     }
 
-
-
-
-
-    public int closeMatch(int matchId) {
-//        Call <>=matchClient.closeMatch();
-
+    public void closeMatch(int matchId, Callback<MatchDetailDto> callback) {
+        HashMap<String,Object> hashMap=new HashMap<>();
+        hashMap.put("matchId", matchId);
+        hashMap.put("status", "CANCEL");
+        Call<MatchDetailDto> call = matchClient.closeMatch(hashMap);
+        call.enqueue(callback);
           //  String nestedJson="{"matchId"+":"+matchId+","+"statusType" +":"+ status+"}
 //            JSONObject json = new JSONObject();
 //            json.put("matchId", matchId);
 //            json.put("status","CANCEL");
           //  String json = "{\"matchId\":"+matchId+",\"status\":\"CANCEL\"}";
            // TypedInput in = new TypedByteArray("application/json", json.getBytes("UTF-8"));
-            HashMap<String,Object> hashMap=new HashMap<>();
-            hashMap.put("matchId",28);
-            hashMap.put("status","CANCEL");
 
             matchClient.closeMatch(hashMap);
-
-
 
 //    String nestedJson="{"+matchId+":"+matchId+","+"statusType" +":"+ status+"}";
 //    Gson gson=new Gson();
 //    Map<String,Object> result=gson.fromJson(nestedJson,Map.class);
-            return matchId;
     }
 }
