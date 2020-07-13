@@ -12,11 +12,17 @@ import android.view.MenuItem;
 import android.widget.CalendarView;
 
 import com.prography.playeasy.R;
+import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.lib.TokenManager;
+import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
+import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.mypage.activity.MyPage;
+import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
 import java.io.IOException;
@@ -31,27 +37,25 @@ import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 
-
-
 public class Main extends AppCompatActivity {
 
     private static final String TAG = "JWT_TOKEN";
     private HorizontalCalendar horizontalCalendar;
 
-    List<MatchDto> matchList;
+    List<Match> matchList;
     MatchDao matchDao;
+    //RetrofitMatchApi service = RetrofitClientFactory.getClient(RetrofitMatchApi.class);
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
+    Date to;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
-
+        matchDao = new MatchDao(TokenManager.get(getApplicationContext()));
 
 //step 1
         BeforeLoginMain.getCurrentDayMatch();
-
-
-
 
 
         UIHelper.hideWindow(this);
@@ -62,7 +66,7 @@ public class Main extends AppCompatActivity {
         Calendar startDate = Calendar.getInstance();
         //set current day month year
         startDate.add(Calendar.MONTH, -1);
-        HorizontalCalendarView calendarView=(HorizontalCalendarView)findViewById(R.id.calendarView);
+        HorizontalCalendarView calendarView = (HorizontalCalendarView) findViewById(R.id.calendarView);
         /* ends after 1 month from now */
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
@@ -87,36 +91,33 @@ public class Main extends AppCompatActivity {
                     tempDateSend = year + "-" + month + "-" + day;
                 }
 
-                    Log.d("temp",tempDateSend);
+                Log.d("temp", tempDateSend);
 
 
-//                    SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-//
-//                    Date to = transFormat.parse(tempDateSend);
+                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                try {
+                    to = transFormat.parse(tempDateSend);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
 
                 try {
-                    matchList=  matchDao.retrieve(tempDateSend);
+                    matchList = matchDao.retrieve(to);
+                    adaptRecyclerView(matchList);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                adaptRecyclerView(matchList);
 
 
             }
-        }     );
-
-
-
-
-
-
-
-
+        });
 
 
     }
-    private void adaptRecyclerView(List<MatchDto> matchList) {
+
+    private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -124,18 +125,15 @@ public class Main extends AppCompatActivity {
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        for (MatchDto m : matchList) {
+        for (Match m : matchList) {
             adapter.addItems(m);
         }
     }
 
 
-
     @Override
-    public boolean onOptionsItemSelected (MenuItem item)
-    {
-        switch(item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.myPageNavigatation:
                 Intent movedMypage = new Intent(this, MyPage.class);
                 startActivity(movedMypage);
@@ -144,7 +142,6 @@ public class Main extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }

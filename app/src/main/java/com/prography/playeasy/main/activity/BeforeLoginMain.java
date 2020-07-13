@@ -41,7 +41,7 @@ public class BeforeLoginMain extends AppCompatActivity {
         @Override
         public void onSuccess(Object responseData) {
             // 응답 데이터 변환
-            List<MatchDto> matchList = (List<MatchDto>)responseData;
+            List<Match> matchList = (List<Match>)responseData;
             // 리사이클러뷰 렌더링
             adaptRecyclerView(matchList);
         }
@@ -109,7 +109,7 @@ public class BeforeLoginMain extends AppCompatActivity {
 
 //카드뷰와 activity_main_custom에 Binding 의 대상이 있어야 함?
 //chohee 에서 initReecyclerVIew() method의 역할을 한
-    private void adaptRecyclerView(List<MatchDto> matchList) {
+    private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -117,7 +117,7 @@ public class BeforeLoginMain extends AppCompatActivity {
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        for (MatchDto m : matchList) {
+        for (Match m : matchList) {
             adapter.addItems(m);
         }
     }

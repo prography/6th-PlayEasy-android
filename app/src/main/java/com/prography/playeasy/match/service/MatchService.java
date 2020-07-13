@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.domain.MatchDao;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.models.Match;
 
@@ -28,7 +27,7 @@ public class MatchService {
     }
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     //매치 상세보기 아닌 날짜에 따른 리스트 가져오기 위함
-    public List<MatchDto> retrieveMatch(String date) throws IOException {
+    public List<Match> retrieveMatch(Date date) throws IOException {
 
 
         return this.matchDao.retrieve(date);

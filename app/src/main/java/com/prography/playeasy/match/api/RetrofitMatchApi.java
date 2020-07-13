@@ -4,6 +4,7 @@ import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 
@@ -25,7 +26,7 @@ public interface RetrofitMatchApi {
 
 //todo String 으로수정?
     @GET("/api/match/list")
-    Call<List<MatchDto>> getMatchList(@Query("date") String date);
+    Call<MatchListDto> getMatchList(@Query("date") String date);
 //
 //    @GET("/api/match/list")
 //    Call<List<MatchDto>> getMatchList(@Query("date") String date,@Query("status") String status);
@@ -43,8 +44,7 @@ public interface RetrofitMatchApi {
 
    //3번쨰 매치 수정
     @PUT("/api/match")
-    Call <MatchDetailDto> reviseMatch(@Header("authorization") String token,
-                                      @Body MatchUpdateRequestDto matchUpdaterequestDto);
+    Call <MatchDetailDto> reviseMatch(@Header("authorization") String token, @Body MatchUpdateRequestDto matchUpdaterequestDto);
 
 
 
@@ -63,7 +63,5 @@ public interface RetrofitMatchApi {
 
 
     @POST("/api/match")
-    Call<MatchDetailDto> postMatch(@Header("authorization") String token,
-                                   @Body MatchPostRequestDto requestVO);
-
+    Call<MatchDetailDto> postMatch(@Header("authorization") String token, @Body MatchPostRequestDto requestVO);
 }

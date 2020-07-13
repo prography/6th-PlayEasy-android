@@ -25,5 +25,6 @@ public class PlayeasyApplication extends Application {
 
             }
         });
+
     }
 }

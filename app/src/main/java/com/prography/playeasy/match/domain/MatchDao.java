@@ -5,18 +5,18 @@ import android.util.Log;
 import com.prography.playeasy.lib.RetrofitClientFactory;
 
 import com.prography.playeasy.match.api.RetrofitMatchApi;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 import java.io.IOException;
-import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-
+import java.util.Date;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -49,20 +49,26 @@ public class MatchDao {
         }
     }
 
-    public List<MatchDto> retrieve(String date) throws IOException {
+
+
+    public List<Match> retrieve(Date date) throws IOException {
 //        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 //        Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(date));
-        Call<List<MatchDto>> call = matchClient.getMatchList(date);
-        List<MatchDto> matchListDto;
+        String formattedDate=new SimpleDateFormat("YYYY-MM-dd").format(date);
+
+        Call<MatchListDto> call = matchClient.getMatchList(formattedDate);
+
+//        List<Match> matchListDto;
         try {
-            Response<List<MatchDto>> response = call.execute();
-            matchListDto = response.body();
+            Response<MatchListDto> response = call.execute();
+            MatchListDto matchListDto = response.body();
             assert matchListDto != null;
-            return matchListDto;
+            return matchListDto.getMatchList();
         } catch (Throwable e) {
             Log.e("RETRIEIVE_FAIL", Objects.requireNonNull(e.getMessage()));
             throw e;
         }
+
     }
 
     public Match findById(int matchId) throws IOException {
