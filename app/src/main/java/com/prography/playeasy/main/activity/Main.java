@@ -100,15 +100,14 @@ public class Main extends AppCompatActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
 
-                try {
+                /*try {
                     matchList = matchDao.retrieve(simpleDateFormat.parse(tempDateSend));
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                adaptRecyclerView(matchList);
-
+                adaptRecyclerView(matchList);*/
 
             }
         });

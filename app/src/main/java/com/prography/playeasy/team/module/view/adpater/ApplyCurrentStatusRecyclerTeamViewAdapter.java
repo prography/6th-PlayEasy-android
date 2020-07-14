@@ -12,30 +12,41 @@ import com.prography.playeasy.mypage.domain.MyMatchVO;
 
 import java.util.ArrayList;
 
-public class TeamApplyCurrentStuatusRecyclcerViewAdapter extends RecyclerView.Adapter<TeamApplyCurrentStuatusRecyclcerViewAdapter.MyViewHolder> {
+public class ApplyCurrentStatusRecyclerTeamViewAdapter extends RecyclerView.Adapter<ApplyCurrentStatusRecyclerTeamViewAdapter.MyViewHolder> {
 
-    private ArrayList<MyMatchVO> applyCurrentStautsList = new ArrayList<>();
+    private ArrayList<MyMatchVO> applyCurrentStatusList = new ArrayList<>();
 
     @NonNull
     @Override
-    public TeamApplyCurrentStuatusRecyclcerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_mymatchinformation_item,parent,false);
+    public ApplyCurrentStatusRecyclerTeamViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.team_applycurrentstautsteam_item,parent,false);
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeamApplyCurrentStuatusRecyclcerViewAdapter.MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ApplyCurrentStatusRecyclerTeamViewAdapter.MyViewHolder holder, int position) {
+        holder.onBind(applyCurrentStatusList.get(position), position);
     }
+
 
     @Override
     public int getItemCount() {
-        return 0;
+        return applyCurrentStatusList.size();
     }
 
+    public void addItems(ArrayList<MyMatchVO> Data) {
+        applyCurrentStatusList = Data;
+        notifyDataSetChanged();
+    }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+        }
+
+        public void onBind(MyMatchVO myMatchVO, int position) {
+
+
         }
     }
 }

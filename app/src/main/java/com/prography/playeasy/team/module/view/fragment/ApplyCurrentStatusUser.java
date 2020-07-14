@@ -37,18 +37,11 @@ public class ApplyCurrentStatusUser extends Fragment {
     }
 
     private void initialize(View view) {
-        RecyclerView recyclerView = view.findViewById(R.id.pushRegisterRecyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.teamApplyCurrentStatusUserRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        final PushRecyclerViewAdapter adapter = new PushRecyclerViewAdapter();
+        // PushRecyclerViewAdapter adapter = new PushRecyclerViewAdapter();
 
-        test = new ArrayList<>();
-        test.add(new MyMatchVO("프로","안양",11));
-        test.add(new MyMatchVO("그라","강남",6));
-        test.add(new MyMatchVO("피","사당",5));
-
-        adapter.addItems(test);
-        recyclerView.setAdapter(adapter);
 
     }
 }

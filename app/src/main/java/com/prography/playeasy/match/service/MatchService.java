@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 //생성 수정 logic
+/*
 public class MatchService {
 
     private MatchDao matchDao;
@@ -34,11 +35,11 @@ public class MatchService {
         return this.matchDao.retrieve(date);
     }
 
+*/
 
 
 
-
-
+/*
 //반환형을 MatchDto가 아닌 Match
     public Match detailMatch(int MatchId) throws IOException {
 
@@ -49,7 +50,7 @@ public class MatchService {
 
         return this.matchDao.closeMatch(matchId);
     }
-
+*/
     //horizontal recyclerview에서 선택한 날짜의 매치 정보 가져오기
 //동기에서 Asnc 른 비동기를 호출하니 굳이 비동기식 코드를 짤 필요가 없다 callback을 쓰면 괜히 코드만 어려워
 //    public Match retrieveMatch(MatchResponseCallback callback) {
@@ -64,4 +65,4 @@ public class MatchService {
 
 
 //    public void reviseMatch() 도 구현해야 함 규산's 컨펌 받
-}
+//}
