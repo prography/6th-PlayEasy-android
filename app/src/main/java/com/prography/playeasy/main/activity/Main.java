@@ -72,12 +72,12 @@ public class Main extends AppCompatActivity {
         Calendar startDate = Calendar.getInstance();
         //set current day month year
         startDate.add(Calendar.MONTH, -1);
-        HorizontalCalendarView calendarView = (HorizontalCalendarView) findViewById(R.id.calendarView);
+        HorizontalCalendarView calendarView = (HorizontalCalendarView) findViewById(R.id.calendarViewMain);
         /* ends after 1 month from now */
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
 
-        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarView)
+        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarViewMain)
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
                 .build();
@@ -111,6 +111,7 @@ public class Main extends AppCompatActivity {
                         public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
                             matchList = response.body().getMatchList();
                             Log.d("response",response.body().toString());
+                            adaptRecyclerView(matchList);
                         }
 
                         @Override
@@ -122,7 +123,7 @@ public class Main extends AppCompatActivity {
                     e.printStackTrace();
                 }
 //todo
-                adaptRecyclerView(matchList);
+
 
 
             }
