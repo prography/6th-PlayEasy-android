@@ -7,6 +7,7 @@ import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
@@ -32,15 +33,15 @@ public class MatchService {
     }
 
     public void createMatch(MatchPostRequestDto request) throws IOException {
-        this.matchDao.create(request, new Callback<MatchDetailDto>() {
+        this.matchDao.create(request, new Callback<MatchCreateResponseDto>() {
             @Override
-            public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
+            public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
                 //아무것도 안함 저장 안하니까
                 Log.d("매치 생성하기 정보", String.valueOf(response.body()));
             }
 
             @Override
-            public void onFailure(Call<MatchDetailDto> call, Throwable t) {
+            public void onFailure(Call<MatchCreateResponseDto> call, Throwable t) {
 
             }
         });
