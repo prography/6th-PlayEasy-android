@@ -23,6 +23,7 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
@@ -89,7 +90,7 @@ public class MatchCreate extends AppCompatActivity {
             }
         });
 
-        String dumstrDate = "2020-07-13 23:20:00.123";
+        String dumstrDate = "2020-07-13T23:20:00.123Z";
 
 
 //2020-07-12T20:00:00.000Z
@@ -147,16 +148,19 @@ public class MatchCreate extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.createMatch:
-                match.create(matchSample, new Callback<MatchDetailDto>() {
+                match.create(matchSample, new Callback<MatchCreateResponseDto>() {
                     @Override
-                    public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
+                    public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
                         //don't get any response
                         Log.d("checking response data ", String.valueOf(response.body()));
+
+
                     }
 
                     @Override
-                    public void onFailure(Call<MatchDetailDto> call, Throwable t) {
+                    public void onFailure(Call<MatchCreateResponseDto> call, Throwable t) {
                         Log.d("매치 생성 실패","");
+
                     }
                 });
                 Intent writeBack = new Intent(this, Main.class);

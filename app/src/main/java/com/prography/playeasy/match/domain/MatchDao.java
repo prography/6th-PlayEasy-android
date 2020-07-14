@@ -9,6 +9,7 @@ import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
@@ -40,7 +41,7 @@ public class MatchDao {
         this.token = token;
     }
 
-    public void create(MatchPostRequestDto requestDto, Callback<MatchDetailDto> callback) {
+    public void create(MatchPostRequestDto requestDto, Callback<MatchCreateResponseDto> callback) {
         Call<MatchDetailDto> call = matchClient.postMatch(token, requestDto);
 //        call.enqueue(callback);
     }
