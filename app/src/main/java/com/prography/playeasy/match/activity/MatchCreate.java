@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.HorizontalCalendarManager;
+import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
@@ -57,7 +58,7 @@ public class MatchCreate extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_create);
-
+        match=new MatchDao(TokenManager.get(getApplicationContext()));
         UIHelper.hideWindow(this);
         UIHelper.toolBarInitialize(this, findViewById(R.id.matchCreateToolBar));
 //calenderview 객체화하는 방식 Main.java와 동일
@@ -152,6 +153,7 @@ public class MatchCreate extends AppCompatActivity {
                     public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
                         //don't get any response
                         Log.d("checking response data ", String.valueOf(response.body()));
+                        
                     }
 
                     @Override
