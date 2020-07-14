@@ -19,7 +19,7 @@ import java.util.List;
 
 
 public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdapter.MyViewHolder>{
-    private List<MatchDto> matchList = new ArrayList<>();
+    private List<Match> matchList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -38,7 +38,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
         return matchList.size();
     }
 
-    public void addItems(MatchDto match) {
+    public void addItems(Match match) {
         matchList.add(match);
         notifyDataSetChanged();
     }
@@ -68,7 +68,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
            totalQuota = itemView.findViewById(R.id.matchHomeQuota);
         }
 //주석 처리
-        public void onBind(MatchDto match) {
+        public void onBind(Match match) {
 //            title.setText(match.getTitle());
 //            type.setText(match.getType());
             description.setText(match.getDescription());

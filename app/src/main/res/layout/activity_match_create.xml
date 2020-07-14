@@ -120,7 +120,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/matchDetailMap" />
 
                 <devs.mulham.horizontalcalendar.HorizontalCalendarView
-                    android:id="@+id/calendarView"
+                    android:id="@+id/calendarViewMatchCreate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -147,7 +147,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+                    app:layout_constraintTop_toBottomOf="@+id/calendarViewMatchCreate" />
 
                 <TimePicker
                     android:id="@+id/timePickerStart"
