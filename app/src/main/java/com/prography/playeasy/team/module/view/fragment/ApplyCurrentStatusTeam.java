@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.prography.playeasy.R;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
 import com.prography.playeasy.push.module.view.adapter.PushRecyclerViewAdapter;
+import com.prography.playeasy.team.module.view.adpater.ApplyCurrentStatusRecyclerTeamViewAdapter;
 
 import java.util.ArrayList;
 
 public class ApplyCurrentStatusTeam extends Fragment {
 
     private ArrayList<MyMatchVO> test;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,14 +43,7 @@ public class ApplyCurrentStatusTeam extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.teamApplyCurrentStatusTeamRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        final PushRecyclerViewAdapter adapter = new PushRecyclerViewAdapter();
-
-        test = new ArrayList<>();
-        test.add(new MyMatchVO("프로","안양",11));
-        test.add(new MyMatchVO("그라","강남",6));
-        test.add(new MyMatchVO("피","사당",5));
-
-        adapter.addItems(test);
+        final ApplyCurrentStatusRecyclerTeamViewAdapter adapter = new ApplyCurrentStatusRecyclerTeamViewAdapter();
         recyclerView.setAdapter(adapter);
 
     }
