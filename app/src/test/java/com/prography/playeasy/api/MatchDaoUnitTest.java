@@ -6,6 +6,7 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
@@ -34,14 +35,14 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
         MatchDto matchData = new MatchDto("FOOTSAL6", "축구뜨자", date, 120, 3000, "010-9165-6918", 6);
         LocationDto locationData = new LocationDto(3.14f, 7.77f, "마루 180", "강남구", "마루 경기장");
         MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData, locationData);
-        new MatchDao(FAKE_TOKEN).create(matchPostRequestDto, new Callback<MatchDetailDto>() {
+        new MatchDao(FAKE_TOKEN).create(matchPostRequestDto, new Callback<MatchCreateResponseDto>() {
             @Override
-            public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
+            public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
                 assertEquals(null, response.body());
             }
 
             @Override
-            public void onFailure(Call<MatchDetailDto> call, Throwable t) {
+            public void onFailure(Call<MatchCreateResponseDto> call, Throwable t) {
                 Log.e("Error", t.getMessage());
             }
         });
