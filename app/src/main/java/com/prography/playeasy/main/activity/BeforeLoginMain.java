@@ -41,7 +41,7 @@ public class BeforeLoginMain extends AppCompatActivity {
         @Override
         public void onSuccess(Object responseData) {
             // 응답 데이터 변환
-            List<MatchDto> matchList = (List<MatchDto>)responseData;
+            List<Match> matchList = (List<Match>)responseData;
             // 리사이클러뷰 렌더링
             adaptRecyclerView(matchList);
         }
@@ -109,7 +109,7 @@ public class BeforeLoginMain extends AppCompatActivity {
 
 //카드뷰와 activity_main_custom에 Binding 의 대상이 있어야 함?
 //chohee 에서 initReecyclerVIew() method의 역할을 한
-    private void adaptRecyclerView(List<MatchDto> matchList) {
+    private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -117,7 +117,7 @@ public class BeforeLoginMain extends AppCompatActivity {
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        for (MatchDto m : matchList) {
+        for (Match m : matchList) {
             adapter.addItems(m);
         }
     }
@@ -133,14 +133,14 @@ public class BeforeLoginMain extends AppCompatActivity {
 
 
     }
-    public static List<MatchDto> createSampleMatch() throws ParseException {
+    public static List<Match> createSampleMatch() throws ParseException {
 
-        List<MatchDto> matchArr = new ArrayList<>();
+        List<Match> matchArr = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        matchArr.add(new MatchDto("SOCCER", "축구뜨자", sdf.parse("2020-07-11"), 180, 3000, "010-9165-6918", 11));
-        matchArr.add(new MatchDto("FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-12"), 180, 5000, "010-9165-6918", 5));
-        return matchArr;
+//
+//        matchArr.add(new Match(28,"SOCCER", "축구뜨자", sdf.parse("2020-07-11"), 180, 3000, "010-9165-6918", 11));
+//        matchArr.add(new Match(1,"FOOTSAL5", "풋살 즐기", sdf.parse("2020-07-12"), 180, 5000, "010-916/5-6918", 5));
+       return matchArr;
     }
 
 }

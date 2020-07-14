@@ -4,6 +4,7 @@ import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 
@@ -21,11 +22,11 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface RetrofitMatchApi {
-
+//RetrofitMatchApi.class
 
 //todo String 으로수정?
     @GET("/api/match/list")
-    Call<List<MatchDto>> getMatchList(@Query("date") String date);
+    Call<MatchListDto> getMatchList(@Query("date") String date);
 //
 //    @GET("/api/match/list")
 //    Call<List<MatchDto>> getMatchList(@Query("date") String date,@Query("status") String status);

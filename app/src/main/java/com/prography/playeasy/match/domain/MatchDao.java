@@ -10,6 +10,7 @@ import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 import java.io.IOException;
@@ -41,13 +42,13 @@ public class MatchDao {
 
     public void create(MatchPostRequestDto requestDto, Callback<MatchDetailDto> callback) {
         Call<MatchDetailDto> call = matchClient.postMatch(token, requestDto);
-        call.enqueue(callback);
+//        call.enqueue(callback);
     }
 
-    public void retrieve(Date date, Callback<List<MatchDto>> callback) {
+    public void retrieve(Date date, Callback<MatchListDto> callback) {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Call<List<MatchDto>> call = matchClient.getMatchList(formatter.format(date));
+        Call<MatchListDto> call = matchClient.getMatchList(formatter.format(date));
         call.enqueue(callback);
     }
 

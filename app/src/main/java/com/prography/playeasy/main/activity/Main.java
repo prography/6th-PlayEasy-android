@@ -17,6 +17,8 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.util.UIHelper;
@@ -31,6 +33,9 @@ import java.util.List;
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Main extends AppCompatActivity {
@@ -38,7 +43,7 @@ public class Main extends AppCompatActivity {
     private static final String TAG = "JWT_TOKEN";
     private HorizontalCalendar horizontalCalendar;
 
-    List<MatchDto> matchList;
+    List<Match> matchList;
     MatchDao matchDao;
 
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
@@ -47,7 +52,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
 
-
+        matchDao=new MatchDao(TokenManager.get(getApplicationContext()));
 //step 1
         BeforeLoginMain.getCurrentDayMatch();
 
@@ -101,12 +106,22 @@ public class Main extends AppCompatActivity {
 
 
                 try {
-                    matchList = matchDao.retrieve(simpleDateFormat.parse(tempDateSend));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    matchDao.retrieve(simpleDateFormat.parse(tempDateSend), new Callback<MatchListDto>() {
+                        @Override
+                        public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
+                            matchList = response.body().getMatchList();
+                            Log.d("response",response.body().toString());
+                        }
+
+                        @Override
+                        public void onFailure(Call<MatchListDto> call, Throwable t) {
+
+                        }
+                    });
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+//todo
                 adaptRecyclerView(matchList);
 
 
@@ -116,7 +131,7 @@ public class Main extends AppCompatActivity {
 
     }
 
-    private void adaptRecyclerView(List<MatchDto> matchList) {
+    private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -124,7 +139,7 @@ public class Main extends AppCompatActivity {
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        for (MatchDto m : matchList) {
+        for (Match m : matchList) {
             adapter.addItems(m);
         }
     }

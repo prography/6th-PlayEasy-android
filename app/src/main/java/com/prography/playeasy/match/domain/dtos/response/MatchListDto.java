@@ -16,4 +16,6 @@ public class MatchListDto {
     public void setMatchList(List<Match> matchList) {
         this.matchList = matchList;
     }
+
+
 }

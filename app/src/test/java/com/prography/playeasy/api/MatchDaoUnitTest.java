@@ -7,6 +7,7 @@ import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 import org.junit.Test;
@@ -48,15 +49,15 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
 
     @Test
     public void retrieveTest() {
-        new MatchDao(FAKE_TOKEN).retrieve(new Date(), new Callback<List<MatchDto>>() {
+        new MatchDao(FAKE_TOKEN).retrieve(new Date(), new Callback<MatchListDto>() {
             @Override
-            public void onResponse(Call<List<MatchDto>> call, Response<List<MatchDto>> response) {
-                List<MatchDto> compareList = new ArrayList<MatchDto>(5);
-                assertArrayEquals(response.body().toArray(), compareList.toArray());
+            public void onResponse(Call< MatchListDto> call, Response<MatchListDto> response) {
+                    List<Match> compareList = new ArrayList<Match>(5);
+                assertEquals(response.body().getMatchList(), compareList);
             }
 
             @Override
-            public void onFailure(Call<List<MatchDto>> call, Throwable t) {
+            public void onFailure(Call<MatchListDto> call, Throwable t) {
                 Log.e("Error", t.getMessage());
             }
         });

@@ -62,11 +62,12 @@ public class MatchCreate extends AppCompatActivity {
         LocationDto locationData=new LocationDto(3.14f,7.77f,"마루180","서울특별시 강남구 ~~","마루180 1경기장");
 
         MatchPostRequestDto matchSample=new MatchPostRequestDto(matchData,locationData);
-        try {
-            match.create(matchSample);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//todo
+        //        try {
+//            match.create(matchSample);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         /*TimePicker*/
         sTimePicker = findViewById(R.id.timePickerStart);
