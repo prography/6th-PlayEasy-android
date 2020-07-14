@@ -90,13 +90,14 @@ public class MatchCreate extends AppCompatActivity {
             }
         });
 
-        String dumstrDate = "2020-07-13 23:20:00.123";
+        String dumstrDate = "2020-07-13T23:20:00.123Z";
 
 
 //2020-07-12T20:00:00.000Z
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         try {
             date = sdf.parse(dumstrDate);
+            Log.d("날짜 형식 보자", String.valueOf(date));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -153,7 +154,7 @@ public class MatchCreate extends AppCompatActivity {
                     public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
                         //don't get any response
                         Log.d("checking response data ", String.valueOf(response.body()));
-                        
+
                     }
 
                     @Override
