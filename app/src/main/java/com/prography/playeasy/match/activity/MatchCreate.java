@@ -89,7 +89,7 @@ public class MatchCreate extends AppCompatActivity {
             }
         });
 
-        String dumstrDate = "2020-07-14 23:20:00.123";
+        String dumstrDate = "2020-07-13 23:20:00.123";
 
 
 //2020-07-12T20:00:00.000Z
@@ -99,8 +99,8 @@ public class MatchCreate extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        MatchDto matchData = new MatchDto("SOCCER", "축구뜨자", date, 180, 3000, "000-0000-0000", 11);
-        LocationDto locationData = new LocationDto(3.14f, 7.77f, "마루180", "서울특별시 강남구 ~~", "마루180 1경기장");
+        MatchDto matchData = new MatchDto("SOCCER", "허", date, 180, 3000, "000-0000-0000", 11);
+        LocationDto locationData = new LocationDto(3.14f, 7.77f, "리버", "서울특별시 강남구 ~~", "마루180 1경기장");
 
         matchSample = new MatchPostRequestDto(matchData, locationData);
 //todo
@@ -156,7 +156,7 @@ public class MatchCreate extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<MatchDetailDto> call, Throwable t) {
-
+                        Log.d("매치 생성 실패","");
                     }
                 });
                 Intent writeBack = new Intent(this, Main.class);
