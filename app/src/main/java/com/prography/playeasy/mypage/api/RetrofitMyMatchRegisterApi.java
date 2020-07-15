@@ -8,12 +8,16 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Query;
 
 public interface RetrofitMyMatchRegisterApi {
+    //내가 등록한 매치
     @GET("/api/users/matches")
     Call <MatchListDto> getmyRegisterMatchList(@Header("authorization")String token);
+
+    //나의 신청 현황
     @GET("/api/users/applications")
-    Call<MyApplyStatusResponseDto> getMyApplyStatus(@Header("authorization") String token , @Body String type);
+    Call<MyApplyStatusResponseDto> getMyApplyStatus(@Header("authorization") String token , @Query("type") String type);
 
 
 
