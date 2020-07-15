@@ -15,7 +15,6 @@ import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
@@ -111,6 +110,8 @@ public class Main extends AppCompatActivity {
                         public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
                             matchList = response.body().getMatchList();
                             Log.d("response",response.body().toString());
+                            Log.d("list", String.valueOf(matchList));
+                            Log.d("response",response.body().getMatchList().toString());
                             adaptRecyclerView(matchList);
                         }
 
@@ -134,7 +135,6 @@ public class Main extends AppCompatActivity {
 
     private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();

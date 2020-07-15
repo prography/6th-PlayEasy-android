@@ -22,7 +22,7 @@ import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
+import com.prography.playeasy.match.domain.dtos.MatchNoIdDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
@@ -51,7 +51,6 @@ public class MatchCreate extends AppCompatActivity {
     private HorizontalCalendar horizontalCalendar;
     LocationDto locationDto;
     MatchPostRequestDto matchSample;
-    MatchDto matchDto;
     MatchDao match;
     Date date;
     String tempDateSend;
@@ -102,7 +101,7 @@ public class MatchCreate extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        MatchDto matchData = new MatchDto("SOCCER", "허", date, 180, 3000, "000-0000-0000", 11);
+        MatchNoIdDto matchData = new MatchNoIdDto("SOCCER", "허", date, 180, 3000, "000-0000-0000", 11);
         LocationDto locationData = new LocationDto(3.14f, 7.77f, "리버", "서울특별시 강남구 ~~", "마루180 1경기장");
 
         matchSample = new MatchPostRequestDto(matchData, locationData);

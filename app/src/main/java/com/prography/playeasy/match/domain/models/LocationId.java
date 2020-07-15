@@ -4,7 +4,7 @@ import androidx.annotation.StringRes;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Location{
+public class LocationId{
     @SerializedName("id")
     int id;
     @SerializedName("latitude")

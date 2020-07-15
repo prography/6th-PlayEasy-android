@@ -1,33 +1,46 @@
 package com.prography.playeasy.match.domain.dtos.request;
 
 import com.google.gson.annotations.SerializedName;
-import com.prography.playeasy.match.domain.models.Location;
+import com.prography.playeasy.match.domain.dtos.MatchIdDto;
+import com.prography.playeasy.match.domain.models.LocationId;
 import com.prography.playeasy.match.domain.models.Match;
-
+//완성
 public class MatchUpdateRequestDto {
-@SerializedName("matchData")
-    Match matchData;
-@SerializedName("locationData")
-    Location locationData;
+    @SerializedName("matchId")
+    int matchId;
+    //critical fix
+    @SerializedName("matchData")
+    MatchIdDto matchData;
+    @SerializedName("locationData")
+    LocationId locationData;
 
-    public MatchUpdateRequestDto(Match matchData, Location locationData) {
+    public MatchUpdateRequestDto(int matchId, MatchIdDto matchData, LocationId locationData) {
+        this.matchId = matchId;
         this.matchData = matchData;
         this.locationData = locationData;
     }
 
-    public Match getMatchData() {
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
+    }
+
+    public MatchIdDto getMatchData() {
         return matchData;
     }
 
-    public void setMatchData(Match matchData) {
+    public void setMatchData(MatchIdDto matchData) {
         this.matchData = matchData;
     }
 
-    public Location getLocationData() {
+    public LocationId getLocationData() {
         return locationData;
     }
 
-    public void setLocationData(Location locationData) {
+    public void setLocationData(LocationId locationData) {
         this.locationData = locationData;
     }
 }

@@ -42,12 +42,12 @@ public class MatchDao {
     public void retrieve(Date date, Callback<MatchListDto> callback) {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Call<MatchListDto> call = matchClient.getMatchList(formatter.format(date));
+        Call<MatchListDto> call = matchClient.getMatchList(formatter.format(date),"all");
         call.enqueue(callback);
     }
 
     public void findById(int matchId, Callback<MatchDetailDto> callback) {
-        Call<MatchDetailDto> call = matchClient.getMatch(matchId);
+        Call<MatchDetailDto> call = matchClient.getMatch(token,matchId);
         call.enqueue(callback);
     }
 

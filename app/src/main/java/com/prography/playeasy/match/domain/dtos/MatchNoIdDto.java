@@ -4,7 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 //매치 작성 resquest
-public class MatchDto {
+//@SerializedName("matchData")
+public class MatchNoIdDto {
     @SerializedName("type")
     String type;
     @SerializedName("description")
@@ -17,18 +18,17 @@ public class MatchDto {
     private int duration;
     @SerializedName("fee")
     private int fee;
-    @SerializedName("phone")
-    String phone;
+//    @SerializedN
     @SerializedName("totalQuota")
     int totalQuota;
 
-    public MatchDto(String typ, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
+    public MatchNoIdDto(String typ, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
         this.type=typ;
         this.description = description;
         this.startAt = startAt;
         this.duration = duration;
         this.fee = fee;
-        this.phone=phone;
+
         this.totalQuota=totalQuota;
 
     }
@@ -71,14 +71,6 @@ public class MatchDto {
 
     public void setFee(int fee) {
         this.fee = fee;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public int getTotalQuota() {

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.prography.playeasy.R;
 import com.prography.playeasy.login.activity.LoginActivity;
 import com.prography.playeasy.match.domain.MatchDao;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.util.MatchResponseCallback;
@@ -65,7 +64,7 @@ public class BeforeLoginMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_beforelogin);
-        List<MatchDto> targetdateList = null;
+        List<Match> targetdateList = null;
         //현재 날짜 리스트 뿌리기
 
         //선택한 날짜 리스트 뿌리기

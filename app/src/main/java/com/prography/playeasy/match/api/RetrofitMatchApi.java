@@ -1,6 +1,5 @@
 package com.prography.playeasy.match.api;
 
-import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
@@ -26,30 +25,23 @@ public interface RetrofitMatchApi {
 
 //todo String 으로수정?
     @GET("/api/match/list")
-    Call<MatchListDto> getMatchList(@Query("date") String date);
-//
+    Call<MatchListDto> getMatchList(@Query("date") String date,@Query("all") String status);
 //    @GET("/api/match/list")
 //    Call<List<MatchDto>> getMatchList(@Query("date") String date,@Query("status") String status);
-//
-
     /**
      * 매치 상세 조회
      * @param matchId 클릭한 매치의 ID
      * @example /api/match?id={matchId}
      * @return MatchResponseDto-->Match로 수정
      */
-
+//todo-issue
+    //토큰 보내는 게 맞나
     @GET("/api/match")
-    Call<MatchDetailDto> getMatch(@Query("id")int matchId);
-
+    Call<MatchDetailDto> getMatch(@Header("authorization") String token,@Body int matchId);
    //3번쨰 매치 수정
     @PUT("/api/match")
     Call <MatchDetailDto> reviseMatch(@Header("authorization") String token,
                                       @Body MatchUpdateRequestDto matchUpdaterequestDto);
-
-
-
-
 
     //매치 마감
     @PUT("/api/match/status")
