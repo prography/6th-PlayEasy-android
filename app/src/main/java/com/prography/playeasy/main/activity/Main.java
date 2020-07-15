@@ -53,6 +53,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
         matchList=new ArrayList<Match>();
+        Log.d("jwt token",TokenManager.get(getApplicationContext()));
         matchDao=new MatchDao(TokenManager.get(getApplicationContext()));
 //step 1
         BeforeLoginMain.getCurrentDayMatch();
@@ -109,8 +110,7 @@ public class Main extends AppCompatActivity {
                     matchDao.retrieve(simpleDateFormat.parse(tempDateSend), new Callback<MatchListDto>() {
                         @Override
                         public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
-//                            assert response.body() != null;
-                      //      matchList = response.body().getMatchList();
+                            matchList = response.body().getMatchList();;
                             Log.d("response",response.body().toString());
                             Log.d("list", String.valueOf(matchList));
                             Log.d("response",response.body().getMatchList().toString());

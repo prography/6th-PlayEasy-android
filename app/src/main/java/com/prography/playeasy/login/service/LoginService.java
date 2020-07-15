@@ -30,6 +30,7 @@ public class LoginService {
         // Get firebase token
         Log.d("FIREBASE", "FB TOKEN: " + PlayeasyApplication.TOKEN);
 
+
         Call<LoginResponseVO> call = loginClient.register(new LoginRequestVO(accessToken));
         call.enqueue(new Callback<LoginResponseVO>() {
             @Override
