@@ -47,4 +47,6 @@ public class ApplyCurrentStatusTeam extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
+
+    // 팀 지원 현황
 }

@@ -1,5 +1,7 @@
 package com.prography.playeasy.lib;
 
+import com.google.gson.GsonBuilder;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,7 +15,9 @@ public class RetrofitClientFactory {
         if (service == null) {
             service = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(
+                            new GsonBuilder().serializeNulls().create()
+                    ))
                     .build();
         }
 

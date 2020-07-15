@@ -42,6 +42,8 @@ public class ApplyCurrentStatusUser extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         // PushRecyclerViewAdapter adapter = new PushRecyclerViewAdapter();
 
-
     }
+
+    // 신청상태변경
+
 }
