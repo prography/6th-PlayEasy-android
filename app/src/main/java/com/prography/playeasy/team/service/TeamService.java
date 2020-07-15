@@ -26,7 +26,7 @@ public class TeamService {
         this.teamClient = RetrofitClientFactory.getClient(RetrofitTeamApi.class);
     }
 
-    public void registerTeam(Team team, Context context) {
+    public void registerTeam(Team team, Context context, ResponseCallback callback) {
         TeamRequestDto requestDto = new TeamRequestDto();
         requestDto.put("team", team);
 
@@ -42,6 +42,7 @@ public class TeamService {
                     return;
                 }
 
+                callback.onSuccess(response.body().userList());
                 Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
             }
 

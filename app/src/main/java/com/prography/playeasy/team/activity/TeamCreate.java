@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kakao.network.ErrorResult;
+import com.kakao.network.callback.ResponseCallback;
 import com.prography.playeasy.R;
 import com.prography.playeasy.mypage.activity.MyInformation;
 import com.prography.playeasy.team.domain.Team;
@@ -18,8 +20,13 @@ import com.prography.playeasy.team.service.TeamService;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
+import java.util.List;
+
+import javax.security.auth.callback.Callback;
+
 public class TeamCreate extends AppCompatActivity {
 
+    public static int myTeamID;
     private String spinnerValue = "";
 
     @Override
@@ -70,7 +77,18 @@ public class TeamCreate extends AppCompatActivity {
             public void onClick(View v) {
 
                 TeamService service = PlayeasyServiceFactory.getInstance(TeamService.class);
-                service.registerTeam(getInputtedTeam(), getApplicationContext());
+                service.registerTeam(getInputtedTeam(), getApplicationContext(), new ResponseCallback() {
+                    @Override
+                    public void onFailure(ErrorResult errorResult) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Object result) {
+                        myTeamID = ((Team) result).id();
+
+                    }
+                });
 
 
                 Intent intent = new Intent(getApplicationContext(), MyInformation.class);
