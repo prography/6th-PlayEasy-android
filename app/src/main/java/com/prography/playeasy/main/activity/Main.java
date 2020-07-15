@@ -17,6 +17,8 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.util.UIHelper;
@@ -31,6 +33,9 @@ import java.util.List;
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Main extends AppCompatActivity {
@@ -38,7 +43,7 @@ public class Main extends AppCompatActivity {
     private static final String TAG = "JWT_TOKEN";
     private HorizontalCalendar horizontalCalendar;
 
-    List<MatchDto> matchList;
+    List<Match> matchList;
     MatchDao matchDao;
 
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
@@ -47,7 +52,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
 
-
+        matchDao=new MatchDao(TokenManager.get(getApplicationContext()));
 //step 1
         BeforeLoginMain.getCurrentDayMatch();
 
@@ -67,12 +72,12 @@ public class Main extends AppCompatActivity {
         Calendar startDate = Calendar.getInstance();
         //set current day month year
         startDate.add(Calendar.MONTH, -1);
-        HorizontalCalendarView calendarView = (HorizontalCalendarView) findViewById(R.id.calendarView);
+        HorizontalCalendarView calendarView = (HorizontalCalendarView) findViewById(R.id.calendarViewMain);
         /* ends after 1 month from now */
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
 
-        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarView)
+        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarViewMain)
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
                 .build();
@@ -100,14 +105,26 @@ public class Main extends AppCompatActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
 
-                /*try {
-                    matchList = matchDao.retrieve(simpleDateFormat.parse(tempDateSend));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                try {
+                    matchDao.retrieve(simpleDateFormat.parse(tempDateSend), new Callback<MatchListDto>() {
+                        @Override
+                        public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
+                            matchList = response.body().getMatchList();
+                            Log.d("response",response.body().toString());
+                            adaptRecyclerView(matchList);
+                        }
+
+                        @Override
+                        public void onFailure(Call<MatchListDto> call, Throwable t) {
+
+                        }
+                    });
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                adaptRecyclerView(matchList);*/
+//todo
+
+
 
             }
         });
@@ -115,7 +132,7 @@ public class Main extends AppCompatActivity {
 
     }
 
-    private void adaptRecyclerView(List<MatchDto> matchList) {
+    private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -123,7 +140,7 @@ public class Main extends AppCompatActivity {
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        for (MatchDto m : matchList) {
+        for (Match m : matchList) {
             adapter.addItems(m);
         }
     }

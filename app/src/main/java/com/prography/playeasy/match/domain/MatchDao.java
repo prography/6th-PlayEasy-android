@@ -1,28 +1,22 @@
 package com.prography.playeasy.match.domain;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 
 import com.prography.playeasy.lib.RetrofitClientFactory;
 
 import com.prography.playeasy.match.api.RetrofitMatchApi;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
-import com.prography.playeasy.match.domain.models.Match;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Match 에 대한 API에 접근하는 객체(보통은 DB에 접근할 때 쓰기 때문에, DAO가 올바른 표현은 아닐 수 있음.)
@@ -40,7 +34,7 @@ public class MatchDao {
         this.token = token;
     }
 
-    public void create(MatchPostRequestDto requestDto, Callback<MatchDetailDto> callback) {
+    public void create(MatchPostRequestDto requestDto, Callback<MatchCreateResponseDto> callback) {
         Call<MatchDetailDto> call = matchClient.postMatch(token, requestDto);
 //        call.enqueue(callback);
     }
