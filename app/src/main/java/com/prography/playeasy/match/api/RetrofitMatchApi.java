@@ -4,6 +4,7 @@ import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchUpdateResponseDto;
 import com.prography.playeasy.match.domain.models.Match;
 
 
@@ -40,8 +41,8 @@ public interface RetrofitMatchApi {
     Call<MatchDetailDto> getMatch(@Header("authorization") String token,@Body int matchId);
    //3번쨰 매치 수정
     @PUT("/api/match")
-    Call <MatchDetailDto> reviseMatch(@Header("authorization") String token,
-                                      @Body MatchUpdateRequestDto matchUpdaterequestDto);
+    Call <MatchUpdateResponseDto> reviseMatch(@Header("authorization") String token,
+                                                  @Body MatchUpdateRequestDto matchUpdaterequestDto);
 
     //매치 마감
     @PUT("/api/match/status")
