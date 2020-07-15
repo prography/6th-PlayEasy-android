@@ -30,12 +30,12 @@ public class TeamService {
         TeamRequestDto requestDto = new TeamRequestDto();
         requestDto.put("team", team);
 
-        System.out.println("==> " + requestDto);
-
         Call<TeamResponseDto> call = teamClient.postTeam(TokenManager.get(context), requestDto);
         call.enqueue(new Callback<TeamResponseDto>() {
             @Override
             public void onResponse(Call<TeamResponseDto> call, Response<TeamResponseDto> response) {
+
+                System.out.println("=====> " + response.raw());
                 System.out.println("뜨나용? " + response.toString());
                 if (response.isSuccessful() == false) {
                     Toast.makeText(context, "Failed to register", Toast.LENGTH_SHORT).show();

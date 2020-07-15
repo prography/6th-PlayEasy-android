@@ -73,8 +73,8 @@ public class TeamCreate extends AppCompatActivity {
                 service.registerTeam(getInputtedTeam(), getApplicationContext());
 
 
-                //Intent intent = new Intent(getApplicationContext(), MyInformation.class);
-                //startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), MyInformation.class);
+                startActivity(intent);
             }
         });
     }
