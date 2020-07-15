@@ -40,7 +40,7 @@ public class MatchDao {
     }
 
     public void retrieve(Date date, Callback<MatchListDto> callback) {
-        @SuppressLint("SimpleDateFormat")
+        @SuppressLint(value = "SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Call<MatchListDto> call = matchClient.getMatchList(formatter.format(date),"all");
         call.enqueue(callback);
@@ -62,15 +62,13 @@ public class MatchDao {
         hashMap.put("status", "CANCEL");
         Call<MatchDetailDto> call = matchClient.closeMatch(hashMap);
         call.enqueue(callback);
-          //  String nestedJson="{"matchId"+":"+matchId+","+"statusType" +":"+ status+"}
+            matchClient.closeMatch(hashMap);
+        //  String nestedJson="{"matchId"+":"+matchId+","+"statusType" +":"+ status+"}
 //            JSONObject json = new JSONObject();
 //            json.put("matchId", matchId);
 //            json.put("status","CANCEL");
-          //  String json = "{\"matchId\":"+matchId+",\"status\":\"CANCEL\"}";
-           // TypedInput in = new TypedByteArray("application/json", json.getBytes("UTF-8"));
-
-            matchClient.closeMatch(hashMap);
-
+        //  String json = "{\"matchId\":"+matchId+",\"status\":\"CANCEL\"}";
+        // TypedInput in = new TypedByteArray("application/json", json.getBytes("UTF-8"));
 //    String nestedJson="{"+matchId+":"+matchId+","+"statusType" +":"+ status+"}";
 //    Gson gson=new Gson();
 //    Map<String,Object> result=gson.fromJson(nestedJson,Map.class);

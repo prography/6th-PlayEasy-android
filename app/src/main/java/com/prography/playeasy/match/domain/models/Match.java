@@ -26,7 +26,7 @@ public class Match {
     private int fee;
 
     @SerializedName("phone")
-    private int phone;
+    private String phone;
 
     @SerializedName("totalQuota")
     private int totalQuota;
@@ -42,7 +42,7 @@ public class Match {
     @SerializedName("location")
     private LocationId location;
 
- public Match(int id, String type, String description, Date startAt, int duration, int fee, int phone, int totalQuota, String status, int writerId, HomeTeamId homeTeam, LocationId location) {
+ public Match(int id, String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota, String status, int writerId, HomeTeamId homeTeam, LocationId location) {
   this.id = id;
   this.type = type;
   this.description = description;
@@ -105,11 +105,11 @@ public class Match {
   this.fee = fee;
  }
 
- public int getPhone() {
+ public String getPhone() {
   return phone;
  }
 
- public void setPhone(int phone) {
+ public void setPhone(String phone) {
   this.phone = phone;
  }
 

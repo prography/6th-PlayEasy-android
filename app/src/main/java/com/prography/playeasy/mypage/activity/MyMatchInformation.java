@@ -78,4 +78,6 @@ public class MyMatchInformation extends AppCompatActivity {
         tvName.setText(tabName);
         return tabView;
     }
+
+
 }
