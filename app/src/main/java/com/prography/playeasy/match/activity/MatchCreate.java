@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +56,21 @@ public class MatchCreate extends AppCompatActivity {
     MatchDao match;
     Date date;
     String tempDateSend;
+
+    String timeStartHour;
+    String timeStartMin;
+
+    Spinner spinner;
+    //todo Map
+    EditText matchMap;
+    EditText matchDetailMap;
+    EditText matchFee;
+    EditText needPeople;
+    EditText matchPhoneNumber;
+
+    EditText matchEtc;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +86,11 @@ public class MatchCreate extends AppCompatActivity {
         /* ends after 1 month from now */
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
+//Spinner findViewById
+        spinner=findViewById(R.id.matchTypeSpinner);
+
+        spinner.setOnItemSelectedListener(new MatchTypeSelectListener());
+
 
 
         HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarViewMatchCreate)
@@ -90,21 +112,21 @@ public class MatchCreate extends AppCompatActivity {
             }
         });
 
-        String dumstrDate = "2020-07-13T23:20:00.123Z";
+//        String dumstrDate = "2020-07-13T23:20:00.123Z";
 
 
 //2020-07-12T20:00:00.000Z
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        try {
-            date = sdf.parse(dumstrDate);
-            Log.d("날짜 형식 보자", String.valueOf(date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        MatchNoIdDto matchData = new MatchNoIdDto("SOCCER", "허", date, 180, 3000, "000-0000-0000", 11);
-        LocationDto locationData = new LocationDto(3.14f, 7.77f, "리버", "서울특별시 강남구 ~~", "마루180 1경기장");
-
-        matchSample = new MatchPostRequestDto(matchData, locationData);
+//        try {
+//            date = sdf.parse(dumstrDate);
+//            Log.d("날짜 형식 보자", String.valueOf(date));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        MatchNoIdDto matchData = new MatchNoIdDto("SOCCER", "허", date, 180, 3000, "000-0000-0000", 11);
+//        LocationDto locationData = new LocationDto(3.14f, 7.77f, "리버", "서울특별시 강남구 ~~", "마루180 1경기장");
+//
+//        matchSample = new MatchPostRequestDto(matchData, locationData);
 //todo
         //        try {
 //            match.create(matchSample);
@@ -112,9 +134,10 @@ public class MatchCreate extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 
-        /*TimePicker*/
+        /*TimePicker Id*/
         sTimePicker = findViewById(R.id.timePickerStart);
         eTimePicker = findViewById(R.id.timePickerEnd);
+
 
 
         findViewById(R.id.matchMap).setOnClickListener(new View.OnClickListener() {
@@ -126,6 +149,27 @@ public class MatchCreate extends AppCompatActivity {
 
             }
         });
+
+        sTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener(){
+
+
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                timeStartHour=sTimePicker.getHour()+"";
+                 timeStartMin=sTimePicker.getMinute()+"";
+            }
+        }
+        );
+        eTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener(){
+
+
+                                                 @Override
+                                                 public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                                                     int timeEndHour=eTimePicker.getHour();
+                                                     int timeEndMin=eTimePicker.getMinute();
+                                                 }
+                                             }
+        );
 
     }
 
@@ -175,4 +219,18 @@ public class MatchCreate extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    private class MatchTypeSelectListener implements AdapterView.OnItemSelectedListener {
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String setItem=(String)spinner.getSelectedItem();
+            Log.d("Spinner 아이템",setItem);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+            Toast.makeText(getApplicationContext(), "경기 방식을 선택해주세요",Toast.LENGTH_SHORT).show();
+        }
+    }
 }
