@@ -1,6 +1,8 @@
 package com.prography.playeasy.team.domain;
 
 
+import com.prography.playeasy.mypage.domain.User;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

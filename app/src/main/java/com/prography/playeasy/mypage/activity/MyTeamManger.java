@@ -56,12 +56,14 @@ public class MyTeamManger extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if(position == 0){
+                if(position == 1){
                     spinnerValue = "HIGH";
-                }else if(position == 1){
+                }else if(position == 2){
                     spinnerValue = "MEDIUM";
-                }else{
+                }else if(position == 3){
                     spinnerValue = "LOW";
+                }else{
+                    spinnerValue = "NULL";
                 }
             }
 

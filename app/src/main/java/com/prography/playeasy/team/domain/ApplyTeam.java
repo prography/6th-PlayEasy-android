@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 
 @Getter
 @ToString
-@Accessors
+@Accessors(fluent = true)
 @NoArgsConstructor
 public class ApplyTeam {
 
