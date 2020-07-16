@@ -77,4 +77,5 @@ public class TeamApplyCurrentStatus extends AppCompatActivity {
         tvName.setText(s);
         return tabView;
     }
+
 }

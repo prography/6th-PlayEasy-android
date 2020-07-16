@@ -35,7 +35,8 @@ public class MyPage extends AppCompatActivity {
         findViewById(R.id.secondButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), MyMatchInformation.class);
+                startActivity(intent);
             }
         });
 

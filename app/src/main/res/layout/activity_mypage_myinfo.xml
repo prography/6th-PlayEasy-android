@@ -65,12 +65,13 @@
 
     <TextView
         android:id="@+id/myPageEmail"
-        android:layout_width="177dp"
+        android:layout_width="0dp"
         android:layout_height="28dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="56dp"
-        android:layout_marginEnd="120dp"
-        android:text="mynamewoon@gmail.com"
+        android:layout_marginEnd="16dp"
+        android:hint="mynamewoon@gmail.com"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/myPageEmailTitle"
@@ -132,7 +133,6 @@
         android:layout_marginTop="16dp"
         android:text="소속 팀"
         android:textColor="@color/colorPoint"
-        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/myPageMyAgeTitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/myPageMyAgeTitle"
@@ -140,13 +140,15 @@
 
     <TextView
         android:id="@+id/myPageMyTeam"
-        android:layout_width="174dp"
+        android:layout_width="0dp"
         android:layout_height="29dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:background="@null"
         android:hint="클릭 후 검색 해주세요"
-        app:layout_constraintEnd_toEndOf="@+id/myPageMyAge"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/myPageMyAge"
         app:layout_constraintTop_toBottomOf="@+id/myPageMyAge" />
 

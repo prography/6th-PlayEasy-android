@@ -26,7 +26,7 @@ public class TeamService {
         this.teamClient = RetrofitClientFactory.getClient(RetrofitTeamApi.class);
     }
 
-    public void registerTeam(Team team, Context context) {
+    public void registerTeam(Team team, Context context, ResponseCallback callback) {
         TeamRequestDto requestDto = new TeamRequestDto();
         requestDto.put("team", team);
 
@@ -34,11 +34,15 @@ public class TeamService {
         call.enqueue(new Callback<TeamResponseDto>() {
             @Override
             public void onResponse(Call<TeamResponseDto> call, Response<TeamResponseDto> response) {
+
+                System.out.println("=====> " + response.raw());
+                System.out.println("뜨나용? " + response.toString());
                 if (response.isSuccessful() == false) {
                     Toast.makeText(context, "Failed to register", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                callback.onSuccess(response.body().userList());
                 Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
             }
 
@@ -120,7 +124,7 @@ public class TeamService {
         requestDto.put("team", team);
         requestDto.put("teamId", teamId);
 
-        Call<TeamResponseDto> call = teamClient.postTeam(TokenManager.get(context), requestDto);
+        Call<TeamResponseDto> call = teamClient.updateTeam(TokenManager.get(context), requestDto);
         call.enqueue(new Callback<TeamResponseDto>() {
             @Override
             public void onResponse(Call<TeamResponseDto> call, Response<TeamResponseDto> response) {

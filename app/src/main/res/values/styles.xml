@@ -13,9 +13,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
+        <item name="android:alertDialogTheme">@style/MyAlertDialogStyle</item>
         <item name="android:colorControlHighlight">@color/colorPoint</item>
     </style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorAccent">@color/colorPoint</item>
+        <item name="android:windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+    </style>
+
 
 
 </resources>

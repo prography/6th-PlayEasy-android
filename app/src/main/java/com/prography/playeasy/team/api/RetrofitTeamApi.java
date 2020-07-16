@@ -1,5 +1,6 @@
 package com.prography.playeasy.team.api;
 
+import com.prography.playeasy.team.domain.Team;
 import com.prography.playeasy.team.dto.TeamRequestDto;
 import com.prography.playeasy.team.dto.TeamResponseDto;
 
