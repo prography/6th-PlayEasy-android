@@ -10,6 +10,7 @@ import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchUpdateResponseDto;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,8 +52,8 @@ public class MatchDao {
         call.enqueue(callback);
     }
 
-    public void reviseMatch(MatchUpdateRequestDto matchReviseDto, Callback<MatchDetailDto> callback) {
-        Call <MatchDetailDto> call=matchClient.reviseMatch(token,matchReviseDto);
+    public void reviseMatch(MatchUpdateRequestDto matchReviseDto, Callback<MatchUpdateResponseDto> callback) {
+        Call <MatchUpdateResponseDto> call=matchClient.reviseMatch(token,matchReviseDto);
         call.enqueue(callback);
     }
 
