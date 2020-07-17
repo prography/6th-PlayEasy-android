@@ -38,4 +38,8 @@ public interface RetrofitTeamApi {
     @DELETE("/api/team/member")
     Call<TeamResponseDto> deleteUserFromTeam(@Header("authorization") String token,
                                              @Body TeamRequestDto requestBody);
+
+    @PUT("/api/team/selection")
+    Call<TeamResponseDto> choiceTeam(@Header("authorization") String token,
+                                     @Body TeamRequestDto requestBody);
 }

@@ -46,13 +46,6 @@ public class TeamSelect extends AppCompatActivity {
 
         initialized();
 
-        findViewById(R.id.chooseTeamButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MyInformation.class);
-                startActivity(intent);
-            }
-        });
         findViewById(R.id.noTeamSelectButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

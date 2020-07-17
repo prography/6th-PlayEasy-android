@@ -19,14 +19,11 @@ import com.prography.playeasy.team.domain.Team;
 import com.prography.playeasy.team.service.TeamService;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
+import static com.prography.playeasy.login.activity.LoginActivity.myTeamId;
 
-import java.util.List;
-
-import javax.security.auth.callback.Callback;
 
 public class TeamCreate extends AppCompatActivity {
 
-    public static int myTeamID;
     private String spinnerValue = "";
 
     @Override
@@ -85,7 +82,8 @@ public class TeamCreate extends AppCompatActivity {
 
                     @Override
                     public void onSuccess(Object result) {
-                        myTeamID = ((Team) result).id();
+                        Team team = (Team) result;
+                        myTeamId = team.id();
 
                     }
                 });

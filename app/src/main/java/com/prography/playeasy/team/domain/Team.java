@@ -20,7 +20,8 @@ public class Team {
     private String phone;
 
     @Builder
-    public Team(String name, String description, Integer age, String level, String leader, String phone) {
+    public Team(Integer id, String name, String description, Integer age, String level, String leader, String phone) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.age = age;

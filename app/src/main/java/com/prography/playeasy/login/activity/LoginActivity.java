@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity{
     private Button sessionCutt;
     private String accessToken;
     private LoginService loginService;
+    public static int myTeamId;
 
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {

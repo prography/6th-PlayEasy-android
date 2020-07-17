@@ -138,4 +138,22 @@ public class TeamService {
         });
     }
 
+    public void selectTeam(int teamId, ResponseCallback callback, Context context){
+        TeamRequestDto teamRequestDto = new TeamRequestDto();
+        teamRequestDto.put("teamId" , teamId);
+
+        Call<TeamResponseDto> call = teamClient.choiceTeam(TokenManager.get(context), teamRequestDto);
+        call.enqueue(new Callback<TeamResponseDto>() {
+            @Override
+            public void onResponse(Call<TeamResponseDto> call, Response<TeamResponseDto> response) {
+                callback.onSuccess(response.body().team());
+            }
+
+            @Override
+            public void onFailure(Call<TeamResponseDto> call, Throwable t) {
+                Log.d(TAG, t.getMessage());
+            }
+        });
+    }
+
 }
