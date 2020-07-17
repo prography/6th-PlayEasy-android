@@ -14,16 +14,19 @@ import com.google.android.material.button.MaterialButton;
 import com.prography.playeasy.R;
 import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.activity.MatchModify;
+import com.prography.playeasy.match.domain.MatchDao;
+import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
 import com.prography.playeasy.team.activity.TeamApplyCurrentStatus;
-
+import com.prography.playeasy.util.UIHelper;
 import java.util.ArrayList;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder>{
 
     private ArrayList<MyMatchVO> myMatchRegisterArrayList = new ArrayList<>();
-
-
+    MatchDao matchDao;
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,7 +48,7 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
         myMatchRegisterArrayList = Data;
         notifyDataSetChanged();
     }
-
+//뷰 홀더 클래
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView registerMatchTitle;
@@ -70,6 +73,8 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
             registerDetailApply = itemView.findViewById(R.id.registerDetailApply);
             registerFinish = itemView.findViewById(R.id.registerFinish);
 
+
+
         }
 
         public void onBind(MyMatchVO myMatchVO, int position) {
@@ -84,6 +89,16 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
 
             registerDetailApply.setOnClickListener((v) -> {
                 v.getContext().startActivity(new Intent(v.getContext(), TeamApplyCurrentStatus.class));
+            });
+            //todo after Match
+            registerFinish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   // matchDao.closeMatch();
+//                    myPageDao.
+
+
+                }
             });
 
 

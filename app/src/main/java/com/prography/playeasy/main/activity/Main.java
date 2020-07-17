@@ -1,6 +1,7 @@
 package com.prography.playeasy.main.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ListMenuItemView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,7 +16,6 @@ import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.models.Match;
@@ -26,6 +26,7 @@ import com.prography.playeasy.util.UIHelper;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -51,11 +52,11 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_custom);
-
+        matchList=new ArrayList<Match>();
+        Log.d("jwt token",TokenManager.get(getApplicationContext()));
         matchDao=new MatchDao(TokenManager.get(getApplicationContext()));
 //step 1
         BeforeLoginMain.getCurrentDayMatch();
-
 
         try {
             matchList = BeforeLoginMain.createSampleMatch();
@@ -109,14 +110,17 @@ public class Main extends AppCompatActivity {
                     matchDao.retrieve(simpleDateFormat.parse(tempDateSend), new Callback<MatchListDto>() {
                         @Override
                         public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
-                            matchList = response.body().getMatchList();
+                            matchList = response.body().getMatchList();;
                             Log.d("response",response.body().toString());
+                            Log.d("list", String.valueOf(matchList));
+                            Log.d("response",response.body().getMatchList().toString());
+                            matchList = response.body().getMatchList();
                             adaptRecyclerView(matchList);
                         }
 
                         @Override
                         public void onFailure(Call<MatchListDto> call, Throwable t) {
-
+                            Log.d("통신 실패","");
                         }
                     });
                 } catch (ParseException e) {
@@ -134,7 +138,6 @@ public class Main extends AppCompatActivity {
 
     private void adaptRecyclerView(List<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         MatchRecyclerAdapter adapter = new MatchRecyclerAdapter();

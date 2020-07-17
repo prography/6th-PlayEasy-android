@@ -10,6 +10,7 @@ import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchUpdateResponseDto;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,19 +41,19 @@ public class MatchDao {
     }
 
     public void retrieve(Date date, Callback<MatchListDto> callback) {
-        @SuppressLint("SimpleDateFormat")
+        @SuppressLint(value = "SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Call<MatchListDto> call = matchClient.getMatchList(formatter.format(date));
         call.enqueue(callback);
     }
 
     public void findById(int matchId, Callback<MatchDetailDto> callback) {
-        Call<MatchDetailDto> call = matchClient.getMatch(matchId);
+        Call<MatchDetailDto> call = matchClient.getMatch(token,matchId);
         call.enqueue(callback);
     }
 
-    public void reviseMatch(MatchUpdateRequestDto matchReviseDto, Callback<MatchDetailDto> callback) {
-        Call <MatchDetailDto> call=matchClient.reviseMatch(token,matchReviseDto);
+    public void reviseMatch(MatchUpdateRequestDto matchReviseDto, Callback<MatchUpdateResponseDto> callback) {
+        Call <MatchUpdateResponseDto> call=matchClient.reviseMatch(token,matchReviseDto);
         call.enqueue(callback);
     }
 
@@ -62,15 +63,13 @@ public class MatchDao {
         hashMap.put("status", "CANCEL");
         Call<MatchDetailDto> call = matchClient.closeMatch(hashMap);
         call.enqueue(callback);
-          //  String nestedJson="{"matchId"+":"+matchId+","+"statusType" +":"+ status+"}
+            matchClient.closeMatch(hashMap);
+        //  String nestedJson="{"matchId"+":"+matchId+","+"statusType" +":"+ status+"}
 //            JSONObject json = new JSONObject();
 //            json.put("matchId", matchId);
 //            json.put("status","CANCEL");
-          //  String json = "{\"matchId\":"+matchId+",\"status\":\"CANCEL\"}";
-           // TypedInput in = new TypedByteArray("application/json", json.getBytes("UTF-8"));
-
-            matchClient.closeMatch(hashMap);
-
+        //  String json = "{\"matchId\":"+matchId+",\"status\":\"CANCEL\"}";
+        // TypedInput in = new TypedByteArray("application/json", json.getBytes("UTF-8"));
 //    String nestedJson="{"+matchId+":"+matchId+","+"statusType" +":"+ status+"}";
 //    Gson gson=new Gson();
 //    Map<String,Object> result=gson.fromJson(nestedJson,Map.class);

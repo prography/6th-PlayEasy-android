@@ -5,7 +5,6 @@ import com.prography.playeasy.match.domain.models.Match;
 
 public class MatchDetailDto {
 
-
 @SerializedName("match")
     Match match;
 
