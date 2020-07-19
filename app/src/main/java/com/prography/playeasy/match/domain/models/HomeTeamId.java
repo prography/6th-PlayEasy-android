@@ -15,7 +15,7 @@ public class HomeTeamId {
     int age;
     @SerializedName("level")
     String level;
-   // enum level{HIGH,MEDIUM,LOW};
+
     @SerializedName("leader")
     String leader;
     //phone Null가능하고

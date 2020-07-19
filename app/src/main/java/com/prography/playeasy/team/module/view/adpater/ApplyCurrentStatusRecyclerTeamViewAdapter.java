@@ -31,6 +31,7 @@ public class ApplyCurrentStatusRecyclerTeamViewAdapter extends RecyclerView.Adap
 
     @Override
     public int getItemCount() {
+
         return applyCurrentStatusList.size();
     }
 

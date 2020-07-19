@@ -32,6 +32,7 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectRecycl
 
     @Override
     public int getItemCount() {
+
         return teamArrayList.size();
     }
 

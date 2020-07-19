@@ -7,9 +7,11 @@ import com.prography.playeasy.match.domain.dtos.MatchNoIdDto;
 
 import java.util.HashMap;
 
-public class MatchPostRequestDto extends HashMap<String,Object> {
+public class MatchPostRequestDto  {
+    @SerializedName("matchData")
     MatchNoIdDto matchData;
     //id없는 매치는 match
+    @SerializedName("locatioinData")
     LocationDto locationData;
 
 
@@ -27,5 +29,19 @@ public class MatchPostRequestDto extends HashMap<String,Object> {
 
     }
 
+    public MatchNoIdDto getMatchData() {
+        return matchData;
+    }
 
+    public void setMatchData(MatchNoIdDto matchData) {
+        this.matchData = matchData;
+    }
+
+    public LocationDto getLocationData() {
+        return locationData;
+    }
+
+    public void setLocationData(LocationDto locationData) {
+        this.locationData = locationData;
+    }
 }

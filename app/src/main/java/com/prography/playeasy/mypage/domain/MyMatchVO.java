@@ -12,14 +12,17 @@ public class MyMatchVO {
     }
 
     public String getMyMatchName() {
+
         return myMatchName;
     }
 
     public void setMyMatchName(String myMatchName) {
+
         this.myMatchName = myMatchName;
     }
 
     public String getMyMatchLocation() {
+
         return myMatchLocation;
     }
 

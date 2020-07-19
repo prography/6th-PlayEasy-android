@@ -143,7 +143,7 @@ public class MyInformation extends AppCompatActivity {
                 myPageEmail.setText(myInfo.email());
                 myPageMyName.setText(myInfo.name());
                 myPageMyAge.setText(String.valueOf(myInfo.age()));
-
+//
                 switch (myInfo.level()) {
                     case "HIGH":
                         position = 1;
@@ -159,8 +159,8 @@ public class MyInformation extends AppCompatActivity {
                         break;
                 }
 
-                System.out.println("LEVEL: " + position);
-
+   //             System.out.println("LEVEL: " + position);
+//
                 myMyPageAbilitySpinner.setSelection(position, true);
 
                 myPageMyTeam.setText(myInfo.team().name());

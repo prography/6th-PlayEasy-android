@@ -8,9 +8,9 @@ public class LocationId{
     @SerializedName("id")
     int id;
     @SerializedName("latitude")
-    float latitude;
+    double latitude;
     @SerializedName("longitude")
-    float longitude;
+    double longitude;
     @SerializedName("name")
     String name;
     @SerializedName("address")
@@ -29,7 +29,7 @@ public class LocationId{
         this.id = id;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -37,7 +37,7 @@ public class LocationId{
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 

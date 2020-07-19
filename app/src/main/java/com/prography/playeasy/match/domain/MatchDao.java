@@ -7,6 +7,7 @@ import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
@@ -63,7 +64,7 @@ public class MatchDao {
         hashMap.put("status", "CANCEL");
         Call<MatchDetailDto> call = matchClient.closeMatch(hashMap);
         call.enqueue(callback);
-            matchClient.closeMatch(hashMap);
+
         //  String nestedJson="{"matchId"+":"+matchId+","+"statusType" +":"+ status+"}
 //            JSONObject json = new JSONObject();
 //            json.put("matchId", matchId);
@@ -73,5 +74,10 @@ public class MatchDao {
 //    String nestedJson="{"+matchId+":"+matchId+","+"statusType" +":"+ status+"}";
 //    Gson gson=new Gson();
 //    Map<String,Object> result=gson.fromJson(nestedJson,Map.class);
+    }
+
+    public void getMap(String keyword,Callback<MapResponseDto> callback){
+        Call<MapResponseDto> call=matchClient.getMap(keyword);
+        call.enqueue(callback);
     }
 }

@@ -40,9 +40,6 @@
         <activity android:name=".team.activity.TeamCreate"/>
         <activity android:name=".team.activity.TeamApplyCurrentStatus"/>
 
-        <activity android:name=".match.activity.MapPopUp"
-            android:theme="@style/Theme.MaterialComponents.Dialog.Alert"
-            />
         <activity android:name=".match.activity.MatchDetail"/>
         <activity android:name=".match.activity.MatchCreate"/>
         <activity android:name=".match.activity.MatchModify"/>

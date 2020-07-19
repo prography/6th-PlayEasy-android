@@ -1,45 +1,33 @@
 package com.prography.playeasy.match.domain.dtos.response;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
 
 public class MatchCreateMapResponseDto {
-@SerializedName("address_name")
+    @SerializedName("address_name")
     String address_name;
-@SerializedName("category_group_code")
+    @SerializedName("category_group_code")
     String category_group_code;
-@SerializedName("category_group_name")
+    @SerializedName("category_group_name")
     String category_group_name;
-@SerializedName("category_name")
+    @SerializedName("category_name")
     String category_name;
 
-@SerializedName("id")
+    @SerializedName("id")
     int id;
-@SerializedName("phone")
+    @SerializedName("phone")
     String phone;
-@SerializedName("place_name")
+    @SerializedName("place_name")
     String place_name;
     @SerializedName("place_url")
     String place_url;
     @SerializedName("road_address_name")
     String road_address_name;
-    @SerializedName("x")
-    String x;
-    @SerializedName("y")
-    String y;
 
-    public MatchCreateMapResponseDto(String address_name, String category_group_code, String category_group_name, String category_name, int id, String phone, String place_name, String place_url, String road_address_name, String x, String y) {
-        this.address_name = address_name;
-        this.category_group_code = category_group_code;
-        this.category_group_name = category_group_name;
-        this.category_name = category_name;
-        this.id = id;
-        this.phone = phone;
-        this.place_name = place_name;
-        this.place_url = place_url;
-        this.road_address_name = road_address_name;
-        this.x = x;
-        this.y = y;
-    }
+    @SerializedName("x")
+    double x;
+    @SerializedName("y")
+    double y;
 
     public String getAddress_name() {
         return address_name;
@@ -113,19 +101,19 @@ public class MatchCreateMapResponseDto {
         this.road_address_name = road_address_name;
     }
 
-    public String getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(String x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public String getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(String y) {
+    public void setY(double y) {
         this.y = y;
     }
 }
