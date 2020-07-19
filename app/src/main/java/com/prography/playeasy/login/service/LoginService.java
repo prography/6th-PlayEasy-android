@@ -51,6 +51,7 @@ public class LoginService {
                 Intent intent = new Intent();
                 if (response.body().isNewMember()) {
                     intent.setClass(context, MyInformation.class);
+
                 } else {
                     intent.setClass(context, Main.class);
                 }

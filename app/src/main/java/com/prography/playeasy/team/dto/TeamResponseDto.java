@@ -14,6 +14,7 @@ import lombok.experimental.Accessors;
 public class TeamResponseDto {
     private Team createTeam;
     private Team updateTeam;
+    private Team team;
     private List<User> userList;
     private List<Team> teamList;
 }

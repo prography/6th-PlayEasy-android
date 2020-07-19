@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -20,16 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.kakao.network.ErrorResult;
 import com.kakao.network.callback.ResponseCallback;
 import com.prography.playeasy.R;
-import com.prography.playeasy.team.activity.TeamCreate;
 import com.prography.playeasy.team.domain.Team;
 import com.prography.playeasy.team.service.TeamService;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
-
-import org.w3c.dom.Text;
-
-import static com.prography.playeasy.team.activity.TeamCreate.myTeamID;
-
+import static com.prography.playeasy.login.activity.LoginActivity.myTeamId;
 public class MyTeamManger extends AppCompatActivity {
 
     private EditText name;
@@ -118,7 +112,7 @@ public class MyTeamManger extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id)
                     {
                         TeamService service = PlayeasyServiceFactory.getInstance(TeamService.class);
-                        service.modifyTeam(myTeamID, putInputTeam(), new ResponseCallback() {
+                        service.modifyTeam(myTeamId, putInputTeam(), new ResponseCallback() {
                             @Override
                             public void onFailure(ErrorResult errorResult) {
 

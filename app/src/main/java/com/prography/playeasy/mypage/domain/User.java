@@ -2,6 +2,8 @@ package com.prography.playeasy.mypage.domain;
 
 import com.prography.playeasy.team.domain.Team;
 
+import java.nio.file.FileStore;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,5 +42,7 @@ public class User {
         this.description = description;
         this.picture = picture;
     }
+
+
 }
 

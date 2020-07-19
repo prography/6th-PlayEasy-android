@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class MyInformation extends AppCompatActivity {
     private EditText myPageMyInformation;
     private Spinner myMyPageAbilitySpinner;
     private String myMyPageAbilitySpinnerValue;
+    private  int position;
+
 
     public static int myId;
 
@@ -107,16 +110,26 @@ public class MyInformation extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.modifyConfirm:
-                /*Intent intent = new Intent(this, MyInformation.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);*/
-                UserService userService = PlayeasyServiceFactory.getInstance(UserService.class);
-                userService.modifyUser(putUpdateUser(), getCallback(), getApplicationContext());
-                return true;
 
+                if(!getChecked()){
+                    Toast.makeText(getApplicationContext(),"전부 입력해 주세요",Toast.LENGTH_LONG).show();
+                }else{
+                    UserService userService = PlayeasyServiceFactory.getInstance(UserService.class);
+                    userService.modifyUser(putUpdateUser(), getCallback(), getApplicationContext());
+                }
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public boolean getChecked(){
+        if( myPageMyName.getText().toString() == null || myPageMyAge.getText().toString() == null||
+            myPageMyPhone.getText().toString() == null || myMyPageAbilitySpinnerValue == null ||  myPageMyInformation.getText().toString() == null ){
+            return false;
+        }
+        return true;
+    }
+
 
     private User putUpdateUser() {
         return User.builder()
@@ -137,7 +150,6 @@ public class MyInformation extends AppCompatActivity {
 
             @Override
             public void onSuccess(Object result) {
-                int position;
                 User myInfo = (User) result;
                 System.out.println("---> " + myInfo);
                 myPageEmail.setText(myInfo.email());
@@ -161,9 +173,34 @@ public class MyInformation extends AppCompatActivity {
 
    //             System.out.println("LEVEL: " + position);
 //
+
+                if(myInfo.level() != null){
+                    switch (myInfo.level()) {
+                        case "HIGH":
+                            position = 1;
+                            break;
+                        case "MEDIUM":
+                            position = 2;
+                            break;
+                        case "LOW":
+                            position = 3;
+                            break;
+                        default:
+                            position = 0;
+                            break;
+                    }
+                }
+                System.out.println("LEVEL: " + position);
+
+
                 myMyPageAbilitySpinner.setSelection(position, true);
 
-                myPageMyTeam.setText(myInfo.team().name());
+                if(myInfo.teamId() != null){
+                    myPageMyTeam.setText(myInfo.team().name());
+                }else{
+                    myPageMyTeam.setText(getResources().getString(R.string.activity_mypage_noTeam));
+                }
+
                 myPageMyPhone.setText(myInfo.phone());
                 myPageMyInformation.setText(myInfo.description());
 
