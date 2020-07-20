@@ -88,7 +88,11 @@
                     app:layout_constraintRight_toLeftOf="@+id/button_search"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/matchMapTitle" />
-
+                <ListView
+                    android:id="@+id/listViewPlaces"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
                 <EditText
                     android:id="@+id/matchDetailMap"
                     android:layout_width="match_parent"

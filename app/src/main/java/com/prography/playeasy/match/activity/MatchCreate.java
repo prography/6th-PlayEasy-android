@@ -1,10 +1,7 @@
 package com.prography.playeasy.match.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -27,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.kakao.network.ErrorResult;
 import com.kakao.network.callback.ResponseCallback;
 import com.prography.playeasy.R;
-import com.prography.playeasy.lib.HorizontalCalendarManager;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.domain.MatchDao;
@@ -37,22 +32,13 @@ import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateMapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
-import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
-import com.prography.playeasy.match.domain.models.Match;
-import com.prography.playeasy.match.domain.models.Place;
-import com.prography.playeasy.match.module.view.PlaceAdapter;
-import com.prography.playeasy.match.service.MatchService;
-import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
@@ -211,51 +197,17 @@ public class MatchCreate extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         matchFee = findViewById(R.id.matchFee);
         needPeople = (EditText) findViewById(R.id.needPeople);
 //       totalQuota=Integer.parseInt(needPeople.getText().toString());
         matchPhoneNumber = (EditText) findViewById(R.id.matchPhoneNumber);
         description = (EditText) findViewById(R.id.matchEtc);
 
-        ArrayList<Place> arrayOfPlaces = new ArrayList<Place>();
+//ListView와 ArrayList사이에 존재
+        ArrayList<String> arrayList = new ArrayList<>();
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
-        PlaceAdapter placeAdapter = new PlaceAdapter(this, arrayOfPlaces);
 
-//
-//        autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            AnimalsAdapter adapter1;
-//
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                                    int position, long id) {
-//
-//                Main item = (Main) adapter1.getItem(position);
-//
-//                Intent d = new Intent(MainActivity.this, item.getClazz());
-//                startActivity(d);
-//
-//                /** Fading Transition Effect */
-//                MainActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-//
-//            }
-//        });
-        textViewMap.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                               @Override
-                                               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                                    lv.setAdapter(placeAdapter);
-                                               }
-                                           });
-
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if(s.length() != 0) {
-//                    clear.setVisibility(View.VISIBLE);
-//                } else {
-//                    clear.setVisibility(View.GONE);
-//                }
-//            }
-//        });
         button_search.setOnClickListener(new View.OnClickListener() {
 
 
@@ -270,19 +222,14 @@ public class MatchCreate extends AppCompatActivity {
                     @Override
                     public void onSuccess(MapResponseDto result) {
                         //     lv.setAdapter(placeAdapter);  code    위치를 여기로 해야 하나
-
                         for (MatchCreateMapResponseDto place : result.getReturnData()) {
-                            arrayOfPlaces.add(new Place(place.getAddress_name(), place.getRoad_address_name()));
-                            textViewMap.setAdapter(placeAdapter);
+                            arrayList.add(place.getPlace_name());
+                            lv.setAdapter(itemsAdapter);
 
                         }
 
-                        int position = (Integer) textViewMap.getTag();
-                        locationData.setLatitude(result.getReturnData().get(position).getX());
-                        locationData.setLongitude((result.getReturnData().get(position).getY()));
-                        locationData.setName(result.getReturnData().get(position).getPlace_name());
-                        locationData.setAddress(result.getReturnData().get(position).getAddress_name());
-                        locationData.setDetail(result.getReturnData().get(position).getRoad_address_name());
+
+
                     }
                 });
             }
@@ -292,40 +239,18 @@ public class MatchCreate extends AppCompatActivity {
         //  HashMap<String,Object> matchCreateRequest=new HashMap<>();
 //todo 7 a clock
 
-//                 makeJSONLocationData(locationData));
-//
-//        makeMatch(obj,getApplicationContext());
-
-        //matchCreateRequest.put("locationData",makeJSONLocationData(latitude,longitude,name,address,detail));
     }
 
     //Date가 아닌 String으로 처리중 규산 object->HashMap?
     public MatchNoIdDto makeJSONMatchData(String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
         //규산 hashMapMatch  자체가 JSONObject인건가 아니면 ㅎGSon().fromJSON()해야 나
-//        hashMapMatch.put("type", type);
-//        hashMapMatch.put("description", description);
-//        hashMapMatch.put("startAt", tempDateSend);
-//        hashMapMatch.put("duration", duration);
-//        hashMapMatch.put("fee", fee);
-//        hashMapMatch.put("phone", phone);
-//        hashMapMatch.put("totalQuota", totalQuota);
 
-        return new MatchNoIdDto(type,description,startAt,duration,fee,phone,totalQuota);
+
+        return new MatchNoIdDto(type, description, startAt, duration, fee, phone, totalQuota);
 
 
     }
 
-
-    public Object makeJSONLocationData(float latitude, float longitude, String name, String address, String detail) {
-
-        HashMap<String, Object> hashMapLocation = new HashMap<>();
-        hashMapLocation.put("latitude", latitude);
-        hashMapLocation.put("longitude", longitude);
-        hashMapLocation.put("name", name);
-        hashMapLocation.put("address", address);
-        hashMapLocation.put("detail", detail);
-        return hashMapLocation;
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -344,10 +269,10 @@ public class MatchCreate extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.createMatch:
-                totalQuota=Integer.parseInt(needPeople.getText().toString());
-                fee=Integer.parseInt(matchFee.getText().toString());
-                matchSample= new MatchPostRequestDto(makeJSONMatchData(matchType,description.getText().toString(),startAt,duration
-                        ,fee,matchPhoneNumber.getText().toString(),totalQuota),locationData);
+                totalQuota = Integer.parseInt(needPeople.getText().toString());
+                fee = Integer.parseInt(matchFee.getText().toString());
+                matchSample = new MatchPostRequestDto(makeJSONMatchData(matchType, description.getText().toString(), startAt, duration
+                        , fee, matchPhoneNumber.getText().toString(), totalQuota), locationData);
 //                matchSample.put("locationData",locationData);
 //                matchSample.put("matchData");
                 match.create(matchSample, new Callback<MatchCreateResponseDto>() {
@@ -379,7 +304,7 @@ public class MatchCreate extends AppCompatActivity {
         this.match.getMap(keyword, new Callback<MapResponseDto>() {
             @Override
             public void onResponse(Call<MapResponseDto> call, Response<MapResponseDto> response) {
-               //의미 없는 라인?
+                //의미 없는 라인?
                 // response.body().getReturnData();
                 // temp.get(position).getX();
 

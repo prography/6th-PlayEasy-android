@@ -48,8 +48,6 @@ public class MatchService {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     //매치 상세보기 아닌 날짜에 따른 리스트 가져오기 위함
     public List<Match> retrieveMatch(Date date) throws IOException {
-
-
        this.matchDao.retrieve(date, new Callback<MatchListDto>() {
            @Override
            public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
