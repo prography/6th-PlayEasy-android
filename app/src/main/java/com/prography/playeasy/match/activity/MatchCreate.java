@@ -39,6 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
@@ -49,6 +50,8 @@ import retrofit2.Response;
 
 public class MatchCreate extends AppCompatActivity {
     private static final String TAG = "MAP SERVICE";
+    private ArrayList arrayList;
+
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
     //private HorizontalCalendarManager calendarCreate;
@@ -77,6 +80,7 @@ public class MatchCreate extends AppCompatActivity {
     String key;
 
     LocationDto locationData;
+    private String[] mapLocation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,7 +101,7 @@ public class MatchCreate extends AppCompatActivity {
 //Spinner findViewById
         spinner = findViewById(R.id.matchTypeSpinner);
         button_search = findViewById(R.id.button_search);
-        textViewMap = findViewById(R.id.matchMap);
+        textViewMap = findViewById(R.id.matchLocationMap);
 
         //  spinner.setAdapter(new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -203,43 +207,41 @@ public class MatchCreate extends AppCompatActivity {
         matchPhoneNumber = (EditText) findViewById(R.id.matchPhoneNumber);
         description = (EditText) findViewById(R.id.matchEtc);
 
-//ListView와 ArrayList사이에 존재
-        ArrayList<String> arrayList = new ArrayList<>();
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
-
-
+        arrayList = new ArrayList<>();
         button_search.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-                getLocationData(matchDetailMap.getText().toString(), new ResponseCallback<MapResponseDto>() {
+                arrayList.clear();
+                match.getMapInfo(textViewMap.getText().toString(), new Callback<MapResponseDto>() {
                     @Override
-                    public void onFailure(ErrorResult errorResult) {
+                    public void onResponse(Call<MapResponseDto> call, Response<MapResponseDto> response) {
+                        List<MatchCreateMapResponseDto> list = response.body().getReturnData();
 
+                        for (int i = 0; i < list.size(); i++) {
+                            arrayList.add(list.get(i).getAddress_name());
+                        }
                     }
 
                     @Override
-                    public void onSuccess(MapResponseDto result) {
-                        //     lv.setAdapter(placeAdapter);  code    위치를 여기로 해야 하나
-                        for (MatchCreateMapResponseDto place : result.getReturnData()) {
-                            arrayList.add(place.getPlace_name());
-                            lv.setAdapter(itemsAdapter);
-
-                        }
-
-
+                    public void onFailure(Call<MapResponseDto> call, Throwable t) {
+                        Log.d(TAG, t.getMessage());
 
                     }
                 });
             }
         });
 
+        System.out.println("!!!!!!!" + arrayList.size());
+        for(int i = 0; i<arrayList.size(); i++){
+            System.out.println("@@@@@@" + arrayList.get(i));
+        }
 
-        //  HashMap<String,Object> matchCreateRequest=new HashMap<>();
-//todo 7 a clock
-
+        ArrayAdapter itemsAdapter =  new ArrayAdapter(getApplicationContext(), android.R.layout.simple_dropdown_item_1line,arrayList);
+        textViewMap.setAdapter(itemsAdapter);
+        textViewMap.setThreshold(1);
     }
+
+
 
     //Date가 아닌 String으로 처리중 규산 object->HashMap?
     public MatchNoIdDto makeJSONMatchData(String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
@@ -300,30 +302,11 @@ public class MatchCreate extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getLocationData(String keyword, ResponseCallback responseCallback) {
-        this.match.getMap(keyword, new Callback<MapResponseDto>() {
-            @Override
-            public void onResponse(Call<MapResponseDto> call, Response<MapResponseDto> response) {
-                //의미 없는 라인?
-                // response.body().getReturnData();
-                // temp.get(position).getX();
-
-
-            }
-
-            @Override
-            public void onFailure(Call<MapResponseDto> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
-            }
-        });
         //    1step. server에 key 보내
         //2단계 LocationDto 5개 필드만
 
         //데이터 리스트 받아오고 그 중에 선택
 
         // 2step .
-
-    }
-
 
 }
