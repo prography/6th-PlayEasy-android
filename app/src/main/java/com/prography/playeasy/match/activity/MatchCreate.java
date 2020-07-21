@@ -29,7 +29,6 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchNoIdDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
-import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateMapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.util.UIHelper;
@@ -50,7 +49,6 @@ import retrofit2.Response;
 
 public class MatchCreate extends AppCompatActivity {
     private static final String TAG = "MAP SERVICE";
-    private ArrayList arrayList;
 
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
@@ -80,7 +78,7 @@ public class MatchCreate extends AppCompatActivity {
     String key;
 
     LocationDto locationData;
-    private String[] mapLocation;
+    private ArrayAdapter<MatchCreateMapResponseDto> itemsAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -207,38 +205,33 @@ public class MatchCreate extends AppCompatActivity {
         matchPhoneNumber = (EditText) findViewById(R.id.matchPhoneNumber);
         description = (EditText) findViewById(R.id.matchEtc);
 
-        arrayList = new ArrayList<>();
+        List<MatchCreateMapResponseDto> arrayList= new ArrayList<>();
         button_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayList.clear();
-                match.getMapInfo(textViewMap.getText().toString(), new Callback<MapResponseDto>() {
+                match.getMapInfo(textViewMap.getText().toString(), new ResponseCallback() {
                     @Override
-                    public void onResponse(Call<MapResponseDto> call, Response<MapResponseDto> response) {
-                        List<MatchCreateMapResponseDto> list = response.body().getReturnData();
+                    public void onFailure(ErrorResult errorResult) {
 
-                        for (int i = 0; i < list.size(); i++) {
-                            arrayList.add(list.get(i).getAddress_name());
-                        }
                     }
 
                     @Override
-                    public void onFailure(Call<MapResponseDto> call, Throwable t) {
-                        Log.d(TAG, t.getMessage());
-
+                    public void onSuccess(Object result) {
+                        List<MatchCreateMapResponseDto> list = (List<MatchCreateMapResponseDto>) result;
+                        for(MatchCreateMapResponseDto item : list){
+                            arrayList.add(item);
+                        }
+                        System.out.println("@@@@@@" + arrayList.size());
                     }
                 });
             }
         });
 
+
         System.out.println("!!!!!!!" + arrayList.size());
         for(int i = 0; i<arrayList.size(); i++){
             System.out.println("@@@@@@" + arrayList.get(i));
         }
-
-        ArrayAdapter itemsAdapter =  new ArrayAdapter(getApplicationContext(), android.R.layout.simple_dropdown_item_1line,arrayList);
-        textViewMap.setAdapter(itemsAdapter);
-        textViewMap.setThreshold(1);
     }
 
 
