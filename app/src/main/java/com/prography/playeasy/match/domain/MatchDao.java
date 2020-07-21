@@ -40,8 +40,8 @@ public class MatchDao {
     }
 
     public void create(MatchPostRequestDto requestDto, Callback<MatchCreateResponseDto> callback) {
-        Call<MatchDetailDto> call = matchClient.postMatch(token, requestDto);
-//        call.enqueue(callback);
+        Call<MatchCreateResponseDto> call = matchClient.postMatch(token, requestDto);
+        call.enqueue(callback);
     }
 
     public void retrieve(Date date, Callback<MatchListDto> callback) {

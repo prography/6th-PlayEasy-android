@@ -1,5 +1,6 @@
 package com.prography.playeasy.match.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ import retrofit2.Response;
 
 public class MatchCreate extends AppCompatActivity {
     private static final String TAG = "MAP SERVICE";
+    private Activity thisActivity = this;
 
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
@@ -149,26 +152,28 @@ public class MatchCreate extends AppCompatActivity {
         eTimePicker = findViewById(R.id.timePickerEnd);
         sTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
 
-                                                 //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
-                                                 @Override
-                                                 public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+             //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
+             @Override
+             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 //                timeStartHour=sTimePicker.getHour()+"";
 //                timeStartMin=sTimePicker.getMinute()+"";
-                                                     duration = hourOfDay;
-                                                     Log.d("시간", timeStartHour);
-                                                     if (hourOfDay < 10)
-                                                         timeStartHour = "0" + hourOfDay;
-                                                     else
-                                                         timeStartHour = String.valueOf(hourOfDay);
-                                                     if (minute >= 10)
-                                                         timeStartMin = minute + "";
-                                                     else
-                                                         timeStartMin = "0" + minute;
+                 duration = hourOfDay;
+                 Log.d("시간", timeStartHour + "");
+                 if (hourOfDay < 10)
+                     timeStartHour = "0" + hourOfDay;
+                 else
+                     timeStartHour = String.valueOf(hourOfDay);
+
+                 if (minute >= 10)
+                     timeStartMin = minute + "";
+                 else
+                     timeStartMin = "0" + minute;
 
 
-                                                 }
-                                             }
+             }
+         }
         );
+
         eTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
@@ -205,7 +210,7 @@ public class MatchCreate extends AppCompatActivity {
         matchPhoneNumber = (EditText) findViewById(R.id.matchPhoneNumber);
         description = (EditText) findViewById(R.id.matchEtc);
 
-        List<MatchCreateMapResponseDto> arrayList= new ArrayList<>();
+
         button_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,20 +223,31 @@ public class MatchCreate extends AppCompatActivity {
                     @Override
                     public void onSuccess(Object result) {
                         List<MatchCreateMapResponseDto> list = (List<MatchCreateMapResponseDto>) result;
-                        for(MatchCreateMapResponseDto item : list){
-                            arrayList.add(item);
+                        int size = list.size();
+                        String[] mapInfo = new String[size];
+                        for(int i = 0; i<size; i++){
+                            mapInfo[i] = list.get(i).getAddress_name();
+                            System.out.println("=====>"+mapInfo[i]);
                         }
-                        System.out.println("@@@@@@" + arrayList.size());
+
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(thisActivity,
+                                android.R.layout.simple_dropdown_item_1line, mapInfo);
+
+                        System.out.println("=====>"+textViewMap.getText());
+                        textViewMap.setAdapter(adapter);
+                        textViewMap.setDropDownAnchor(textViewMap.getId());
+                        textViewMap.showDropDown();
+
+                        textViewMap.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                textViewMap.setText(((TextView)view).getText().toString());
+                            }
+                        });
                     }
                 });
             }
         });
-
-
-        System.out.println("!!!!!!!" + arrayList.size());
-        for(int i = 0; i<arrayList.size(); i++){
-            System.out.println("@@@@@@" + arrayList.get(i));
-        }
     }
 
 
@@ -276,6 +292,8 @@ public class MatchCreate extends AppCompatActivity {
                         //don't get any response
                         Log.d("checking response data ", String.valueOf(response.body()));
 
+                        finish();
+
                     }
 
                     @Override
@@ -284,11 +302,6 @@ public class MatchCreate extends AppCompatActivity {
 
                     }
                 });
-                Intent writeBack = new Intent(this, Main.class);
-
-                startActivity(writeBack);
-
-
                 return true;
 
         }
