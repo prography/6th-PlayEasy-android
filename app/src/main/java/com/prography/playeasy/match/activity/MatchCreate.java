@@ -1,5 +1,6 @@
 package com.prography.playeasy.match.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -50,6 +52,7 @@ import retrofit2.Response;
 
 public class MatchCreate extends AppCompatActivity {
     private static final String TAG = "MAP SERVICE";
+    private Activity thisActivity = this;
 
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
@@ -73,10 +76,13 @@ public class MatchCreate extends AppCompatActivity {
     private EditText matchFee;
     EditText needPeople;
     EditText matchPhoneNumber;
+    ListView lv;
+
     EditText description;
     String key;
 
     LocationDto locationData;
+    private ArrayAdapter<MatchCreateMapResponseDto> itemsAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,7 +103,7 @@ public class MatchCreate extends AppCompatActivity {
 //Spinner findViewById
         spinner = findViewById(R.id.matchTypeSpinner);
         button_search = findViewById(R.id.button_search);
-        textViewMap = findViewById(R.id.matchMap);
+        textViewMap = findViewById(R.id.matchLocationMap);
 
         //  spinner.setAdapter(new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -147,25 +153,26 @@ public class MatchCreate extends AppCompatActivity {
         eTimePicker = findViewById(R.id.timePickerEnd);
         sTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
 
-                                                 //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
-                                                 @Override
-                                     public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+             //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
+             @Override
+             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 //                timeStartHour=sTimePicker.getHour()+"";
 //                timeStartMin=sTimePicker.getMinute()+"";
-                                         duration = hourOfDay;
-                                         Log.d("시간", timeStartHour+"");
-                                         if (hourOfDay < 10)
-                                             timeStartHour = "0" + hourOfDay;
-                                         else
-                                             timeStartHour = String.valueOf(hourOfDay);
-                                         if (minute >= 10)
-                                             timeStartMin = minute + "";
-                                         else
-                                             timeStartMin = "0" + minute;
+                 duration = hourOfDay;
+                 Log.d("시간", timeStartHour + "");
+                 if (hourOfDay < 10)
+                     timeStartHour = "0" + hourOfDay;
+                 else
+                     timeStartHour = String.valueOf(hourOfDay);
+
+                 if (minute >= 10)
+                     timeStartMin = minute + "";
+                 else
+                     timeStartMin = "0" + minute;
 
 
-                                     }
-                                 }
+                                                 }
+                                             }
         );
         eTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
@@ -174,14 +181,13 @@ public class MatchCreate extends AppCompatActivity {
                 if (hourOfDay < 10) {
                     timeEndHour = "0" + hourOfDay;
                 } else {
-                    timeEndHour = hourOfDay+"";
-                    System.out.println(timeEndHour);
+                    timeEndHour = String.valueOf(hourOfDay);
                 }
 
 
                 if (minute >= 10) {
                     timeEndMin = minute + "";
-                    System.out.println(timeEndMin);
+
                 } else {
                     timeEndMin = "0" + minute;
                 }
@@ -193,14 +199,11 @@ public class MatchCreate extends AppCompatActivity {
         Log.d("시간 분  페이지", tempDateSend);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-
         try {
             startAt = format.parse(tempDateSend);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
         matchFee = findViewById(R.id.matchFee);
         needPeople = (EditText) findViewById(R.id.needPeople);
 //       totalQuota=Integer.parseInt(needPeople.getText().toString());
@@ -212,37 +215,43 @@ public class MatchCreate extends AppCompatActivity {
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
 
-//        button_search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                match.getMapInfo(matchDetailMap.getText().toString(), new ResponseCallback() {
-//
-//                    @Override
-//                    public void onFailure(ErrorResult errorResult) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(Object result) {
-//                        List<MatchCreateMapResponseDto> list=(List<MatchCreateMapResponseDto>) result;
-//                        int size=list.size();
-//                        String[] mapInfo=new String[size];
-//
-//                        for(int i=0;i<size;i++){
-//                            mapInfo[i]=list.get(i).getAddress_name();
-//                            System.out.println("======>"+mapInfo[i]);
-//
-//                        }
-//                    }
-//                });
-//            }
-//        });
+        button_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                match.getMapInfo(textViewMap.getText().toString(), new ResponseCallback() {
+                    @Override
+                    public void onFailure(ErrorResult errorResult) {
 
+                    }
 
-        System.out.println("!!!!!!!" + arrayList.size());
-        for(int i = 0; i<arrayList.size(); i++){
-            System.out.println("@@@@@@" + arrayList.get(i));
-        }
+                    @Override
+                    public void onSuccess(Object result) {
+                        List<MatchCreateMapResponseDto> list = (List<MatchCreateMapResponseDto>) result;
+                        int size = list.size();
+                        String[] mapInfo = new String[size];
+                        for(int i = 0; i<size; i++){
+                            mapInfo[i] = list.get(i).getAddress_name();
+                            System.out.println("=====>"+mapInfo[i]);
+                        }
+
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(thisActivity,
+                                android.R.layout.simple_dropdown_item_1line, mapInfo);
+
+                        System.out.println("=====>"+textViewMap.getText());
+                        textViewMap.setAdapter(adapter);
+                        textViewMap.setDropDownAnchor(textViewMap.getId());
+                        textViewMap.showDropDown();
+
+                        textViewMap.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                textViewMap.setText(((TextView)view).getText().toString());
+                            }
+                        });
+                    }
+                });
+            }
+        });
     }
 
 
@@ -286,6 +295,8 @@ public class MatchCreate extends AppCompatActivity {
                     public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
                         //don't get any response
                         Log.d("checking response data ", String.valueOf(response.body()));
+
+                        finish();
 
                     }
 

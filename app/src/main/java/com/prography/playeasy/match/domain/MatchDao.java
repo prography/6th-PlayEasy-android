@@ -1,7 +1,9 @@
 package com.prography.playeasy.match.domain;
 
 import android.annotation.SuppressLint;
+import android.widget.Toast;
 
+import com.kakao.network.callback.ResponseCallback;
 import com.prography.playeasy.lib.RetrofitClientFactory;
 
 import com.prography.playeasy.match.api.RetrofitMatchApi;
@@ -19,6 +21,7 @@ import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Match 에 대한 API에 접근하는 객체(보통은 DB에 접근할 때 쓰기 때문에, DAO가 올바른 표현은 아닐 수 있음.)
@@ -76,8 +79,22 @@ public class MatchDao {
 //    Map<String,Object> result=gson.fromJson(nestedJson,Map.class);
     }
 
-    public void getMapInfo(String keyword,Callback<MapResponseDto> callback){
+    public void getMapInfo(String keyword, ResponseCallback callback){
         Call<MapResponseDto> call=matchClient.getMap(keyword);
-        call.enqueue(callback);
+        call.enqueue(new Callback<MapResponseDto>() {
+            @Override
+            public void onResponse(Call<MapResponseDto> call, Response<MapResponseDto> response) {
+                if(response.isSuccessful() == false){
+
+                }else{
+                    callback.onSuccess(response.body().getReturnData());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MapResponseDto> call, Throwable t) {
+
+            }
+        });
     }
 }
