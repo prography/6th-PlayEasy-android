@@ -155,24 +155,6 @@ public class MyInformation extends AppCompatActivity {
                 myPageEmail.setText(myInfo.email());
                 myPageMyName.setText(myInfo.name());
                 myPageMyAge.setText(String.valueOf(myInfo.age()));
-//
-                switch (myInfo.level()) {
-                    case "HIGH":
-                        position = 1;
-                        break;
-                    case "MEDIUM":
-                        position = 2;
-                        break;
-                    case "LOW":
-                        position = 3;
-                        break;
-                    default:
-                        position = 0;
-                        break;
-                }
-
-   //             System.out.println("LEVEL: " + position);
-//
 
                 if(myInfo.level() != null){
                     switch (myInfo.level()) {
