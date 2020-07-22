@@ -6,6 +6,8 @@ import android.util.Log;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchCreateMapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
@@ -13,6 +15,7 @@ import com.prography.playeasy.match.domain.models.Match;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +29,7 @@ public class MatchService {
     private MatchDao matchDao;
     List<Match> matchList;
     Match match;
+
     public MatchService(Context context) {
 
         this.matchDao = new MatchDao(TokenManager.get(context));
@@ -45,46 +49,48 @@ public class MatchService {
             }
         });
     }
+
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
     //매치 상세보기 아닌 날짜에 따른 리스트 가져오기 위함
     public List<Match> retrieveMatch(Date date) throws IOException {
-       this.matchDao.retrieve(date, new Callback<MatchListDto>() {
-           @Override
-           public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
-               matchList=  response.body().getMatchList();
-               Log.e("매치 리스트 response body 확인", String.valueOf(response.body()));
-           }
+        this.matchDao.retrieve(date, new Callback<MatchListDto>() {
+            @Override
+            public void onResponse(Call<MatchListDto> call, Response<MatchListDto> response) {
+                matchList = response.body().getMatchList();
+                Log.e("매치 리스트 response body 확인", String.valueOf(response.body()));
+            }
 
-           @Override
-           public void onFailure(Call<MatchListDto> call, Throwable t) {
+            @Override
+            public void onFailure(Call<MatchListDto> call, Throwable t) {
 
-           }
-       });
-       return matchList;
+            }
+        });
+        return matchList;
     }
 
+    ArrayList<String> arrayList = new ArrayList<String>();
 
 
-
-
-
-//반환형을 MatchDto가 아닌 Match
+    //반환형을 MatchDto가 아닌 Match
     //todo
     public Match detailMatch(int MatchId) throws IOException {
 
-             this.matchDao.findById(MatchId, new Callback<MatchDetailDto>() {
-                @Override
-                public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
-                    match=   response.body().getMatch();
-                }
+        this.matchDao.findById(MatchId, new Callback<MatchDetailDto>() {
+            @Override
+            public void onResponse(Call<MatchDetailDto> call, Response<MatchDetailDto> response) {
+                match = response.body().getMatch();
+            }
 
-                @Override
-                public void onFailure(Call<MatchDetailDto> call, Throwable t) {
+            @Override
+            public void onFailure(Call<MatchDetailDto> call, Throwable t) {
 
-                }
-            });
-             return match;
+            }
+        });
+        return match;
+
     }
+}
 //
 //    public int closeMatch(int matchId){
 //
@@ -104,5 +110,8 @@ public class MatchService {
 
 
 
+
+
+
 //    public void reviseMatch() 도 구현해야 함 규산's 컨펌 받
-}
+

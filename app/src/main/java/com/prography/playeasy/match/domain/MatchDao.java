@@ -76,7 +76,7 @@ public class MatchDao {
 //    Map<String,Object> result=gson.fromJson(nestedJson,Map.class);
     }
 
-    public void getMap(String keyword,Callback<MapResponseDto> callback){
+    public void getMapInfo(String keyword,Callback<MapResponseDto> callback){
         Call<MapResponseDto> call=matchClient.getMap(keyword);
         call.enqueue(callback);
     }

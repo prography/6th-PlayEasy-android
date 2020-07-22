@@ -14,7 +14,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface RetrofitTeamApi {
-
+    //팀 정보 상세 정보 확인
     @GET("/api/team/info")
     Call<TeamResponseDto> getTeamDetail(@Header("authorization") String token,
                                         @Query("teamId") int teamId);

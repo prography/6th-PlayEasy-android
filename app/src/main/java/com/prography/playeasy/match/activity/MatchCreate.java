@@ -39,6 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
@@ -49,6 +50,7 @@ import retrofit2.Response;
 
 public class MatchCreate extends AppCompatActivity {
     private static final String TAG = "MAP SERVICE";
+
     private TimePicker sTimePicker;
     private TimePicker eTimePicker;
     //private HorizontalCalendarManager calendarCreate;
@@ -71,8 +73,6 @@ public class MatchCreate extends AppCompatActivity {
     private EditText matchFee;
     EditText needPeople;
     EditText matchPhoneNumber;
-    ListView lv;
-
     EditText description;
     String key;
 
@@ -149,23 +149,23 @@ public class MatchCreate extends AppCompatActivity {
 
                                                  //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
                                                  @Override
-                                                 public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                                     public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 //                timeStartHour=sTimePicker.getHour()+"";
 //                timeStartMin=sTimePicker.getMinute()+"";
-                                                     duration = hourOfDay;
-                                                     Log.d("시간", timeStartHour);
-                                                     if (hourOfDay < 10)
-                                                         timeStartHour = "0" + hourOfDay;
-                                                     else
-                                                         timeStartHour = String.valueOf(hourOfDay);
-                                                     if (minute >= 10)
-                                                         timeStartMin = minute + "";
-                                                     else
-                                                         timeStartMin = "0" + minute;
+                                         duration = hourOfDay;
+                                         Log.d("시간", timeStartHour+"");
+                                         if (hourOfDay < 10)
+                                             timeStartHour = "0" + hourOfDay;
+                                         else
+                                             timeStartHour = String.valueOf(hourOfDay);
+                                         if (minute >= 10)
+                                             timeStartMin = minute + "";
+                                         else
+                                             timeStartMin = "0" + minute;
 
 
-                                                 }
-                                             }
+                                     }
+                                 }
         );
         eTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
@@ -174,13 +174,14 @@ public class MatchCreate extends AppCompatActivity {
                 if (hourOfDay < 10) {
                     timeEndHour = "0" + hourOfDay;
                 } else {
-                    timeEndHour = String.valueOf(hourOfDay);
+                    timeEndHour = hourOfDay+"";
+                    System.out.println(timeEndHour);
                 }
 
 
                 if (minute >= 10) {
                     timeEndMin = minute + "";
-
+                    System.out.println(timeEndMin);
                 } else {
                     timeEndMin = "0" + minute;
                 }
@@ -192,11 +193,14 @@ public class MatchCreate extends AppCompatActivity {
         Log.d("시간 분  페이지", tempDateSend);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
+
         try {
             startAt = format.parse(tempDateSend);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
         matchFee = findViewById(R.id.matchFee);
         needPeople = (EditText) findViewById(R.id.needPeople);
 //       totalQuota=Integer.parseInt(needPeople.getText().toString());
@@ -208,38 +212,40 @@ public class MatchCreate extends AppCompatActivity {
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
 
-        button_search.setOnClickListener(new View.OnClickListener() {
+//        button_search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                match.getMapInfo(matchDetailMap.getText().toString(), new ResponseCallback() {
+//
+//                    @Override
+//                    public void onFailure(ErrorResult errorResult) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(Object result) {
+//                        List<MatchCreateMapResponseDto> list=(List<MatchCreateMapResponseDto>) result;
+//                        int size=list.size();
+//                        String[] mapInfo=new String[size];
+//
+//                        for(int i=0;i<size;i++){
+//                            mapInfo[i]=list.get(i).getAddress_name();
+//                            System.out.println("======>"+mapInfo[i]);
+//
+//                        }
+//                    }
+//                });
+//            }
+//        });
 
 
-            @Override
-            public void onClick(View v) {
-                getLocationData(matchDetailMap.getText().toString(), new ResponseCallback<MapResponseDto>() {
-                    @Override
-                    public void onFailure(ErrorResult errorResult) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(MapResponseDto result) {
-                        //     lv.setAdapter(placeAdapter);  code    위치를 여기로 해야 하나
-                        for (MatchCreateMapResponseDto place : result.getReturnData()) {
-                            arrayList.add(place.getPlace_name());
-                            lv.setAdapter(itemsAdapter);
-
-                        }
-
-
-
-                    }
-                });
-            }
-        });
-
-
-        //  HashMap<String,Object> matchCreateRequest=new HashMap<>();
-//todo 7 a clock
-
+        System.out.println("!!!!!!!" + arrayList.size());
+        for(int i = 0; i<arrayList.size(); i++){
+            System.out.println("@@@@@@" + arrayList.get(i));
+        }
     }
+
+
 
     //Date가 아닌 String으로 처리중 규산 object->HashMap?
     public MatchNoIdDto makeJSONMatchData(String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
@@ -300,30 +306,11 @@ public class MatchCreate extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getLocationData(String keyword, ResponseCallback responseCallback) {
-        this.match.getMap(keyword, new Callback<MapResponseDto>() {
-            @Override
-            public void onResponse(Call<MapResponseDto> call, Response<MapResponseDto> response) {
-                //의미 없는 라인?
-                // response.body().getReturnData();
-                // temp.get(position).getX();
-
-
-            }
-
-            @Override
-            public void onFailure(Call<MapResponseDto> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
-            }
-        });
         //    1step. server에 key 보내
         //2단계 LocationDto 5개 필드만
 
         //데이터 리스트 받아오고 그 중에 선택
 
         // 2step .
-
-    }
-
 
 }
