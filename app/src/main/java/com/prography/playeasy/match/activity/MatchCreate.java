@@ -34,6 +34,7 @@ import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateMapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
+import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.util.UIHelper;
 
 import java.text.ParseException;
@@ -76,6 +77,7 @@ public class MatchCreate extends AppCompatActivity {
     private EditText matchFee;
     EditText needPeople;
     EditText matchPhoneNumber;
+    TextView locationY, locationX, locationPlaceName;
     ListView lv;
 
     EditText description;
@@ -153,22 +155,22 @@ public class MatchCreate extends AppCompatActivity {
         eTimePicker = findViewById(R.id.timePickerEnd);
         sTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
 
-             //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
-             @Override
-             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                                                 //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
+                                                 @Override
+                                                 public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 //                timeStartHour=sTimePicker.getHour()+"";
 //                timeStartMin=sTimePicker.getMinute()+"";
-                 duration = hourOfDay;
-                 Log.d("시간", timeStartHour + "");
-                 if (hourOfDay < 10)
-                     timeStartHour = "0" + hourOfDay;
-                 else
-                     timeStartHour = String.valueOf(hourOfDay);
+                                                     duration = hourOfDay;
+                                                     Log.d("시간", timeStartHour + "");
+                                                     if (hourOfDay < 10)
+                                                         timeStartHour = "0" + hourOfDay;
+                                                     else
+                                                         timeStartHour = String.valueOf(hourOfDay);
 
-                 if (minute >= 10)
-                     timeStartMin = minute + "";
-                 else
-                     timeStartMin = "0" + minute;
+                                                     if (minute >= 10)
+                                                         timeStartMin = minute + "";
+                                                     else
+                                                         timeStartMin = "0" + minute;
 
 
                                                  }
@@ -195,12 +197,13 @@ public class MatchCreate extends AppCompatActivity {
             }
         });
 //concatenate
-        tempDateSend = tempDateSend + "T" + timeStartHour + ":" + timeStartMin + "00.000Z";
+        tempDateSend = tempDateSend + "T" + timeStartHour + ":" + timeStartMin + ":00.000Z";
         Log.d("시간 분  페이지", tempDateSend);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
         try {
             startAt = format.parse(tempDateSend);
+            System.out.println("시간" + startAt);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -208,13 +211,18 @@ public class MatchCreate extends AppCompatActivity {
         needPeople = (EditText) findViewById(R.id.needPeople);
 //       totalQuota=Integer.parseInt(needPeople.getText().toString());
         matchPhoneNumber = (EditText) findViewById(R.id.matchPhoneNumber);
-        description = (EditText) findViewById(R.id.matchEtc);
+        matchDetailMap = findViewById(R.id.matchDetailMap);
+        description =  findViewById(R.id.matchEtc);
 
 //ListView와 ArrayList사이에 존재
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
 
+
+        locationY = findViewById(R.id.locationY);
+        locationX = findViewById(R.id.locationX);
+        locationPlaceName = findViewById(R.id.locationPlaceName);
         button_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -227,11 +235,16 @@ public class MatchCreate extends AppCompatActivity {
                     @Override
                     public void onSuccess(Object result) {
                         List<MatchCreateMapResponseDto> list = (List<MatchCreateMapResponseDto>) result;
+
                         int size = list.size();
                         String[] mapInfo = new String[size];
                         for(int i = 0; i<size; i++){
                             mapInfo[i] = list.get(i).getAddress_name();
-                            System.out.println("=====>"+mapInfo[i]);
+
+                            System.out.println("=====> 1"+mapInfo[i]);
+                            System.out.println("=====> 2"+list.get(i).getY());
+                            System.out.println("=====> 3"+list.get(i).getX());
+                            System.out.println("=====> 4"+list.get(i).getPlace_name());
                         }
 
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(thisActivity,
@@ -242,12 +255,17 @@ public class MatchCreate extends AppCompatActivity {
                         textViewMap.setDropDownAnchor(textViewMap.getId());
                         textViewMap.showDropDown();
 
+                        final int[] now = new int[1];
                         textViewMap.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 textViewMap.setText(((TextView)view).getText().toString());
+                                now[0] = position;
                             }
                         });
+                        locationY.setText(String.valueOf(list.get(now[0]).getY()));
+                        locationX.setText(String.valueOf(list.get(now[0]).getX()));
+                        locationPlaceName.setText(list.get(now[0]).getPlace_name());
                     }
                 });
             }
@@ -286,11 +304,15 @@ public class MatchCreate extends AppCompatActivity {
             case R.id.createMatch:
                 totalQuota = Integer.parseInt(needPeople.getText().toString());
                 fee = Integer.parseInt(matchFee.getText().toString());
-                matchSample = new MatchPostRequestDto(makeJSONMatchData(matchType, description.getText().toString(), startAt, duration
-                        , fee, matchPhoneNumber.getText().toString(), totalQuota), locationData);
-//                matchSample.put("locationData",locationData);
-//                matchSample.put("matchData");
-                match.create(matchSample, new Callback<MatchCreateResponseDto>() {
+
+                locationData = new LocationDto(Double.parseDouble(locationY.getText().toString()), Double.parseDouble(locationX.getText().toString()),
+                        locationPlaceName.getText().toString(),
+                        textViewMap.getText().toString(),matchDetailMap.getText().toString());
+
+                MatchNoIdDto matchData = new MatchNoIdDto(matchType, description.getText().toString(),
+                        startAt, duration, fee, matchPhoneNumber.getText().toString(), totalQuota);
+
+                match.create(locationData, matchData, new Callback<MatchCreateResponseDto>() {
                     @Override
                     public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
                         //don't get any response
@@ -317,11 +339,11 @@ public class MatchCreate extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-        //    1step. server에 key 보내
-        //2단계 LocationDto 5개 필드만
+    //    1step. server에 key 보내
+    //2단계 LocationDto 5개 필드만
 
-        //데이터 리스트 받아오고 그 중에 선택
+    //데이터 리스트 받아오고 그 중에 선택
 
-        // 2step .
+    // 2step .
 
 }

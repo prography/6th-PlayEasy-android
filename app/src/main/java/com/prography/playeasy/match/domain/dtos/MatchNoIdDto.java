@@ -22,16 +22,19 @@ public class MatchNoIdDto {
     @SerializedName("totalQuota")
     int totalQuota;
 
+    @SerializedName("phone")
+    private String phone;
+
     public MatchNoIdDto(String typ, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
         this.type=typ;
         this.description = description;
         this.startAt = startAt;
         this.duration = duration;
         this.fee = fee;
-
+        this.phone = phone;
         this.totalQuota=totalQuota;
-
     }
+
 
     public String getType() {
         return type;

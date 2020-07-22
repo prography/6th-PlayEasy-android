@@ -7,6 +7,8 @@ import com.kakao.network.callback.ResponseCallback;
 import com.prography.playeasy.lib.RetrofitClientFactory;
 
 import com.prography.playeasy.match.api.RetrofitMatchApi;
+import com.prography.playeasy.match.domain.dtos.LocationDto;
+import com.prography.playeasy.match.domain.dtos.MatchNoIdDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
@@ -14,6 +16,7 @@ import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchUpdateResponseDto;
+import com.prography.playeasy.match.domain.models.Match;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,9 +42,10 @@ public class MatchDao {
         this.token = token;
     }
 
-    public void create(MatchPostRequestDto requestDto, Callback<MatchCreateResponseDto> callback) {
-        Call<MatchDetailDto> call = matchClient.postMatch(token, requestDto);
-//        call.enqueue(callback);
+    public void create(LocationDto locationData, MatchNoIdDto matchData, Callback<MatchCreateResponseDto> callback) {
+        MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData, locationData);
+        Call<MatchCreateResponseDto> call = matchClient.postMatch(token, matchPostRequestDto);
+        call.enqueue(callback);
     }
 
     public void retrieve(Date date, Callback<MatchListDto> callback) {

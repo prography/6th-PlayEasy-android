@@ -42,7 +42,5 @@ public class User {
         this.description = description;
         this.picture = picture;
     }
-
-
 }
 
