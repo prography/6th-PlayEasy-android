@@ -21,7 +21,9 @@ public class RetrofitClientFactory {
 
             service = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(
+                            new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSS").create()
+                    ))
                     .client(client)
                     .build();
         }

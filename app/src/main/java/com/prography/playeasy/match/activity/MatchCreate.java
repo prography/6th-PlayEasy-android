@@ -1,5 +1,6 @@
 package com.prography.playeasy.match.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.icu.util.ULocale;
@@ -43,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
@@ -263,6 +265,7 @@ public class MatchCreate extends AppCompatActivity {
                 duration = eHour - sHour;
 
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+
                 tempDateSend = tempDateSend + timeStartHour+":"+"00:00.000Z";
                 System.out.println("보내는시간" + tempDateSend);
 
