@@ -42,7 +42,7 @@ public class TeamService {
                     return;
                 }
 
-                callback.onSuccess(response.body().userList());
+                callback.onSuccess(response.body().createTeam());
                 Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
             }
 
