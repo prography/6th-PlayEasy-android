@@ -1,7 +1,9 @@
 package com.prography.playeasy.match.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.icu.util.ULocale;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -31,7 +33,6 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
 import com.prography.playeasy.match.domain.dtos.MatchNoIdDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
-import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateMapResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.models.Match;
@@ -43,10 +44,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
+import lombok.SneakyThrows;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -122,7 +125,7 @@ public class MatchCreate extends AppCompatActivity {
             }
         });
 
-
+        tempDateSend = "";
         HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarViewMatchCreate)
                 .range(startDate, endDate).datesNumberOnScreen(5).build();
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
@@ -133,10 +136,10 @@ public class MatchCreate extends AppCompatActivity {
                 int month = date.get(Calendar.MONTH) + 1;
                 int year = date.get(Calendar.YEAR);
                 if (month <= 9) {
-                    tempDateSend = year + "-0" + month + "-" + day;
+                    tempDateSend = year+"-"+month+"-"+day+"T";
 
                 } else {
-                    tempDateSend = year + "-" + month + "-" + day;
+                    tempDateSend = year+"-"+month+"-"+day+"T";
                 }
 
                 Log.d("매치 작성 페이지", tempDateSend);
@@ -145,78 +148,15 @@ public class MatchCreate extends AppCompatActivity {
 
 //        String dumstrDate = "2020-07-13T23:20:00.123Z";
 
-
-//2020-07-12T20:00:00.000Z
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-
-
         /*TimePicker Id*/
         sTimePicker = findViewById(R.id.timePickerStart);
         eTimePicker = findViewById(R.id.timePickerEnd);
-        sTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-
-                                                 //AM Pm 값 넘어오지 않고 234시간 type으로 정보 넘어온
-                                                 @Override
-                                                 public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-//                timeStartHour=sTimePicker.getHour()+"";
-//                timeStartMin=sTimePicker.getMinute()+"";
-                                                     duration = hourOfDay;
-                                                     Log.d("시간", timeStartHour + "");
-                                                     if (hourOfDay < 10)
-                                                         timeStartHour = "0" + hourOfDay;
-                                                     else
-                                                         timeStartHour = String.valueOf(hourOfDay);
-
-                                                     if (minute >= 10)
-                                                         timeStartMin = minute + "";
-                                                     else
-                                                         timeStartMin = "0" + minute;
-
-
-                                                 }
-                                             }
-        );
-        eTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                duration = hourOfDay - duration;
-                if (hourOfDay < 10) {
-                    timeEndHour = "0" + hourOfDay;
-                } else {
-                    timeEndHour = String.valueOf(hourOfDay);
-                }
-
-
-                if (minute >= 10) {
-                    timeEndMin = minute + "";
-
-                } else {
-                    timeEndMin = "0" + minute;
-                }
-
-            }
-        });
-//concatenate
-        tempDateSend = tempDateSend + "T" + timeStartHour + ":" + timeStartMin + ":00.000Z";
-        Log.d("시간 분  페이지", tempDateSend);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-
-        try {
-            startAt = format.parse(tempDateSend);
-            System.out.println("시간" + startAt);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         matchFee = findViewById(R.id.matchFee);
         needPeople = (EditText) findViewById(R.id.needPeople);
 //       totalQuota=Integer.parseInt(needPeople.getText().toString());
         matchPhoneNumber = (EditText) findViewById(R.id.matchPhoneNumber);
         matchDetailMap = findViewById(R.id.matchDetailMap);
         description =  findViewById(R.id.matchEtc);
-
-//ListView와 ArrayList사이에 존재
-        ArrayList<String> arrayList = new ArrayList<>();
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
 
 
@@ -298,6 +238,7 @@ public class MatchCreate extends AppCompatActivity {
     }
 
 
+    @SneakyThrows
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -328,11 +269,6 @@ public class MatchCreate extends AppCompatActivity {
 
                     }
                 });
-                Intent writeBack = new Intent(this, Main.class);
-
-                startActivity(writeBack);
-
-
                 return true;
 
         }
