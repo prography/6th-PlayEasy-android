@@ -115,7 +115,19 @@ public class MatchCreate extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //setItem=(String)spinner.getSelectedItem();
-                matchType = (String) spinner.getItemAtPosition(position);
+                int pos = position;
+
+                String type = "";
+                if(pos == 1){
+                    type = type + "FUTSAL5";
+                }else if(pos == 2 ){
+                    type = type + "FUTSAL6";
+                }else if(pos == 3){
+                    type = type + "SOCCER";
+                }
+
+
+                matchType = type;
                 Log.d("Spinner 아이템", matchType);
             }
 

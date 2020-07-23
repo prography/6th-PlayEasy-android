@@ -15,6 +15,7 @@ import com.kakao.network.ErrorResult;
 import com.kakao.network.callback.ResponseCallback;
 import com.prography.playeasy.R;
 
+import com.prography.playeasy.mypage.activity.MyInformation;
 import com.prography.playeasy.team.domain.Team;
 import com.prography.playeasy.team.service.TeamService;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
@@ -90,8 +91,8 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectRecycl
 
                         @Override
                         public void onSuccess(Object result) {
-
-
+                            Intent intent = new Intent(itemView.getContext(), MyInformation.class);
+                            v.getContext().startActivity(intent);
                         }
                     }, itemView.getContext());
                 }
