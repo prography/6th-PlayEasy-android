@@ -22,6 +22,4 @@ public class MatchIdDto {
     //@SerializedN
     @SerializedName("totalQuota")
     int totalQuota;
-
-
 }

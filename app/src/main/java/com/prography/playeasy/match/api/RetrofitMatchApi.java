@@ -65,4 +65,5 @@ public interface RetrofitMatchApi {
     @GET("/api/map/search")
     Call<MapResponseDto> getMap(@Query("keyWord") String keyWord);
 
+
 }
