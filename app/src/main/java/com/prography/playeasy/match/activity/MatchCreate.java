@@ -217,11 +217,7 @@ public class MatchCreate extends AppCompatActivity {
     //Date가 아닌 String으로 처리중 규산 object->HashMap?
     public MatchNoIdDto makeJSONMatchData(String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
         //규산 hashMapMatch  자체가 JSONObject인건가 아니면 ㅎGSon().fromJSON()해야 나
-
-
         return new MatchNoIdDto(type, description, startAt, duration, fee, phone, totalQuota);
-
-
     }
 
 
@@ -245,6 +241,34 @@ public class MatchCreate extends AppCompatActivity {
             case R.id.createMatch:
                 totalQuota = Integer.parseInt(needPeople.getText().toString());
                 fee = Integer.parseInt(matchFee.getText().toString());
+
+                int sHour = sTimePicker.getHour();
+                timeStartHour = "";
+                if(sHour < 10){
+                    timeStartHour = timeStartHour + sHour ;
+                }else{
+                    timeStartHour = String.valueOf(sTimePicker.getHour());
+                }
+
+                int eHour = eTimePicker.getHour();
+                timeEndHour = "";
+                if(eHour < 10){
+                    timeEndHour =  timeEndHour + eHour;
+                }else{
+                    timeEndHour = String.valueOf(eTimePicker.getHour());
+                }
+
+                duration = eHour - sHour;
+
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+
+                tempDateSend = tempDateSend + timeStartHour+":"+"00:00.000Z";
+                System.out.println("보내는시간" + tempDateSend);
+
+
+                startAt = format.parse(format.format(tempDateSend));
+                System.out.println("시작시간" + startAt);
+
 
                 locationData = new LocationDto(Double.parseDouble(locationY.getText().toString()), Double.parseDouble(locationX.getText().toString()),
                         locationPlaceName.getText().toString(),
