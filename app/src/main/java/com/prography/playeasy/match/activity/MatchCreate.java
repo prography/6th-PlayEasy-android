@@ -115,7 +115,19 @@ public class MatchCreate extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //setItem=(String)spinner.getSelectedItem();
-                matchType = (String) spinner.getItemAtPosition(position);
+                int pos = position;
+
+                String type = "";
+                if(pos == 1){
+                    type = type + "FUTSAL5";
+                }else if(pos == 2 ){
+                    type = type + "FUTSAL6";
+                }else if(pos == 3){
+                    type = type + "SOCCER";
+                }
+
+
+                matchType = type;
                 Log.d("Spinner 아이템", matchType);
             }
 
@@ -217,7 +229,11 @@ public class MatchCreate extends AppCompatActivity {
     //Date가 아닌 String으로 처리중 규산 object->HashMap?
     public MatchNoIdDto makeJSONMatchData(String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota) {
         //규산 hashMapMatch  자체가 JSONObject인건가 아니면 ㅎGSon().fromJSON()해야 나
+
+
         return new MatchNoIdDto(type, description, startAt, duration, fee, phone, totalQuota);
+
+
     }
 
 
@@ -266,7 +282,7 @@ public class MatchCreate extends AppCompatActivity {
                 System.out.println("보내는시간" + tempDateSend);
 
 
-                startAt = format.parse(format.format(tempDateSend));
+                startAt = format.parse(tempDateSend);
                 System.out.println("시작시간" + startAt);
 
 
