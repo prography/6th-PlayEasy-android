@@ -255,7 +255,7 @@ public class MatchCreate extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.createMatch:
-                totalQuota = Integer.parseInt(needPeople.getText().toString());
+                totalQuota = Integer.parseInt(needPeople.getText().toString().trim());
                 fee = Integer.parseInt(matchFee.getText().toString());
 
                 int sHour = sTimePicker.getHour();

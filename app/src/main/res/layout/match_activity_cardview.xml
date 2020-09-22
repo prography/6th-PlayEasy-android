@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -26,7 +27,9 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="210dp"
                 android:text="6대6 풋살 하실 분"
+                android:textColor="#A143FF"
                 card_view:layout_constraintEnd_toStartOf="@+id/matchStartAt"
+                card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="337dp"
                 android:text="FUTSAL6"
                 card_view:layout_constraintEnd_toEndOf="parent"
@@ -75,32 +78,22 @@
                 android:layout_marginEnd="336dp"
                 android:text="참가비"
                 card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="1.0"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/matchLocation" />
 
             <TextView
                 android:id="@+id/matchStartAt"
-                android:layout_width="82dp"
-                android:layout_height="23dp"
+                android:layout_width="215dp"
+                android:layout_height="104dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
                 android:text="매치 올린 날"
-                card_view:layout_constraintBottom_toTopOf="@+id/matchEndAt"
+                android:textColor="#A143FF"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/matchEndAt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="104dp"
-                android:text="마감날"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/matchStartAt" />
+                
+                card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/matchHomeQuota"
@@ -111,6 +104,7 @@
                 android:layout_marginEnd="342dp"
                 android:text="참가 인원 수"
                 card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/matchFee" />
 
@@ -118,14 +112,12 @@
                 android:id="@+id/matchId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="74dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="1"
                 android:visibility="gone"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/matchEndAt" />
+                card_view:layout_constraintEnd_toEndOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

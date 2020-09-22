@@ -57,7 +57,6 @@ public class Main extends AppCompatActivity {
         matchDao=new MatchDao(TokenManager.get(getApplicationContext()));
 //step 1
         BeforeLoginMain.getCurrentDayMatch();
-
         try {
             matchList = BeforeLoginMain.createSampleMatch();
         } catch (ParseException e) {
@@ -126,9 +125,6 @@ public class Main extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-//todo
-
-
 
             }
         });

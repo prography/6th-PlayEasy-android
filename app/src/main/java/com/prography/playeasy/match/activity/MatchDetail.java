@@ -2,6 +2,7 @@ package com.prography.playeasy.match.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -54,8 +55,14 @@ public class MatchDetail extends AppCompatActivity {
         detailAppliedMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Main.class);
-                startActivity(intent);
+                int matchId;
+                matchId=getIntent().getExtras().getInt("match_id");
+                Log.d("match_id", String.valueOf(matchId));
+                Intent intent = new Intent(getApplicationContext(), MatchApply.class);
+
+                intent.putExtra("match_id", matchId);
+//                startActivity(intent);
+                v.getContext().startActivity(intent);
             }
         });
 

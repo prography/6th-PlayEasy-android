@@ -21,6 +21,7 @@ import retrofit2.Response;
 public class LoginService {
     private RetrofitLoginApi loginClient;
 
+
     public LoginService() {
         this.loginClient = RetrofitClientFactory.getClient(RetrofitLoginApi.class);
     }

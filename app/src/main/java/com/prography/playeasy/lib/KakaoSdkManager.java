@@ -18,6 +18,7 @@ public class KakaoSdkManager {
                 return new IApplicationConfig() {
                     @Override
                     public Context getApplicationContext() {
+
                         return application;
                     }
                 };

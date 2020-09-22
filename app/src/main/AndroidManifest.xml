@@ -16,12 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/mAppTheme">
 
-        <activity android:name=".landing.activity.Landing">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".landing.activity.Landing"/>
+
 
         <activity android:name=".main.activity.BeforeLoginMain"/>
         <activity android:name=".main.activity.Main"/>
@@ -44,7 +40,12 @@
         <activity android:name=".match.activity.MatchCreate"/>
         <activity android:name=".match.activity.MatchModify"/>
 
-
+        <activity android:name=".match.activity.MatchApply">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".push.activity.Push"/>
         <service
             android:name=".lib.firebase.FirebaseMessageService"

@@ -62,7 +62,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
             description = itemView.findViewById(R.id.matchDescription);
 
             startAt = itemView.findViewById(R.id.matchStartAt);
-            duration = itemView.findViewById(R.id.matchEndAt);
+          //  duration = itemView.findViewById(R.id.matchEndAt);
             fee = itemView.findViewById(R.id.matchFee);
            totalQuota = itemView.findViewById(R.id.matchHomeQuota);
         }
