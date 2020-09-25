@@ -31,6 +31,7 @@ public class MatchApplyViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
+
         return list.size();
     }
 }

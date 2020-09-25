@@ -143,7 +143,6 @@ public class MatchCreate extends AppCompatActivity {
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
-
                 int day = date.get(Calendar.DAY_OF_MONTH);
                 int month = date.get(Calendar.MONTH) + 1;
                 int year = date.get(Calendar.YEAR);
@@ -157,7 +156,6 @@ public class MatchCreate extends AppCompatActivity {
                 Log.d("매치 작성 페이지", tempDateSend);
             }
         });
-
 //        String dumstrDate = "2020-07-13T23:20:00.123Z";
 
         /*TimePicker Id*/

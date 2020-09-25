@@ -32,21 +32,6 @@
 
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/matchDetailMap"
-        android:layout_width="392dp"
-        android:layout_height="188dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchDetailToolBar">
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/detailHomeTeam"
@@ -54,41 +39,52 @@
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/mypageeffect"
         android:gravity="left"
-        android:text="Home Team 자세히 보기"
+        android:text="Home Team"
         android:textColor="#000000"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchDetailMap" />
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailToolBar" />
 
     <TextView
         android:id="@+id/detailMatchWhere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:hint="장소 입력되는 곳"
+        android:hint="장소"
         app:layout_constraintEnd_toEndOf="@+id/detailHomeTeam"
         app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="@+id/detailHomeTeam"
         app:layout_constraintTop_toBottomOf="@+id/detailHomeTeam" />
 
     <TextView
-        android:id="@+id/detailMatchTime"
+        android:id="@+id/detailMatchDetailedAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
-        android:hint="시간 입력되는 곳"
+        android:hint="상세 주소"
         app:layout_constraintEnd_toEndOf="@+id/detailMatchWhere"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/detailMatchWhere"
         app:layout_constraintTop_toBottomOf="@+id/detailMatchWhere" />
+
+    <TextView
+        android:id="@+id/detailMatchTime"
+        android:layout_width="33dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:hint="시간"
+        app:layout_constraintEnd_toEndOf="@+id/detailMatchDetailedAddress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailMatchDetailedAddress"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchDetailedAddress" />
 
     <TextView
         android:id="@+id/detailMatchNeedPeople"
@@ -99,7 +95,7 @@
         android:hint="필요한 사람 수 입력하는 곳"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/detailMatchTime"
+        app:layout_constraintStart_toStartOf="@id/detailMatchTime"
         app:layout_constraintTop_toBottomOf="@+id/detailMatchTime" />
 
     <TextView
@@ -108,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:hint="게임 타입 입력 하는 곳"
+        android:hint="게임 진행 방식"
         app:layout_constraintEnd_toEndOf="@+id/detailMatchNeedPeople"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/detailMatchNeedPeople"
@@ -127,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/detailMatchGameType" />
 
     <TextView
-        android:id="@+id/detailMatchTelePhone"
+        android:id="@+id/detailMatchTelephone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -144,7 +140,6 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:elevation="10dp"
         android:text="신청하기"
@@ -154,8 +149,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailMatchTelePhone" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewETC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/detailMatchApplyButton"
+        app:layout_constraintEnd_toEndOf="@+id/detailMatchTelephone"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="@+id/detailMatchTelephone"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchTelephone"
+        app:layout_constraintVertical_bias="0.076"
+        tools:text="기타사항" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,11 @@
 package com.prography.playeasy.match.api;
 
+import com.prography.playeasy.match.domain.dtos.request.MatchApplySoloPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.request.MatchApplyTeamPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchUpdateRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MapResponseDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchApplySoloPostResponseDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchApplyTeamPostResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
@@ -65,5 +69,10 @@ public interface RetrofitMatchApi {
     @GET("/api/map/search")
     Call<MapResponseDto> getMap(@Query("keyWord") String keyWord);
 
+    //for first release
+    @POST("/api/match/user")
+    Call<MatchApplySoloPostResponseDto> applyMatchSolo(@Header("authorization") String token,@Body MatchApplySoloPostRequestDto matchApplySoloPostRequestDto);
+    @POST("/api/match/team")
+    Call<MatchApplyTeamPostResponseDto> applyMatchTeam(@Header("authorization") String token, @Body MatchApplyTeamPostRequestDto matchApplySoloPostRequestDto);
 
 }
