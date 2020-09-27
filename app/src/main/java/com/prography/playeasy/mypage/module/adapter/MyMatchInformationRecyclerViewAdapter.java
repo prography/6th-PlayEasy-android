@@ -12,21 +12,39 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.prography.playeasy.R;
+import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.activity.MatchModify;
+
+
 import com.prography.playeasy.match.domain.MatchDao;
+import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
+import com.prography.playeasy.mypage.domain.dtos.MatchCloseRequestDto;
+import com.prography.playeasy.mypage.domain.dtos.MatchCloseResponseDto;
 import com.prography.playeasy.team.activity.TeamApplyCurrentStatus;
 import com.prography.playeasy.util.UIHelper;
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Intent.getIntent;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder>{
 
     private ArrayList<MyMatchVO> myMatchRegisterArrayList = new ArrayList<>();
     MatchDao matchDao;
+    int matchId;
+
+    public MyMatchInformationRecyclerViewAdapter(MatchDao matchDao) {
+        this.matchDao = matchDao;
+
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,6 +54,7 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         holder.onBind(myMatchRegisterArrayList.get(position), position);
     }
 
@@ -83,20 +102,38 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(itemView.getContext(), MatchModify.class);
+
                     itemView.getContext().startActivity(intent);
                 }
             });
 
             registerDetailApply.setOnClickListener((v) -> {
                 v.getContext().startActivity(new Intent(v.getContext(), TeamApplyCurrentStatus.class));
+
             });
-            //todo after Match
+
+            //마감하기 버튼
             registerFinish.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                    // matchDao.closeMatch();
 //                    myPageDao.
+                    String status="CONFIRMED";
 
+                    matchDao.closeMatch(matchId,status, new Callback<MatchCloseResponseDto>() {
+                        @Override
+                        public void onResponse(Call<MatchCloseResponseDto> call, Response<MatchCloseResponseDto> response) {
+
+                          //error
+                            //  intent.getExtras().getInt("match_id", matchId);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<MatchCloseResponseDto> call, Throwable t) {
+
+                        }
+                    });
 
                 }
             });

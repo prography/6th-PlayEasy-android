@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
+import com.prography.playeasy.lib.TokenManager;
+import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
 import com.prography.playeasy.mypage.module.adapter.MyMatchInformationRecyclerViewAdapter;
 
@@ -39,8 +41,8 @@ public class MyMatchRegister extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.myMatchRegisterRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        final MyMatchInformationRecyclerViewAdapter adapter = new MyMatchInformationRecyclerViewAdapter();
 
+        final MyMatchInformationRecyclerViewAdapter adapter = new MyMatchInformationRecyclerViewAdapter(new MatchDao(TokenManager.get(getParentFragment().getContext())));
         ArrayList<MyMatchVO> test = new ArrayList<>();
         test.add(new MyMatchVO("프로","안양",11));
         test.add(new MyMatchVO("그라","강남",6));

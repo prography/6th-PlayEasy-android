@@ -12,6 +12,8 @@ import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchUpdateResponseDto;
 import com.prography.playeasy.match.domain.models.Match;
+import com.prography.playeasy.mypage.domain.dtos.MatchCloseRequestDto;
+import com.prography.playeasy.mypage.domain.dtos.MatchCloseResponseDto;
 
 
 import java.util.Date;
@@ -52,7 +54,7 @@ public interface RetrofitMatchApi {
 
     //매치 마감
     @PUT("/api/match/status")
-   Call <MatchDetailDto> closeMatch(@Body HashMap<String,Object> body);
+   Call <MatchCloseResponseDto> closeMatch(@Header("authorization") String token, @Body MatchCloseRequestDto matchCloseRequestDto);
 
   // Call <MatchDetailDto> closeMatch( @Body  body);
 //    int matchId = 0;
@@ -73,6 +75,6 @@ public interface RetrofitMatchApi {
     @POST("/api/match/user")
     Call<MatchApplySoloPostResponseDto> applyMatchSolo(@Header("authorization") String token,@Body MatchApplySoloPostRequestDto matchApplySoloPostRequestDto);
     @POST("/api/match/team")
-    Call<MatchApplyTeamPostResponseDto> applyMatchTeam(@Header("authorization") String token, @Body MatchApplyTeamPostRequestDto matchApplySoloPostRequestDto);
+    Call<MatchApplyTeamPostResponseDto> applyMatchTeam(@Header("authorization") String token, @Body MatchApplyTeamPostRequestDto matchApplyTeamPostRequestDto);
 
 }

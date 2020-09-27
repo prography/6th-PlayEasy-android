@@ -19,10 +19,16 @@ import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.dtos.request.MatchApplySoloPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchApplyTeamPostRequestDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchApplySoloPostResponseDto;
+import com.prography.playeasy.match.domain.dtos.response.MatchApplyTeamPostResponseDto;
 import com.prography.playeasy.match.module.view.MatchApplyViewPagerAdapter;
+import com.prography.playeasy.match.service.MatchService;
 import com.prography.playeasy.mypage.module.adapter.MyMatchInformationViewPagerAdapter;
 import com.prography.playeasy.util.UIHelper;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MatchApply extends AppCompatActivity {
@@ -32,33 +38,25 @@ public class MatchApply extends AppCompatActivity {
     private Button matchApplyBtn;
     private int quotaSolo;
     private int quotaTeam;
-    RetrofitMatchApi retrofitObject;
+    MatchService matchServiceObject;
     public static int tabPosition;
     private EditText editTextSoloApplyNumberDecimal;
     private EditText editTextTeamApplyNumberDecimal;
     private int matchId;
+    private final int TAB_TEAM = 0;
+    private final int TAB_SOLO = 1;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_apply);
-
+        matchServiceObject = new MatchService();
         UIHelper.toolBarInitialize(this, findViewById(R.id.matchApplyToolbar));
         UIHelper.hideWindow(this);
-
-        matchApplyBtn=findViewById(R.id.enterButton);
-        matchApplyBtn.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-
-                matchId=getIntent().getExtras().getInt("match_id");
-                //to do if(matchApplyViewPagerAdapter.getItem())
-
-            }
-        });
+        matchId = getIntent().getExtras().getInt("match_id");
+        matchApplyBtn = findViewById(R.id.enterButton);
         initialize();
-        editTextSoloApplyNumberDecimal=findViewById(R.id.editTextSoloApplyNumberDecimal);
-        editTextTeamApplyNumberDecimal=findViewById(R.id.editTextTeamApplyNumberDecimal);
+        initializeMatchApplyBtn();
+
 
         matchApplyViewPager.addOnPageChangeListener(
                 new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -67,44 +65,7 @@ public class MatchApply extends AppCompatActivity {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 matchApplyViewPager.setCurrentItem(tab.getPosition());
-                tabPosition=tab.getPosition();
-                switch(tab.getPosition()){
-                    case 0:
-                        //Integer.parseInt(editTextSoloApplyNumberDecimal.getText().toString());
-                        editTextSoloApplyNumberDecimal.setOnClickListener(new View.OnClickListener(){
-                            @Override
-                            public void onClick(View v) {
-                                quotaSolo = Integer.parseInt(editTextSoloApplyNumberDecimal.getText().toString());
-                            }
-
-                        });
-                        matchApplyBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                retrofitObject.applyMatchSolo(TokenManager.get(getApplicationContext()),new MatchApplySoloPostRequestDto(matchId,quotaSolo));
-                            }
-                        });
-
-                    case 1:
-
-                        editTextTeamApplyNumberDecimal.setOnClickListener(new View.OnClickListener(){
-                            @Override
-                            public void onClick(View v) {
-                                quotaTeam=Integer.parseInt(editTextTeamApplyNumberDecimal.getText().toString());
-                            }
-
-                        });
-                        Log.d("숫자 값 찍어보기", String.valueOf(quotaTeam));
-                        matchApplyBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                retrofitObject.applyMatchTeam(TokenManager.get(getApplicationContext()),new MatchApplyTeamPostRequestDto(matchId,quotaSolo));
-                            }
-                        });
-
-                }
             }
 
             @Override
@@ -119,8 +80,8 @@ public class MatchApply extends AppCompatActivity {
         });
 
 
-
     }
+
     private void initialize() {
 
         //탭 레이아웃
@@ -134,17 +95,68 @@ public class MatchApply extends AppCompatActivity {
         matchApplyViewPager.setAdapter(matchApplyViewPagerAdapter);
 
         // VIEWPAGER랑 탭 레이아웃 묶어주기
-        matchApplyViewPagerAdapter = new MatchApplyViewPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        matchApplyViewPagerAdapter = new MatchApplyViewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         matchApplyViewPager.setAdapter(matchApplyViewPagerAdapter);
-
-
     }
 
-    private View createTabView(String tabName){
+    private View createTabView(String tabName) {
         View tabView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.tab_push_matchapply_custom, null);
         TextView tvName = tabView.findViewById(R.id.TabNameMatchApply);
         tvName.setText(tabName);
         return tabView;
     }
+
+    private void initializeMatchApplyBtn() {
+        matchApplyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = tabLayout.getSelectedTabPosition();
+                Log.d("tab position ========> ", String.valueOf(position));
+                switch (position) {
+                    case TAB_TEAM:
+                        applyMatchAsTeam();
+                        break;
+                    case TAB_SOLO:
+                        applyMatchAsSolo();
+                        break;
+                }
+            }
+        });
+    }
+
+    private void applyMatchAsTeam() {
+        editTextTeamApplyNumberDecimal = findViewById(R.id.editTextTeamApplyNumberDecimal);
+        quotaTeam = Integer.parseInt(editTextTeamApplyNumberDecimal.getText().toString());
+        Log.d("숫자 값 찍어보기", String.valueOf(quotaTeam));
+        matchServiceObject.applyMatchTeam(new Callback<MatchApplyTeamPostResponseDto>() {
+            @Override
+            public void onResponse(Call<MatchApplyTeamPostResponseDto> call, Response<MatchApplyTeamPostResponseDto> response) {
+                Log.d("check response data", String.valueOf(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<MatchApplyTeamPostResponseDto> call, Throwable t) {
+                Log.d("매치 신청 실패", " ");
+            }
+        }, getApplicationContext(), matchId, quotaTeam);
+    }
+
+    private void applyMatchAsSolo() {
+        editTextSoloApplyNumberDecimal = findViewById(R.id.editTextSoloApplyNumberDecimal);
+        quotaSolo = Integer.parseInt(editTextSoloApplyNumberDecimal.getText().toString());
+        Log.d("숫자 값 찍어보기", String.valueOf(quotaSolo));
+        matchServiceObject.applyMatchSolo(new Callback<MatchApplySoloPostResponseDto>() {
+            @Override
+            public void onResponse(Call<MatchApplySoloPostResponseDto> call, Response<MatchApplySoloPostResponseDto> response) {
+                Log.d("check response data", String.valueOf(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<MatchApplySoloPostResponseDto> call, Throwable t) {
+                Log.d("매치 신청 실패", " ");
+            }
+        }, getApplicationContext(), matchId, quotaSolo);
+    }
+
 
 }

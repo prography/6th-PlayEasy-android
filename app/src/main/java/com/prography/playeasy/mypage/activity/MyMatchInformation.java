@@ -54,7 +54,6 @@ public class MyMatchInformation extends AppCompatActivity {
     }
 
     private void initialize() {
-
         //탭 레이아웃
         tabLayout = findViewById(R.id.myMatchTabLayout);
         tabLayout.addTab(tabLayout.newTab().setCustomView(createTabView("  내가 등록한 매치  ")));
@@ -78,6 +77,7 @@ public class MyMatchInformation extends AppCompatActivity {
         tvName.setText(tabName);
         return tabView;
     }
+
 
 
 }

@@ -17,6 +17,8 @@ import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchListDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchUpdateResponseDto;
 import com.prography.playeasy.match.domain.models.Match;
+import com.prography.playeasy.mypage.domain.dtos.MatchCloseRequestDto;
+import com.prography.playeasy.mypage.domain.dtos.MatchCloseResponseDto;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,12 +67,16 @@ public class MatchDao {
         call.enqueue(callback);
     }
 
-    public void closeMatch(int matchId, Callback<MatchDetailDto> callback) {
-        HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("matchId", matchId);
-        hashMap.put("status", "CANCEL");
-        Call<MatchDetailDto> call = matchClient.closeMatch(hashMap);
+
+    public void closeMatch(int matchId, String status, Callback<MatchCloseResponseDto> callback) {
+//        HashMap<String,Object> hashMap=new HashMap<>();
+//        hashMap.put("matchId", matchId);
+//        hashMap.put("status", "CANCEL");
+        MatchCloseRequestDto matchCloseRequestDto = new MatchCloseRequestDto(matchId, status);
+        Call<MatchCloseResponseDto> call = matchClient.closeMatch(token, matchCloseRequestDto);
         call.enqueue(callback);
+
+    }
 
         //  String nestedJson="{"matchId"+":"+matchId+","+"statusType" +":"+ status+"}
 //            JSONObject json = new JSONObject();
@@ -81,7 +87,7 @@ public class MatchDao {
 //    String nestedJson="{"+matchId+":"+matchId+","+"statusType" +":"+ status+"}";
 //    Gson gson=new Gson();
 //    Map<String,Object> result=gson.fromJson(nestedJson,Map.class);
-    }
+
 
     public void getMapInfo(String keyword, ResponseCallback callback){
         Call<MapResponseDto> call=matchClient.getMap(keyword);
