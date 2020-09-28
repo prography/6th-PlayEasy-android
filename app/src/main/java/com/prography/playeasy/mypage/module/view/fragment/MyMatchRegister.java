@@ -1,5 +1,6 @@
 package com.prography.playeasy.mypage.module.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,19 +14,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
+import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.MatchDao;
+import com.prography.playeasy.mypage.api.RetrofitMyMatchRegisterApi;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
+import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterListDto;
 import com.prography.playeasy.mypage.module.adapter.MyMatchInformationRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
 public class MyMatchRegister extends Fragment {
+    private String myMatchName;
+    private String myMatchLocation;
+    private int myMatchPeople;
+    Context context;
+    RetrofitMyMatchRegisterApi retrofitMyMatchRegisterApi;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage_mymatchinformation_register, container, false);
-
+        context=getActivity().getApplicationContext();
         return rootView;
     }
 
@@ -42,14 +52,23 @@ public class MyMatchRegister extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        final MyMatchInformationRecyclerViewAdapter adapter = new MyMatchInformationRecyclerViewAdapter(new MatchDao(TokenManager.get(getParentFragment().getContext())));
+        final MyMatchInformationRecyclerViewAdapter adapter = new MyMatchInformationRecyclerViewAdapter();
+
         ArrayList<MyMatchVO> test = new ArrayList<>();
+
+
+
         test.add(new MyMatchVO("프로","안양",11));
         test.add(new MyMatchVO("그라","강남",6));
         test.add(new MyMatchVO("피","사당",5));
 
         adapter.addItems(test);
+
         recyclerView.setAdapter(adapter);
 
+    }
+    public MyMatchRegisterListDto getMyMatchRegisterList(){
+
+        retrofitMyMatchRegisterApi.getmyRegisterMatchList(TokenManager.get(context))
     }
 }

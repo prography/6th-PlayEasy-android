@@ -6,4 +6,5 @@ import com.prography.playeasy.match.domain.models.Match;
 public class MatchUpdateResponseDto {
     @SerializedName("match")
     Match match;
+
 }

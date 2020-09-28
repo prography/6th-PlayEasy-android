@@ -23,6 +23,7 @@ import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
 import com.prography.playeasy.mypage.domain.dtos.MatchCloseRequestDto;
 import com.prography.playeasy.mypage.domain.dtos.MatchCloseResponseDto;
+import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterResponseDto;
 import com.prography.playeasy.team.activity.TeamApplyCurrentStatus;
 import com.prography.playeasy.util.UIHelper;
 import java.util.ArrayList;
@@ -31,17 +32,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.content.Intent.getIntent;
+
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder>{
 
-    private ArrayList<MyMatchVO> myMatchRegisterArrayList = new ArrayList<>();
+    private ArrayList<MyM> myMatchRegisterArrayList;
     MatchDao matchDao;
     int matchId;
 
-    public MyMatchInformationRecyclerViewAdapter(MatchDao matchDao) {
+    public MyMatchInformationRecyclerViewAdapter(ArrayList<MyMatchVO> myMatchRegisterArrayList, MatchDao matchDao) {
         this.matchDao = matchDao;
+        this.myMatchRegisterArrayList = myMatchRegisterArrayList;
+    }
+
+    public MyMatchInformationRecyclerViewAdapter() {
 
     }
 
@@ -63,8 +68,9 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
         return myMatchRegisterArrayList.size();
     }
 
-    public void addItems(ArrayList<MyMatchVO> Data) {
-        myMatchRegisterArrayList = Data;
+    public void addItems(MyMatchRegisterResponseDto matchVO) {
+        myMatchRegisterArrayList.add(new MyMatchVO(matchVO.get);
+
         notifyDataSetChanged();
     }
 //뷰 홀더 클래
@@ -124,8 +130,7 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
                         @Override
                         public void onResponse(Call<MatchCloseResponseDto> call, Response<MatchCloseResponseDto> response) {
 
-                          //error
-                            //  intent.getExtras().getInt("match_id", matchId);
+//                              intent.getExtras().getInt("match_id", matchId);
 
                         }
 
