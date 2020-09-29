@@ -16,7 +16,7 @@ public class MyMatchRegisterResponseDto{
     @SerializedName("description")
     private String description;
     @SerializedName("startAt")
-    private Date startAt;
+    private String startAt;
     //location 변수 대신 duration 넣음
     @SerializedName("duration")
     private int duration;
@@ -59,11 +59,11 @@ public class MyMatchRegisterResponseDto{
         this.description = description;
     }
 
-    public Date getStartAt() {
+    public String getStartAt() {
         return startAt;
     }
 
-    public void setStartAt(Date startAt) {
+    public void setStartAt(String startAt) {
         this.startAt = startAt;
     }
 
@@ -131,7 +131,7 @@ public class MyMatchRegisterResponseDto{
         this.location = location;
     }
 
-    public MyMatchRegisterResponseDto(int id, String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota, String status, int writerId, HomeTeamId homeTeam, LocationId location) {
+    public MyMatchRegisterResponseDto(int id, String type, String description, String startAt, int duration, int fee, String phone, int totalQuota, String status, int writerId, HomeTeamId homeTeam, LocationId location) {
         this.id = id;
         this.type = type;
         this.description = description;

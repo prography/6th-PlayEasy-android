@@ -123,7 +123,6 @@ public class MatchApply extends AppCompatActivity {
             }
         });
     }
-
     private void applyMatchAsTeam() {
         editTextTeamApplyNumberDecimal = findViewById(R.id.editTextTeamApplyNumberDecimal);
         quotaTeam = Integer.parseInt(editTextTeamApplyNumberDecimal.getText().toString());
@@ -140,7 +139,6 @@ public class MatchApply extends AppCompatActivity {
             }
         }, getApplicationContext(), matchId, quotaTeam);
     }
-
     private void applyMatchAsSolo() {
         editTextSoloApplyNumberDecimal = findViewById(R.id.editTextSoloApplyNumberDecimal);
         quotaSolo = Integer.parseInt(editTextSoloApplyNumberDecimal.getText().toString());
@@ -149,6 +147,7 @@ public class MatchApply extends AppCompatActivity {
             @Override
             public void onResponse(Call<MatchApplySoloPostResponseDto> call, Response<MatchApplySoloPostResponseDto> response) {
                 Log.d("check response data", String.valueOf(response.body()));
+
             }
 
             @Override

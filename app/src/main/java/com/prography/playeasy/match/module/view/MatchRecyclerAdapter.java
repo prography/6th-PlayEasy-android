@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.prography.playeasy.R;
 import com.prography.playeasy.match.activity.MatchDetail;
 import com.prography.playeasy.match.domain.models.Match;
+import com.prography.playeasy.match.util.DataHelper;
+import com.prography.playeasy.mypage.domain.MyMatchVO;
+import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterResponseDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,45 +47,56 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 //        private TextView title;
-        private TextView type;
-        private TextView description;
-        private TextView startAt;
-
-        private TextView duration;
-        private TextView fee;
-        private TextView phone;
-
-
-        private TextView totalQuota;
+//        private TextView type;
+//        private TextView description;
+//        private TextView startAt;
+//
+//        private TextView duration;
+//        private TextView fee;
+//        private TextView phone;
+        private TextView registerMatchTitle;
+     //   private TextView registerMatchDay;
+        private TextView registerMatchTime;
+        private TextView matchType;
+        private TextView matchTypeText;
+     //   private TextView totalQuota;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            registerMatchTitle=itemView.findViewById(R.id.registerWhere);
+            registerMatchTime=itemView.findViewById((R.id.registerMatchTime));
 
-            type = itemView.findViewById(R.id.matchType);
-            description = itemView.findViewById(R.id.matchDescription);
+            matchType = itemView.findViewById(R.id.matchType);
+            matchTypeText = itemView.findViewById(R.id.matchTypeText);
 
-            startAt = itemView.findViewById(R.id.matchStartAt);
+//            주description = itemView.findViewById(R.id.matchDescription);
+
+//         주석startAt = itemView.findViewById(R.id.matchStartAt);
           //  duration = itemView.findViewById(R.id.matchEndAt);
-            fee = itemView.findViewById(R.id.matchFee);
-           totalQuota = itemView.findViewById(R.id.matchHomeQuota);
+           // fee = itemView.findViewById(R.id.matchFee);
+//      주석     totalQuota = itemView.findViewById(R.id.matchHomeQuota);
         }
 //주석 처리
-        public void onBind(Match match) {
+        public void onBind(Match myMatchVO) {
 //            title.setText(match.getTitle());
 //            type.setText(match.getType());
-            description.setText(match.getDescription());
+          //주석  description.setText(match.getDescription());
 //            location.setText(match.getLocation());
-            fee.setText(String.valueOf(match.getFee()));
-            startAt.setText(match.getStartAt().toString());
+          //  fee.setText(String.valueOf(match.getFee()));
+     //주석       startAt.setText(match.getStartAt().toString());
 //            endAt.setText(match.getEndAt().toString());
-      //      homeQuota.setText(String.valueOf(match.getHomeQuota()));
-
+      //      homeQuota.s석etText(String.valueOf(match.getHomeQuota()));
+            //to do registerMatchTitle.setText(myMatchVO.getLocation().getDetail());
+           // registerMatchDay.setText(DataHelper.transformDateToString(myMatchVO.getStartAt()));
+            registerMatchTime.setText(DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration()));
+            matchTypeText.setText(myMatchVO.getType());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     TextView tvMatchId = v.findViewById(R.id.matchId);
-                    int matchId = Integer.parseInt(tvMatchId.getText().toString());
+                    int matchId = myMatchVO.getId();
 
+                    tvMatchId.setText(Integer.toString(matchId));
                     Intent intent = new Intent(v.getContext(), MatchDetail.class);
                     intent.putExtra("match_id", matchId);
                     v.getContext().startActivity(intent);

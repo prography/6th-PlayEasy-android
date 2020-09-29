@@ -87,23 +87,23 @@
                 app:layout_constraintStart_toEndOf="@+id/registerPresentPeopleTitle"
                 app:layout_constraintTop_toBottomOf="@+id/registerWhere" />
 
+
             <TextView
                 android:id="@+id/registerStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:hint="진행 중"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/registerPresentPeopleTitle" />
 
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/registerDetailApply"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="144dp"
+                android:layout_width="121dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="84dp"
                 android:layout_marginBottom="8dp"
                 android:text="지원 현황 확인하기"
                 android:textColor="@color/colorPrimaryDark"
@@ -112,14 +112,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/registerStatus"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.973" />
+                app:layout_constraintVertical_bias="0.971" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/registerFinish"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_width="115dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginBottom="8dp"
                 android:text="마감 하기"
                 android:textColor="@color/colorToolbar"
@@ -128,7 +128,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/registerDetailApply"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.972" />
+                app:layout_constraintVertical_bias="0.971" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -15,6 +15,7 @@ import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.models.Match;
 import com.prography.playeasy.match.module.view.MatchRecyclerAdapter;
 import com.prography.playeasy.match.util.MatchResponseCallback;
+import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterResponseDto;
 import com.prography.playeasy.util.UIHelper;
 
 import java.text.ParseException;

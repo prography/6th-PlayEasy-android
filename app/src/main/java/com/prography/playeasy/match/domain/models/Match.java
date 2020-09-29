@@ -16,7 +16,7 @@ public class Match {
     private String description;
 
     @SerializedName("startAt")
-    private Date startAt;
+    private String startAt;
     //location 변수 대신 duration 넣음
 
     @SerializedName("duration")
@@ -42,7 +42,7 @@ public class Match {
     @SerializedName("location")
     private LocationId location;
 
- public Match(int id, String type, String description, Date startAt, int duration, int fee, String phone, int totalQuota, String status, int writerId, HomeTeamId homeTeam, LocationId location) {
+ public Match(int id, String type, String description, String startAt, int duration, int fee, String phone, int totalQuota, String status, int writerId, HomeTeamId homeTeam, LocationId location) {
   this.id = id;
   this.type = type;
   this.description = description;
@@ -81,11 +81,11 @@ public class Match {
   this.description = description;
  }
 
- public Date getStartAt() {
+ public String getStartAt() {
   return startAt;
  }
 
- public void setStartAt(Date startAt) {
+ public void setStartAt(String startAt) {
   this.startAt = startAt;
  }
 

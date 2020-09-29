@@ -19,41 +19,38 @@ import com.prography.playeasy.match.activity.MatchModify;
 
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
+import com.prography.playeasy.match.util.DataHelper;
 import com.prography.playeasy.mypage.activity.MyPage;
 import com.prography.playeasy.mypage.domain.MyMatchVO;
 import com.prography.playeasy.mypage.domain.dtos.MatchCloseRequestDto;
 import com.prography.playeasy.mypage.domain.dtos.MatchCloseResponseDto;
+import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterListDto;
 import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterResponseDto;
 import com.prography.playeasy.team.activity.TeamApplyCurrentStatus;
 import com.prography.playeasy.util.UIHelper;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 import static androidx.core.content.ContextCompat.startActivity;
 
-public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder>{
-
-    private ArrayList<MyM> myMatchRegisterArrayList;
+public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder> {
+    private ArrayList<MyMatchRegisterResponseDto> myMatchRegisterArrayList = new ArrayList<>();
     MatchDao matchDao;
     int matchId;
 
-    public MyMatchInformationRecyclerViewAdapter(ArrayList<MyMatchVO> myMatchRegisterArrayList, MatchDao matchDao) {
+    public MyMatchInformationRecyclerViewAdapter(MatchDao matchDao) {
         this.matchDao = matchDao;
-        this.myMatchRegisterArrayList = myMatchRegisterArrayList;
-    }
-
-    public MyMatchInformationRecyclerViewAdapter() {
-
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_mymatchinformation_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_mymatchinformation_item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -63,17 +60,17 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
         holder.onBind(myMatchRegisterArrayList.get(position), position);
     }
 
+    public void setItems(ArrayList<MyMatchRegisterResponseDto> list) {
+        myMatchRegisterArrayList = list;
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
+
         return myMatchRegisterArrayList.size();
     }
-
-    public void addItems(MyMatchRegisterResponseDto matchVO) {
-        myMatchRegisterArrayList.add(new MyMatchVO(matchVO.get);
-
-        notifyDataSetChanged();
-    }
-//뷰 홀더 클래
+    //뷰 홀더 클래
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView registerMatchTitle;
@@ -87,28 +84,27 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             registerMatchTitle = itemView.findViewById(R.id.registerMatchTitle);
             registerMatchDay = itemView.findViewById(R.id.registerMatchDay);
             registerMatchTime = itemView.findViewById(R.id.registerMatchTime);
             registerWhere = itemView.findViewById(R.id.registerWhere);
             registerPresentPeople = itemView.findViewById(R.id.registerPresentPeople);
             registerStatus = itemView.findViewById(R.id.registerStatus);
-
             registerDetailApply = itemView.findViewById(R.id.registerDetailApply);
             registerFinish = itemView.findViewById(R.id.registerFinish);
 
-
-
         }
 
-        public void onBind(MyMatchVO myMatchVO, int position) {
-
+        public void onBind(MyMatchRegisterResponseDto myMatchVO, int position) {
+//            registerMatchTitle.setText(myMatchVO.getLocation().getDetail());
+            registerMatchDay.setText(DataHelper.transformDateToString(myMatchVO.getStartAt()));
+            registerMatchTime.setText(DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration()));
+//            myMatchVO.getStartAt().split("T")[1].substring(0,2)+
+//                    DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration())
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(itemView.getContext(), MatchModify.class);
-
                     itemView.getContext().startActivity(intent);
                 }
             });
@@ -122,15 +118,17 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
             registerFinish.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   // matchDao.closeMatch();
+                    // matchDao.closeMatch();
 //                    myPageDao.
-                    String status="CONFIRMED";
-
-                    matchDao.closeMatch(matchId,status, new Callback<MatchCloseResponseDto>() {
+                    String status= "CANCEL";
+                    matchId=myMatchVO.getId();
+                    matchDao.closeMatch(matchId, status, new Callback<MatchCloseResponseDto>() {
                         @Override
                         public void onResponse(Call<MatchCloseResponseDto> call, Response<MatchCloseResponseDto> response) {
 
-//                              intent.getExtras().getInt("match_id", matchId);
+                            Log.d("매치 마감 후 정보",String.valueOf(response.body()));
+
+                            //  intent.getExtras().getInt("match_id", matchId);
 
                         }
 
