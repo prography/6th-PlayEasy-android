@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.LocationDto;
-import com.prography.playeasy.match.domain.dtos.MatchDto;
+import com.prography.playeasy.match.domain.dtos.MatchNoIdDto;
 import com.prography.playeasy.match.domain.dtos.request.MatchPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchCreateResponseDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
@@ -32,13 +32,17 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
     @Test
     public void createMatchTest() {
         Date date = new Date();
-        MatchDto matchData = new MatchDto("FOOTSAL6", "축구뜨자", date, 120, 3000, "010-9165-6918", 6);
-        LocationDto locationData = new LocationDto(3.14f, 7.77f, "마루 180", "강남구", "마루 경기장");
-        MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData, locationData);
-        new MatchDao(FAKE_TOKEN).create(matchPostRequestDto, new Callback<MatchCreateResponseDto>() {
+        MatchNoIdDto matchData = new MatchNoIdDto("FOOTSAL6", "축구뜨자", date, 120, 3000, "010-9165-6918", 6);
+        LocationDto locationData = new LocationDto(37.5091105328378f, 127.04892851392f, "서울 선릉과 정릉", "서울 강남구 삼성동 131", "코엑스");
+
+        //MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData, locationData);
+        new MatchDao(FAKE_TOKEN).create(matchData,locationData, new Callback<MatchCreateResponseDto>() {
             @Override
             public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
                 assertEquals(null, response.body());
+                assertEquals(null, response.body());
+                System.out.println(response.body().toString());
+                Log.d("Location ",locationData.getAddress());
             }
 
             @Override

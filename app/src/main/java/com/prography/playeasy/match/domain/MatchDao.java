@@ -44,7 +44,7 @@ public class MatchDao {
         this.token = token;
     }
 
-    public void create(LocationDto locationData, MatchNoIdDto matchData, Callback<MatchCreateResponseDto> callback) {
+    public void create(MatchNoIdDto matchData,LocationDto locationData, Callback<MatchCreateResponseDto> callback) {
         MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData, locationData);
         Call<MatchCreateResponseDto> call = matchClient.postMatch(token, matchPostRequestDto);
         call.enqueue(callback);

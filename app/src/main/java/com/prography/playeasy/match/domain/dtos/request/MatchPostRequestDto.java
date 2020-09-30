@@ -11,7 +11,7 @@ public class MatchPostRequestDto  {
     @SerializedName("matchData")
     MatchNoIdDto matchData;
     //id없는 매치는 match
-    @SerializedName("locatioinData")
+    @SerializedName("locationData")
     LocationDto locationData;
 
 

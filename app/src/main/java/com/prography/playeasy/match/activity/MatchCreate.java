@@ -143,6 +143,7 @@ public class MatchCreate extends AppCompatActivity {
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
+
                 int day = date.get(Calendar.DAY_OF_MONTH);
                 int month = date.get(Calendar.MONTH) + 1;
                 int year = date.get(Calendar.YEAR);
@@ -156,8 +157,8 @@ public class MatchCreate extends AppCompatActivity {
                 Log.d("매치 작성 페이지", tempDateSend);
             }
         });
-//        String dumstrDate = "2020-07-13T23:20:00.123Z";
 
+//        String dumstrDate = "2020-07-13T23:20:00.123Z";
         /*TimePicker Id*/
         sTimePicker = findViewById(R.id.timePickerStart);
         eTimePicker = findViewById(R.id.timePickerEnd);
@@ -167,8 +168,6 @@ public class MatchCreate extends AppCompatActivity {
         matchPhoneNumber = (EditText) findViewById(R.id.matchPhoneNumber);
         matchDetailMap = findViewById(R.id.matchDetailMap);
         description =  findViewById(R.id.matchEtc);
-
-
 
         locationY = findViewById(R.id.locationY);
         locationX = findViewById(R.id.locationX);
@@ -280,7 +279,11 @@ public class MatchCreate extends AppCompatActivity {
                 System.out.println("보내는시간" + tempDateSend);
 
 
-                startAt = format.parse(tempDateSend);
+                try {
+                    startAt = format.parse(tempDateSend);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("시작시간" + startAt);
 
 
@@ -291,7 +294,7 @@ public class MatchCreate extends AppCompatActivity {
                 MatchNoIdDto matchData = new MatchNoIdDto(matchType, description.getText().toString(),
                         startAt, duration, fee, matchPhoneNumber.getText().toString(), totalQuota);
 
-                match.create(locationData, matchData, new Callback<MatchCreateResponseDto>() {
+                match.create(matchData, locationData, new Callback<MatchCreateResponseDto>() {
                     @Override
                     public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
                         //don't get any response

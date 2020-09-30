@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.lakue.lakuepopupactivity.PopupActivity;
+import com.lakue.lakuepopupactivity.PopupGravity;
+import com.lakue.lakuepopupactivity.PopupType;
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.main.activity.Main;
@@ -36,6 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder> {
@@ -121,6 +125,17 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
                     // matchDao.closeMatch();
 //                    myPageDao.
                     String status= "CANCEL";
+
+
+                        Intent intent = new Intent(v.getContext(), PopupActivity.class);
+                        intent.putExtra("type", PopupType.NORMAL);
+                        intent.putExtra("gravity", PopupGravity.CENTER);
+                        intent.putExtra("title", "공지사항");
+                        intent.putExtra("content", "Popup Activity was made by Lakue");
+                        intent.putExtra("buttonCenter", "종료");
+                       //todo
+                        startActivityForResult(intent, 1);
+
                     matchId=myMatchVO.getId();
                     matchDao.closeMatch(matchId, status, new Callback<MatchCloseResponseDto>() {
                         @Override
