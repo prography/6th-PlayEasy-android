@@ -280,7 +280,11 @@ public class MatchCreate extends AppCompatActivity {
                 System.out.println("보내는시간" + tempDateSend);
 
 
-                startAt = format.parse(tempDateSend);
+                try {
+                    startAt = format.parse(tempDateSend);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("시작시간" + startAt);
 
 

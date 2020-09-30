@@ -139,6 +139,7 @@ public class MatchApply extends AppCompatActivity {
             }
         }, getApplicationContext(), matchId, quotaTeam);
     }
+
     private void applyMatchAsSolo() {
         editTextSoloApplyNumberDecimal = findViewById(R.id.editTextSoloApplyNumberDecimal);
         quotaSolo = Integer.parseInt(editTextSoloApplyNumberDecimal.getText().toString());

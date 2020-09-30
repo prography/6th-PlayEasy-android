@@ -7,4 +7,16 @@ public class MatchCreateResponseDto {
 
     @SerializedName("match")
     Match match;
+
+    public MatchCreateResponseDto(Match match) {
+        this.match = match;
+    }
+
+    public Match getMatch() {
+        return match;
+    }
+
+    public void setMatch(Match match) {
+        this.match = match;
+    }
 }
