@@ -1,9 +1,11 @@
 package com.prography.playeasy.mypage.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +13,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.lakue.lakuepopupactivity.PopupResult;
 import com.prography.playeasy.R;
+import com.prography.playeasy.mypage.module.adapter.MyMatchInformationRecyclerViewAdapter;
 import com.prography.playeasy.mypage.module.adapter.MyMatchInformationViewPagerAdapter;
 import com.prography.playeasy.push.module.view.adapter.PushViewPagerAdapter;
 import com.prography.playeasy.util.UIHelper;
@@ -76,6 +80,24 @@ public class MyMatchInformation extends AppCompatActivity {
         TextView tvName = tabView.findViewById(R.id.TabName);
         tvName.setText(tabName);
         return tabView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK)
+        if (requestCode == 1) {
+            PopupResult result = (PopupResult) data.getSerializableExtra("result");
+            if (result == PopupResult.LEFT) {
+                // 작성 코드
+                Toast.makeText(this, "최종 확정", Toast.LENGTH_SHORT).show();
+                MyMatchInformationRecyclerViewAdapter.status="CONFIRMED";
+            } else if (result == PopupResult.RIGHT) {
+                // 작성 코드
+                Toast.makeText(this, "경기 취소", Toast.LENGTH_SHORT).show();
+                MyMatchInformationRecyclerViewAdapter.status="CANCEL";
+            }
+        }
     }
 
 
