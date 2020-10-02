@@ -146,19 +146,7 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
                     ((Activity) v.getContext()).startActivityForResult(intent, REQUEST_CODE);
                     matchId = myMatchVO.getId();
 
-                    matchDao.closeMatch(matchId, status, new Callback<MatchCloseResponseDto>() {
-                        @Override
-                        public void onResponse(Call<MatchCloseResponseDto> call, Response<MatchCloseResponseDto> response) {
-                            Log.d("매치 마감 후 정보", String.valueOf(response.body()));
-                            //  intent.getExtras().getInt("match_id", matchId);
 
-                        }
-
-                        @Override
-                        public void onFailure(Call<MatchCloseResponseDto> call, Throwable t) {
-
-                        }
-                    });
 
                 }
             });
