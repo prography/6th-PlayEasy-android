@@ -18,11 +18,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue "string", "KAKAO_SDK_KEY", "322a7ef3316cd2d2ec606531fb793c1d"
+            resValue "string", "KAKAO_SDK_KEY", "21a86d13e77314dc6b5e713287400145"
         }
 
         debug {
-            resValue "string", "KAKAO_SDK_KEY", "322a7ef3316cd2d2ec606531fb793c1d"
+            resValue "string", "KAKAO_SDK_KEY", "21a86d13e77314dc6b5e713287400145"
         }
     }
 
