@@ -34,9 +34,10 @@ public class MyMatchService {
         call.enqueue(callback);
 
     }
-    public void getMyMathchApplyStatus(Context context, Callback<MyMatchApplyStatusResponseDto> callback){
 
-        Call <MyMatchApplyStatusResponseDto> call=retrofitMyMatchRegisterApi.getMyApplyStatus(TokenManager.get(context),"personal");
+    public void getMyMatchApplyStatus(Context context, String type,Callback<MyMatchApplyStatusResponseDto> callback){
+
+        Call <MyMatchApplyStatusResponseDto> call=retrofitMyMatchRegisterApi.getMyApplyStatus(TokenManager.get(context),type);
 
         call.enqueue(callback);
 

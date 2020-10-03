@@ -105,34 +105,9 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
                     }
                 });
 
-                registerDetailApply.setOnClickListener((v) -> {
-                    v.getContext().startActivity(new Intent(v.getContext(), TeamApplyCurrentStatus.class));
-
-                });
-
-                //마감하기 버튼
-                registerFinish.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // matchDao.closeMatch();
-//                    myPageDao.
-                        status = "CANCEL";
-                        Intent intent = new Intent(v.getContext(), PopupActivity.class);
-                        intent.putExtra("type", PopupType.SELECT);
-                        intent.putExtra("gravity", PopupGravity.LEFT);
-                        intent.putExtra("title", "공지사항");
-                        intent.putExtra("content", " 등록한 매치 최종 마감 하시겠습니까?\n" +
-                                "수정 할 수 없으니 신중한 선택 부탁 드립니다.  ?");
-                        intent.putExtra("buttonLeft", "최종 확정");
-                        intent.putExtra("buttonRight", "경기 취소");
-                        //todo
-                        //  v.getContext().findA( intent,REQUEST_CODE);
-                        ((Activity) v.getContext()).startActivityForResult(intent, REQUEST_CODE);
-                        matchId = myMatchVO.getId();
 
 
-                    }
-                });
+
 
 
             }

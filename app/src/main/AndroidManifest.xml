@@ -17,10 +17,10 @@
         android:theme="@style/mAppTheme">
 
         <activity android:name=".landing.activity.Landing">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 
@@ -32,6 +32,9 @@
         <activity android:name=".mypage.activity.MyPage"/>
         <activity android:name=".mypage.activity.MyInformation"/>
         <activity android:name=".mypage.activity.MyMatchInformation"/>
+
+
+
         <activity android:name=".mypage.activity.MyTeamManger"/>
         <activity android:name=".mypage.activity.MyTeamMemberManger"/>
 

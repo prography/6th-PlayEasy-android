@@ -81,6 +81,7 @@ public class MyMatchRegister extends Fragment {
             @Override
             public void onFailure(Call<MyMatchRegisterListDto> call, Throwable t) {
                 Log.d("통신 실", "");
+
             }
         });
     }
