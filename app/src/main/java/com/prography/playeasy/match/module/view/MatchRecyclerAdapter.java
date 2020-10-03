@@ -89,7 +89,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
       //      homeQuota.s석etText(String.valueOf(match.getHomeQuota()));
             //to do registerMatchTitle.setText(myMatchVO.getLocation().getDetail());
            // registerMatchDay.setText(DataHelper.transformDateToString(myMatchVO.getStartAt()));
-            registerMatchTime.setText(DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration()));
+            registerMatchTime.setText(DataHelper.makeEndTime(String.valueOf(myMatchVO.getStartAt()),myMatchVO.getDuration()));
             matchTypeText.setText(myMatchVO.getType());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

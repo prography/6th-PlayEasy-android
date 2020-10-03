@@ -10,6 +10,7 @@ public class DataHelper {
     }
 
     public static String makeEndTime(String createdDate, int duration) {
+
         int endingHour=0;
         String tempEndDate="";
         if (duration % 60 == 0) {

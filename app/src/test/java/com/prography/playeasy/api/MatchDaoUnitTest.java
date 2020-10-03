@@ -33,6 +33,17 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
     public void createMatchTest() {
         Date date = new Date();
         MatchNoIdDto matchData = new MatchNoIdDto("FOOTSAL6", "축구뜨자", date, 120, 3000, "010-9165-6918", 6);
+
+       // LocationDto locationData = new LocationDto(37.5091105328378f, 127.04892851392f, "서울 선릉과 정릉", "서울 강남구 삼성동 131", "코엑스");
+        LocationDto locationData = new LocationDto(3.14f, 7.77f, "마루 180", "강남구", "마루 경기장");
+        //MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData, locationData);
+        new MatchDao(FAKE_TOKEN).create(locationData,matchData, new Callback<MatchCreateResponseDto>() {
+            @Override
+            public void onResponse(Call<MatchCreateResponseDto> call, Response<MatchCreateResponseDto> response) {
+                assertEquals(null, response.body());
+                assertEquals(null, response.body().getMatch().getLocation());
+                System.out.println(response.body().getMatch().getLocation());
+
         LocationDto locationData = new LocationDto(37.5091105328378f, 127.04892851392f, "서울 선릉과 정릉", "서울 강남구 삼성동 131", "코엑스");
 
         //MatchPostRequestDto matchPostRequestDto = new MatchPostRequestDto(matchData, locationData);
@@ -42,6 +53,7 @@ public class MatchDaoUnitTest extends BaseDaoUnitTest {
                 assertEquals(null, response.body());
                 assertEquals(null, response.body());
                 System.out.println(response.body().toString());
+
                 Log.d("Location ",locationData.getAddress());
             }
 
