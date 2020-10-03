@@ -49,12 +49,14 @@ import static androidx.core.content.ContextCompat.startActivity;
 import static com.google.android.material.internal.ContextUtils.*;
 
 public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder> {
+
     private ArrayList<MyMatchRegisterResponseDto> myMatchRegisterArrayList = new ArrayList<>();
     MatchDao matchDao;
     int matchId;
     final static int REQUEST_CODE = 1;
     public static String status="CANCEL";
     public MyMatchInformationRecyclerViewAdapter(MatchDao matchDao) {
+
         this.matchDao = matchDao;
     }
 

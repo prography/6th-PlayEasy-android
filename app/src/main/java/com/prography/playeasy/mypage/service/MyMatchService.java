@@ -8,7 +8,9 @@ import com.prography.playeasy.match.api.RetrofitMatchApi;
 import com.prography.playeasy.match.domain.dtos.request.MatchApplySoloPostRequestDto;
 import com.prography.playeasy.match.domain.dtos.response.MatchApplySoloPostResponseDto;
 import com.prography.playeasy.mypage.api.RetrofitMyMatchRegisterApi;
+import com.prography.playeasy.mypage.domain.dtos.MyMatchApplyStatusResponseDto;
 import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterListDto;
+import com.prography.playeasy.mypage.module.view.fragment.MyMatchApply;
 
 import java.util.StringTokenizer;
 
@@ -28,7 +30,14 @@ public class MyMatchService {
     public void getMyRegisterMatch(Context context,Callback<MyMatchRegisterListDto> callback){
 
 
-        Call <MyMatchRegisterListDto> call=retrofitMyMatchRegisterApi.getmyRegisterMatchList(TokenManager.get(context));
+        Call <MyMatchRegisterListDto> call=retrofitMyMatchRegisterApi.getMyRegisterMatchList(TokenManager.get(context));
+        call.enqueue(callback);
+
+    }
+    public void getMyMathchApplyStatus(Context context, Callback<MyMatchApplyStatusResponseDto> callback){
+
+        Call <MyMatchApplyStatusResponseDto> call=retrofitMyMatchRegisterApi.getMyApplyStatus(TokenManager.get(context),"personal");
+
         call.enqueue(callback);
 
     }

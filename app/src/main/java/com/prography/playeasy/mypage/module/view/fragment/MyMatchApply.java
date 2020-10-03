@@ -10,8 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.prography.playeasy.R;
+import com.prography.playeasy.mypage.domain.models.MyApplyStatusApplication;
+import com.prography.playeasy.mypage.service.MyMatchService;
+
+import java.util.ArrayList;
 
 public class MyMatchApply extends Fragment {
+    ArrayList<MyApplyStatusApplication> myMatchApply;
+    MyMatchService myMatchService;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,4 +36,14 @@ public class MyMatchApply extends Fragment {
 
 
     }
+    //나의 신청 현황 정보 가져오는 함수
+    public void fetchMyMatchApplyList(){
+
+        myMatchService=new MyMatchService();
+
+
+    }
+
+
+
 }

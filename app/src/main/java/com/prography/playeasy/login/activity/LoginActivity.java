@@ -1,7 +1,12 @@
 package com.prography.playeasy.login.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +28,19 @@ import com.kakao.util.exception.KakaoException;
 import com.prography.playeasy.R;
 import com.prography.playeasy.application.PlayeasyApplication;
 import com.prography.playeasy.login.service.LoginService;
+import com.prography.playeasy.util.KeyHashActivity;
 import com.prography.playeasy.util.PlayeasyServiceFactory;
 import com.prography.playeasy.util.UIHelper;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import static com.kakao.util.helper.Utility.getPackageInfo;
+import static com.prography.playeasy.util.KeyHashActivity.getKeyHash;
+
 public class LoginActivity extends AppCompatActivity{
 
+    private static final String TAG ="testLoginActivity" ;
     private Button logout;
     private Button sessionCutt;
     private String accessToken;
@@ -80,7 +93,8 @@ public class LoginActivity extends AppCompatActivity{
         UIHelper.hideWindow(this);
 
         loginService = PlayeasyServiceFactory.getInstance(LoginService.class);
-
+        //Log.e("getKeyHash", ""+getKeyHash(KeyHashActivity.getContext()));
+       KeyHashActivity.getKeyHash(getApplicationContext());
         // 세션 콜백 등록
         Session.getCurrentSession().addCallback(sessionCallback);
 
@@ -129,7 +143,22 @@ public class LoginActivity extends AppCompatActivity{
 
 
     }
+    public static String getKeyHash(final Context context) {
+        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
+        if (packageInfo == null)
+            return null;
 
+        for (Signature signature : packageInfo.signatures) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
+            } catch (NoSuchAlgorithmException e) {
+                Log.w(TAG, "Unable to get MessageDigest. signature=" + signature, e);
+            }
+        }
+        return null;
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

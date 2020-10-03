@@ -19,7 +19,11 @@ public class DataHelper {
             return tempEndDate;
         } else {
             endingHour=Integer.parseInt(createdDate.split("T")[1].substring(0, 2))+duration/60;
-            tempEndDate = createdDate.split("T")[1].substring(0,5)+"~"+endingHour+":"+duration%60;
+            if(duration%60>=10)
+                tempEndDate = createdDate.split("T")[1].substring(0,5)+"~"+endingHour+":"+duration%60;
+            else
+                tempEndDate = createdDate.split("T")[1].substring(0,5)+"~"+endingHour+":0"+duration%60;
+
             return tempEndDate;
         }
     }
