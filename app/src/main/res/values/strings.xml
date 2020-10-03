@@ -27,4 +27,5 @@
     <string name="channel_id">MATCH_ALARM</string>
     <string name="channel_name">AppliedResult</string>
     <string name="activity_mypage_myinfo">내 정보 </string>
+    <string name="KAKAO_APP_KEY">21a86d13e77314dc6b5e713287400145</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.prography.playeasy.mypage.module.adapter;
-
 import android.content.ContextWrapper;
+
+import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,13 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+
 import com.lakue.lakuepopupactivity.PopupActivity;
 import com.lakue.lakuepopupactivity.PopupGravity;
+
+import com.google.android.material.internal.ContextUtils;
+import com.lakue.lakuepopupactivity.PopupActivity;
+import com.lakue.lakuepopupactivity.PopupGravity;
+import com.lakue.lakuepopupactivity.PopupResult;
+
 import com.lakue.lakuepopupactivity.PopupType;
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
@@ -41,6 +51,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 import com.lakue.lakuepopupactivity.PopupActivity;
 import com.lakue.lakuepopupactivity.PopupGravity;
 import com.lakue.lakuepopupactivity.PopupResult;
@@ -48,12 +59,24 @@ import com.lakue.lakuepopupactivity.PopupType;
 import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+import static androidx.core.content.ContextCompat.startActivity;
+import static com.google.android.material.internal.ContextUtils.*;
+
+
 public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder> {
+
     private ArrayList<MyMatchRegisterResponseDto> myMatchRegisterArrayList = new ArrayList<>();
     MatchDao matchDao;
     int matchId;
+
     static final int REQUEST_TEST=1;
+
+    final static int REQUEST_CODE = 1;
+    public static String status="CANCEL";
+
     public MyMatchInformationRecyclerViewAdapter(MatchDao matchDao) {
+
         this.matchDao = matchDao;
     }
 
@@ -80,6 +103,7 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
 
         return myMatchRegisterArrayList.size();
     }
+
     //뷰 홀더 클래
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -108,7 +132,7 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
         public void onBind(MyMatchRegisterResponseDto myMatchVO, int position) {
 //            registerMatchTitle.setText(myMatchVO.getLocation().getDetail());
             registerMatchDay.setText(DataHelper.transformDateToString(myMatchVO.getStartAt()));
-            registerMatchTime.setText(DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration()));
+            registerMatchTime.setText(DataHelper.makeEndTime(myMatchVO.getStartAt(), myMatchVO.getDuration()));
 //            myMatchVO.getStartAt().split("T")[1].substring(0,2)+
 //                    DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration())
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -126,48 +150,36 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
 
             registerFinish.setOnClickListener(new View.OnClickListener(){
                 @Override
+
                 public void onClick(View v){
 
                     Intent intent=new Intent(v.getContext(), PopupActivity.class);
+
+                public void onClick(View v) {
+
+                     status = "CANCEL";
+                    Intent intent = new Intent(v.getContext(), PopupActivity.class);
+
                     intent.putExtra("type", PopupType.SELECT);
                     intent.putExtra("gravity", PopupGravity.LEFT);
                     intent.putExtra("title", "공지사항");
                     intent.putExtra("content", " 등록한 매치 최종 마감 하시겠습니까?\n" +
                             "수정 할 수 없으니 신중한 선택 부탁 드립니다. ");
+                  
                     intent.putExtra("buttonLeft", "최종 확정");
                     intent.putExtra("buttonRight", "경기 취소");
+                   
+                    ((Activity) v.getContext()).startActivityForResult(intent, REQUEST_CODE);
+                    matchId = myMatchVO.getId();
 
-                  //  startActivityForResult(getActivity(),intent,1,null);
+
+
                 }
             });
-            //마감하기 버튼
-//            registerFinish.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // matchDao.closeMatch();
-////                    myPageDao.
-//                    String status= "CANCEL";
-//                    matchId=myMatchVO.getId();
-//                    matchDao.closeMatch(matchId, status, new Callback<MatchCloseResponseDto>() {
-//                        @Override
-//                        public void onResponse(Call<MatchCloseResponseDto> call, Response<MatchCloseResponseDto> response) {
-//
-//                            Log.d("매치 마감 후 정보",String.valueOf(response.body()));
-//
-//                            //  intent.getExtras().getInt("match_id", matchId);
-//
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<MatchCloseResponseDto> call, Throwable t) {
-//
-//                        }
-//                    });
-//
-//                }
-//            });
-
+ 
 
         }
+
+
     }
 }

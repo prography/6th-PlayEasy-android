@@ -26,7 +26,7 @@
 
         <activity android:name=".main.activity.BeforeLoginMain"/>
         <activity android:name=".main.activity.Main"/>
-
+        <activity android:name=".util.KeyHashActivity"/>
         <activity android:name=".login.activity.LoginActivity"/>
 
         <activity android:name=".mypage.activity.MyPage"/>
@@ -48,6 +48,7 @@
         <activity android:name=".match.activity.MatchApply"/>
 
         <activity android:name=".push.activity.Push"/>
+
         <service
             android:name=".lib.firebase.FirebaseMessageService"
             android:exported="true"
