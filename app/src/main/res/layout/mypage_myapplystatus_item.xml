@@ -7,7 +7,7 @@
     xmlns:card_view="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/myMatchCardView"
+        android:id="@+id/myMatchApplyStatusCardView"
         android:layout_width="405dp"
         android:layout_height="203dp"
         android:layout_marginStart="8dp"
@@ -78,7 +78,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/registerWhere" />
 
             <TextView
-                android:id="@+id/registerPresentPeople"
+                android:id="@+id/applyPresentPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -89,44 +89,28 @@
 
 
             <TextView
-                android:id="@+id/registerStatus"
+                android:id="@+id/applyStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:hint="진행 중"
+                android:hint="승인됨"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/registerPresentPeopleTitle" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/registerDetailApply"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="121dp"
-                android:layout_height="57dp"
-                android:layout_marginStart="84dp"
-                android:layout_marginBottom="8dp"
-                android:text="지원 현황 확인하기"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="10dp"
-                app:backgroundTint="@color/colorWhite"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/registerStatus"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.971" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/registerFinish"
+                android:id="@+id/applyWithdrawal"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="115dp"
                 android:layout_height="57dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginBottom="8dp"
                 android:text="마감 하기"
                 android:textColor="@color/colorToolbar"
                 android:textSize="10dp"
                 app:backgroundTint="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/registerDetailApply"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/registerStatus"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.971" />
 

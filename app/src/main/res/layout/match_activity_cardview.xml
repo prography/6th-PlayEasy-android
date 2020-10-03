@@ -7,7 +7,7 @@
     xmlns:card_view="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/myMatchCardView"
+        android:id="@+id/matchCardView"
         android:layout_width="405dp"
         android:layout_height="203dp"
         android:layout_marginStart="8dp"

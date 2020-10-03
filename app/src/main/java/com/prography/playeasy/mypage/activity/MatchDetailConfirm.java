@@ -1,4 +1,4 @@
-package com.prography.playeasy.match.activity;
+package com.prography.playeasy.mypage.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.prography.playeasy.R;
 import com.prography.playeasy.lib.TokenManager;
+import com.prography.playeasy.match.activity.MatchApply;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.models.Match;
@@ -22,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MatchDetail extends AppCompatActivity {
+public class MatchDetailConfirm extends AppCompatActivity {
 
     private TextView detailHomeTeam;
     private MaterialButton homeTeamText;
@@ -64,7 +65,7 @@ public class MatchDetail extends AppCompatActivity {
         UIHelper.hideWindow(this);
 
         //MapView mapView = new MapView(this);
-       // ViewGroup mapViewContainer = findViewById(R.id.matchDetailMap);
+        // ViewGroup mapViewContainer = findViewById(R.id.matchDetailMap);
 //        mapViewContainer.addView(mapView);
 
         initialized();
@@ -96,7 +97,7 @@ public class MatchDetail extends AppCompatActivity {
         detailMatchGameType=findViewById(R.id.detailMatchGameType);
         detailMatchGameTypeText=findViewById(R.id.detailMatchGameTypeText);
 
-      //참가비
+        //참가비
         detailMatchFee=findViewById(R.id.detailMatchFee);
         detailMatchFeeText=findViewById(R.id.detailMatchFeeText);
         //전화번호
@@ -159,4 +160,6 @@ public class MatchDetail extends AppCompatActivity {
             }
         });
     }
+
+
 }

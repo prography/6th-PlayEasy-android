@@ -78,7 +78,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/registerWhere" />
 
             <TextView
-                android:id="@+id/registerPresentPeople"
+                android:id="@+id/applyPresentPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -115,7 +115,7 @@
                 app:layout_constraintVertical_bias="0.971" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/registerFinish"
+                android:id="@+id/applyWithdrawal"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="115dp"
                 android:layout_height="57dp"

@@ -2,51 +2,28 @@ package com.prography.playeasy.mypage.module.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.internal.ContextUtils;
 import com.lakue.lakuepopupactivity.PopupActivity;
 import com.lakue.lakuepopupactivity.PopupGravity;
-import com.lakue.lakuepopupactivity.PopupResult;
 import com.lakue.lakuepopupactivity.PopupType;
 import com.prography.playeasy.R;
-import com.prography.playeasy.lib.TokenManager;
-import com.prography.playeasy.main.activity.Main;
 import com.prography.playeasy.match.activity.MatchModify;
 
 
 import com.prography.playeasy.match.domain.MatchDao;
-import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.util.DataHelper;
-import com.prography.playeasy.mypage.activity.MyPage;
-import com.prography.playeasy.mypage.domain.MyMatchVO;
-import com.prography.playeasy.mypage.domain.dtos.MatchCloseRequestDto;
-import com.prography.playeasy.mypage.domain.dtos.MatchCloseResponseDto;
-import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterListDto;
 import com.prography.playeasy.mypage.domain.dtos.register.MyMatchRegisterResponseDto;
 import com.prography.playeasy.team.activity.TeamApplyCurrentStatus;
-import com.prography.playeasy.util.UIHelper;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static androidx.core.app.ActivityCompat.startActivityForResult;
-import static androidx.core.content.ContextCompat.startActivity;
-import static com.google.android.material.internal.ContextUtils.*;
 
 public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchInformationRecyclerViewAdapter.MyViewHolder> {
 
@@ -55,7 +32,8 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
     int matchId;
     final static int REQUEST_CODE = 1;
     public static String status="CANCEL";
-    public MyMatchInformationRecyclerViewAdapter(MatchDao matchDao) {
+    public MyMatchInformationRecyclerViewAdapter(MatchDao matchDao)
+    {
 
         this.matchDao = matchDao;
     }
@@ -102,10 +80,10 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
             registerMatchDay = itemView.findViewById(R.id.registerMatchDay);
             registerMatchTime = itemView.findViewById(R.id.registerMatchTime);
             registerWhere = itemView.findViewById(R.id.registerWhere);
-            registerPresentPeople = itemView.findViewById(R.id.registerPresentPeople);
+            registerPresentPeople = itemView.findViewById(R.id.applyPresentPeople);
             registerStatus = itemView.findViewById(R.id.registerStatus);
             registerDetailApply = itemView.findViewById(R.id.registerDetailApply);
-            registerFinish = itemView.findViewById(R.id.registerFinish);
+            registerFinish = itemView.findViewById(R.id.applyWithdrawal);
 
         }
 
