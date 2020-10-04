@@ -1,6 +1,8 @@
 package com.prography.playeasy.match.module.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +24,11 @@ import java.util.List;
 
 public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdapter.MyViewHolder>{
     private List<Match> matchList = new ArrayList<>();
-
+    Context context;
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context=parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_activity_cardview,parent,false);
         return new MyViewHolder(view);
     }
@@ -61,7 +64,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
         private TextView matchType;
         private TextView matchTypeText;
      //   private TextView totalQuota;
-
+     TextView tvMatchId ;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             registerMatchTitle=itemView.findViewById(R.id.registerWhere);
@@ -69,7 +72,7 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
 
             matchType = itemView.findViewById(R.id.matchType);
             matchTypeText = itemView.findViewById(R.id.matchTypeText);
-
+            tvMatchId=itemView.findViewById(R.id.matchId);
 //            주description = itemView.findViewById(R.id.matchDescription);
 
 //         주석startAt = itemView.findViewById(R.id.matchStartAt);
@@ -94,8 +97,9 @@ public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TextView tvMatchId = v.findViewById(R.id.matchId);
+
                     int matchId = myMatchVO.getId();
+                    Log.d("매치 id",String.valueOf(matchId));
 
                     tvMatchId.setText(Integer.toString(matchId));
                     Intent intent = new Intent(v.getContext(), MatchDetail.class);

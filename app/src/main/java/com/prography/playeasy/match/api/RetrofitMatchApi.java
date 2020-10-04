@@ -44,9 +44,9 @@ public interface RetrofitMatchApi {
      * @return MatchResponseDto-->Match로 수정
      */
 //todo-issue
-    //토큰 보내는 게 맞나
+    //토큰 보내는 게 맞나 @Query("type") String type
     @GET("/api/match")
-    Call<MatchDetailDto> getMatch(@Header("authorization") String token,@Body int matchId);
+    Call<MatchDetailDto> getMatch(@Header("authorization") String token, @Query("matchId") int matchId);
    //3번쨰 매치 수정
     @PUT("/api/match")
     Call <MatchUpdateResponseDto> reviseMatch(@Header("authorization") String token,

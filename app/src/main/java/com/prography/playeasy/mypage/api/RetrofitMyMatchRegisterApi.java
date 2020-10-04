@@ -18,8 +18,4 @@ public interface RetrofitMyMatchRegisterApi {
     Call<MyMatchApplyStatusResponseDto> getMyApplyStatus(@Header("authorization") String token , @Query("type") String type);
 
 
-
-
-
-
 }

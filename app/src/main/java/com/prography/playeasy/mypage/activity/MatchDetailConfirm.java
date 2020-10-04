@@ -59,7 +59,7 @@ public class MatchDetailConfirm extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_match_detail);
+        setContentView(R.layout.activity_match_detail_confirm);
 
         UIHelper.toolBarInitialize(this, findViewById(R.id.matchDetailToolBar));
         UIHelper.hideWindow(this);

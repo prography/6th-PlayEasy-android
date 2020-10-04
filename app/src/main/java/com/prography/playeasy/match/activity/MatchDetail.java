@@ -15,6 +15,7 @@ import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.match.domain.MatchDao;
 import com.prography.playeasy.match.domain.dtos.response.MatchDetailDto;
 import com.prography.playeasy.match.domain.models.Match;
+import com.prography.playeasy.match.util.DataHelper;
 import com.prography.playeasy.team.activity.TeamInformation;
 import com.prography.playeasy.util.UIHelper;
 
@@ -66,7 +67,7 @@ public class MatchDetail extends AppCompatActivity {
         //MapView mapView = new MapView(this);
        // ViewGroup mapViewContainer = findViewById(R.id.matchDetailMap);
 //        mapViewContainer.addView(mapView);
-
+        matchId = getIntent().getExtras().getInt("match_id");
         initialized();
 
 
@@ -77,16 +78,13 @@ public class MatchDetail extends AppCompatActivity {
         detailHomeTeam = findViewById(R.id.detailHomeTeam);
         homeTeamText=findViewById(R.id.homeTeamText);
 
-
         //주소
         address=findViewById(R.id.matchWhere);
         addressText=findViewById(R.id.matchWhereText);
-
         //상세 주소
         detailedAddress=findViewById(R.id.detailMatchWhere);
         detailedAddressText=findViewById(R.id.detailMatchWhereText);
         //시간
-
         time=findViewById(R.id.time);
         timeText=findViewById(R.id.timeText);
         //인원수
@@ -95,7 +93,6 @@ public class MatchDetail extends AppCompatActivity {
         //진행방식
         detailMatchGameType=findViewById(R.id.detailMatchGameType);
         detailMatchGameTypeText=findViewById(R.id.detailMatchGameTypeText);
-
       //참가비
         detailMatchFee=findViewById(R.id.detailMatchFee);
         detailMatchFeeText=findViewById(R.id.detailMatchFeeText);
@@ -149,6 +146,10 @@ public class MatchDetail extends AppCompatActivity {
 
                 assert response.body() != null;
                 match=response.body().getMatch();
+                addressText.setText(match.getLocation().getAddress());
+                detailedAddressText.setText(match.getLocation().getDetail());
+
+                timeText.setText(match.getStartAt().split("T")[0]);
                 etcTextBox.setText(match.getDescription());
 
             }
