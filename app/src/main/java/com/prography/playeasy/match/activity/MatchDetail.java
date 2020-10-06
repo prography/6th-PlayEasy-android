@@ -109,8 +109,7 @@ public class MatchDetail extends AppCompatActivity {
         fetchDataOfMatchDetail();
 
 
-
-        detailHomeTeam.setOnClickListener(new View.OnClickListener() {
+        homeTeamText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TeamInformation.class);

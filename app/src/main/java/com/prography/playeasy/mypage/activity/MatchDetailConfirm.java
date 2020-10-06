@@ -128,9 +128,9 @@ public class MatchDetailConfirm extends AppCompatActivity {
 
 
                 Log.d("match_id", String.valueOf(matchId));
-                Intent intent = new Intent(getApplicationContext(), MatchApply.class);
+                Intent intent = getIntent();
 
-                intent.putExtra("match_id", matchId);
+                intent.getExtras().getInt("match_id", matchId);
 //                startActivity(intent);
                 v.getContext().startActivity(intent);
             }

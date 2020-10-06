@@ -25,39 +25,39 @@
 
 
             <TextView
-                android:id="@+id/registerMatchTitle"
+                android:id="@+id/applyMatchTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:hint="축구 뜨자"
+                android:layout_marginTop="16dp"
+                android:hint="매치 타이틀"
                 android:textColor="@color/colorPoint"
                 android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/registerMatchDay"
+                android:id="@+id/applyMatchDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:hint="2020.06.20"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerMatchTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/applyMatchTitle" />
 
             <TextView
-                android:id="@+id/registerMatchTime"
+                android:id="@+id/applyMatchTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:hint="11 : 00 ~ 13 : 00"
-                app:layout_constraintStart_toEndOf="@+id/registerMatchDay"
-                app:layout_constraintTop_toBottomOf="@+id/registerMatchTitle" />
+                android:hint="11:00~13:00"
+                app:layout_constraintStart_toEndOf="@+id/applyMatchDay"
+                app:layout_constraintTop_toBottomOf="@+id/applyMatchTitle" />
 
             <TextView
-                android:id="@+id/registerWhere"
+                android:id="@+id/applyWhere"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -65,17 +65,17 @@
                 android:hint="서울 용산 아이파크몰"
                 android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerMatchDay" />
+                app:layout_constraintTop_toBottomOf="@+id/applyMatchDay" />
 
             <TextView
-                android:id="@+id/registerPresentPeopleTitle"
+                android:id="@+id/applyPresentPeopleTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="8dp"
                 android:text="신청 현황"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerWhere" />
+                app:layout_constraintTop_toBottomOf="@+id/applyWhere" />
 
             <TextView
                 android:id="@+id/applyPresentPeople"
@@ -84,8 +84,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="10 /12"
-                app:layout_constraintStart_toEndOf="@+id/registerPresentPeopleTitle"
-                app:layout_constraintTop_toBottomOf="@+id/registerWhere" />
+                app:layout_constraintStart_toEndOf="@+id/applyPresentPeopleTitle"
+                app:layout_constraintTop_toBottomOf="@+id/applyWhere" />
 
 
             <TextView
@@ -96,7 +96,7 @@
                 android:layout_marginTop="16dp"
                 android:hint="승인됨"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerPresentPeopleTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/applyPresentPeopleTitle" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/applyWithdrawal"
@@ -104,15 +104,16 @@
                 android:layout_width="115dp"
                 android:layout_height="57dp"
                 android:layout_marginBottom="8dp"
-                android:text="마감 하기"
+                android:text="취소"
                 android:textColor="@color/colorToolbar"
                 android:textSize="10dp"
                 app:backgroundTint="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/registerStatus"
+                app:layout_constraintHorizontal_bias="0.838"
+                app:layout_constraintStart_toEndOf="@+id/applyStatus"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.971" />
+                app:layout_constraintVertical_bias="0.942" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

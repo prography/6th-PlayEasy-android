@@ -133,7 +133,7 @@ public class BeforeLoginMain extends AppCompatActivity {
 
 
     }
-    public static List<Match> createSampleMatch() throws ParseException {
+    public static ListMatch> createSampleMatch() throws ParseException {
 
         List<Match> matchArr = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

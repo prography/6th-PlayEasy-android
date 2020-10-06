@@ -35,6 +35,7 @@ import retrofit2.Response;
 
 public class MyMatchApply extends Fragment {
     //팀 지원과 용병 지원 분기 처리
+
     ArrayList<MyApplyStatusApplication> myMatchApplyList;
     MyMatchService myMatchService;
     Context context;
@@ -59,16 +60,17 @@ public class MyMatchApply extends Fragment {
 
     private void initialize(View view) {
         checkTeamSolo=view.findViewById(R.id.checkTeamSolo);
+        myMatchApplyList=new ArrayList<>();
         checkTeamSolo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int pos = position;
-                String type="";
+
                 if(pos == 1){
-                    type = type + "team";
+                    type = "team";
                 }else if(pos == 2 ) {
-                    type = type + "personal";
+                    type = "personal";
                 }
                 Log.d("신청 타입",type);
                 fetchMyMatchApplyList(type);
@@ -88,35 +90,37 @@ public class MyMatchApply extends Fragment {
 
 
         myApplyStatusRecyclerViewAdapter = new MyApplyStatusRecyclerViewAdapter(new MatchDao(TokenManager.get(context)));
-
-        fetchMyMatchApplyList(type);
         recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
+        fetchMyMatchApplyList(type);
+     //   recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
     }
 
     //나의 신청 현황 정보 가져오는 함수
     public void fetchMyMatchApplyList(String type){
 
         myMatchService=new MyMatchService();
-        myApplyStatusRecyclerViewAdapter=new MyApplyStatusRecyclerViewAdapter(new MatchDao(TokenManager.get(context)));
+
 
         myMatchService.getMyMatchApplyStatus(context, type ,new Callback<MyMatchApplyStatusResponseDto>() {
             @Override
-            public void onResponse(Call<MyMatchApplyStatusResponseDto> call, Response<MyMatchApplyStatusResponseDto> response) {
-                Log.d("checking response data",String.valueOf(response.body()));
-               // Log.d("선택한 신청 방",String.valueOf(response.body().getApplicationList()));
+           public void onResponse(Call<MyMatchApplyStatusResponseDto> call, Response<MyMatchApplyStatusResponseDto> response) {
+               Log.d("checking response data",String.valueOf(response.body()));
+              // Log.d("선택한 신청 방",String.valueOf(response.body().getApplicationList()));
+                assert response.body() != null;
                 myMatchApplyList=response.body().getApplicationList();
+
                 myApplyStatusRecyclerViewAdapter.setItems(myMatchApplyList);
             }
 
             @Override
             public void onFailure(Call<MyMatchApplyStatusResponseDto> call, Throwable t) {
+                Log.d("checking response data","no data");
 
             }
         });
-
-
     }
 
-
-
 }
+
+
+
