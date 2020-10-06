@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/detailHomeTeam"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/mypageeffect"
+        android:gravity="left"
+        android:text="Home Team"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailToolBar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/homeTeamText"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="199dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/radius"
+        android:gravity="left"
+        android:text="플레이지"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detailHomeTeam"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailToolBar" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/matchDetailToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/activity_match_detail"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+
+
+    <TextView
+        android:id="@+id/matchWhere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="장소"
+        app:layout_constraintEnd_toEndOf="@+id/detailHomeTeam"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="@+id/detailHomeTeam"
+        app:layout_constraintTop_toBottomOf="@+id/detailHomeTeam" />
+
+    <TextView
+        android:id="@+id/detailMatchWhere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:hint="상세 주소"
+        app:layout_constraintEnd_toEndOf="@+id/matchWhere"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/matchWhere"
+        app:layout_constraintTop_toBottomOf="@+id/matchWhere" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="33dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:hint="시간"
+        app:layout_constraintEnd_toEndOf="@+id/detailMatchWhere"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailMatchWhere"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchWhere" />
+
+    <TextView
+        android:id="@+id/detailMatchNeedPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="필요한 사람 수 입력하는 곳"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/time"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <TextView
+        android:id="@+id/detailMatchGameType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="게임 진행 방식"
+        app:layout_constraintEnd_toEndOf="@+id/detailMatchNeedPeople"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailMatchNeedPeople"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchNeedPeople" />
+
+    <TextView
+        android:id="@+id/detailMatchFee"
+        android:layout_width="142dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="참가비 입력 하는 곳"
+        app:layout_constraintEnd_toEndOf="@+id/detailMatchGameType"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailMatchGameType"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchGameType" />
+
+    <TextView
+        android:id="@+id/detailMatchTelephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="전화번호 입력 받는 곳"
+        app:layout_constraintEnd_toEndOf="@+id/detailMatchFee"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailMatchFee"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchFee" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/detailMatchApplyButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="10dp"
+        android:text="신청하기"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        app:backgroundTint="@color/colorPoint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/etcText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/detailMatchApplyButton"
+        app:layout_constraintEnd_toEndOf="@+id/detailMatchTelephone"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="@+id/detailMatchTelephone"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchTelephone"
+        app:layout_constraintVertical_bias="0.076"
+        tools:text="기타사항" />
+
+    <TextView
+        android:id="@+id/matchWhereText"
+        android:layout_width="62dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="14dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/matchWhere"
+        app:layout_constraintTop_toBottomOf="@+id/homeTeamText" />
+
+    <TextView
+        android:id="@+id/detailMatchWhereText"
+        android:layout_width="69dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/timeText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toEndOf="@+id/detailMatchWhere"
+        app:layout_constraintTop_toBottomOf="@+id/matchWhereText"
+        app:layout_constraintVertical_bias="0.625" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="81dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/detailMatchNeedPeopleText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintStart_toEndOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchWhereText" />
+
+    <TextView
+        android:id="@+id/detailMatchNeedPeopleText"
+        android:layout_width="70dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="64dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/detailMatchGameTypeText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintStart_toEndOf="@+id/detailMatchNeedPeople"
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+    <TextView
+        android:id="@+id/detailMatchGameTypeText"
+        android:layout_width="63dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detailMatchGameType"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchNeedPeopleText" />
+
+    <TextView
+        android:id="@+id/detailMatchFeeText"
+        android:layout_width="88dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/detailMatchTelephoneText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detailMatchFee"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchGameTypeText"
+        app:layout_constraintVertical_bias="0.413" />
+
+    <TextView
+        android:id="@+id/detailMatchTelephoneText"
+        android:layout_width="107dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintStart_toEndOf="@+id/detailMatchTelephone"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchFeeText" />
+
+    <TextView
+        android:id="@+id/etcTextBox"
+        android:layout_width="208dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="16dp"
+        android:text="기타 설명 textBox"
+        app:layout_constraintBottom_toTopOf="@+id/detailMatchApplyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toEndOf="@+id/etcText"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchTelephoneText"
+        app:layout_constraintVertical_bias="0.081" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

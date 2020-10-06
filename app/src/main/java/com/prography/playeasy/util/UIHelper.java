@@ -1,19 +1,24 @@
 package com.prography.playeasy.util;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.prography.playeasy.R;
-import com.prography.playeasy.match.activity.MatchCreateActivity;
-import com.prography.playeasy.match.activity.MatchListActivity;
-import com.prography.playeasy.mypage.activity.UserInformationActivity;
+import com.prography.playeasy.main.activity.Main;
+import com.prography.playeasy.match.activity.MatchCreate;
+import com.prography.playeasy.mypage.activity.MyMatchInformation;
+import com.prography.playeasy.mypage.activity.MyPage;
 
 public class UIHelper {
     public static void toolBarInitialize(AppCompatActivity activity, View view) {
@@ -32,16 +37,18 @@ public class UIHelper {
             Class clazz = null;
 
             switch (item.getItemId()) {
-                case R.id.match:
-                    clazz = MatchListActivity.class;
+                case R.id.homeNavigatation:
+                    clazz = Main.class;
                     break;
-                case R.id.register:
-                    clazz = MatchCreateActivity.class;
+                case R.id.registerNavigatation:
+                    clazz = MatchCreate.class;
+                    Log.e("매치 작성 페이지로 들어옴","error");
                     break;
-                case R.id.hired:
+                case R.id.myMatchNavigatation:
+                    clazz = MyMatchInformation.class;
                     break;
-                case R.id.myPage:
-                    clazz = UserInformationActivity.class;
+                case R.id.myPageNavigatation:
+                    clazz = MyPage.class;
                     break;
             }
 
@@ -58,5 +65,10 @@ public class UIHelper {
 
             return true;
         });
+    }
+
+    public static void hideWindow(AppCompatActivity activity){
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }

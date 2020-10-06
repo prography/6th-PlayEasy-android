@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/my_toolbar"
+        android:id="@+id/pushToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -19,46 +19,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="91dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="알림 권한"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        android:layout_marginLeft="8dp" />
 
-    <EditText
-        android:id="@+id/matchAlram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+    <Switch
+        android:id="@+id/matchAlarm"
+        android:name="matchAlarmSwitch"
+        android:layout_width="309dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="51dp"
+        android:switchMinWidth="100dp"
+        android:switchPadding="20dp"
         android:text="매치 알림 받기"
-        app:layout_constraintEnd_toEndOf="@+id/editText5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText5"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
 
-    <EditText
-        android:id="@+id/scoutAlram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+    <Switch
+        android:id="@+id/scoutAlarm"
+        android:name="scoutAlarmSwitch"
+        android:layout_width="310dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:switchMinWidth="100dp"
+        android:switchPadding="20dp"
         android:text="스카우트 알림 받기"
-        app:layout_constraintEnd_toEndOf="@+id/matchAlram"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/matchAlram"
-        app:layout_constraintTop_toBottomOf="@+id/matchAlram" />
+        app:layout_constraintEnd_toEndOf="@+id/matchAlarm"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/matchAlarm"
+        app:layout_constraintTop_toBottomOf="@+id/matchAlarm" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

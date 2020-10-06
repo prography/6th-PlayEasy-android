@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-406474938/6th-PlayEasy-android-playeasy.iml" filepath="$PROJECT_DIR$/.idea/modules/-406474938/6th-PlayEasy-android-playeasy.iml" group="playeasy" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="playeasy/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1351778267/playeasy.iml" filepath="$PROJECT_DIR$/.idea/modules/1351778267/playeasy.iml" group="playeasy" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/playeasy-app.iml" filepath="$PROJECT_DIR$/.idea/modules/playeasy-app.iml" group="playeasy/app" />
+    </modules>
+  </component>
+</project>

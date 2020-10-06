@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/myTeamMangerToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/activity_mypage_myTeamManger"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="128dp"
+        android:layout_height="126dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="176dp"
+        android:src="@drawable/shinja"
+        app:civ_border_color="@color/colorPoint"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myTeamMangerToolBar" />
+
+    <TextView
+        android:id="@+id/myPageMyTeamMangerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="32dp"
+        android:text="팀 이름"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/teamName"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <EditText
+        android:id="@+id/myPageMyTeamMangerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="148dp"
+        android:background="@null"
+        android:hint="프로그라피 6팀"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <TextView
+        android:id="@+id/myPageMyTeamMangerCapTinTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="주장"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyTeamMangerCapTinName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:hint="임규산"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerName"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerName" />
+
+    <TextView
+        android:id="@+id/myPageMyTeamMangerCapTinAgeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="나이"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerCapTinTitle"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerCapTinTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerCapTinTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyTeamMangerCapTinAge"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:hint="30"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerCapTinName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerCapTinName"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerCapTinName" />
+
+    <TextView
+        android:id="@+id/myPageMyTeamMangerAbilityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="실력"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerCapTinAgeTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerCapTinAgeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerCapTinAgeTitle" />
+
+    <Spinner
+        android:id="@+id/myPageMyTeamMangerAbilitySpinner"
+        android:layout_width="95dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/실력"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerCapTinAge"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerCapTinAge"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerCapTinAge" />
+
+    <TextView
+        android:id="@+id/myPageMyTeamMangerCapTinPhoneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="번호"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerAbilityTitle"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerAbilityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerAbilityTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyTeamMangerCapTinPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:hint="010-8974-0000"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerAbilitySpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerAbilitySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerAbilitySpinner" />
+
+    <TextView
+        android:id="@+id/myPageMyTeamMangerInformationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="팀 소개"
+        android:textColor="@color/colorPoint"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerCapTinPhoneTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerCapTinPhoneTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerCapTinPhoneTitle" />
+
+    <EditText
+        android:id="@+id/myPageMyTeamMangerTeamInformation"
+        android:layout_width="325dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="팀 소개 글을 써주세요"
+        android:inputType="textPersonName"
+        android:lines="2"
+        android:maxLines="4"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerInformationTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerInformationTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerInformationTitle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/myPageMyteamMangerPlayerShowButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        android:text="팀원 보러 가기"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        app:backgroundTint="@color/colorPoint"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamMangerTeamInformation"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamMangerTeamInformation"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamMangerTeamInformation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

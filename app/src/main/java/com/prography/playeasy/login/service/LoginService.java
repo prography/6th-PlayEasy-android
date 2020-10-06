@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.prography.playeasy.lib.RetrofitClientGenerator;
+import com.prography.playeasy.application.PlayeasyApplication;
+import com.prography.playeasy.lib.RetrofitClientFactory;
 import com.prography.playeasy.lib.TokenManager;
 import com.prography.playeasy.login.api.RetrofitLoginApi;
 import com.prography.playeasy.login.domain.LoginRequestVO;
 import com.prography.playeasy.login.domain.LoginResponseVO;
-import com.prography.playeasy.match.activity.MatchListActivity;
-import com.prography.playeasy.mypage.activity.UserInformationActivity;
+import com.prography.playeasy.main.activity.Main;
+import com.prography.playeasy.mypage.activity.MyInformation;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,12 +21,16 @@ import retrofit2.Response;
 public class LoginService {
     private RetrofitLoginApi loginClient;
 
+
     public LoginService() {
-        this.loginClient = RetrofitClientGenerator.getClient(RetrofitLoginApi.class);
+        this.loginClient = RetrofitClientFactory.getClient(RetrofitLoginApi.class);
     }
 
     public void userLogin(String accessToken, Context context) {
         Toast.makeText(context, "userLogin() executed", Toast.LENGTH_SHORT).show();
+        // Get firebase token
+        Log.d("FIREBASE", "FB TOKEN: " + PlayeasyApplication.TOKEN);
+
 
         Call<LoginResponseVO> call = loginClient.register(new LoginRequestVO(accessToken));
         call.enqueue(new Callback<LoginResponseVO>() {
@@ -34,7 +39,7 @@ public class LoginService {
                 Toast.makeText(context, "onResponse() executed", Toast.LENGTH_SHORT).show();
                 Log.d("LOGIN RESPONSE", response.code() + " " + response.message());
 
-                if (response.isSuccessful() == false || response.body().isSuccess() == false) {
+                if (response.isSuccessful() == false ) {
                     Toast result = Toast.makeText(context, "Failed to login", Toast.LENGTH_SHORT);
                     result.show();
                     return;
@@ -46,9 +51,10 @@ public class LoginService {
 
                 Intent intent = new Intent();
                 if (response.body().isNewMember()) {
-                    intent.setClass(context, UserInformationActivity.class);
+                    intent.setClass(context, MyInformation.class);
+
                 } else {
-                    intent.setClass(context, MatchListActivity.class);
+                    intent.setClass(context, Main.class);
                 }
                 Toast.makeText(context, "set Intent", Toast.LENGTH_SHORT).show();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
