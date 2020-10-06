@@ -1,6 +1,7 @@
 package com.prography.playeasy.mypage.module.adapter;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,12 +98,13 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), MatchDetailConfirm.class);
-
-                        matchId = myApplyStatusApplication.getMatch().getId();
-
-                        intent.putExtra("match_id",matchId);
-                        itemView.getContext().startActivity(intent);
+//                        Intent intent = new Intent(v.getContext(), MatchDetailConfirm.class);
+//
+//                        matchId = myApplyStatusApplication.getMatch().getId();
+//
+//                        intent.putExtra("match_id",matchId);
+//                        itemView.getContext().startActivity(intent);
+                            Log.d("매치 id", String.valueOf(matchId));
                     }
                 });
 
@@ -112,5 +114,8 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
 
 
             }
+
+
+
         }
 }

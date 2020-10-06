@@ -94,6 +94,7 @@ public class MyMatchApply extends Fragment {
         recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
         fetchMyMatchApplyList(type);
         //   recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
+
     }
 
     //나의 신청 현황 정보 가져오는 함수
@@ -104,13 +105,16 @@ public class MyMatchApply extends Fragment {
 
         myMatchService.getMyMatchApplyStatus(context, type ,new Callback<MyMatchApplyStatusResponseDto>() {
             @Override
-           public void onResponse(Call<MyMatchApplyStatusResponseDto> call, Response<MyMatchApplyStatusResponseDto> response) {
-               Log.d("checking response data",String.valueOf(response.body()));
-              // Log.d("선택한 신청 방",String.valueOf(response.body().getApplicationList()));
+            public void onResponse(Call<MyMatchApplyStatusResponseDto> call, Response<MyMatchApplyStatusResponseDto> response) {
+                Log.d("checking response data",String.valueOf(response.body()));
+                // Log.d("선택한 신청 방",String.valueOf(response.body().getApplicationList()));
                 assert response.body() != null;
-                myMatchApplyList=response.body().getApplicationList();
+                // myMatchApplyList=response.body().getApplicationList();
 
-                myApplyStatusRecyclerViewAdapter.setItems(myMatchApplyList);
+                myApplyStatusRecyclerViewAdapter.setItems(response.body().getApplicationList());
+//                printData(response.body().getApplicationList());
+
+                myApplyStatusRecyclerViewAdapter.getItemId(2);
             }
 
             @Override
@@ -120,6 +124,10 @@ public class MyMatchApply extends Fragment {
             }
         });
     }
+
+
+
+
 
 
 }
