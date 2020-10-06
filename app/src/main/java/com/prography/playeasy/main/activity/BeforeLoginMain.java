@@ -41,7 +41,7 @@ public class BeforeLoginMain extends AppCompatActivity {
         @Override
         public void onSuccess(Object responseData) {
             // 응답 데이터 변환
-            List<Match> matchList = (List<Match>)responseData;
+            List<Match> matchList = (ArrayList<Match>)responseData;
             // 리사이클러뷰 렌더링
             adaptRecyclerView(matchList);
         }
@@ -133,9 +133,9 @@ public class BeforeLoginMain extends AppCompatActivity {
 
 
     }
-    public static ListMatch> createSampleMatch() throws ParseException {
+    public static ArrayList<Match> createSampleMatch() throws ParseException {
 
-        List<Match> matchArr = new ArrayList<>();
+        ArrayList<Match> matchArr = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //
 //        matchArr.add(new Match(28,"SOCCER", "축구뜨자", sdf.parse("2020-07-11"), 180, 3000, "010-9165-6918", 11));

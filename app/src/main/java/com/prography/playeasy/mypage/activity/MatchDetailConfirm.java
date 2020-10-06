@@ -67,13 +67,16 @@ public class MatchDetailConfirm extends AppCompatActivity {
         //MapView mapView = new MapView(this);
         // ViewGroup mapViewContainer = findViewById(R.id.matchDetailMap);
 //        mapViewContainer.addView(mapView);
+        Intent intent = getIntent();
 
-        initialized();
+        intent.getExtras().getInt("match_id", matchId);
+        Log.d("매치 id 지원 현황", String.valueOf(matchId));
+        initialized(matchId);
 
 
     }
 
-    private void initialized() {
+    private void initialized(int matchId) {
         //기존의 두 컴포넌트는 놔두고
         detailHomeTeam = findViewById(R.id.detailHomeTeam);
         homeTeamText=findViewById(R.id.homeTeamText);
@@ -110,7 +113,7 @@ public class MatchDetailConfirm extends AppCompatActivity {
         etcTextBox=findViewById(R.id.etcTextBox);
         detailAppliedMatch = findViewById(R.id.detailMatchApplyButton);
         //matchId를 매치 상세보기에서도 활용하고 matchId는 매치 신청하기 버튼에서도 활용
-        fetchDataOfMatchDetail();
+        fetchDataOfMatchDetail(matchId);
 
 
 
@@ -126,13 +129,10 @@ public class MatchDetailConfirm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                Log.d("match_id", String.valueOf(matchId));
-                Intent intent = getIntent();
-
-                intent.getExtras().getInt("match_id", matchId);
 //                startActivity(intent);
-                v.getContext().startActivity(intent);
+                //to do 페이지로 돌아가기
+
+//                startActivity(intent);
             }
         });
 
@@ -141,7 +141,8 @@ public class MatchDetailConfirm extends AppCompatActivity {
 
     }
 
-    private void fetchDataOfMatchDetail(){
+    private void fetchDataOfMatchDetail(int matchId){
+
         matchDao.findById(matchId,new Callback<MatchDetailDto>(){
 
 

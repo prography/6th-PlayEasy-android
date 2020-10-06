@@ -40,7 +40,7 @@ public class MyMatchApply extends Fragment {
     MyMatchService myMatchService;
     Context context;
     Spinner checkTeamSolo;
-    String type = "personal";
+    String type = "team";
     MyApplyStatusRecyclerViewAdapter myApplyStatusRecyclerViewAdapter;
 
     @Nullable
@@ -55,12 +55,13 @@ public class MyMatchApply extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initialize(view);
+
     }
 
 
     private void initialize(View view) {
         checkTeamSolo=view.findViewById(R.id.checkTeamSolo);
-        myMatchApplyList=new ArrayList<>();
+        myMatchApplyList=new ArrayList<MyApplyStatusApplication>();
         checkTeamSolo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
@@ -83,7 +84,7 @@ public class MyMatchApply extends Fragment {
             }
 
 
-    });
+        });
         RecyclerView recyclerView = view.findViewById(R.id.myMatchApplyRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -92,14 +93,14 @@ public class MyMatchApply extends Fragment {
         myApplyStatusRecyclerViewAdapter = new MyApplyStatusRecyclerViewAdapter(new MatchDao(TokenManager.get(context)));
         recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
         fetchMyMatchApplyList(type);
-     //   recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
+        //   recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
     }
 
     //나의 신청 현황 정보 가져오는 함수
     public void fetchMyMatchApplyList(String type){
 
         myMatchService=new MyMatchService();
-
+//이 위치가 문제인가
 
         myMatchService.getMyMatchApplyStatus(context, type ,new Callback<MyMatchApplyStatusResponseDto>() {
             @Override
@@ -119,6 +120,7 @@ public class MyMatchApply extends Fragment {
             }
         });
     }
+
 
 }
 

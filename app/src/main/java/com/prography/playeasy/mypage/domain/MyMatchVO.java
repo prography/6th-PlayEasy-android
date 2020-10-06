@@ -1,6 +1,6 @@
 package com.prography.playeasy.mypage.domain;
 
-public class 뭐 MyMatchVO {
+public class MyMatchVO {
     private String myMatchName;
     private String myMatchLocation;
     private int myMatchPeople;

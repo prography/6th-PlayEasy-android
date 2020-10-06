@@ -3,17 +3,18 @@ package com.prography.playeasy.match.domain.dtos.response;
 import com.google.gson.annotations.SerializedName;
 import com.prography.playeasy.match.domain.models.Match;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MatchListDto {
     @SerializedName("matchList")
-    List<Match> matchList;
+    ArrayList<Match> matchList;
 
-    public List<Match> getMatchList() {
+    public ArrayList<Match> getMatchList() {
         return matchList;
     }
 
-    public void setMatchList(List<Match> matchList) {
+    public void setMatchList(ArrayList<Match> matchList) {
         this.matchList = matchList;
     }
 

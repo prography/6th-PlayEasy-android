@@ -34,6 +34,7 @@ public class MyMatchInformation extends AppCompatActivity {
     private TabLayout tabLayout;
     private MyMatchInformationViewPagerAdapter myMatchInformationViewPagerAdapter;
     MatchDao matchDao;
+    int matchId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,26 +94,28 @@ public class MyMatchInformation extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Intent intent=getIntent();
         if (resultCode == RESULT_OK)
+
         if (requestCode == 1) {
             PopupResult result = (PopupResult) data.getSerializableExtra("result");
             if (result == PopupResult.LEFT) {
                 // 작성 코드
                 Toast.makeText(this, "최종 확정", Toast.LENGTH_SHORT).show();
                 MyMatchInformationRecyclerViewAdapter.status="CONFIRMED";
-//                matchDao.closeMatch(matchId, MyMatchInformationRecyclerViewAdapter.status, new Callback<MatchCloseResponseDto>() {
-//                    @Override
-//                    public void onResponse(Call<MatchCloseResponseDto> call, Response<MatchCloseResponseDto> response) {
-//                        Log.d("매치 마감 후 정보", String.valueOf(response.body()));
-//                        //  intent.getExtras().getInt("match_id", matchId);
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<MatchCloseResponseDto> call, Throwable t) {
-//
-//                    }
-//                });
+                intent.getExtras().getInt("match_id", matchId);
+                matchDao.closeMatch(matchId, MyMatchInformationRecyclerViewAdapter.status, new Callback<MatchCloseResponseDto>() {
+                    @Override
+                    public void onResponse(Call<MatchCloseResponseDto> call, Response<MatchCloseResponseDto> response) {
+                        Log.d("매치 마감 후 정보", String.valueOf(response.body()));
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<MatchCloseResponseDto> call, Throwable t) {
+
+                    }
+                });
 
             } else if (result == PopupResult.RIGHT) {
                 // 작성 코드
