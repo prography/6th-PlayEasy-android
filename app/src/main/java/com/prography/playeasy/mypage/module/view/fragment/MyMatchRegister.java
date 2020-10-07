@@ -64,8 +64,8 @@ public class MyMatchRegister extends Fragment {
 
         adapter = new MyMatchInformationRecyclerViewAdapter(new MatchDao(TokenManager.get(context)));
 
-        fetchMyMatchRegisterList();
         recyclerView.setAdapter(adapter);
+        fetchMyMatchRegisterList();
     }
 
     public void fetchMyMatchRegisterList(){
@@ -77,6 +77,7 @@ public class MyMatchRegister extends Fragment {
                 Log.d("check response data", String.valueOf(response.body()));
                 myMatchRegisterList = response.body().getMatchList();
                 adapter.setItems(myMatchRegisterList);
+                adapter.notifyDataSetChanged();
             }
             @Override
             public void onFailure(Call<MyMatchRegisterListDto> call, Throwable t) {

@@ -41,7 +41,9 @@ public class Match {
     private HomeTeamId homeTeam;
     @SerializedName("location")
     private LocationId location;
-
+public Match(){
+ 
+}
  public Match(int id, String type, String description, String startAt, int duration, int fee, String phone, int totalQuota, String status, int writerId, HomeTeamId homeTeam, LocationId location) {
   this.id = id;
   this.type = type;

@@ -1,6 +1,7 @@
 package com.prography.playeasy.mypage.module.adapter;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,15 @@ import java.util.ArrayList;
 
 public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApplyStatusRecyclerViewAdapter.MyViewHolder> {
 
-        private ArrayList<MyApplyStatusApplication> myMatchApplyArrayList = new ArrayList<>();
+        private ArrayList<MyApplyStatusApplication> myMatchApplyArrayList =new ArrayList<MyApplyStatusApplication>();
         MatchDao matchDao;
         int matchId;
         String status;
         final static int REQUEST_CODE=2;
 
+    private TextView applyMatchTitle;
+    private TextView applyMatchDay;
+    private TextView applyMatchTime;
 
         public MyApplyStatusRecyclerViewAdapter(MatchDao matchDao) {
 
@@ -37,7 +41,7 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
         @NonNull
         @Override
         public MyApplyStatusRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_mymatchinformation_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_myapplystatus_item, parent, false);
             return new MyApplyStatusRecyclerViewAdapter.MyViewHolder(view);
         }
 
@@ -61,9 +65,7 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            private TextView registerMatchTitle;
-            private TextView registerMatchDay;
-            private TextView registerMatchTime;
+
             private TextView registerWhere;
             private TextView registerPresentPeople;
             private TextView applyStatus;
@@ -73,29 +75,36 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
-                registerMatchTitle = itemView.findViewById(R.id.registerMatchTitle);
-                registerMatchDay = itemView.findViewById(R.id.registerMatchDay);
-                registerMatchTime = itemView.findViewById(R.id.registerMatchTime);
-                registerWhere = itemView.findViewById(R.id.registerWhere);
-                registerPresentPeople = itemView.findViewById(R.id.applyPresentPeople);
-                applyStatus = itemView.findViewById(R.id.applyStatus);
-                //registerDetailApply = itemView.findViewById(R.id.registerDetailApply);
-                applyWithdrawal = itemView.findViewById(R.id.applyWithdrawal);
+                applyMatchTitle = itemView.findViewById(R.id.applyMatchTitle);
+                applyMatchDay = itemView.findViewById(R.id.applyMatchDay);
+                applyMatchTime = itemView.findViewById(R.id.applyMatchTime);
+//                registerWhere = itemView.findViewById(R.id.registerWhere);
+//                registerPresentPeople = itemView.findViewById(R.id.applyPresentPeople);
+//                applyStatus = itemView.findViewById(R.id.applyStatus);
+//                //registerDetailApply = itemView.findViewById(R.id.registerDetailApply);
+//                applyWithdrawal = itemView.findViewById(R.id.applyWithdrawal);
 
             }
 
 
-            public void onBind(MyApplyStatusApplication myMatchVO, int position) {
-//            registerMatchTitle.setText(myMatchVO.getLocation().getDetail());
-                registerMatchDay.setText(DataHelper.transformDateToString(myMatchVO.getMatch().getStartAt()));
-                registerMatchTime.setText(DataHelper.makeEndTime(myMatchVO.getMatch().getStartAt(), myMatchVO.getMatch().getDuration()));
+            public void onBind(MyApplyStatusApplication myApplyStatusApplication, int position) {
+//            registerMatchTitle.setText(myApplyStatusApplication.getLocation().getDetail());
+               applyMatchDay.setText(DataHelper.transformDateToString(myApplyStatusApplication.getMatch().getStartAt()));
+               applyMatchTime.setText(DataHelper.makeEndTime(myApplyStatusApplication.getMatch().getStartAt(), myApplyStatusApplication.getMatch().getDuration()));
+
+
 //            myMatchVO.getStartAt().split("T")[1].substring(0,2)+
 //                    DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration())
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(itemView.getContext(), MatchDetailConfirm.class);
-                        itemView.getContext().startActivity(intent);
+//                        Intent intent = new Intent(v.getContext(), MatchDetailConfirm.class);
+//
+//                        matchId = myApplyStatusApplication.getMatch().getId();
+//
+//                        intent.putExtra("match_id",matchId);
+//                        itemView.getContext().startActivity(intent);
+                            Log.d("매치 id", String.valueOf(matchId));
                     }
                 });
 
@@ -105,5 +114,8 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
 
 
             }
+
+
+
         }
 }

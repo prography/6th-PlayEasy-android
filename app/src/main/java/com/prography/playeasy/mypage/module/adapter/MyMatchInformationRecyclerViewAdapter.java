@@ -121,10 +121,14 @@ public class MyMatchInformationRecyclerViewAdapter extends RecyclerView.Adapter<
                             "수정 할 수 없으니 신중한 선택 부탁 드립니다.  ?");
                     intent.putExtra("buttonLeft", "최종 확정");
                     intent.putExtra("buttonRight", "경기 취소");
+                    matchId = myMatchVO.getId();
+                    intent.putExtra("match_id",matchId);
                     //todo
                     //  v.getContext().findA( intent,REQUEST_CODE);
+
                     ((Activity) v.getContext()).startActivityForResult(intent, REQUEST_CODE);
-                    matchId = myMatchVO.getId();
+
+
 
 
 

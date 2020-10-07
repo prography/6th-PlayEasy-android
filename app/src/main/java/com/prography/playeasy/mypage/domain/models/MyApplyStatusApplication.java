@@ -2,7 +2,7 @@ package com.prography.playeasy.mypage.domain.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MyApplyStatusApplication {
+public class  MyApplyStatusApplication {
 
 
     @SerializedName("id")

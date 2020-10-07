@@ -16,4 +16,8 @@ public class MatchDetailDto {
     public void setMatch(Match match) {
         this.match = match;
     }
+
+    public MatchDetailDto(Match match) {
+        this.match = match;
+    }
 }

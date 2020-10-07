@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -135,7 +136,8 @@ public class MatchApply extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MatchApplyTeamPostResponseDto> call, Throwable t) {
-                Log.d("매치 신청 실패", " ");
+                Toast teamApplyFailureToast=Toast.makeText(getApplicationContext(),"팀 신청 실패",Toast.LENGTH_SHORT);
+                teamApplyFailureToast.show();
             }
         }, getApplicationContext(), matchId, quotaTeam);
     }

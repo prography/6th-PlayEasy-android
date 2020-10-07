@@ -23,7 +23,7 @@ import java.util.List;
 
 
 public class MatchRecyclerAdapter extends RecyclerView.Adapter<MatchRecyclerAdapter.MyViewHolder>{
-    private List<Match> matchList = new ArrayList<>();
+    private ArrayList<Match> matchList = new ArrayList<>();
     Context context;
     @NonNull
     @Override

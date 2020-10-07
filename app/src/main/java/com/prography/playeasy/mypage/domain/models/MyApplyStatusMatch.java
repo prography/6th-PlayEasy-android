@@ -27,10 +27,12 @@ public class MyApplyStatusMatch {
     }
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
@@ -39,10 +41,12 @@ public class MyApplyStatusMatch {
     }
 
     public void setStartAt(String startAt) {
+
         this.startAt = startAt;
     }
 
     public int getDuration() {
+
         return duration;
     }
 

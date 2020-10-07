@@ -44,7 +44,7 @@ public class Main extends AppCompatActivity {
     private static final String TAG = "JWT_TOKEN";
     private HorizontalCalendar horizontalCalendar;
 
-    List<Match> matchList;
+    ArrayList<Match> matchList;
     MatchDao matchDao;
 
     //매치 화면 정보 받아오는 화면인데 아직 구현 안됨
@@ -132,7 +132,7 @@ public class Main extends AppCompatActivity {
 
     }
 
-    private void adaptRecyclerView(List<Match> matchList) {
+    private void adaptRecyclerView(ArrayList<Match> matchList) {
         RecyclerView recyclerView = findViewById(R.id.MainRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
