@@ -28,6 +28,7 @@ import com.prography.playeasy.mypage.module.adapter.MyMatchInformationRecyclerVi
 import com.prography.playeasy.mypage.service.MyMatchService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,58 +42,55 @@ public class MyMatchApply extends Fragment {
     Context context;
     Spinner checkTeamSolo;
     String type = "team";
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
     MyApplyStatusRecyclerViewAdapter myApplyStatusRecyclerViewAdapter;
+    ViewGroup rootView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage_mymatchinformation_apply, container, false);
+        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage_mymatchinformation_apply, container, false);
         context=container.getContext();
-        return rootView;
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initialize(view);
+        initialize();
+        fetchMyMatchApplyList(type);
 
-    }
-
-
-    private void initialize(View view) {
-        checkTeamSolo=view.findViewById(R.id.checkTeamSolo);
-        myMatchApplyList=new ArrayList<MyApplyStatusApplication>();
         checkTeamSolo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int pos = position;
 
-                if(pos == 1){
+                if(pos == 0){
                     type = "team";
-                }else if(pos == 2 ) {
+                }else if(pos == 1 ) {
                     type = "personal";
                 }
                 Log.d("신청 타입",type);
                 fetchMyMatchApplyList(type);
-                myApplyStatusRecyclerViewAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(view.getContext(), "지원 현황 볼 방식을 선택해주세요", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "지원 현황 볼 방식을 선택해주세요", Toast.LENGTH_SHORT).show();
             }
 
-
         });
-        RecyclerView recyclerView = view.findViewById(R.id.myMatchApplyRecyclerView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+
+        return rootView;
+    }
+
+    private void initialize() {
+        checkTeamSolo = rootView.findViewById(R.id.checkTeamSolo);
+        recyclerView = rootView.findViewById(R.id.myMatchApplyRecyclerView);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
 
 
         myApplyStatusRecyclerViewAdapter = new MyApplyStatusRecyclerViewAdapter(new MatchDao(TokenManager.get(context)));
-        recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
-        fetchMyMatchApplyList(type);
+//        fetchMyMatchApplyList(type);
+
         //   recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
 
     }
@@ -108,18 +106,20 @@ public class MyMatchApply extends Fragment {
             public void onResponse(Call<MyMatchApplyStatusResponseDto> call, Response<MyMatchApplyStatusResponseDto> response) {
                 Log.d("checking response data",String.valueOf(response.body()));
                 // Log.d("선택한 신청 방",String.valueOf(response.body().getApplicationList()));
-                assert response.body() != null;
+                if(response.isSuccessful() == false) {
+
+                    Log.d("apply_match", "failed");
+                }
                 // myMatchApplyList=response.body().getApplicationList();
 
                 myApplyStatusRecyclerViewAdapter.setItems(response.body().getApplicationList());
 //                printData(response.body().getApplicationList());
-
-                myApplyStatusRecyclerViewAdapter.getItemId(2);
+                 recyclerView.setAdapter(myApplyStatusRecyclerViewAdapter);
             }
 
             @Override
             public void onFailure(Call<MyMatchApplyStatusResponseDto> call, Throwable t) {
-                Log.d("checking response data","no data");
+                Log.d("checking response data",t.getMessage());
 
             }
         });

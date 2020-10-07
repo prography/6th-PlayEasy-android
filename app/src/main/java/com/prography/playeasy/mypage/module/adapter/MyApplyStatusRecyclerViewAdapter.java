@@ -27,10 +27,8 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
         int matchId;
         String status;
         final static int REQUEST_CODE=2;
+        String tempApplyStatus;
 
-    private TextView applyMatchTitle;
-    private TextView applyMatchDay;
-    private TextView applyMatchTime;
 
         public MyApplyStatusRecyclerViewAdapter(MatchDao matchDao) {
 
@@ -53,7 +51,7 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
 
         public void setItems(ArrayList<MyApplyStatusApplication> list) {
             myMatchApplyArrayList = list;
-            this.notifyDataSetChanged();
+            notifyDataSetChanged();
         }
 
         @Override
@@ -66,9 +64,11 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
 
-            private TextView registerWhere;
-            private TextView registerPresentPeople;
+            private TextView applyMatchTitle;
+            private TextView applyMatchDay;
+            private TextView applyMatchTime;
             private TextView applyStatus;
+
 //            private MaterialButton registerDetailApply;
             private MaterialButton applyWithdrawal;
 
@@ -78,6 +78,8 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
                 applyMatchTitle = itemView.findViewById(R.id.applyMatchTitle);
                 applyMatchDay = itemView.findViewById(R.id.applyMatchDay);
                 applyMatchTime = itemView.findViewById(R.id.applyMatchTime);
+                //매치 상태가 아닌 용병 지원의상태를 나타내는 변수
+                applyStatus=itemView.findViewById(R.id.applyStatus);
 //                registerWhere = itemView.findViewById(R.id.registerWhere);
 //                registerPresentPeople = itemView.findViewById(R.id.applyPresentPeople);
 //                applyStatus = itemView.findViewById(R.id.applyStatus);
@@ -91,7 +93,13 @@ public class MyApplyStatusRecyclerViewAdapter extends RecyclerView.Adapter<MyApp
 //            registerMatchTitle.setText(myApplyStatusApplication.getLocation().getDetail());
                applyMatchDay.setText(DataHelper.transformDateToString(myApplyStatusApplication.getMatch().getStartAt()));
                applyMatchTime.setText(DataHelper.makeEndTime(myApplyStatusApplication.getMatch().getStartAt(), myApplyStatusApplication.getMatch().getDuration()));
-
+               if(myApplyStatusApplication.getStatus()=="WAITING") {
+                   tempApplyStatus = "승인 대기 중";
+               }else if (myApplyStatusApplication.getStatus()=="CONFIRMED")
+               {
+                    tempApplyStatus="승인";
+               }
+                applyStatus.setText(tempApplyStatus);
 
 //            myMatchVO.getStartAt().split("T")[1].substring(0,2)+
 //                    DataHelper.makeEndTime(myMatchVO.getStartAt(),myMatchVO.getDuration())
