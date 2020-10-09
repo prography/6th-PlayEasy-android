@@ -147,10 +147,14 @@ public class MatchDetail extends AppCompatActivity {
                 match=response.body().getMatch();
                 addressText.setText(match.getLocation().getAddress());
                 detailedAddressText.setText(match.getLocation().getDetail());
-
                 timeText.setText(match.getStartAt().split("T")[0]);
-                etcTextBox.setText(match.getDescription());
 
+                detailMatchNeedPeopleText.setText(Integer.toString(match.getTotalQuota()));
+                detailMatchGameTypeText.setText(match.getType());
+                detailMatchFeeText.setText(Integer.toString(match.getFee()));
+                detailMatchTelePhoneText.setText(match.getPhone());
+
+                etcTextBox.setText(match.getDescription());
             }
 
             @Override
